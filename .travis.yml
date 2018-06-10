@@ -12,9 +12,8 @@ env:
 before_script:
   - git clone https://github.com/ribice/kiss.git themes/kiss
   - git clone https://${GH_TOKEN}@${GH_REPO} public
-script: 
-  - go get github.com/gohugoio/hugo
-  - hugo
+script:
+  - blog
 after_success:
   - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
   - cd public
