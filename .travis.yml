@@ -3,21 +3,21 @@ branches:
   only:
   - master
 go:
-  - "1.10"
+- '1.10'
 sudo: false
 env:
   global:
-    - secure: rxKkyttLE1L4VsVIhhDUYGoLlER33ijKbdAAJPE8vNDSHwyANYnsP1GXK/rcwQqsL/KcJa55wEjVwEBzTMCqZM4UYNVIWqrJepVYo4rL1WhO+jT5sCqVR3qxK9KbgodcSXbmySJnJs0iLGMIQ2bo8yE91OxIC/GKkLCIwr9x4EGwFd5EcE5bOqmVqoSRk1q/1/5yA0aVF+Pohc5ATCZGw9+IyprU2Dx7qbA7F/T/4FQTOQZ4CLZAgyh/Gp1P+uxf1OK4IMCc/P6jVeTmbzQIbUcX0uG09pR7F0GnlV1ZOutMjY7SF8tQ7LNv2Wf8iWdiqehcwKNe/4TFHjs6rm3lEc6F1ELB5s4Z+QXjIM70haENSwM1FI8K5biL7tndAC1TujKESm0XadxORy5yOz7TfQZDTuMXvmmH3j+NFL3vTYPyMwwFca+IQBwD67a4PKD0PWBgEFD9Kn3rAlAzhV5OYdUuxZhx5zuQjKX5szUbL166fgoRnUwDp8dsOjLgOUqQa47IRqR3CTPzbf3zZIxGuX5x6mWySezCNprnXKCpyCegJBLoxQusA+EEYkvl4AOzhnmkhxFbEbHp+DYBjcSEEgpd06l67l3KzjMkpF02vr9CHNj8r7lAtZxwBVxYmczk289D5csOVR1SZKxQLwhx7k+CuEcYds685tLjIMmB0ZU=
-    - GH_REPO="github.com/jackysp/jackysp.github.io.git"
+  - GH_REPO="github.com/jackysp/jackysp.github.io.git"
+  - secure: boPc+xxtkufUuQ+yPZiai+9sYOaPCwpdkLIX9uazxMUbg+hjAiGELFKJsFUhLhWNPuTnxdgFfqjVFl5VftYi8asPWfuVChXR8UlXqFjD6O5kFLeO7WdZ24tVkfVVn3OmZEvmxnck2vhkZB8+QgHhTGCInszFNEAlBDlIOcfsPwxYYTkXJ0a8ULK7qGJTvXAI4tcFmFKbrwsY3a+tOQW7V0b6kM7EKK6URTx/r05wFT76kPzApe4+xLr+xsgIfWCxXDnsnt7sReBL2Qobv+oUA8H9jcpY9pPTh6u0Dns7Lu/OIIz2zJ9dkYOzYO1KZ6kUG7IgCJiKBMQ3esn+xUaD/mYGF3KGJecrym6e3/7bYXq+3DZNrfY0f2iGkDdMIKLtQ1Tm7SyZEWpnhAQVO5TSrmeVwHDjyso85+2myzFkqItX9ig2Qa8gNV3JFBQCVkBTxyZ17LsalLqr6olyPlRKP+k3WaUj+PuELMh8hWPAU8RZd6vvVG+JmURe6W3tGIbmQ/18HFnJac6MkrsRqW8uRzjamXmQ60QNGtS3lbqhgHwKpwDqy600VorQQbePxA8/BDypdtzi+HY4mA4XomszDYlkSrokt2vbfyZo0EmNEMnJ/owdClmwvj10uk/mMwZ/z9SmLZ13VPerGP8Vs2MCkybC5Xy3P3fIshQDNJfDTcg=
 before_script:
-  - git clone https://${GH_TOKEN}@${GH_REPO} public
+- git clone https://${GH_TOKEN}@${GH_REPO} public
 script:
-  - blog
+- blog
 after_success:
-  - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
-  - cd public
-  - git config user.email "jackysp@gmail.com"
-  - git config user.name "Jack Yu"
-  - git add --all
-  - git commit -m "${MESSAGE}"
-  - git push --force origin master
+- MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
+- cd public
+- git config user.email "jackysp@gmail.com"
+- git config user.name "Jack Yu"
+- git add --all
+- git commit -m "${MESSAGE}"
+- git push --force origin master
