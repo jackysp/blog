@@ -1,5 +1,5 @@
 ---
-title:  "如何配置 CentOS KVM 网络桥接模式"
+title: "如何配置 CentOS KVM 网络桥接模式"
 date: 2014-06-05T22:21:06+08:00
 ---
 

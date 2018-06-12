@@ -1,5 +1,5 @@
 ---
-title:  "如何配置 CentOS 6 NFS 服务"
+title: "如何配置 CentOS 6 NFS 服务"
 date: 2014-06-05T22:21:06+08:00
 ---
 

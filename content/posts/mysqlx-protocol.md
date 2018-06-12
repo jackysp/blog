@@ -1,5 +1,5 @@
 ---
-title:  "如何在 TiDB 上实现 MySQL X Protocol"
+title:  如何在 TiDB 上实现 MySQL X Protocol"
 date: 2017-08-16T22:21:06+08:00
 ---
 
@@ -14,8 +14,8 @@ date: 2017-08-16T22:21:06+08:00
 
 * 客户端与服务端之间靠 tcp 通信，协议使用了 protobuf 。
 * 服务端接收到消息后，把消息解码后分析。协议中包含了 namespace 这样一个概念，具体是指，如果 namespace 为空或者 "sql" ，则消息内容按照 sql 语句来执行，如果为 "xplugin" 、 "mysqlx" 则消息按照其他方式来处理。其他方式又可分为：
-  + 管理命令
-  + CRUD 操作
+  * 管理命令
+  * CRUD 操作
 * "xplugin" 和 "mysqlx" 作用完全相同，后者是前者的新名字，为了保持兼容暂时没有去掉前者。
 * "mysqlx" 的消息除了个别如 kill_client 这样的明显的命令内容外，都是用拼 sql 的方式，转给服务端进行处理。也就是大部分也变成了 namespace 为 "sql" 的形式。
 

@@ -1,5 +1,5 @@
 ---
-title:  "如何看待 CMU DB Group 的 OLTP-Bench"
+title: "如何看待 CMU DB Group 的 OLTP-Bench"
 date: 2018-02-23T22:21:06+08:00
 ---
 
@@ -25,7 +25,7 @@ OLTP-Bench 是 CMU 的 DB Group 开源的一套针对 OLTP 场景的 Benchmark �
 * SmallBank
 * LinkBench
 
-项目详细介绍在 http://db.cs.cmu.edu/projects/oltp-bench/ ， github 页面在 https://github.com/oltpbenchmark/oltpbench 。
+项目详细介绍在[这里](http://db.cs.cmu.edu/projects/oltp-bench/)， github 页面在[这里](https://github.com/oltpbenchmark/oltpbench)。
 
 项目介绍页里有作者们在这个项目发表的 3 篇论文，其中 2013 年的是最重要的一篇，该篇也在 github 页面上给了链接。
 

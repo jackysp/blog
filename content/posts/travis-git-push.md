@@ -71,7 +71,7 @@ Travis now have a [deployment](https://docs.travis-ci.com/user/deployment/) feat
 
 1. 创建 github 工程。原文看起来是创建了两个工程，一个工程用来更新另一个。
 1. 安装 Ruby。一般同时安装了 gem 。
-1. 通过 `gem install travis` 安装 gem 。
+1. 通过 `gem install travis` 安装 travis 。
 1. 给自己的 github 账号申请一个 token 。具体可以 Google 。需要注意的是 token 权限选择里，勾选 repo 相关的所有权限就可以了，其他无关的没必要选上。
 1. 复制生成后的 token 。
 1. 在本地机器上的 repo 根目录里（是不是必须根目录我也不清楚）`travis encrypt GH_TOKEN="上面复制的 token "`。这就创建了一个经过加密的 token ，这个 token 在使用的时候 `${GH_TOKEN}` 这样用。其实就是个环境变量。具体原理应该就是把 github 的 token 加密了一下。前面这个命令会输出一个字符串到屏幕，需要自己粘贴进 travis 配置文件，放在 secure: 后面。可以使用 `travis encrypt GH_TOKEN="上面复制的 token " --add` 来直接写进配置文件里。

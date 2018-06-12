@@ -1,5 +1,5 @@
 ---
-title:  "如何用 Sysbench 测试 CockroachDB 性能"
+title: "如何用 Sysbench 测试 CockroachDB 性能"
 date: 2018-06-11T13:50:00+08:00
 ---
 
