@@ -2,21 +2,27 @@ package main
 
 import (
 	"log"
-	"os"
 	"os/exec"
+
+	"github.com/gohugoio/hugo/commands"
 )
 
 func main() {
-	err := exec.Command("go", "get", "github.com/gohugoio/hugo").Run()
+	commandLine("rm", []string{"-rf", "themes/kiss"})
+	commandLine("git", []string{"clone", "https://github.com/ribice/kiss.git", "themes/kiss"})
+	commands.Execute([]string{})
+}
+
+func commandLine(name string, args []string) {
+	log.Println(name, args)
+	out, err := exec.Command(name, args...).Output()
 	if err != nil {
-		log.Println("go get hugo failed error:", err)
-		os.Exit(1)
+		if len(out) != 0 {
+			log.Print(string(out))
+		}
+		log.Fatal(err)
 	}
-	log.Println("go get hugo successful!")
-	err = exec.Command("hugo").Run()
-	if err != nil {
-		log.Println("hugo run failed error:", err)
-		os.Exit(1)
+	if len(out) != 0 {
+		log.Print(string(out))
 	}
-	log.Println("hugo run successful!")
 }
