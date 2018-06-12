@@ -10,7 +10,10 @@ import (
 func main() {
 	commandLine("rm", []string{"-rf", "themes/kiss"})
 	commandLine("git", []string{"clone", "https://github.com/ribice/kiss.git", "themes/kiss"})
-	commands.Execute([]string{})
+	resp := commands.Execute([]string{})
+	if resp.Err != nil {
+		log.Fatal(resp.Err)
+	}
 }
 
 func commandLine(name string, args []string) {
