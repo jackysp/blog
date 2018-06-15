@@ -1,4 +1,4 @@
-baseURL = "https://www.minifish.life/"
+baseURL = "https://www.minifish.org/"
 languageCode = "zh-cn"
 title = "Mini How"
 theme = "kiss"
