@@ -22,9 +22,9 @@ CockroachDB 使用的是 PostgreSQL 协议，如果想使用 Sysbench 进行测�
 
 即：
 
-## auto_inc = on (on 为 Sysbench 默认值)
+当 auto_inc = on (on 为 Sysbench 默认值) 时
 
-### 表结构
+**表结构**
 
 ```sql
 CREATE TABLE sbtest1 (
@@ -38,7 +38,7 @@ CREATE TABLE sbtest1 (
 )
 ```
 
-### 数据
+**数据**
 
 ```sql
 root@:26257/sbtest> select id from sbtest1 order by id limit 1;
@@ -51,7 +51,7 @@ root@:26257/sbtest> select id from sbtest1 order by id limit 1;
 
 可以看到数据不是从 1 开始的，其实也不是连续的。正常 Sysbench 表的 id 应该是 [1, table_size]，这个范围。
 
-### SQL
+**SQL**
 
 ```sql
 UPDATE sbtest%u SET k=k+1 WHERE id=?
@@ -59,7 +59,7 @@ UPDATE sbtest%u SET k=k+1 WHERE id=?
 
 以 UPDATE 语句为例，id 是作为查询条件存在的，Sysbench 会认为这个 id 应该在 [1, table_size] 之间。实际则没有。
 
-### 测试命令行举例
+**正确的测试命令行举例**
 
 ```shell
 sysbench --db-driver=pgsql --pgsql-host=127.0.0.1 --pgsql-port=26257 --pgsql-user=root --pgsql-db=sbtest \
@@ -67,3 +67,11 @@ sysbench --db-driver=pgsql --pgsql-host=127.0.0.1 --pgsql-port=26257 --pgsql-use
         oltp_update_index \
         --sum_ranges=50 --distinct_ranges=50 --range_size=100  --simple_ranges=100 --order_ranges=100 --index_updates=100  --non_index_updates=10 --auto_inc=off prepare/run/cleanup
 ```
+
+### INSERT 测试
+
+这里单独拿出 INSERT 测试来讲一下。INSERT 测试即 Sysbench 的 oltp_insert，这个测试的特点是，当 auto_inc 为 on 时，会在测试的 prepare 阶段插入数据，否则，只建表不插入数据。因为当 auto_inc 为 on 时，在 prepare 完成后 run 的阶段，插入的数据因为有自增列的保证，不会造成冲突。而 auto_inc 为 off 时，run 阶段插入的数据 id 是随机分配的，这一点也是符合一些实际测试场景。
+
+对于 CockroachDB 测试 INSERT 的时候，如果 auto_inc 为 off，prepare 之后的 run 阶段插入数据，可以看监控（连接 CockroachDB 的 http 端口）的 Distribution 项里的 KV Transactions，可以看到有大量 Fast-path Committed，这代表其事务是通过一阶段提交（1PC）来进行的。即事务涉及的数据没有跨 CockroachDB 实例，因此没有必要通过两阶段事务来保证一致性。这是 CockroachDB 的一个优化，在 INSERT 测试中非常适用，可以有很好的性能表现。
+
+如果 auto_inc 为 on，虽然对于其他需要先读后写的测试，CockroachDB 的结果是虚高的，但是对于 INSERT 测试还是公正的。有时间可以补充测试一下。
