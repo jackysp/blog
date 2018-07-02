@@ -12,7 +12,7 @@ env:
 before_script:
 - git clone https://${GH_TOKEN}@${GH_REPO} public
 script:
-- blog
+- make
 after_success:
 - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
 - cd public
