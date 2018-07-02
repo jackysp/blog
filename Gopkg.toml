@@ -27,7 +27,7 @@
 
 [[constraint]]
   name = "github.com/gohugoio/hugo"
-  version = "0.41.0"
+  version = "0.42.2"
 
 [prune]
   go-tests = true

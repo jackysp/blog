@@ -57,6 +57,15 @@ func (ns *Namespace) CountRunes(s interface{}) (int, error) {
 	return counter, nil
 }
 
+// RuneCount returns the number of runes in s.
+func (ns *Namespace) RuneCount(s interface{}) (int, error) {
+	ss, err := cast.ToStringE(s)
+	if err != nil {
+		return 0, fmt.Errorf("Failed to convert content to string: %s", err)
+	}
+	return utf8.RuneCountInString(ss), nil
+}
+
 // CountWords returns the approximate word count in s.
 func (ns *Namespace) CountWords(s interface{}) (int, error) {
 	ss, err := cast.ToStringE(s)
@@ -416,4 +425,23 @@ func (ns *Namespace) TrimSuffix(suffix, s interface{}) (string, error) {
 	}
 
 	return _strings.TrimSuffix(ss, sx), nil
+}
+
+// Repeat returns a new string consisting of count copies of the string s.
+func (ns *Namespace) Repeat(n, s interface{}) (string, error) {
+	ss, err := cast.ToStringE(s)
+	if err != nil {
+		return "", err
+	}
+
+	sn, err := cast.ToIntE(n)
+	if err != nil {
+		return "", err
+	}
+
+	if sn < 0 {
+		return "", errors.New("strings: negative Repeat count")
+	}
+
+	return _strings.Repeat(ss, sn), nil
 }

@@ -14,16 +14,14 @@
 package commands
 
 import (
-	"path/filepath"
-
 	"bytes"
-
+	"errors"
+	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/gohugoio/hugo/hugofs"
-
 	"github.com/gohugoio/hugo/helpers"
+	"github.com/gohugoio/hugo/hugofs"
 	"github.com/spf13/cobra"
 	jww "github.com/spf13/jwalterweatherman"
 )
@@ -53,8 +51,9 @@ as you see fit.`,
 	return ccmd
 }
 
+// newTheme creates a new Hugo theme template
 func (n *newThemeCmd) newTheme(cmd *cobra.Command, args []string) error {
-	c, err := initializeConfig(false, &n.hugoBuilderCommon, n, nil)
+	c, err := initializeConfig(false, false, &n.hugoBuilderCommon, n, nil)
 
 	if err != nil {
 		return err
@@ -64,13 +63,13 @@ func (n *newThemeCmd) newTheme(cmd *cobra.Command, args []string) error {
 		return newUserError("theme name needs to be provided")
 	}
 
-	createpath := c.PathSpec().AbsPathify(filepath.Join(c.Cfg.GetString("themesDir"), args[0]))
-	jww.INFO.Println("creating theme at", createpath)
+	createpath := c.hugo.PathSpec.AbsPathify(filepath.Join(c.Cfg.GetString("themesDir"), args[0]))
+	jww.FEEDBACK.Println("Creating theme at", createpath)
 
 	cfg := c.DepsCfg
 
 	if x, _ := helpers.Exists(createpath, cfg.Fs.Source); x {
-		return newUserError(createpath, "already exists")
+		return errors.New(createpath + " already exists")
 	}
 
 	mkdir(createpath, "layouts", "_default")
@@ -80,6 +79,22 @@ func (n *newThemeCmd) newTheme(cmd *cobra.Command, args []string) error {
 	touchFile(cfg.Fs.Source, createpath, "layouts", "404.html")
 	touchFile(cfg.Fs.Source, createpath, "layouts", "_default", "list.html")
 	touchFile(cfg.Fs.Source, createpath, "layouts", "_default", "single.html")
+
+	baseofDefault := []byte(`<html>
+    {{- partial "head.html" . -}}
+    <body>
+        {{- partial "header.html" . -}}
+        <div id="content">
+        {{- block "main" . }}{{- end }}
+        </div>
+        {{- partial "footer.html" . -}}
+    </body>
+</html>
+`)
+	err = helpers.WriteToDisk(filepath.Join(createpath, "layouts", "_default", "baseof.html"), bytes.NewReader(baseofDefault), cfg.Fs.Source)
+	if err != nil {
+		return err
+	}
 
 	touchFile(cfg.Fs.Source, createpath, "layouts", "partials", "header.html")
 	touchFile(cfg.Fs.Source, createpath, "layouts", "partials", "footer.html")
@@ -118,7 +133,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 `)
 
-	err = helpers.WriteToDisk(filepath.Join(createpath, "LICENSE.md"), bytes.NewReader(by), cfg.Fs.Source)
+	err = helpers.WriteToDisk(filepath.Join(createpath, "LICENSE"), bytes.NewReader(by), cfg.Fs.Source)
 	if err != nil {
 		return err
 	}
@@ -135,12 +150,12 @@ func (n *newThemeCmd) createThemeMD(fs *hugofs.Fs, inpath string) (err error) {
 
 name = "` + strings.Title(helpers.MakeTitle(filepath.Base(inpath))) + `"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
+licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
 description = ""
 homepage = "http://example.com/"
 tags = []
 features = []
-min_version = "0.38"
+min_version = "0.41"
 
 [author]
   name = ""

@@ -41,6 +41,11 @@ func init() {
 			[][2]string{},
 		)
 
+		ns.AddMethodMapping(ctx.RuneCount,
+			nil,
+			[][2]string{},
+		)
+
 		ns.AddMethodMapping(ctx.CountWords,
 			[]string{"countwords"},
 			[][2]string{},
@@ -155,6 +160,13 @@ func init() {
 			[][2]string{
 				{`{{ "this is a very long text" | truncate 10 " ..." }}`, `this is a ...`},
 				{`{{ "With [Markdown](/markdown) inside." | markdownify | truncate 14 }}`, `With <a href="/markdown">Markdown …</a>`},
+			},
+		)
+
+		ns.AddMethodMapping(ctx.Repeat,
+			nil,
+			[][2]string{
+				{`{{ "yo" | strings.Repeat 4 }}`, `yoyoyoyo`},
 			},
 		)
 

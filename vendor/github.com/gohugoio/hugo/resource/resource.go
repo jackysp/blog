@@ -23,6 +23,8 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/gohugoio/hugo/common/maps"
+
 	"github.com/spf13/afero"
 
 	"github.com/spf13/cast"
@@ -282,7 +284,6 @@ func NewSpec(s *helpers.PathSpec, mimeTypes media.Types) (*Spec, error) {
 	if err != nil {
 		return nil, err
 	}
-	s.GetLayoutDirPath()
 
 	genImagePath := filepath.FromSlash("_gen/images")
 
@@ -419,8 +420,6 @@ type genericResource struct {
 	// The relative path to this resource.
 	relTargetPath dirFile
 
-	file string
-
 	// Base is set when the output format's path has a offset, e.g. for AMP.
 	base string
 
@@ -554,6 +553,10 @@ func (l *genericResource) AbsSourceFilename() string {
 	return l.sourceFilename
 }
 
+func (l *genericResource) String() string {
+	return fmt.Sprintf("Resource(%s: %s)", l.resourceType, l.name)
+}
+
 func (l *genericResource) Publish() error {
 	f, err := l.sourceFs().Open(l.AbsSourceFilename())
 	if err != nil {
@@ -642,7 +645,7 @@ func AssignMetadata(metadata []map[string]interface{}, resources ...Resource) er
 				if found {
 					m := cast.ToStringMap(params)
 					// Needed for case insensitive fetching of params values
-					helpers.ToLowerMap(m)
+					maps.ToLower(m)
 					ma.updateParams(m)
 				}
 			}

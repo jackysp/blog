@@ -20,7 +20,6 @@
   revision = "de5bf2ad457846296e2031421a34e2568e304e35"
 
 [[projects]]
-  branch = "master"
   name = "github.com/alecthomas/chroma"
   packages = [
     ".",
@@ -55,7 +54,7 @@
     "lexers/y",
     "styles"
   ]
-  revision = "307ceefd964be44a2ace7293a1e9b8307fdf1811"
+  revision = "1b755a90bd109f170385cb3964f0abdfd3451145"
 
 [[projects]]
   name = "github.com/bep/debounce"
@@ -67,7 +66,7 @@
   branch = "master"
   name = "github.com/bep/gitmap"
   packages = ["."]
-  revision = "012701e8669671499fc43e9792335a1dcbfe2afb"
+  revision = "ecb6fe06dbfd6bb4225e7fda7dc15612ecc8d960"
 
 [[projects]]
   name = "github.com/chaseadamsio/goorgeous"
@@ -138,6 +137,7 @@
     "bufferpool",
     "cache",
     "commands",
+    "common/maps",
     "common/types",
     "compare",
     "config",
@@ -149,8 +149,11 @@
     "helpers",
     "hugofs",
     "hugolib",
+    "hugolib/filesystems",
     "hugolib/pagemeta",
+    "hugolib/paths",
     "i18n",
+    "langs",
     "livereload",
     "media",
     "metrics",
@@ -187,8 +190,8 @@
     "utils",
     "watcher"
   ]
-  revision = "171caf28a903cdbb5c5bfd7f89f742f1a5a40fb6"
-  version = "v0.41"
+  revision = "02aa3200307a35c086707533c08ad6bf95a0f9d5"
+  version = "v0.42.2"
 
 [[projects]]
   name = "github.com/gorilla/websocket"
@@ -392,7 +395,7 @@
     "vp8l",
     "webp"
   ]
-  revision = "af66defab954cb421ca110193eed9477c8541e2a"
+  revision = "cc896f830cedae125428bc9fe1b0362aa91b3fb1"
 
 [[projects]]
   branch = "master"
@@ -401,7 +404,7 @@
     "context",
     "idna"
   ]
-  revision = "1e491301e022f8f977054da4c2d852decd59571f"
+  revision = "4cb1c02c05b0e749b0365f61ae859a8e0cfceed9"
 
 [[projects]]
   branch = "master"
@@ -413,7 +416,7 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "bff228c7b664c5fce602223a05fb708fd8654986"
+  revision = "7138fd3d9dc8335c567ca206f4333fb75eb05d56"
 
 [[projects]]
   branch = "master"
@@ -437,7 +440,7 @@
     "unicode/rangetable",
     "width"
   ]
-  revision = "5c1cf69b5978e5a34c5f9ba09a83e56acc4b7877"
+  revision = "c0fe8dde8a10c9b32154bd9bdf080b8b3d635127"
 
 [[projects]]
   name = "gopkg.in/yaml.v2"
@@ -448,6 +451,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bf1b9fcf9cf28d7db7b1a386876c54dddf17bb0526984263a63e1b118cf107c8"
+  inputs-digest = "d4d946cd59a2aead825517beb45540b269ecbcb199b5f613fc817f881fd7fcf5"
   solver-name = "gps-cdcl"
   solver-version = 1

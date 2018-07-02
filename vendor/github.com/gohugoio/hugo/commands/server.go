@@ -226,7 +226,7 @@ func (s *serverCmd) server(cmd *cobra.Command, args []string) error {
 		jww.ERROR.Println("memstats error:", err)
 	}
 
-	c, err := initializeConfig(true, &s.hugoBuilderCommon, s, cfgInit)
+	c, err := initializeConfig(true, true, &s.hugoBuilderCommon, s, cfgInit)
 	if err != nil {
 		return err
 	}
@@ -288,7 +288,7 @@ func (f *fileServer) createEndpoint(i int) (*http.ServeMux, string, string, erro
 		publishDir = filepath.Join(publishDir, root)
 	}
 
-	absPublishDir := f.c.PathSpec().AbsPathify(publishDir)
+	absPublishDir := f.c.hugo.PathSpec.AbsPathify(publishDir)
 
 	if i == 0 {
 		if f.s.renderToDisk {
@@ -298,7 +298,7 @@ func (f *fileServer) createEndpoint(i int) (*http.ServeMux, string, string, erro
 		}
 	}
 
-	httpFs := afero.NewHttpFs(f.c.Fs.Destination)
+	httpFs := afero.NewHttpFs(f.c.destinationFs)
 	fs := filesOnlyFs{httpFs.Dir(absPublishDir)}
 
 	doLiveReload := !f.s.buildWatch && !f.c.Cfg.GetBool("disableLiveReload")
