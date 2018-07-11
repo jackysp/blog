@@ -1,7 +1,7 @@
 ---
 title: "TiDB 的 INSERT 语句是如何实现的"
 date: 2018-07-11T14:18:00+08:00
-draft: false
+draft: true
 ---
 
 在之前的一篇文章中[《Insert 语句概览》](https://zhuanlan.zhihu.com/p/34512827)中，已经介绍了 INSERT 语句的大体流程。在本篇中将详细介绍 TiDB 对于几种 INSERT 语句的的实现。
