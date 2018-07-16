@@ -21,6 +21,7 @@ global # global 的内容基本固定，也比较好理解。
         daemon
         pidfile /var/run/haproxy.pid
         stats socket /var/run/haproxy.sock         # Make sock file for haproxy
+        nbproc 40                                  # 启动 40 个进程并发转发，高版本可以用 nbthread，改为线程化。
         
 defaults # 这部分都是抄的，option 不是很明白。
         log     global
