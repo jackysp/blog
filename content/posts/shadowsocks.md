@@ -19,7 +19,7 @@ redhat 系的 yum 有没有我没去确认过。
 
 1. 部署一个 debian 9 或者 ubuntu 17 的 vps，在 vultr 等主流提供商应该都有。假设这里用的是 debian 9。
 1. `apt install shadowsocks-libev` 安装。
-1. `vim /etc/shadowsocks-libev/config.json` 编辑下配置。
+1. `vim /etc/shadowsocks-libev/config.json` 编辑下配置，里面的 IP 要改成公网 IP。
 1. `systemctl restart shadowsocks-libev` 重启服务以生效。
 
 这样就完成了。服务是默认随机器启动的，重启也不用担心。另外，关于加速，推荐使用 tcp bbr，而且这个在 debian 9 上是
