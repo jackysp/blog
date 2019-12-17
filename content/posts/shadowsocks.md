@@ -20,6 +20,6 @@ redhat 系的 yum 有没有我没去确认过。
 1. 部署一个 debian 9 或者 ubuntu 17 的 vps，在 vultr 等主流提供商应该都有。假设这里用的是 debian 9。
 1. `apt install shadowsocks-libev` 安装。
 1. `vim /etc/shadowsocks-libev/config.json` 编辑下配置，里面的 Server IP 最好设置成 0.0.0.0，为了避免类似 AWS Lightsail 的 IP 问题。
-    1. AWS Lightsail 还需要额外开防火墙端口，具体操作可以去 Google。
+    1. AWS Lightsail 需要绑定静态 IP，并且额外开防火墙端口，具体操作可以去 Google。
 1. `systemctl restart shadowsocks-libev` 重启服务以生效。
 1. 开启 tcp bbr，具体操作去 Google。
