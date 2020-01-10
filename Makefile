@@ -1,2 +1,2 @@
 all:
-	GO111MODULE=on go run main.go
+	go run main.go
