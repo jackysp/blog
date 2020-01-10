@@ -3,7 +3,7 @@ branches:
   only:
   - master
 go:
-- '1.11'
+- '1.13'
 sudo: false
 env:
   global:
