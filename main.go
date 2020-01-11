@@ -11,7 +11,7 @@ import (
 func main() {
 	os.RemoveAll("themes/kiss")
 	commandLine("git", []string{"clone", "https://github.com/ribice/kiss.git", "themes/kiss"})
-	resp := commands.Execute([]string{})
+	resp := commands.Execute(os.Args[1:])
 	if resp.Err != nil {
 		log.Fatal(resp.Err)
 	}
