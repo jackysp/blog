@@ -1,4 +1,4 @@
-baseURL = "https://blog.minifish.org/"
+baseURL = "http://blog.minifish.org/"
 languageCode = "zh-cn"
 title = "Mini How"
 disqusShortname = "jackysp"
