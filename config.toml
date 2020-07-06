@@ -2,4 +2,7 @@ baseURL = "http://blog.minifish.org/"
 languageCode = "zh-cn"
 title = "Mini How"
 disqusShortname = "jackysp"
-# theme = "kiss"
+theme = "hyde"
+
+[params]
+description = "A blog that's all about how to do it."

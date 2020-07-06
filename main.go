@@ -3,20 +3,20 @@ package main
 import (
 	"log"
 	"os"
+	"os/exec"
 
 	"github.com/gohugoio/hugo/commands"
 )
 
 func main() {
-	//os.RemoveAll("themes/kiss")
-	//commandLine("git", []string{"clone", "https://github.com/ribice/kiss.git", "themes/kiss"})
+	os.RemoveAll("themes/hyde")
+	commandLine("git", []string{"clone", "https://github.com/spf13/hyde.git", "themes/hyde"})
 	resp := commands.Execute(os.Args[1:])
 	if resp.Err != nil {
 		log.Fatal(resp.Err)
 	}
 }
 
-/*
 func commandLine(name string, args []string) {
 	log.Println(name, args)
 	out, err := exec.Command(name, args...).Output()
@@ -30,4 +30,3 @@ func commandLine(name string, args []string) {
 		log.Print(string(out))
 	}
 }
- */
