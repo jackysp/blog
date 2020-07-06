@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"os"
-	"os/exec"
 
 	"github.com/gohugoio/hugo/commands"
 )
@@ -17,6 +16,7 @@ func main() {
 	}
 }
 
+/*
 func commandLine(name string, args []string) {
 	log.Println(name, args)
 	out, err := exec.Command(name, args...).Output()
@@ -30,3 +30,4 @@ func commandLine(name string, args []string) {
 		log.Print(string(out))
 	}
 }
+ */
