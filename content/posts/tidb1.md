@@ -30,13 +30,13 @@ TiDB 有很多源码阅读文章，人称《二十四章经》。不过，介绍
 
 1. 安装好 Golang 环境后，记得设置下 GOPATH，通常就是，
 
-    ![goenv](/content/posts/images/20200706172327.png)
+    ![goenv](/posts/images/20200706172327.png)
 
 1. TiDB 代码可以不放在 GOPATH 下开发，因此，TiDB 代码放在哪都可以。我一般就是创建一个叫 work 的目录，把各种代码都丢在里面。
 1. 打开 Goland/IDEA，我用的是 IDEA，因为，平时要看些其他语言的代码。
 1. 用 IDEA 打开，选 tidb 的目录
 
-    ![src](/content/posts/images/20200706174108.png)
+    ![src](/posts/images/20200706174108.png)
 
 1. 这时候 IDEA 一般能自动提示设置 GOROOT 和启用 Go Modules，都根据推荐的来
 
