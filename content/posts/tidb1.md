@@ -41,3 +41,47 @@ TiDB 有很多源码阅读文章，人称《二十四章经》。不过，介绍
 1. 这时候 IDEA 一般能自动提示设置 GOROOT 和启用 Go Modules，都根据推荐的来
 
 自此环境搭建就完成了。
+
+## 切入点
+
+刚开始的时候，有人推荐我从 session 这个包开始看，不过，经历了一些之后，个人感觉，有两个比较好的切入点，一个是 `main` 函数，一个是 `dispatch` 函数。
+
+### `main` 函数
+
+TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f18a03d655d04d67a2f21d7fbfca2e3f/tidb-server/main.go#L160) 从上到下可以大体过一下启动一个 tidb-server 都做了什么。
+
+![main](/posts/images/20200706220211.png)
+
+从上到下分别是
+
+* 解析 flag
+* 输出版本信息并退出
+* 注册 store、监控
+* 配置文件检查
+* 临时文件夹的初始化等
+* 设置全局变量、CPU 亲和性、日志、trace、打印 server 信息、设置 binlog、设置监控
+* 创建 store 和 domain
+
+    这里的 `createStoreAndDomain` 比较重要，重要的后台线程都在此创建。
+
+* 创建 server，注册停止信号函数
+* 启动 server
+
+    `runServer` 里的 `srv.Run()` 真正的把 tidb-server 给 run 了起来。
+    ![run](/posts/images/20200706221611.png)
+    在 `Run()` 函数的这里，server 不断监听网络请求，出现新连接请求就创建一个新连接，使用一个新 goroutine 来持续为它提供服务。
+
+* 再这后面就是当 server 需要停止后，进行一些清理工作，最终把日志写出去。
+
+至此，整个 `main` 函数结束。
+
+使用 `main` 函数可以看到一个 server 从创建到销毁的全生命周期。
+另外，结合 IDEA 还可以轻松的启动、调试 TiDB。点击下图这个三角
+
+![run](/posts/images/20200706222247.png)
+
+![run](/posts/images/20200706222457.png)
+
+会弹出 run 和 debug `main` 函数的选项，本质就是启动了一个使用默认配置的 TiDB，TiDB 默认用 mocktikv 作为存储引擎，因此可以单机启动，方便做各种测试验证。
+
+### `dispatch` 函数
