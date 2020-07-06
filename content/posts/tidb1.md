@@ -46,9 +46,9 @@ TiDB 有很多源码阅读文章，人称《二十四章经》。不过，介绍
 
 刚开始的时候，有人推荐我从 session 这个包开始看，不过，经历了一些之后，个人感觉，有两个比较好的切入点，一个是 `main` 函数，一个是 `dispatch` 函数。
 
-### `main` 函数
+### main 函数
 
-TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f18a03d655d04d67a2f21d7fbfca2e3f/tidb-server/main.go#L160) 从上到下可以大体过一下启动一个 tidb-server 都做了什么。
+TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f18a03d655d04d67a2f21d7fbfca2e3f/tidb-server/main.go#L160) 看到。从上到下可以大体过一下启动一个 tidb-server 都做了什么。
 
 ![main](/posts/images/20200706220211.png)
 
@@ -84,4 +84,4 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 
 会弹出 run 和 debug `main` 函数的选项，本质就是启动了一个使用默认配置的 TiDB，TiDB 默认用 mocktikv 作为存储引擎，因此可以单机启动，方便做各种测试验证。
 
-### `dispatch` 函数
+### dispatch 函数
