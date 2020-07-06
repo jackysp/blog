@@ -73,9 +73,8 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 
 * 再这后面就是当 server 需要停止后，进行一些清理工作，最终把日志写出去。
 
-至此，整个 `main` 函数结束。
+至此，整个 `main` 函数结束。使用 `main` 函数可以看到一个 server 从创建到销毁的全生命周期。
 
-使用 `main` 函数可以看到一个 server 从创建到销毁的全生命周期。
 另外，结合 IDEA 还可以轻松的启动、调试 TiDB。点击下图这个三角
 
 ![run](/posts/images/20200706222247.png)
@@ -84,4 +83,8 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 
 会弹出 run 和 debug `main` 函数的选项，本质就是启动了一个使用默认配置的 TiDB，TiDB 默认用 mocktikv 作为存储引擎，因此可以单机启动，方便做各种测试验证。
 
+至于怎么修改配置来启动、调试，会在后续的系列文章中介绍。
+
 ### dispatch 函数
+
+从 `srv.Run()` 里向后不远，就到了另一个适合做切入点的函数 `dispatch`
