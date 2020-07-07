@@ -62,7 +62,7 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 * 设置全局变量、CPU 亲和性、日志、trace、打印 server 信息、设置 binlog、设置监控
 * 创建 store 和 domain
 
-    这里的 `createStoreAndDomain` 比较重要，重要的后台线程都在此创建。
+    这里的 `createStoreAndDomain` 比较重要，重要地后台线程都在此创建。
 
 * 创建 server，注册停止信号函数
 * 启动 server
@@ -77,9 +77,9 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 
 另外，结合 IDEA 还可以轻松的启动、调试 TiDB。点击下图这个三角
 
-![run](/posts/images/20200706222247.png)
+![run1](/posts/images/20200706222247.png)
 
-![run](/posts/images/20200706222457.png)
+![run2](/posts/images/20200706222457.png)
 
 会弹出 run 和 debug `main` 函数的选项，本质就是启动了一个使用默认配置的 TiDB，TiDB 默认用 mocktikv 作为存储引擎，因此可以单机启动，方便做各种测试验证。
 
@@ -87,4 +87,33 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 
 ### dispatch 函数
 
-从 `srv.Run()` 里向后不远，就到了另一个适合做切入点的函数 `dispatch`
+从 `srv.Run()` 里向后走不远，就到了另一个适合做切入点的函数 `dispatch`。
+
+`dispatch` 函数有几个特点，
+
+1. 只有来自客户端的请求才会进入 `dispatch` 函数，也就是说，从这里开始看，执行的都是用户的请求，以此为起点打断点的话，可以方便地过滤掉内部线程执行的 SQL。
+1. 从这里开始，各种请求会进行分发，进入不同的处理逻辑，因此，从这开始的用户请求也是不会被漏掉的。不会出现，比如，看了半天 text 协议的代码，结果用户实际使用的是 binary 的协议。
+1. `dispatch` 本身处在非常靠前的位置，也就是它的参数基本来自客户端的第一手信息，如果是 text 协议，直接读参数还可以解析出 SQL 文本。
+
+![dispatch1](/posts/images/20200707150344.png)
+
+`dispatch` 一开始主要就是获取 token，也就是对应 token-limit 这个参数，获取不到 token 的请求不能执行，这也就是，为什么能创建很多连接，但是最多同时执行的 SQL 默认只有 1000 个。
+然后，就进入了最重要的一个 switch case，
+
+![dispatch2](/posts/images/20200707150736.png)
+
+在这些 command 就是 MySQL 协议的 command，所以，TiDB 到底实现了哪些，在这里就一目了然了。具体可以跟 [link](https://dev.mysql.com/doc/internals/en/text-protocol.html) 进行对比（这个链接只有 text 协议的），全部的可以看下图。
+
+![dispatch3](/posts/images/20200707151452.png)
+
+`dispatch` 里最重要的是 `mysql.ComQuery` 和 `mysql.ComStmtPrepare`、`mysql.ComStmtExecute`、`mysql.ComStmtClose` 三兄弟。后者其实
+更多地在实际生产中使用，所以更加重要。 `mysql.ComQuery` 其实一般只有一些简单测试验证中使用。
+
+`dispatch` 由于是与客户端交互的入口，因此，它可以方便地统计数据库处理了多少请求。从监控统计得到的所谓 QPS，其实就是这个函数的每秒执行次数统计。这里，就引入
+一个问题。有的请求，比如，multi-query 请求，像是 select 1; select 1; select 1; 这种多条语句拼在一起发过来的，对于 dispatch 来说，只是一次请求，对于
+客户端来说，可能就是三次。如果使用 binary 协议，有些客户端会先 prepare 语句，再 execute 语句，最后 close 语句，相当于，对于客户端来说只执行了一个 SQL，
+对于数据库其实是完成了三次请求。
+
+一句话总结，用户感知到的 QPS 与 `dispatch` 函数调用次数很可能是对不上的。因此，在后面的版本里，TiDB 监控里的 QPS 面板被改成了 CPS，即 Command Per Second，
+每秒执行的 command 数量。
+
