@@ -117,3 +117,17 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 一句话总结，用户感知到的 QPS 与 `dispatch` 函数调用次数很可能是对不上的。因此，在后面的版本里，TiDB 监控里的 QPS 面板被改成了 CPS，即 Command Per Second，
 每秒执行的 command 数量。
 
+看 `dispatch` 的调用者，也可以看到信息来解释一些经常被大家问到的问题，
+
+![dispatch4](/posts/images/20200707154120.png)
+
+1. 如果 `dispatch` 遇到了 EOF 错误，一般是客户端自己断开了，那数据库连接也没有必要保留，就断开了。
+1. 如果发生 undetermined 错误（指的是事务进行了提交，但是，不知道是提交成功还是失败了，需要人工介入验证事务是否提交成功），此时，应该立刻人工介入，本连接也会关闭。
+1. 写 binlog 失败并且 `ignore-error = false`，之前的处理是 tidb-server 进程不退出，但是不能提供服务。现在是 tidb-server 直接会退出。
+1. 对于所有其他 `dispatch` 错误，连接都不会断开，会继续提供服务，但是会把失败信息用日志的形式打出来："command dispatched failed"，可以说这是
+TiDB 最重要的日志之一。
+
+# 总结
+
+至此，从环境搭建入手到找到合理切入点开始读代码的介绍就告一段落了。系列的后面会介绍一些，诸如，配置（调整、默认配置值）、变量（默认值、作用域、实际作用范围，如何生效）、
+哪些语法是支持的等等。敬请期待。
