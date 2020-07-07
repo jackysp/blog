@@ -127,7 +127,7 @@ TiDB 的 `main` 函数在 [link](https://github.com/pingcap/tidb/blob/6b6096f1f1
 
 ![dispatch4](/posts/images/20200707154120.png)
 
-1. 如果 `dispatch` 遇到了 EOF 错误，一般是客户端自己断开了，那数据库连接也没有必要保留，就断开了。
+1. 如果 `dispatch` 遇到了 EOF 错误，一般是客户端自己主动断开了，那数据库连接也没有必要保留，就断开了。
 1. 如果发生 undetermined 错误（指的是事务进行了提交，但是，不知道是提交成功还是失败了，需要人工介入验证事务是否提交成功），此时，应该立刻人工介入，本连接也会关闭。
 1. 写 binlog 失败并且 `ignore-error = false`，之前的处理是 tidb-server 进程不退出，但是不能提供服务。现在是 tidb-server 直接会退出。
 1. 对于所有其他 `dispatch` 错误，连接都不会断开，会继续提供服务，但是会把失败信息用日志的形式打出来："command dispatched failed"，可以说这是
