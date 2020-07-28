@@ -18,7 +18,7 @@ TiDB 的系统变量名定义在 [tidb_vars.go](https://github.com/pingcap/tidb/
 
 TiDB 中，从字面意思上讲，有三种变量作用域，
 
-    ![defaultSysVars](/posts/images/20200728151833.png)
+![defaultSysVars](/posts/images/20200728151833.png)
 
 分别是 ScopeNone、ScopeGlobal 和 ScopeSession。它们分别代表，
 
@@ -68,11 +68,11 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 
 实际上，追踪 ScopeNone 的使用，可以看到
 
-    ![defaultSysVars](/posts/images/20200728155134.png)
+![defaultSysVars](/posts/images/20200728155134.png)
 
 在 `setSysVariable` 里遇到这种作用域的变量，会直接返回错误。
 
-    ![defaultSysVars](/posts/images/20200728155332.png)
+![defaultSysVars](/posts/images/20200728155332.png)
 
 在 `ValidateGetSystemVar` 里把它按照 ScopeGlobal 来一同处理了。
 从原理上讲，这种 ScopeNone 的变量，实际就是只有代码里的一份，TiDB 启动后就是存在内存中的一块只读内存，不会实际存储在 TiKV。
@@ -140,7 +140,7 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 可以看到，依旧能读到这个结果，也就是这种设置，是存储到了存储引擎里，持久化了的。
 仔细看代码可以看到，
 
-    ![defaultSysVars](/posts/images/20200728164505.png)
+![defaultSysVars](/posts/images/20200728164505.png)
 
 实际实现上是执行了一个内部的 replace 语句来更新了原有值。这里是一个完整的事务，会经历获取两次 tso、提交整个过程，相对于设置会话变量要慢。
 
@@ -187,7 +187,7 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 设置也是，其实可以简单看到，该操作内部仅仅是对会话的内存做了设置。
 实际最终生效的位置是 [SetSystemVar](https://github.com/pingcap/tidb/blob/f360ad7a434e4edd4d7ebce5ed5dc2b9826b6ed0/sessionctx/variable/session.go#L998)
 
-    ![defaultSysVars](/posts/images/20200728171914.png)
+![defaultSysVars](/posts/images/20200728171914.png)
 
 这里就会有几分 trick 的地方了。
 
@@ -208,7 +208,7 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 
 具体变量是在多大范围起作用，只能在 [SetSystemVar](https://github.com/pingcap/tidb/blob/f360ad7a434e4edd4d7ebce5ed5dc2b9826b6ed0/sessionctx/variable/session.go#L998) 里查看。
 
-   ![defaultSysVars](/posts/images/20200728173351.png)
+![defaultSysVars](/posts/images/20200728173351.png)
 
 比如，这一部分，`s.MemQuotaNestedLoopApply = tidbOptInt64(val, DefTiDBMemQuotaNestedLoopApply)` 这里 s 是当前会话的变量结构体，对它改变，其作用就是对当前会话进行改变，
 
@@ -230,4 +230,4 @@ TiDB 的全局变量不会在设置之后立刻生效，因为每建立一次连
 
 具体的可以看 `loadCommonGlobalVariablesIfNeeded` 中的[这段注释](https://github.com/pingcap/tidb/blob/838b6a0cf2df2d1907508e56d9de9ba7fab502e5/session/session.go#L1990)。
 
-    ![defaultSysVars](/posts/images/20200728191527.png)
+![defaultSysVars](/posts/images/20200728191527.png)
