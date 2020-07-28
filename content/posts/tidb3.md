@@ -10,7 +10,7 @@ date: 2020-07-28T11:47:00+08:00
 TiDB 的系统变量名定义在 [tidb_vars.go](https://github.com/pingcap/tidb/blob/db0310b17901b1a59f7f728294455ed9667f88ac/sessionctx/variable/tidb_vars.go) 中，
 其中也包含了一些变量的默认值，但实际将他们组合在一起的位置是 [defaultSysVars](https://github.com/pingcap/tidb/blob/12aac547a9068c404ad18093ae4d0ea4d060a465/sessionctx/variable/sysvar.go#L96)
 
-    ![defaultSysVars](/posts/images/20200728151254.png)
+![defaultSysVars](/posts/images/20200728151254.png)
 
 这个大的 struct 数组定义了 TiDB 中所有变量的作用域、变量名和默认值。这里面除了 TiDB 自己独有的系统变量以外，同时，也兼容了 MySQL 的系统变量。
 
@@ -218,8 +218,8 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 
 当前 TiDB 内存粹的全局变量都是为一些后台线程服务的，比如，DDL、统计信息等等。
 
-    ![defaultSysVars](/posts/images/20200728174207.png)
-    ![defaultSysVars](/posts/images/20200728174243.png)
+![defaultSysVars](/posts/images/20200728174207.png)
+![defaultSysVars](/posts/images/20200728174243.png)
 
 因为它们都是只有一个 TiDB server 才需要使用的，会话层级本身对它也没有意义。
 
