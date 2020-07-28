@@ -19,10 +19,10 @@ date: 2020-07-12T12:09:00+08:00
 1. 安装 GoYacc Support
 
     ![goyacc](/posts/images/20200712124300.png)
-    
+
     GoYacc Support 插件是我司同学的作品，JetBrains 正式接受的第三方插件，属于上得了厅堂的作品。
     其包含了语法高亮和 Intelligent，非常赞！
-    
+
 1. 下载 [parser repo](https://github.com/pingcap/parser)
 
     如果从 parser 直接看语法，需要手动下载；如果从 TiDB 里跳转，IDEA 会自动下载代码，反而不需要额外操作。
@@ -36,17 +36,17 @@ date: 2020-07-12T12:09:00+08:00
 1. 用 IDEA 打开 TiDB 工程，切换到需要的分支
 
     ![co](/posts/images/20200712183012.png)
-    
+
 1. 找到 parser.y 文件，注意搜索的时候要选最大的搜索的 scope
 
     ![parser.y](/posts/images/20200712183658.png)
 
     也可以从文件列表里找到，
-    
+
     ![parser.y2](/posts/images/20200712184101.png)
-    
+
     ![parser.y3](/posts/images/20200712184157.png)
-    
+
 下面我们以查 `SHOW ENGINES` 这个 SQL 来举例。
 
 整个语句解析的入口是 [Start](https://github.com/pingcap/parser/blob/f56688124d8bbba98ca103dbcc667d0e3b9bef30/parser.y#L1309-L1308)
@@ -142,4 +142,3 @@ parser 里以前还有很多只是返回但什么都不干的操作，连 warnin
 
 至此，可以看到，查看一个语句是否支持，并且是仅仅语法支持还是有具体实现，都可以通过上述方法来实现。并且知道了如何查看并修改默认配置的方法，大家可以自己进行一些验证。
 下一篇，我计划介绍下 TiDB 的系统变量。
-
