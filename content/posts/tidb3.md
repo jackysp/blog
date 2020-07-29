@@ -34,7 +34,6 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 
 以 `performance_schema_max_mutex_classes` 为例，
 
-    ```SQL
     MySQL  127.0.0.1:4000  SQL > select @@performance_schema_max_mutex_classes;
     +----------------------------------------+
     | @@performance_schema_max_mutex_classes |
@@ -51,18 +50,16 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
     1 row in set (0.0004 sec)
     MySQL  127.0.0.1:4000  SQL > select @@session.performance_schema_max_mutex_classes;
     ERROR: 1238 (HY000): Variable 'performance_schema_max_mutex_classes' is a GLOBAL variable
-    ```
+
 
 可以看到，ScopeNone 的作用域可以按照全局变量来读，
 
-    ```SQL
     MySQL  127.0.0.1:4000  SQL > set global performance_schema_max_mutex_classes = 1;
     ERROR: 1105 (HY000): Variable 'performance_schema_max_mutex_classes' is a read only variable
     MySQL  127.0.0.1:4000  SQL > set performance_schema_max_mutex_classes = 1;
     ERROR: 1105 (HY000): Variable 'performance_schema_max_mutex_classes' is a read only variable
     MySQL  127.0.0.1:4000  SQL > set session performance_schema_max_mutex_classes = 1;
     ERROR: 1105 (HY000): Variable 'performance_schema_max_mutex_classes' is a read only variable
-    ```
 
 但是，无论哪种方式都无法写。
 
@@ -81,7 +78,6 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 
 以 `gtid_mode` 为例，
 
-    ```SQL
     MySQL  127.0.0.1:4000  SQL > select @@gtid_mode;
     +-------------+
     | @@gtid_mode |
@@ -98,11 +94,9 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
     1 row in set (0.0006 sec)
     MySQL  127.0.0.1:4000  SQL > select @@session.gtid_mode;
     ERROR: 1238 (HY000): Variable 'gtid_mode' is a GLOBAL variable
-    ```
 
 就是与 MySQL 兼容的全局变量读取方式，
 
-    ```SQL
     MySQL  127.0.0.1:4000  SQL > set gtid_mode=on;
     ERROR: 1105 (HY000): Variable 'gtid_mode' is a GLOBAL variable and should be set with SET GLOBAL
     MySQL  127.0.0.1:4000  SQL > set session gtid_mode=on;
@@ -123,11 +117,9 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
     | ON          |
     +-------------+
     1 row in set (0.0006 sec)
-    ```
 
 设置方法，也跟 MySQL 兼容。这时候，我们可以关掉单机 TiDB，然后，再次启动，
 
-    ```SQL
     MySQL  127.0.0.1:4000  SQL > select @@gtid_mode;
     +-------------+
     | @@gtid_mode |
@@ -135,7 +127,6 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
     | ON          |
     +-------------+
     1 row in set (0.0003 sec)
-    ```
 
 可以看到，依旧能读到这个结果，也就是这种设置，是存储到了存储引擎里，持久化了的。
 仔细看代码可以看到，
@@ -148,7 +139,6 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
 
 以 `rand_seed2` 为例，
 
-    ```SQL
     MySQL  127.0.0.1:4000  SQL > select @@rand_seed2;
     +--------------+
     | @@rand_seed2 |
@@ -165,11 +155,9 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
     1 row in set (0.0003 sec)
     MySQL  127.0.0.1:4000  SQL > select @@global.rand_seed2;
     ERROR: 1238 (HY000): Variable 'rand_seed2' is a SESSION variable
-    ```
 
 读取是兼容 MySQL 的
 
-    ```SQL
     MySQL  127.0.0.1:4000  SQL > set rand_seed2='abc';
     Query OK, 0 rows affected (0.0006 sec)
     MySQL  127.0.0.1:4000  SQL > set session rand_seed2='bcd';
@@ -182,7 +170,6 @@ TiDB 中，从字面意思上讲，有三种变量作用域，
     +--------------+
     | bcd          |
     +--------------+
-    ```
 
 设置也是，其实可以简单看到，该操作内部仅仅是对会话的内存做了设置。
 实际最终生效的位置是 [SetSystemVar](https://github.com/pingcap/tidb/blob/f360ad7a434e4edd4d7ebce5ed5dc2b9826b6ed0/sessionctx/variable/session.go#L998)
