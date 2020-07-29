@@ -218,3 +218,53 @@ TiDB 的全局变量不会在设置之后立刻生效，因为每建立一次连
 具体的可以看 `loadCommonGlobalVariablesIfNeeded` 中的[这段注释](https://github.com/pingcap/tidb/blob/838b6a0cf2df2d1907508e56d9de9ba7fab502e5/session/session.go#L1990)。
 
 ![defaultSysVars](/posts/images/20200728191527.png)
+
+## Metrics
+
+相对于系统变量，TiDB 中的 Metrics 比较简单，或者说单纯，最常用的 Metrics 是 Histogram 和 Counter，一个用来记录当次操作的实际取值，另一个用来记录固定事件的发生次数。
+TiDB 中的 Metrics 都被统一的放到了[这里](https://github.com/pingcap/tidb/tree/cbc225fa17c93a3f58bef41b5accb57beb0d9586/metrics)，其中 alertmanager 和 grafana 分别还放了 AlertManager 和 Grafana 的脚本。
+
+Metrics 有很多，个人认为，从入手角度看，拿一个具体监控来讲比较好。我们就以 TPS 面板为例来讲好了。
+
+![tps](/posts/images/20200729205545.png)
+
+点开 EDIT，可以看到监控公式是
+
+    sum(rate(tidb_session_transaction_duration_seconds_count[1m])) by (type, txn_mode)
+
+这里面 `tidb_session_transaction_duration_seconds` 是这个具体 Metrics 的名字，由于它是一个 Histogram，所以，实际可以表达为三种值，
+sum、count 和 bucket，分别代表记录取值总数、次数（作用与 Counter 相同）和按桶分布。
+
+![tps](/posts/images/20200729210124.png)
+
+在这里 [1m] 代表时间窗为 1 分钟，代表取值粒度，rate 为计算斜率，也就是变量的增长率，也就是转化为每秒发生多少次，sum 代表加和，与最后的 by (type, txn_mode) 结合代表，按 type 和 txn_mode 两个维度加和。
+
+下面的 Legend 为图例展示 {{type}}-{{txn_mode}} 上面的维度用 {{}} 围起来之后就能展示其真实 label 名字。
+
+![tps](/posts/images/20200729210541.png)
+
+也就变成了这样。也就是说，事务最终状态一共有三种，用户主动提交并且成功了是 commit，用户主动回滚是 rollback（回滚不会失败），用户主动提交，但是失败了是 abort。
+
+第二个标签是 txn_mode，有两个，分别代表乐观事务和悲观事务，这里就没啥好解释的了。
+
+对应到代码里呢，
+
+![tps](/posts/images/20200729211352.png)
+
+是这段代码，可以看到，`tidb_session_transaction_duration_seconds` 被拆成了好几段，分了 namespace 和 subsystem，也就是一般看到一个长
+`tidb_session_transaction_duration_seconds_count` 这样的公式里的变量，要去掉头上两个词，和尾部最后一个词，才能在 TiDB 代码里找到。
+
+从这个代码片段里可以看到，它是一个 Histogram，而且是多个 HistogramVec，也就是一个直方图数组，因为，它同时记录了多个不同 label 的数据。
+LbTxnMode、LblType 就是这两个 label。
+
+看它的引用可以看到，有一个注册的地方，就是第一篇我们讲的 main 函数注册 Metrics 的地方。
+
+![tps](/posts/images/20200729211511.png)
+
+其他的引用就是讲 Metrics 实例化，为什么要这么做呢？主要是随着 label 的增多，Metrics 的性能会越来越差，这跟 Prometheus 的实现有关，不得已我们才做了很多实例化的全局变量。
+
+![tps](/posts/images/20200729211725.png)
+
+以 Rollback 这个实现为例，其本质就是在真是执行 Rollback 时，将事务实际执行时间记录了下来，由于是 Histogram，同时在本例里当作了计数器来用。
+
+![tps](/posts/images/20200729211935.png)
