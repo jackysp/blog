@@ -30,7 +30,7 @@ TiDB 有很多源码阅读文章，人称[《二十四章经》](https://pingcap
 
 1. Goland 或者 IntelliJ IDEA + Golang 插件
 
-    我实际体验感受两者没有什么区别。为什么没推荐 VSCode + Golang 插件呢？主要是我用 JetBrains 全家桶习惯了，而且商业软件确实比开源软件质量要高。要长期使用的话建议付费，学生的话可以免费使用，不过每年要 renew 一下 license。
+    我实际体验感受两者没有什么区别。为什么没推荐 VSCode + Golang 插件呢？主要是我用 JetBrains 全家桶习惯了，而且商业软件确实比社区软件质量要高。要长期使用的话建议付费，学生的话可以免费使用，不过每年要 renew 一下 license。
 
 ## 环境搭建
 
