@@ -135,10 +135,24 @@ runStmt 函数核心部分时候如上的部分。从上到下依旧是：
 [2020/08/12 21:05:18.555 +08:00] [ERROR] [conn.go:728] ["command dispatched failed"] [conn=2] [connInfo="id:2, addr:127.0.0.1:60628 status:10, collation:utf8mb4_0900_ai_ci, user:root"] [command=Query] [status="inTxn:0, autocommit:1"] [sql="insert into t value (i1)"] [txn_mode=OPTIMISTIC] [err="[planner:1054]Unknown column 'i1' in 'field list'\ngithub.com/pingcap/errors.AddStack\n\tC:/Users/yushu/go/pkg/mod/github.com/pingcap/errors@v0.11.5-0.20190809092503-95897b64e011/errors.go:174\ngithub.com/pingcap/parser/terror.(*Error).GenWithStackByArgs\n\tC:/Users/yushu/go/pkg/mod/github.com/pingcap/parser@v0.0.0-20200525110646-f45c2cee1dca/terror/terror.go:243\ngithub.com/pingcap/tidb/planner/core.(*expressionRewriter).toColumn\n\tC:/Users/yushu/work/tidb/planner/core/expression_rewriter.go:1597\ngithub.com/pingcap/tidb/planner/core.(*expressionRewriter).Leave\n\tC:/Users/yushu/work/tidb/planner/core/expression_rewriter.go:940\ngithub.com/pingcap/parser/ast.(*ColumnName).Accept\n\tC:/Users/yushu/go/pkg/mod/github.com/pingcap/parser@v0.0.0-20200525110646-f45c2cee1dca/ast/expressions.go:526\ngithub.com/pingcap/parser/ast.(*ColumnNameExpr).Accept\n\tC:/Users/yushu/go/pkg/mod/github.com/pingcap/parser@v0.0.0-20200525110646-f45c2cee1dca/ast/expressions.go:588\ngithub.com/pingcap/tidb/planner/core.(*PlanBuilder).rewriteExprNode\n\tC:/Users/yushu/work/tidb/planner/core/expression_rewriter.go:170\ngithub.com/pingcap/tidb/planner/core.(*PlanBuilder).rewriteWithPreprocess\n\tC:/Users/yushu/work/tidb/planner/core/expression_rewriter.go:119\ngithub.com/pingcap/tidb/planner/core.(*PlanBuilder).buildValuesListOfInsert\n\tC:/Users/yushu/work/tidb/planner/core/planbuilder.go:2280\ngithub.com/pingcap/tidb/planner/core.(*PlanBuilder).buildInsert\n\tC:/Users/yushu/work/tidb/planner/core/planbuilder.go:2048\ngithub.com/pingcap/tidb/planner/core.(*PlanBuilder).Build\n\tC:/Users/yushu/work/tidb/planner/core/planbuilder.go:481\ngithub.com/pingcap/tidb/planner.optimize\n\tC:/Users/yushu/work/tidb/planner/optimize.go:150\ngithub.com/pingcap/tidb/planner.Optimize\n\tC:/Users/yushu/work/tidb/planner/optimize.go:63\ngithub.com/pingcap/tidb/executor.(*Compiler).Compile\n\tC:/Users/yushu/work/tidb/executor/compiler.go:61\ngithub.com/pingcap/tidb/session.(*session).execute\n\tC:/Users/yushu/work/tidb/session/session.go:1129\ngithub.com/pingcap/tidb/session.(*session).Execute\n\tC:/Users/yushu/work/tidb/session/session.go:1080\ngithub.com/pingcap/tidb/server.(*TiDBContext).Execute\n\tC:/Users/yushu/work/tidb/server/driver_tidb.go:248\ngithub.com/pingcap/tidb/server.(*clientConn).handleQuery\n\tC:/Users/yushu/work/tidb/server/conn.go:1265\ngithub.com/pingcap/tidb/server.(*clientConn).dispatch\n\tC:/Users/yushu/work/tidb/server/conn.go:899\ngithub.com/pingcap/tidb/server.(*clientConn).Run\n\tC:/Users/yushu/work/tidb/server/conn.go:713\ngithub.com/pingcap/tidb/server.(*Server).onConn\n\tC:/Users/yushu/work/tidb/server/server.go:415\nruntime.goexit\n\tC:/Go/src/runtime/asm_amd64.s:1374"]
 ```
 
-对于这一坨堆栈，相信没人有喜欢看。所以，我们要把他们粘出来放到 vim 中，执行 `%s/\\n/\r/g` 和 `%s/\\t/    /g` 才能变成 Golang 标准栈的样子
+对于这一坨堆栈，相信没人有喜欢看。所以，我们要把他们粘出来放到 vim 中，执行 `%s/\\n/\r/g` 和 `%s/\\t/    /g` 才能变成 Golang 栈的样子
 
 ![func](/posts/images/20200812211203.png)
 
 这时候看到挂在哪个模块里，比如这里是 plan 的部分，就可以找相应的同学支持了。
+
+不过，还有更加界面友好的工具来对付 Golang 冗长的栈。那就是 [panicparse](https://github.com/maruel/panicparse)。安装直接
+`go get github.com/maruel/panicparse/v2/cmd/pp` 就好了。效果如下：
+
+![func](/posts/images/20200813172149.png)
+
+无论是 TiDB 运行中的 goroutine，还是 panic 出来的都可以用它来解析。它有几个特性：
+
+1. 可以显示活跃的和不活跃的 goroutine
+1. 可以显示 goroutine 之间的关联关系
+1. 关键字高亮
+1. 支持 Windows
+
+最新的 2.0.0 版本支持 race detector 和 HTML 格式输出。
 
 至此，重点函数和关键日志的解析（启动、DDL、连接、错误栈）就跟大家介绍到这里了。
