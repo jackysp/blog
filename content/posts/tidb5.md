@@ -5,6 +5,7 @@ date: 2020-09-08T11:36:00+08:00
 
 大家在使用 TiDB 时可能偶尔会遇到一些异常，比如 "Lost connection to MySQL server during query" 错误，此时代表客户端跟数据库连接已经断开了（非用户主动行为），
 至于为什么会断开，通常有多种原因造成。本文试图从异常处理的角度，从代码层面分析一些常见的 TiDB 错误。
+另外，有些异常并不是错误，而是执行缓慢，也就是性能问题，本文的后半段还会介绍常用的追踪性能的工具。
 
 ## Lost Connection
 
@@ -63,3 +64,35 @@ TiDB "基本"可以做到把未知的 bug 导致的 panic 全都 recover 住。�
 但是，它还有些其他缺陷，例如，没有日期。因此没法跟 TiDB 输出的日志进行时间上的匹配。这个 [PR](https://github.com/pingcap/tidb/pull/18310) 实现了根据 PID 区分 tidb_stderr.log 的作用，只是还没有跟部署工具协调，暂时先关闭了。
 
 得到这种标准 panic 输出，也可以用上一篇介绍的 panicparse 来解析 panic 结果，当然，一般其实，我们直接看最上面的一个栈就可以了。很明显上图中的例子是一个申请不到内存的错误导致的，也就是通常意义上的 OOM。至于，究竟是哪个 SQL 导致了 OOM，需要结合 TiDB 的日志，比如，查找一些疑似的使用资源特别多的 SQL，一般此类 SQL，会记录在带有 `expensive_query` 标记的日志中，大家可以自行 grep 日志来查看。在这就不举例了。
+
+## Tracing
+
+TiDB 自从 2.1 起就支持 tracing 功能了，只是一直没有被广泛的使用。个人认为有两个主要原因，
+
+1. 初版的 tracing 功能只支持 json 格式，需要先输出出来，复制到 TiDB 自己特殊端口 host 的网页中粘贴查看，虽然是挺新颖的，但是，涉及的步骤太多，没有被广泛用起来。
+
+    ![lost](/posts/images/20200908164836.png)
+    ![lost](/posts/images/trace-view.png)
+
+1. 还有一个问题是，tracing 有一种后知后觉的意味，也就是，只有当开发者知道哪里会出问题、会慢，才会主动为其增加打点，经常遇到的未知问题不能被覆盖，出现断档。
+
+tracing 本身在框架支持好以后，增加埋点是相对简单的一件事情，只需要在希望埋点的位置加上如下一段代码即可：
+
+![lost](/posts/images/20200908165442.png)
+
+有感兴趣的同学其实可以自己根据需要给 TiDB 增加埋点，也是一个很好的上手体验机会。
+
+后来，tracing 又增加了 format='row' 和 format='log' 功能，
+
+![lost](/posts/images/20200908165729.png)
+
+![lost](/posts/images/20200908165805.png)
+
+个人更喜欢 format='log'，
+
+### Tracing 跟 Explain (Analyze) 的区别
+
+1. Tracing 是函数级的，Explain 是算子级的。Tracing 添加比较方便，粒度也更细，不需要必须是 plan 的一部分。
+1. Tracing 可以 trace 任意 SQL，explain 只能看读数据的部分。以 Insert 为例，用 explain 基本什么都看不到，而 tracing 不仅能看，而且更细致，从 SQL 开始解析到整个事务自动提交都有记录。
+
+![lost](/posts/images/20200908170040.png)
