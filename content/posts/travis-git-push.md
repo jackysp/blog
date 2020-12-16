@@ -3,11 +3,11 @@ title:  "如何在 travis ci 里执行 git push"
 date: 2017-10-16T22:21:06+08:00
 ---
 
-# 背景
+## 背景
 
 Travis ci 一般用来自动化的跑下测试，而不需要将跑出来的内容更新回 repo 。本文介绍了怎么将 travis 的结果进行自动提交。
 
-# 过程
+## 过程
 
 基本过程参考了[这个gist](https://gist.github.com/Maumagnaguagno/84a9807ed71d233e5d3f)。
 
