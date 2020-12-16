@@ -3,6 +3,8 @@ languageCode = "zh-cn"
 title = "Mini How"
 disqusShortname = "jackysp"
 theme = "hyde"
+summaryLength = 0
+hasCJKLanguage = true
 
 [Menus]
     main = [
