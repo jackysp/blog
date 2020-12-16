@@ -30,10 +30,14 @@ jobs:
       uses: actions/checkout@master
       with:
         repository: jackysp/jackysp.github.io
+        token: ${{ secrets.UPDATE_BLOG }}
         path: public
 
     - name: Build
-      run: make
+      run: |
+        ls
+        ls public
+        make
     
     - name: Pushes to another repository
       id: public
