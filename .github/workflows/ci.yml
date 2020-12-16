@@ -30,7 +30,6 @@ jobs:
       uses: actions/checkout@master
       with:
         repository: jackysp/jackysp.github.io
-        token: ${{ secrets.push }}
         path: public
 
     - name: Build
