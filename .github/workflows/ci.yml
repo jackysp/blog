@@ -39,7 +39,7 @@ jobs:
       id: public
       uses: cpina/github-action-push-to-another-repository@cp_instead_of_deleting
       env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        API_TOKEN_GITHUB: ${{ secrets.UPDATE_BLOG }}
       with:
         source-directory: 'public'
         destination-github-username: 'jackysp'
