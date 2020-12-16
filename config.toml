@@ -4,5 +4,13 @@ title = "Mini How"
 disqusShortname = "jackysp"
 theme = "hyde"
 
+[Menus]
+    main = [
+      {Name = "Github", URL = "https://github.com/jackysp/"},
+      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"}
+    ]
+
 [params]
-description = "A blog that's all about how to do it."
+    description = "A blog that's all about how to do it."
+    themeColor = "theme-base-0d"
+    layoutReverse = true
