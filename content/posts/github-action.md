@@ -24,7 +24,7 @@ draft: false
 1. 生成一个 token，只给 repo 权限
 1. 到某个 repo 里，设置 secrets（把 token 填进去），这里其实应该在发布站点设置，但是，我在 Blog 里设置也可以用，还没研究原因
 
-这里一共需要两个 action，一个是 GitHub 自己的，另一个是一个第三方的，叫 [《Push directory to another repository》](https://github.com/marketplace/actions/push-directory-to-another-repository)，可能还有别的更好用的，等以后有时间再研究。
+这里一共需要两个 action，一个是 GitHub 自己的 [checkout](https://github.com/actions/checkout)，另一个是一个第三方的，叫 [《Push directory to another repository》](https://github.com/marketplace/actions/push-directory-to-another-repository)，可能还有别的更好用的，等以后有时间再研究。
 
 最后，放上我的简单 GitHub Action CI 文件。
 
