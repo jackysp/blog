@@ -26,11 +26,18 @@ jobs:
             dep ensure
         fi
 
+    - name: Check out my other private repo
+      uses: actions/checkout@master
+      with:
+        repository: jackysp/jackysp.github.io
+        token: ${{ secrets.push }}
+        path: public
+
     - name: Build
       run: make
     
     - name: Pushes to another repository
-      id: push_directory
+      id: public
       uses: cpina/github-action-push-to-another-repository@cp_instead_of_deleting
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
