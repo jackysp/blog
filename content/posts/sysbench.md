@@ -1,7 +1,7 @@
 ---
 title:  "如何用 Sysbench 实现简单负载"
 date: 2020-12-14T12:06:00+08:00
-draft: true
+draft: false 
 ---
 
 [Sysbench](https://github.com/akopytov/sysbench) 是数据库测试中常使用的工具。1.0 版本以后，它支持了更强大的自定义功能。可以让使用者方便的编写一些 lua 脚本来模拟负载。
