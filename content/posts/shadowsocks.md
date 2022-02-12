@@ -1,7 +1,7 @@
 ---
 title:  "如何部署 shadowsocks server"
 date: 2018-09-27T15:48:00+08:00
-draft: true
+draft: false
 ---
 
 shadowsocks 的 server 端有多个不同的版本，最初的版本是用 python 写的，后来各路爱好者又都做了自己喜爱语言的实现。

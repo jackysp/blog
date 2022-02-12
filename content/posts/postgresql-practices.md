@@ -1,7 +1,7 @@
 ---
 title: "如何练习使用 SQL"
 date: 2014-06-05T22:21:06+08:00
-draft: true
+draft: false
 ---
 
 做题。以下使用的是 POSTGRESQL 9.4 BETA 2。

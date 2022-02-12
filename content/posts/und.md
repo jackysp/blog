@@ -1,7 +1,7 @@
 ---
 title:  "如何动态更新 Namesilo 的 DNS 记录"
 date: 2020-02-01T12:27:00+08:00
-draft: true
+draft: false
 ---
 
 ## 动态更新 DNS 记录

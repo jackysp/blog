@@ -1,12 +1,12 @@
 ---
 title:  "如何部署 HTTPS 代理服务"
 date: 2020-01-12T19:43:00+08:00
-draft: true
+draft: false
 ---
 
 ## 前言
 
-某天，看到了传说中耗子叔的翻墙攻略推。作为从他的多篇 blog 中受益的我来说，下意识觉得肯定很靠谱，于是拜读了一下，就有了这篇实践文章。
+某天，看到了陈皓的推上发了一片他的 blog。作为从他的多篇 blog 中受益的我来说，下意识觉得肯定很靠谱，于是拜读了一下，就有了这篇实践文章。
 
 ## 为什么用 HTTPS 代理
 
@@ -16,7 +16,7 @@ draft: true
 
 ### gost
 
-[gost](https://github.com/ginuerzh/gost) 是[攻略](https://haoel.github.io/)中，个人感觉最推荐的翻墙工具。一开始我对它的理解也有问题，刚开始理解成他是类似 kcptun 的方式，依然是依赖 shadowsocks。实际上 gost 是实现了多种代理，也就是有它就可以不用其他代理了。
+[gost](https://github.com/ginuerzh/gost) 是[攻略](https://haoel.github.io/)中，感觉最推荐的工具。一开始我对它的理解也有问题，刚开始理解成他是类似 kcptun 的方式，依然是依赖 shadowsocks。实际上 gost 是实现了多种代理，也就是有它就可以不用其他代理了。
 我一直不太喜欢通过不断套壳来加速/混淆 shadowsocks 的方式，总觉得链路太长，带来的问题就会更多。
 
 ### 步骤
