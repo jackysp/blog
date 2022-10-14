@@ -75,7 +75,7 @@ auto-route: true
 auto-detect-interface: true
 ```
 
-流量转发只需要 Thinkpad 设置 `sysctl -w net.ipv4.ip_forward=1`。
+流量转发只需要 Thinkpad 编辑 `/etc/sysctl.conf` 添加 `net.ipv4.ip_forward=1`，然后，`sysctl -p` 生效。
 然后，把 Router2 网关、DNS 指向 Thinkpad 就好了。
 
 ## 网络协议
