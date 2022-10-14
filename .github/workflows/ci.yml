@@ -38,7 +38,7 @@ jobs:
     
     - name: Pushes to another repository
       id: public
-      uses: cpina/github-action-push-to-another-repository@cp_instead_of_deleting
+      uses: cpina/github-action-push-to-another-repository@v1.5.1
       env:
         API_TOKEN_GITHUB: ${{ secrets.UPDATE_BLOG }}
       with:
