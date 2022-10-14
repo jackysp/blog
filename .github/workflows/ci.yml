@@ -27,7 +27,7 @@ jobs:
         fi
 
     - name: Check out my other private repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.5.0
       with:
         repository: jackysp/jackysp.github.io
         token: ${{ secrets.UPDATE_BLOG }}
