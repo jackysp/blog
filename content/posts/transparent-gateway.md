@@ -1,7 +1,7 @@
 ---
 title:  "如何部署安全的透明网关"
 date: 2022-10-12T21:07:00+08:00
-draft: true
+draft: false
 ---
 
 ## 背景
