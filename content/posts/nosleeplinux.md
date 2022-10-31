@@ -21,3 +21,17 @@ systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.targe
 ```
 
 简单有效。
+
+**更新：**
+
+如果只 mask 的话，systemd-logind 的 CPU 占用会非常高，因为它会不断的尝试睡眠，所以还需要把 `HandleLidSwitch` 等改成 `ignore`。如下：
+
+```text
+HandleSuspendKey=ignore
+HandleHibernateKey=ignore
+HandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore
+```
+
+然后，`systemctl restart systemd-logind`。详细参考了这里：[SystemD-LoginD High CPU Usage](https://tothecloud.dev/systemd-logind-high-cpu-usage/)。
