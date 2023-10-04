@@ -11,9 +11,9 @@ import (
 func main() {
 	os.RemoveAll("themes/hyde")
 	commandLine("git", []string{"clone", "https://github.com/spf13/hyde.git", "themes/hyde"})
-	resp := commands.Execute(os.Args[1:])
-	if resp.Err != nil {
-		log.Fatal(resp.Err)
+	err := commands.Execute(os.Args[1:])
+	if err != nil {
+		log.Fatal(err)
 	}
 }
 
