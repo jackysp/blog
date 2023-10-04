@@ -1,6 +1,6 @@
 baseURL = "http://blog.minifish.org/"
 languageCode = "zh-cn"
-title = "Mini How"
+title = "Mini Fish"
 disqusShortname = "jackysp"
 theme = "hyde"
 summaryLength = 0
