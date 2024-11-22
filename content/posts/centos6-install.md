@@ -1,19 +1,20 @@
 ---
-title: "如何作为虚拟化主机安装 CentOS"
+
+title: "How to Install CentOS as a Virtualization Host"
 date: 2014-06-05T22:21:06+08:00
 ---
 
-# 安装过程
+# Installation Process
 
-安装的版本： CentOS 6.3
+Installed Version: CentOS 6.3
 
-1. U 盘使用 Win32diskimager 制作镜像来不成功，使用的外置 USB 光驱成功安装。
-1. 安装过程中注意选择安装为 Virtualhost 模式即可。
-1. 其余选择为默认或稍作改动，如时区的选择。
-1. 安装完成后会包含KVM套件和ssh。
+1. Using Win32DiskImager to create a USB flash drive image was unsuccessful; installing from an external USB optical drive was successful.
+2. During the installation process, make sure to select the "Virtual Host" installation mode.
+3. The rest can be set to default or slightly modified, such as choosing the time zone.
+4. After installation, it will include the KVM suite and SSH.
 
-# 安装心得
+# Installation Notes
 
-* 全程不需要连网，比 Debian 、 Ubuntu 要好很多；
-* 不强迫设置一个非 root 用户；
-* 装之前一定查看cpu是否支持虚拟化，并打开主板虚拟化开关。如果主板支持虚拟化，但是没有虚拟化开关，也可以使用虚拟化，默认肯定开启的。有一种说法是带 K 的 Intel CPU 不能虚拟化。带 K 即可以超频的Intel CPU，看来并非越快的，越新的 CPU 越好。
+* No internet connection is needed throughout the process, which is much better than Debian and Ubuntu.
+* You're not forced to set up a non-root user.
+* Before installation, be sure to check whether your CPU supports virtualization and enable the motherboard's virtualization setting. If the motherboard supports virtualization but doesn't have a virtualization option, you can still use virtualization as it's definitely enabled by default. There's a saying that Intel CPUs with a 'K' cannot perform virtualization. 'K' means Intel CPUs that can be overclocked. It seems that faster and newer CPUs are not necessarily better.

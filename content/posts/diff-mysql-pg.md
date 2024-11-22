@@ -1,17 +1,18 @@
 ---
-title:  "如何在比较 MySQL 跟 PostgreSQL 之间的数据是否一致"
+title: "How to Compare Data Consistency between MySQL and PostgreSQL"
 date: 2021-05-09T18:13:00+08:00
 draft: false
 ---
 
-## 背景
+## Background
 
-最近遇到一个问题，有用户想从 PostgreSQL 同步数据到 TiDB（MySQL 相同的协议），希望知道同步后的数据是否是一致的。此类问题之前没接触过，稍微研究了一下。
-校验一般就是两边都做一个 checksum，对比一下。
+Recently, I encountered a problem where a user wanted to synchronize data from PostgreSQL to TiDB (which uses the same protocol as MySQL) and wanted to know whether the data after synchronization is consistent. I hadn't dealt with this kind of issue before, so I did a bit of research.
 
-## TiDB（MySQL）侧
+Typically, to verify data consistency, you compute a checksum on both sides and compare them.
 
-对于某张表的校验，其实用的是下面这个 SQL
+## TiDB (MySQL) Side
+
+For the verification of a specific table, the following SQL is used:
 
 ```SQL
 SELECT bit_xor(
@@ -25,7 +26,7 @@ SELECT bit_xor(
 FROM t;
 ```
 
-具体找一个例子，
+Let's look at a specific example:
 
 ```SQL
 DROP TABLE IF EXISTS t;
@@ -42,7 +43,7 @@ SELECT bit_xor(
 FROM t;
 ```
 
-结果是，
+The result is:
 
 ```text
 +-------------------------------------------------------------------------------------------------------------------------------------------+
@@ -55,24 +56,24 @@ FROM t;
     ) AS UNSIGNED)
 ) |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
-|
-                                                         5062371 |
+|                                                           5062371 |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 1 row in set (0.00 sec)
 ```
 
-## PostgreSQL 侧
+## PostgreSQL Side
 
-目的比较简单就是希望能写出跟上面一样的 SQL，但是 PostgreSQL 不支持 bit_xor、crc32、isnull，也没有 unsigned。所以，解决办法比较简单，就是靠 UDF。
-于是，搜了一下，主要缺失的函数，通过一些改写，都可以解决。
+The goal is simply to write the same SQL as above, but PostgreSQL does not support `bit_xor`, `crc32`, `isnull`, nor does it have unsigned types. Therefore, the solution is relatively straightforward—relying on UDFs (User-Defined Functions).
 
-bit_xor:
+After some research, the main missing functions can be addressed with a few custom implementations.
+
+`bit_xor`:
 
 ```SQL
-CREATE OR REPLACE AGGREGATE BIT_XOR(IN v bigint) (SFUNC = int8xor, STYPE = bigint);
+CREATE OR REPLACE AGGREGATE bit_xor(IN v bigint) (SFUNC = int8xor, STYPE = bigint);
 ```
 
-crc32:
+`crc32`:
 
 ```SQL
 CREATE OR REPLACE FUNCTION crc32(text_string text) RETURNS bigint AS $$
@@ -90,7 +91,7 @@ BEGIN
     i = 0;
     tmp = 4294967295;
     byte_length = bit_length(text_string) / 8;
-    binary_string = decode(replace(text_string, E'\\\\', E'\\\\\\\\'), 'escape');
+    binary_string = decode(replace(text_string, E'\\', E'\\\\'), 'escape');
     LOOP
         tmp = (tmp # get_byte(binary_string, i))::bigint;
         i = i + 1;
@@ -111,17 +112,17 @@ END
 $$ IMMUTABLE LANGUAGE plpgsql;
 ```
 
-isnull:
+`isnull`:
 
 ```SQL
-CREATE OR REPLACE FUNCTION isnull( anyelement ) RETURNS int as $$
+CREATE OR REPLACE FUNCTION isnull(anyelement) RETURNS int AS $$
 BEGIN
-    RETURN CAST(($1 IS NULL) as INT);
+    RETURN CAST(($1 IS NULL) AS INT);
 END
-$$LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 ```
 
-创建好上面三个 UDF 后，试一下上面的用例，注意，UNSIGNED 要改成 BIGINT。
+After creating the three UDFs above, let's test the previous example. Note that `UNSIGNED` should be changed to `BIGINT`.
 
 ```SQL
 DROP TABLE IF EXISTS t;
@@ -138,7 +139,7 @@ SELECT bit_xor(
 FROM t;
 ```
 
-结果，
+The result:
 
 ```text
  bit_xor
@@ -147,9 +148,9 @@ FROM t;
 (1 row)
 ```
 
-跟 TiDB（MySQL）那边的完全一样。
+It's exactly the same as on the TiDB (MySQL) side.
 
-## 后记
+## Postscript
 
-1. 更多的我没有测试，这里只是简单测一下。
-1. UDF 确实是一个很好的功能，极大提升了灵活性。
+1. I haven't tested more extensively; this is just a simple test.
+2. UDFs are indeed a great feature that greatly enhance flexibility.

@@ -1,25 +1,20 @@
 ---
-title:  "如何部署 shadowsocks server"
-date: 2018-09-27T15:48:00+08:00
-draft: false
----
 
-shadowsocks 的 server 端有多个不同的版本，最初的版本是用 python 写的，后来各路爱好者又都做了自己喜爱语言的实现。
+**Title: "How to Deploy a Shadowsocks Server"**  
+**Date: 2018-09-27T15:48:00+08:00**  
+**Draft: false**
 
-在这众多的实现中，个人认为最可靠稳定的是最初的 python 实现版，理由很简单，用的人最多。
-golang 版本据说是功能最多，性能也很好的，总之非常强大。可能得益于 golang 本身的高性能，实现方便等特点。
-还有个实现是用 libev 来实现的，纯 c 的实现，也有很好的性能并且十分轻量。
+There are multiple versions of the Shadowsocks server side implementation. The original version was written in Python, and later, enthusiasts implemented it in various programming languages of their liking.
 
-另外，如何更新服务端也是一个对于使用 shadowsocks 的用户需要面对的问题。由于众所周知的原因，服务端还是应该多更新。
-如果是 python 实现，可能可以通过 pip 来安装，这个我没有确认过，golang 的也许就需要一套 golang 的编译环境，然后再
-go get -u 了。而 libev 的更新我们则可以通过 debian 系的 apt 来更新，apt 已经包含了 libev 的 shadowsocks。至于
-redhat 系的 yum 有没有我没去确认过。
+Among all these implementations, I personally think the most reliable and stable one is the original Python version. The reason is simple - it has the most users. The Golang version is said to have the most features and also performs very well, making it quite powerful. This might be due to Golang’s inherent high performance and ease of implementation. There's also an implementation using libev, a pure C implementation, which also offers good performance and is very lightweight.
 
-介绍过了之后，简单讲下步骤，具体非常简单：
+Additionally, updating the server is a necessary task for Shadowsocks users due to well-known reasons. The server should be updated frequently. If you’re using the Python implementation, you might be able to install updates via pip, although I haven’t confirmed this. The Golang version may require a Golang build environment, and then you can use `go get -u`. For updating libev, you can use apt on Debian-based systems, as apt includes shadowsocks-libev. I haven’t checked if it is available in the Red Hat-based yum repositories.
 
-1. 部署一个 debian 9 或者 ubuntu 17 的 vps，在 vultr 等主流提供商应该都有。假设这里用的是 debian 9。
-1. `apt install shadowsocks-libev` 安装。
-1. `vim /etc/shadowsocks-libev/config.json` 编辑下配置，里面的 Server IP 最好设置成 0.0.0.0，为了避免类似 AWS Lightsail 的 IP 问题。
-    1. AWS Lightsail 需要绑定静态 IP，并且额外开防火墙端口，具体操作可以去 Google。
-1. `systemctl restart shadowsocks-libev` 重启服务以生效。
-1. 开启 tcp bbr，具体操作去 Google。
+After this introduction, let's go over the deployment steps, which are quite straightforward:
+
+1. Deploy a Debian 9 or Ubuntu 17 VPS. Mainstream providers like Vultr should have these options available. Assume we are using Debian 9 here.
+2. Run `apt install shadowsocks-libev` to install.
+3. Edit the configuration file using `vim /etc/shadowsocks-libev/config.json`. It's best to set the Server IP to 0.0.0.0 to avoid IP issues similar to those on AWS Lightsail.
+    1. For AWS Lightsail, you need to bind a static IP and open firewall ports. Specific steps can be found on Google.
+4. Restart the service using `systemctl restart shadowsocks-libev` to apply the changes.
+5. Enable TCP BBR. Specific instructions can be found on Google.

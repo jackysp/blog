@@ -1,17 +1,17 @@
 ---
-title: "使用 delve 调试 Golang 程序"
+title: "Using delve to Debug Golang Programs"
 date: 2019-09-16T13:24:00+08:00
 ---
 
-# 背景
+# Background
 
-一开始写 Golang 的时候，就一直想找一个方便的 debug 工具，当时看到过用 gdb 来 debug 的文档，也用过 delve。但是都觉得不好用。后来，经人指点，又用回了 print 大法。。。
+When I first started writing Golang, I was always looking for a convenient debugging tool. Back then, I came across documentation about using `gdb` to debug and also tried `delve`, but neither felt easy to use. Later, on someone's advice, I went back to the good old `print` statements...
 
-这两天调试 go test，test 按 package 来跑的时候总会 hang 住，一时没想到合适的方法，就又想起 delve 来。试用了一下，比原来成熟了很多。
+Over the past couple of days, I was debugging `go test` and found that tests would always hang when run per package. I couldn't think of a suitable method at first, so I thought of `delve` again. After giving it a try, I found it has become much more mature than before.
 
-# 用法
+# Usage
 
-`dlv attach ${pid}` 是我最常用的用法，attach 上之后就可以用类似 gdb 的调试方法，可以用 help 来查看具体命令。
+`dlv attach ${pid}` is the method I use most often. After attaching, you can use debugging commands similar to `gdb`. You can use `help` to view specific commands.
 
 ```text
 (dlv) help
@@ -32,10 +32,10 @@ The following commands are available:
     exit (alias: quit | q) ------ Exit the debugger.
     frame ----------------------- Set the current frame, or execute command on a different frame.
     funcs ----------------------- Print list of functions.
-    goroutine (alias: gr) ------- Shows or changes current goroutine
+    goroutine (alias: gr) ------- Shows or changes current goroutine.
     goroutines (alias: grs) ----- List program goroutines.
     help (alias: h) ------------- Prints the help message.
-    libraries ------------------- List loaded dynamic libraries
+    libraries ------------------- List loaded dynamic libraries.
     list (alias: ls | l) -------- Show source code.
     locals ---------------------- Print local variables.
     next (alias: n) ------------- Step over to next source line.
@@ -44,28 +44,29 @@ The following commands are available:
     regs ------------------------ Print contents of CPU registers.
     restart (alias: r) ---------- Restart process.
     set ------------------------- Changes the value of a variable.
-    source ---------------------- Executes a file containing a list of delve commands
+    source ---------------------- Executes a file containing a list of delve commands.
     sources --------------------- Print list of source files.
     stack (alias: bt) ----------- Print stack trace.
     step (alias: s) ------------- Single step through program.
-    step-instruction (alias: si)  Single step a single cpu instruction.
+    step-instruction (alias: si)  Single step a single CPU instruction.
     stepout (alias: so) --------- Step out of the current function.
     thread (alias: tr) ---------- Switch to the specified thread.
     threads --------------------- Print out info for every traced thread.
     trace (alias: t) ------------ Set tracepoint.
-    types ----------------------- Print list of types
+    types ----------------------- Print list of types.
     up -------------------------- Move the current frame up.
     vars ------------------------ Print package variables.
     whatis ---------------------- Prints type of an expression.
 Type help followed by a command for full documentation.
 ```
 
-其中有很多与 gdb 相同的命令。其他用的比较多的就是 `grs`，输出所有 goroutine，还可以 `grs -t`，相当于 gdb 的 `t a a bt`。唯一美中不足的是，只能输出 10 条栈信息，多了 truncated 了。
-再就是，似乎 go test fork 出来的进程是用不了的，如果想测试，必须先编译成 test 文件，再执行它。具体可以看 https://github.com/pingcap/tidb/issues/12184 。
+Many of these commands are the same as those in `gdb`. Another command I use frequently is `grs`, which outputs all goroutines. You can also use `grs -t`, which is equivalent to `gdb`'s `t a a bt`. The only slight drawback is that it only outputs 10 stack frames, and any additional ones are truncated.
+
+Additionally, it seems that processes forked by `go test` can't be attached to. If you want to test, you must first compile it into a test file and then execute it. You can refer to [this issue](https://github.com/pingcap/tidb/issues/12184) for more details.
 
 ```text
 $ dlv attach 19654
 could not attach to pid 19654: decoding dwarf section info at offset 0x0: too short
 ```
 
-再就是，在使用中，go 的 test 是默认 cache 的，可以通过环境变量控制。但是，有了 go mod 之后，推荐使用 `./ddl.test -test.count=1` 的方式来去掉 cache。感觉很不值观。
+Furthermore, by default, Go's `test` caches results, which can be controlled via environment variables. However, with Go modules (`go mod`), it's recommended to use `./ddl.test -test.count=1` to disable caching. It doesn't feel very elegant.

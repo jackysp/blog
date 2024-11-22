@@ -1,32 +1,34 @@
----
-title:  "如何用 GitHub Action 自动发布 Blog"
-date: 2020-12-16T16:11:00+08:00
-draft: false 
+Sure, here is the translated text:
+
 ---
 
-在[这篇](/posts/travis-git-push)里用 travis 实现了 Blog 自动发布，不过，最近发现 travis 不自己 run 了（手动可以），没有仔细研究因为 GitHub Action 出来了，于是就想把所有依赖都放在 GitHub 上。
+title: "How to Automatically Publish a Blog Using GitHub Actions"
+date: 2020-12-16T16:11:00+08:00
+draft: false
+
+In [this post](/posts/travis-git-push), I used Travis to enable automatic blog publishing. However, I recently discovered that Travis does not run automatically anymore (though it works manually). I haven’t looked into it closely because GitHub Actions have been introduced, so I decided to move all dependencies to GitHub.
 
 ## Go Action
 
-点击 repo 上的 Action，再 New Workflow 可以出现推荐 action，因为这个 Blog 用了 Go 代码，就显示 Go Action。
+Click on Actions on the repository page, and then New Workflow to see recommended actions. Since this blog uses Go code, it shows the Go Action.
 
 ![goaction](/posts/images/20201216163209.png)
 
-剩下的就是照着 travis 的写法来攒流程。
+The rest involves following Travis's approach to set up the workflow.
 
-1. Check out Blog 的 repo
-1. Check out 发布站点 repo
-1. `make`
-1. 提交发布站点修改
+1. Check out the blog's repo
+2. Check out the publishing site repo
+3. `make`
+4. Commit the changes to the publishing site
 
-需要注意的是，发布站点需要写权限，所以，需要配置 token，跟 travis 一样。
+Note that write permissions are required for the publishing site, so you need to configure a token, similar to Travis.
 
-1. 生成一个 token，只给 repo 权限
-1. 到某个 repo 里，设置 secrets（把 token 填进去），这里其实应该在发布站点设置，但是，我在 Blog 里设置也可以用，还没研究原因
+1. Generate a token with only repo permissions
+2. Go to a particular repo and set up secrets (enter the token). Ideally, this should be set up on the publishing site, but it works when set in the blog repo. I haven't explored why yet.
 
-这里一共需要两个 action，一个是 GitHub 自己的 [checkout](https://github.com/actions/checkout)，另一个是一个第三方的，叫 [《Push directory to another repository》](https://github.com/marketplace/actions/push-directory-to-another-repository)，可能还有别的更好用的，等以后有时间再研究。
+You will need two actions in total: one is GitHub's own [checkout](https://github.com/actions/checkout), and the other is a third-party action called [“Push directory to another repository”](https://github.com/marketplace/actions/push-directory-to-another-repository). There might be better options available, and I’ll explore them when I have more time.
 
-最后，放上我的简单 GitHub Action CI 文件。
+Finally, here is my simple GitHub Action CI file:
 
 ```yaml
 name: CI

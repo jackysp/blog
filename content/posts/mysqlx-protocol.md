@@ -1,34 +1,38 @@
+Here is the translation of the provided text to English:
+
 ---
-title:  如何在 TiDB 上实现 MySQL X Protocol"
-date: 2017-08-16T22:21:06+08:00
+
+Title: How to Implement MySQL X Protocol on TiDB
+Date: 2017-08-16
+
 ---
 
-# MySQL 的一些文档
+# Some Documents on MySQL
 
-* 客户端使用指南 [MySQL Shell User Guide](https://dev.mysql.com/doc/refman/5.7/en/mysql-shell.html)
-* 服务端配置指南 [Using MySQL as a Document Store](https://dev.mysql.com/doc/refman/5.7/en/document-store.html)
-* 应用开发接口指南 [X DevAPI User Guide](https://dev.mysql.com/doc/x-devapi-userguide/en/)
-* 服务端内部实现介绍 [X Protocol](https://dev.mysql.com/doc/internals/en/x-protocol.html).
+* Client Usage Guide [MySQL Shell User Guide](https://dev.mysql.com/doc/refman/5.7/en/mysql-shell.html)
+* Server Configuration Guide [Using MySQL as a Document Store](https://dev.mysql.com/doc/refman/5.7/en/document-store.html)
+* Application Development API Guide [X DevAPI User Guide](https://dev.mysql.com/doc/x-devapi-userguide/en/)
+* Introduction to Server Internal Implementation [X Protocol](https://dev.mysql.com/doc/internals/en/x-protocol.html).
 
-# 实现原理
+# Implementation Principle
 
-* 客户端与服务端之间靠 tcp 通信，协议使用了 protobuf 。
-* 服务端接收到消息后，把消息解码后分析。协议中包含了 namespace 这样一个概念，具体是指，如果 namespace 为空或者 "sql" ，则消息内容按照 sql 语句来执行，如果为 "xplugin" 、 "mysqlx" 则消息按照其他方式来处理。其他方式又可分为：
-  * 管理命令
-  * CRUD 操作
-* "xplugin" 和 "mysqlx" 作用完全相同，后者是前者的新名字，为了保持兼容暂时没有去掉前者。
-* "mysqlx" 的消息除了个别如 kill_client 这样的明显的命令内容外，都是用拼 sql 的方式，转给服务端进行处理。也就是大部分也变成了 namespace 为 "sql" 的形式。
+* Communication between client and server is over TCP and the protocol uses protobuf.
+* After the server receives a message, it decodes and analyzes it. The protocol includes a concept called namespace, which specifically refers to whether the namespace is empty or "sql", in which case the message content is executed as a SQL statement; if it is "xplugin" or "mysqlx," the message is handled in another way. The other ways can be divided into:
+  * Administrative commands
+  * CRUD operations
+* "xplugin" and "mysqlx" have the same function, with the latter being the new name for the former, retained temporarily for compatibility.
+* The content of "mysqlx" messages, apart from explicit command content like kill_client, are mostly transformed into SQL statements which the server processes, essentially turning most into a form where the namespace is "sql".
 
-# 实现步骤
+# Implementation Steps
 
-1. 给 TiDB 启动一个新的 server 。需要相关的配置参数， ip 、 port 、 socket 之类的东西。
-2. 实现消息通讯的读和写功能。
-3. 需要为这个新 server 写一个建立连接的过程，包括认证等内容，过程要遵循协议。为了得到协议内容，可使用 tcpdump 来抓取 MySQL 与客户端的消息内容。再结合对 MySQL 源代码的理解来实现这个过程。
-4. server 中要包含原 TiDB server 的 Query Context 等内容，因为主要还是要转成 sql 去执行。
-5. 实现对消息的解码处理。虽然只有一句话，但是包含的工作量巨大。
+1. Start a new server for TiDB. The relevant configuration parameters such as IP, port, and socket need to be set.
+2. Implement the reading and writing functionality for message communication.
+3. Write a process for this new server to establish connections, including authentication, that follows the protocol. Use tcpdump to capture messages between MySQL and the client to derive protocol content, implementing the process by understanding MySQL source code.
+4. The server should include contents like the Query Context from the original TiDB server, as it primarily translates into SQL for execution.
+5. Implement the decoding and handling of messages. Although only a sentence, the workload included is substantial.
 
 <!---
-在`mysqlx_all_msgs.h`里初始化了所有消息
+In `mysqlx_all_msgs.h`, all messages are initialized
 
 ```c++
   init_message_factory()
@@ -64,7 +68,7 @@ date: 2017-08-16T22:21:06+08:00
   }
 ```
 
-server 和 client 的消息就这么多。对于client的消息，在`xpl_dispatcher.cc`里dispatch。
+Server and client messages are that many. Client messages are dispatched in `xpl_dispatcher.cc`.
 
 ```c++
 ngs::Error_code do_dispatch_command(xpl::Session &session, xpl::Crud_command_handler &crudh,
@@ -108,14 +112,14 @@ ngs::Error_code do_dispatch_command(xpl::Session &session, xpl::Crud_command_han
 }
 ```
 
-剩下就是填空了吧。
+The rest is filling in the gaps.
 
 ```
 Client::run => Client::handle_message => Session::handle_message => Session::handle_auth_message => some auth handlers
                                                                  => Session::handle_ready_message => xpl::dispatcher::dispatch_command => ngs::Error_code do_dispatch_command => some crud handlers
 ```
 
-MySQL type 与 X protocol type 的对应关系
+Mapping between MySQL type and X protocol type
 
 ```
 //     ================= ============ ======= ========== ====== ========
@@ -148,7 +152,7 @@ MySQL type 与 X protocol type 的对应关系
 //     ================= ============ ======= ========== ====== ========
 ```
 
-mysql的第一个sql的字段信息：
+The first SQL field information of MySQL:
 
 ```
 Field   1:  `@@lower_case_table_names`
@@ -187,7 +191,7 @@ Max_length: 0
 Decimals:   0
 Flags:      
 ```
-tidb的：
+For TiDB:
 
 ```
 Field   1:  `@@lower_case_table_names`

@@ -1,47 +1,46 @@
 ---
-title: "如何用 Sysbench 测试 CockroachDB 性能"
+title: "How to Test CockroachDB Performance Using Sysbench"
 date: 2018-06-11T13:50:00+08:00
 ---
 
-# 为 Sysbench 编译 pgsql 的支持
+# Compiling Sysbench with pgsql Support
 
-CockroachDB 使用的是 PostgreSQL 协议，如果想使用 Sysbench 进行测试，则需要 Sysbench 支持 pg 协议。Sysbench 本身已经支持了 pg 协议，只是在编译的时候默认不开启。
-通过以下命令即可配置开启：
+CockroachDB uses the PostgreSQL protocol. If you want to use Sysbench for testing, you need to enable pg protocol support in Sysbench. Sysbench already supports the pg protocol, but it is not enabled by default during compilation. You can configure it with the following command:
 
 ```shell
 ./configure --with-pgsql
 ```
 
-当然，前期工作需要下载 Sysbench 的源代码，以及安装 pg 的一些编译所需要的头文件（yum 或者 sudo 就可以了）。
+Of course, preliminary work involves downloading the Sysbench source code and installing the necessary PostgreSQL header files required for compilation (you can use `yum` or `sudo` to install them).
 
-# 测试
+# Testing
 
-测试方式跟测试 MySQL/Postgres 没有差别，增删改查想测哪个都可以。唯一需要注意的是，将 auto_inc 置为 off。
-因为 CockroachDB 的 auto increment 行为跟 pg 是不一样的，它会生成一个唯一的 id，但是不保证连续、自增。这样在插入数据的时候是没问题的。
-但是，在删、改、查中，由于所有 SQL 都是通过 id 为条件进行的删、改、查，因此，会出现找不到数据的情况。
+The testing method is no different from testing MySQL or PostgreSQL; you can test any of the create, read, update, delete (CRUD) operations you like. The only thing to note is to set `auto_inc` to `off`. 
 
-即：
+This is because CockroachDB's auto-increment behavior is different from PostgreSQL's. It generates a unique `id`, but it does not guarantee that the `id`s are sequential or incremental. This is fine when inserting data. However, during delete, update, or query operations, since all SQL statements use `id` as the condition for these operations, you may encounter situations where data cannot be found.
 
-当 auto_inc = on (on 为 Sysbench 默认值) 时
+That is:
 
-**表结构**
+When `auto_inc = on` (which is the default value in Sysbench)
+
+**Table Structure**
 
 ```sql
 CREATE TABLE sbtest1 (
-       id INT NOT NULL DEFAULT unique_rowid(),
-       k INTEGER NOT NULL DEFAULT 0:::INT,
-       c STRING(120) NOT NULL DEFAULT '':::STRING,
-       pad STRING(60) NOT NULL DEFAULT '':::STRING,
-       CONSTRAINT ""primary"" PRIMARY KEY (id ASC),
-       INDEX k_1 (k ASC),
-       FAMILY ""primary"" (id, k, c, pad)
+   id INT NOT NULL DEFAULT unique_rowid(),
+   k INTEGER NOT NULL DEFAULT 0:::INT,
+   c STRING(120) NOT NULL DEFAULT '':::STRING,
+   pad STRING(60) NOT NULL DEFAULT '':::STRING,
+   CONSTRAINT ""primary"" PRIMARY KEY (id ASC),
+   INDEX k_1 (k ASC),
+   FAMILY ""primary"" (id, k, c, pad)
 )
 ```
 
-**数据**
+**Data**
 
 ```sql
-root@:26257/sbtest> select id from sbtest1 order by id limit 1;
+root@:26257/sbtest> SELECT id FROM sbtest1 ORDER BY id LIMIT 1;
 +--------------------+
 |         id         |
 +--------------------+
@@ -49,29 +48,30 @@ root@:26257/sbtest> select id from sbtest1 order by id limit 1;
 +--------------------+
 ```
 
-可以看到数据不是从 1 开始的，其实也不是连续的。正常 Sysbench 表的 id 应该是 [1, table_size]，这个范围。
+As you can see, the data does not start from `1`, nor is it sequential. Normally, the `id` in a Sysbench table should be within the range `[1, table_size]`.
 
 **SQL**
 
 ```sql
-UPDATE sbtest%u SET k=k+1 WHERE id=?
+UPDATE sbtest%u SET k = k + 1 WHERE id = ?
 ```
 
-以 UPDATE 语句为例，id 是作为查询条件存在的，Sysbench 会认为这个 id 应该在 [1, table_size] 之间。实际则没有。
+Taking the `UPDATE` statement as an example, `id` is used as the query condition. Sysbench assumes that this `id` should be between `[1, table_size]`, but in reality, it's not.
 
-**正确的测试命令行举例**
+**Example of Correct Testing Command Line**
 
 ```shell
 sysbench --db-driver=pgsql --pgsql-host=127.0.0.1 --pgsql-port=26257 --pgsql-user=root --pgsql-db=sbtest \
         --time=180 --threads=50 --report-interval=10 --tables=32 --table-size=10000000 \
         oltp_update_index \
-        --sum_ranges=50 --distinct_ranges=50 --range_size=100  --simple_ranges=100 --order_ranges=100 --index_updates=100  --non_index_updates=10 --auto_inc=off prepare/run/cleanup
+        --sum_ranges=50 --distinct_ranges=50 --range_size=100 --simple_ranges=100 --order_ranges=100 \
+        --index_updates=100 --non_index_updates=10 --auto_inc=off prepare/run/cleanup
 ```
 
-### INSERT 测试
+### INSERT Testing
 
-这里单独拿出 INSERT 测试来讲一下。INSERT 测试即 Sysbench 的 oltp_insert，这个测试的特点是，当 auto_inc 为 on 时，会在测试的 prepare 阶段插入数据，否则，只建表不插入数据。因为当 auto_inc 为 on 时，在 prepare 完成后 run 的阶段，插入的数据因为有自增列的保证，不会造成冲突。而 auto_inc 为 off 时，run 阶段插入的数据 id 是随机分配的，这一点也是符合一些实际测试场景。
+Let's discuss the INSERT test separately. The INSERT test refers to Sysbench's `oltp_insert`. The characteristic of this test is that when `auto_inc` is `on`, data is inserted during the prepare phase of the test; otherwise, only the table is created without inserting data. Because when `auto_inc` is `on`, after the prepare phase, during the run phase, the inserted data will not cause conflicts due to the guarantee of the auto-increment column. When `auto_inc` is `off`, the `id` of the data inserted during the run phase is randomly assigned, which aligns with some actual testing scenarios.
 
-对于 CockroachDB 测试 INSERT 的时候，如果 auto_inc 为 off，prepare 之后的 run 阶段插入数据，可以看监控（连接 CockroachDB 的 http 端口）的 Distribution 项里的 KV Transactions，可以看到有大量 Fast-path Committed，这代表其事务是通过一阶段提交（1PC）来进行的。即事务涉及的数据没有跨 CockroachDB 实例，因此没有必要通过两阶段事务来保证一致性。这是 CockroachDB 的一个优化，在 INSERT 测试中非常适用，可以有很好的性能表现。
+For CockroachDB, when testing INSERT operations with `auto_inc` set to `off`, after the prepare phase, during the run phase of data insertion, you can observe the monitoring metrics (by connecting to CockroachDB's HTTP port) under the "Distribution" section in "KV Transactions". You'll notice a large number of "Fast-path Committed" transactions. This indicates that transactions are committed using one-phase commit (1PC). That is, the data involved in the transaction does not span across CockroachDB nodes, so there's no need to ensure consistency through two-phase commit transactions. This is an optimization in CockroachDB, which is very effective in INSERT tests and can deliver excellent performance.
 
-如果 auto_inc 为 on，虽然对于其他需要先读后写的测试，CockroachDB 的结果是虚高的，但是对于 INSERT 测试还是公正的。有时间可以补充测试一下。
+If `auto_inc` is `on`, although for other tests that require read-before-write operations, the results in CockroachDB might be inflated, it is still fair for the INSERT test. If time permits, you can supplement the tests to see the differences.

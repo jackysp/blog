@@ -1,15 +1,15 @@
 ---
-title: "如何在 VS Code 里用等宽字体"
+title: "How to Use Monospaced Fonts in VS Code"
 date: 2017-12-26T22:21:06+08:00
 ---
 
-# 背景
+# Background
 
-微软的 VS Code 里设置的英文字体是等宽的，中文不是。
+The English font set in Microsoft's VS Code is monospaced, while the Chinese font is not.
 
-# 方法
+# Method
 
-1. 下载安装[这里](https://github.com/be5invis/Sarasa-Gothic)的字体，该字体结合了思源黑体，据说标点也是严格对齐的。
-1. 使用[这里](https://github.com/be5invis/Sarasa-Gothic/issues/8)的方法设置 VS Code 。
+1. Download and install the fonts from [here](https://github.com/be5invis/Sarasa-Gothic). This font combines Source Han Sans and is said to align punctuation strictly.
+2. Use the method described [here](https://github.com/be5invis/Sarasa-Gothic/issues/8) to set up VS Code.
 
-PS: 确实是对齐的，就是英文显示有点儿窄。
+PS: It is indeed aligned, although the English text appears a bit narrow.

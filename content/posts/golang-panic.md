@@ -1,10 +1,16 @@
----
-title: "Golang panic 的实时性是怎样的"
-date: 2018-07-26T14:24:00+08:00
-draft: false
+Here is the translation of the given text into English:
+
 ---
 
-先看下面这段代码，
+title: "How Immediate is Golang's Panic"
+
+date: 2018-07-26T14:24:00+08:00
+
+draft: false
+
+---
+
+Let's first look at the following code snippet:
 
 ```golang
 package main
@@ -36,7 +42,7 @@ func main() {
 }
 ```
 
-编译完之后，运行，会得到下面的错误（前提你的机器有 2 个及以上的核），
+After compiling and running it (assuming your machine has 2 or more cores), you will get the following error:
 
 ```text
 fatal error: concurrent map read and map write
@@ -62,6 +68,6 @@ created by main.main
         /Users/yusp/test/panic3/main.go:13 +0x59
 ```
 
-看起来没什么问题，golang 的 map 不是线程安全的，同时读写会造成 panic。但是看下 `/Users/yusp/test/panic3/main.go:18 +0x61` 这行错误信息，main.go 的 18 行是 Sleep，也就是并不是并发问题的现场。在一个庞大的栈信息里，就更不可能定位到出问题的地方了。
+It seems straightforward; Golang's map is not thread-safe, and concurrent read and write cause a panic. However, look at the error information on line `/Users/yusp/test/panic3/main.go:18 +0x61`, which points to line 18 of main.go where `Sleep` is called, not the actual point of concurrency issue. In a vast stack trace, it becomes even harder to locate the problem.
 
-解决方法目前想到的是，如果是只看到了读的栈，想看写的，那么在读的位置设置变量，读完后复原该变量，在写的位置检测该变量的值，如果正在读，就 panic 出来。
+A workaround that comes to mind is if you only see the read stack and want to see the write stack, set a variable at the read position, reset it after reading, and check the value of this variable at the write position. If reading is currently happening, panic will be triggered.

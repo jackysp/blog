@@ -1,21 +1,19 @@
----
-title:  "如何在 Windows 上配置中文 Latex 环境"
-date: 2021-03-31T11:13:00+08:00
-draft: false
----
+### Title: "How to Configure a Chinese LaTeX Environment on Windows"
 
-## 背景
+#### Date: March 31, 2021
+#### Draft: False
 
-本来没觉得这是值得写下来的事情，因为，CTex 之前大家用得很顺畅，没想到 CTex 已经从 2016 年后就没更新过了。于是，想找一下当下 2021 年的一个 Windows 上的中文 Latex 替代方案。
+## Background
 
-## 配置方法
+Initially, I didn't think this was something worth writing about, because CTex was previously working smoothly for everyone. However, it turns out that CTex hasn't been updated since 2016. So, I wanted to find a replacement for Chinese LaTeX on Windows in 2021.
 
-1. 安装 MiKTeX（TexLive 应该也一样），MiKTeX 可以自动下载依赖包，主动安装 ctex 包也可以。
-1. 安装 VSCode Latex 插件。
-1. 配置 Latex 插件。在知乎找到一份插件配置，很强大，不过也比较复杂。这里稍微简化了一下。
+## Configuration Method
 
-稍微解释一下，这里核心的部分其实就是 recipes 和 tools。tools 是编译工具链，包括使用哪种工具编译，选项用什么，顺序无所谓。recipes 是定义如何组合上述工具来生成最终文档，顺序是有意义的，默认使用第一个。
-这里把 XeLaTex 放在了第一，也是因为它编译中文是兼容性最好的，如果用 pdflatex 来编译中文文件，大概率会踩坑。
+1. Install MiKTeX (TexLive should work as well). MiKTeX can automatically download dependency packages and you can also proactively install the ctex package.
+2. Install the VSCode LaTeX extension.
+3. Configure the LaTeX extension. I found a powerful configuration on Zhihu, but it’s quite complex, so I simplified it a bit.
+
+A brief explanation: the core components here are the recipes and tools. Tools are the compilation toolchain, specifying which tools to use for compilation and the options to use, without regard to order. Recipes define how to combine the above tools to generate the final document, where the order does matter. I've put XeLaTex first here because it's the most compatible for compiling Chinese. If you use pdflatex to compile Chinese documents, you're likely to encounter issues.
 
 ```json
 {
@@ -180,17 +178,17 @@ draft: false
 }
 ```
 
-4. 创建一个文件夹
-5. 使用 VSCode 打开这个文件夹创建一个 .tex 文件，内容写
+4. Create a folder.
+5. Use VSCode to open this folder and create a .tex file with the following content:
 
 ```tex
 \documentclass[UTF8]{ctexart}
 
 \begin{document}
-OK，大功告成了。。。
-\end{document
+OK, it’s all set...
+\end{document}
 ```
 
-应该会自动开始编译，中间遇到需要下载依赖确认通过就好。编译后效果如下：
+It should automatically start compiling. Confirm to download any required dependencies if prompted. The compiled effect is as follows:
 
 ![test](/posts/images/20210331113405.png)

@@ -1,41 +1,133 @@
 ---
-title: "如何配置 CentOS 6 NFS 服务"
+
+title: "How to Configure CentOS 6 NFS Service"
+
 date: 2014-06-05T22:21:06+08:00
+
 ---
 
-# 服务器端
+# Server Side
 
-1. 关闭 SeLinux `vi /etc/selinux/config`
-    ```text
-    #SELINUX=enforcing #注释
-    #SELINUXTYPE=targeted #注释掉
-    SELINUX=disabled #增加
+1. **Disable SeLinux**  
+   Edit the configuration file:
+   ```bash
+   vi /etc/selinux/config
+   ```
+   Modify as follows:
+   ```text
+   #SELINUX=enforcing    # Comment out
+   #SELINUXTYPE=targeted # Comment out
+   SELINUX=disabled      # Add this line
+   ```
+   Then reboot the system:
+   ```bash
+   reboot  # Restart the system
+   ```
+
+2. **Create a Directory**  
+   Using the root user, create a directory named `/nfs`. Note: It's best to check which partition has the most space by running `df`, as the root (`/`) partition may not have the most space. In some automatic partitioning setups, the `/home` partition may have the most space.
+
+3. **Install NFS Utilities and RPC Bind**  
+   ```bash
+   yum -y install nfs-utils rpcbind
+   ```
+
+4. **Enable Services at Boot**  
+   ```bash
+   chkconfig nfs on
+   chkconfig rpcbind on
+   chkconfig nfslock on
+   ```
+
+5. **Configure Exports**  
+   Edit the NFS exports file:
+   ```bash
+   vi /etc/exports
+   ```
+   Add the following line:
+   ```text
+   /home/nfs 192.168.1.0/24(rw,sync,no_all_squash)
+   ```
+
+6. **Start NFS Services**  
+   ```bash
+   service rpcbind start
+   service nfs start
+   service nfslock start
+   exportfs -a
+   ```
+
+7. **Configure NFS Ports**  
+   Edit the NFS configuration file:
+   ```bash
+   vi /etc/sysconfig/nfs
+   ```
+   Uncomment the following lines:
+   ```text
+   LOCKD_TCPPORT=32803
+   LOCKD_UDPPORT=32769
+   MOUNTD_PORT=892
+   ```
+
+8. **Restart NFS Services**  
+   ```bash
+   service rpcbind restart
+   service nfs restart
+   service nfslock restart
+   ```
+
+9. **Verify RPC Services**  
+   ```bash
+   rpcinfo -p localhost
+   ```
+   Note down the ports and their types.
+
+10. **Configure Firewall Rules**  
+    Adjust the IP range according to your network:
+    ```bash
+    iptables -I INPUT -m state --state NEW -p tcp -m multiport --dport 111,892,2049,32803 -s 192.168.0.0/24 -j ACCEPT
+    iptables -I INPUT -m state --state NEW -p udp -m multiport --dport 111,892,2049,32769 -s 192.168.0.0/24 -j ACCEPT
     ```
-    `reboot #重启系统`
-1. 用 root 用户建一个文件夹，就叫 /nfs 即可（注意，这里最好先 df 一下，看看哪个分区空间大，不一定就是/的空间最大，有些自动分区是/home空间最大）；
-1. `yum -y install nfs-utils rpcbind`
-1. `chkconfig nfs on ; chkconfig rpcbind on ; chkconfig nfslock on`
-1. `vi /etc/exports` 加入 `/home/nfs 192.168.1.0/24(rw,sync,no_all_squash)`
-1. `service rpcbind start ; service nfs start ; service nfslock star ; exportfs -a`
-1. `vi /etc/sysconfig/nfs` 去掉下列前面的注释:
-     ```text
-     LOCKD_TCPPORT=32803
-     LOCKD_UDPPORT=32769
-     MOUNTD_PORT=892
-     ```
-1. `service rpcbind restart ; service nfs restart ; service nfslock restart`
-1. `rpcinfo -p localhost` 记下端口和端口类型
-1. `iptables -I INPUT -m state --state NEW -p tcp -m multiport --dport 111,892,2049,32803 -s 192.168.0.0/24 -j ACCEPT ; iptables -I INPUT -m state --state NEW -p udp -m multiport --dport 111,892,2049,32769 -s 192.168.0.0/24 -j ACCEPT` 自己根据ip段改一下。
-1. 在客户端侧测试，如果通了，则 `service iptables save`
 
-# 客户端
-
-1. `mkdir /nfs`
-1. `rpcinfo -p server的ip`
-1. `showmount -e server的ip`
-1. `mount -t nfs -o soft,intr,bg,rw server的ip:/home/nfs /nfs`
-1. 解除挂载umount /nfs
-1. 自动挂载`vi /etc/fstab`
-    ```text
-    server的ip:/home/nfs /nfs nfs soft,intr,bg,rw 0 0
+11. **Save Firewall Rules**  
+    Test from the client side. If successful, save the iptables configuration:
+    ```bash
+    service iptables save
     ```
+
+# Client Side
+
+1. **Create Mount Point**  
+   ```bash
+   mkdir /nfs
+   ```
+
+2. **Check RPC Services on Server**  
+   ```bash
+   rpcinfo -p [server_ip]
+   ```
+
+3. **Show NFS Exports**  
+   ```bash
+   showmount -e [server_ip]
+   ```
+
+4. **Mount NFS Share**  
+   ```bash
+   mount -t nfs -o soft,intr,bg,rw [server_ip]:/home/nfs /nfs
+   ```
+
+5. **Unmount NFS Share**  
+   ```bash
+   umount /nfs
+   ```
+
+6. **Configure Automatic Mounting**  
+   Edit the fstab file:
+   ```bash
+   vi /etc/fstab
+   ```
+   Add the following line:
+   ```text
+   [server_ip]:/home/nfs /nfs nfs soft,intr,bg,rw 0 0
+   ```

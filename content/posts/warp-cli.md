@@ -1,25 +1,24 @@
----
-title:  "遇到 Cloudflare Warp 的大坑：一场 VPS 的生死救援"
+
+title: "Encounter with a Major Issue with Cloudflare Warp: A Life and Death Rescue for VPS"
 date: 2024-05-15T20:31:00+08:00
 draft: false
----
 
-今天计划使用 Warp 为我的 VPS 选择 IP 出口，参考了 [Cloudflare 官方文档](https://developers.cloudflare.com/warp-client/get-started/linux/) 进行操作。在执行到 `warp-cli connect` 这一步时，服务器立即失去了连接，重启后问题依旧存在。
+Today, I planned to use Warp to select an IP exit for my VPS, following the [Cloudflare official documentation](https://developers.cloudflare.com/warp-client/get-started/linux/). When executing the `warp-cli connect` step, the server immediately lost connection, and the problem persisted even after rebooting.
 
-经过查阅资料，发现这一问题并非个例。例如，在 [V2EX 的讨论](https://www.v2ex.com/t/933725) 中，许多用户也遇到了类似情况。解决方案是在执行 `warp-cli connect` 之前，先运行 `warp-cli set-mode proxy`，以绕过本地地址。令人惊讶的是，Cloudflare 的官方文档居然没有提到这一关键步骤，这无疑增加了配置的复杂性和风险。
+After researching, I found that this problem is not unique. For instance, in a [discussion on V2EX](https://www.v2ex.com/t/933725), many users encountered similar issues. The solution is to run `warp-cli set-mode proxy` before executing `warp-cli connect` to bypass the local address. Surprisingly, Cloudflare's official documentation does not mention this crucial step, undoubtedly increasing the complexity and risk of configuration.
 
-探索解决方案的过程中，发现有用户建议通过重建实例或使用 VNC 连接进行修复。然而，由于我使用的是 AWS Lightsail，VNC 并不适用。最后，决定尝试 [这篇文章](https://www.4os.org/2022/02/14/aws-lightsail-ssh-%E6%8C%82%E6%8E%89%E5%A6%82%E4%BD%95%E7%99%BB%E5%BD%95/) 中提到的方法：对当前 VPS 进行快照备份，然后利用快照新建实例，并在新实例启动时加载脚本，执行 `warp-cli set-mode proxy`。
+In the process of exploring solutions, I found that some users suggested repairing by rebuilding the instance or using VNC connection. However, since I am using AWS Lightsail, VNC is not applicable. Ultimately, I decided to try the method mentioned in [this article](https://www.4os.org/2022/02/14/aws-lightsail-ssh-%E6%8C%82%E6%8E%89%E5%A6%82%E4%BD%95%E7%99%BB%E5%BD%95/): creating a snapshot backup of the current VPS, then creating a new instance from the snapshot, and loading a script to execute `warp-cli set-mode proxy` when the new instance starts.
 
-检查现有实例后发现并未创建任何快照。这一发现提醒我日常备份的重要性。在没有其他选择的情况下，只能尝试按照上述文章的指导进行快照备份。然而，无论尝试哪种启动脚本命令，均未能成功执行。AWS Lightsail 的启动脚本执行结果不可见，使得问题排查难度增加。
+After checking the existing instance, I found that no snapshot had been created. This discovery reminded me of the importance of regular backups. Without other options, I could only attempt a snapshot backup as guided by the aforementioned article. However, no matter what startup script command I tried, it failed to execute successfully. The execution result of AWS Lightsail's startup script is not visible, making problem-solving more difficult.
 
-在几近绝望时，从快照页面发现一个日期为 2022 年的旧快照。尽管此快照使用的是旧技术，恢复后可能会丢失许多重要更新，但已是最后的希望。开始恢复快照后，通过 `history` 命令查看历史记录，意外发现此快照竟包含了所有重要的更新。这一发现使得整个恢复过程得以顺利完成。
+In near desperation, I found an old snapshot dated 2022 on the snapshot page. Although this snapshot was created using old technology, and many important updates might be lost after recovery, it was my last hope. After starting the snapshot recovery process, I unexpectedly discovered through the `history` command that this snapshot contained all the important updates. This discovery allowed the entire recovery process to be completed smoothly.
 
-这次经历再次强调了备份的重要性。过去的细心备份最终避免了数据的严重丢失。此外，AWS 的静态 IP 保留功能也发挥了关键作用。新实例在旧实例释放静态 IP 后，可以立即绑定该 IP，实现了无缝切换。
+This experience re-emphasized the importance of backups. Careful backups from the past ultimately avoided severe data loss. Furthermore, AWS's static IP retention feature also played a crucial role. The new instance could immediately bind to the IP once the old instance released the static IP, achieving a seamless switch.
 
-## 结论
+## Conclusion
 
-1. **备份至关重要**：定期备份是保障系统稳定运行的关键。
-2. **操作谨慎**：在执行关键命令前，应充分查阅和理解相关文档及用户反馈，避免潜在风险。
-3. **信任过去的自己**：过去的细致工作往往能在关键时刻发挥重要作用。
+1. **Backups are essential**: Regular backups are key to ensuring stable system operations.
+2. **Operate with caution**: Before executing critical commands, thoroughly review and understand relevant documentation and user feedback to avoid potential risks.
+3. **Trust your past self**: Meticulous work done in the past can often prove invaluable at critical moments.
 
-希望这次经历能为他人提供借鉴和帮助，避免类似问题的发生。
+I hope this experience can serve as a reference and help for others, preventing similar issues from occurring.

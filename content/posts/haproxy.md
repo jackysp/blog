@@ -1,18 +1,22 @@
+Here's the translated text in English:
+
 ---
-title: "如何使用 HAProxy 测试 CockroachDB"
+
+title: "How to Use HAProxy to Test CockroachDB"
 date: 2018-07-10T15:07:00+08:00
+
 ---
 
-## 安装 HAProxy
+## Installing HAProxy
 
-`yum install haproxy` 对 CentOS 7 有效。安装之后，即可使用 `systemctl start haproxy` 来启动服务了。但是先别急。
+`yum install haproxy` is effective for CentOS 7. After installation, you can start the service using `systemctl start haproxy`. But don't rush yet.
 
-## 配置 HAProxy
+## Configuring HAProxy
 
-在 /etc/haproxy/haproxy.cfg 里写入以下内容。
+Add the following content to /etc/haproxy/haproxy.cfg.
 
 ```bash
-global # global 的内容基本固定，也比较好理解。
+global # The content of global is generally fixed and quite understandable.
         log 127.0.0.1   local2
         maxconn 4096
         user haproxy
@@ -20,10 +24,10 @@ global # global 的内容基本固定，也比较好理解。
         chroot /var/lib/haproxy
         daemon
         pidfile /var/run/haproxy.pid
-        stats socket /var/run/haproxy.sock         # Make sock file for haproxy
-        nbproc 40                                  # 启动 40 个进程并发转发，高版本可以用 nbthread，改为线程化。
+        stats socket /var/run/haproxy.sock         # Create a socket file for haproxy
+        nbproc 40                                  # Start 40 processes to forward concurrently, higher versions can use nbthread, a threaded approach.
 
-defaults # 这部分都是抄的，option 不是很明白。
+defaults # This section is mostly copied, not entirely clear on the options.
         log     global
         mode    http
         option  tcplog
@@ -35,25 +39,25 @@ defaults # 这部分都是抄的，option 不是很明白。
         timeout client 50000ms
         timeout server 50000ms
 
-listen cdb_cluster 0.0.0.0:3030  # 真正的 proxy 名以及接受服务的地址。
+listen cdb_cluster 0.0.0.0:3030  # The actual proxy name and address for receiving services.
 ## cdb balance leastconn - the cluster listening on port 3030.
         mode tcp
-        balance leastconn  # 这个方法最适用于数据库，不要改。
-        server cdb1 172.16.30.3:26257 check # check 似乎可以接一个反馈状态的端口，不接可能不生效，但是无所谓。
+        balance leastconn  # This method is most suitable for databases; do not change.
+        server cdb1 172.16.30.3:26257 check # Check seems to require a port for feedback status; without it, it might not work, but it doesn't matter.
         server cdb2 172.16.30.3:26258 check
         server cdb3 172.16.30.3:26259 check
         server cdb4 172.16.30.3:26260 check
 ```
 
-## 启动、连接
+## Start and Connect
 
-`systemctl start haproxy` 启动服务。
+`systemctl start haproxy` to start the service.
 
-`psql -Uroot -h127.0.0.1 -p3030 test` 连接数据库。
+`psql -Uroot -h127.0.0.1 -p3030 test` to connect to the database.
 
-## CockroachDB 官方推荐
+## CockroachDB Official Recommendation
 
-CockroachDB 官方给了自己推荐的[配置](https://www.cockroachlabs.com/docs/stable/deploy-cockroachdb-on-premises.html)。在这个配置里，它用了：
+CockroachDB officially provided their recommended [configuration](https://www.cockroachlabs.com/docs/stable/deploy-cockroachdb-on-premises.html). In this configuration, they use:
 
 ```shell
 default
@@ -64,4 +68,4 @@ listen psql
     option httpchk GET /health?ready=1
 ```
 
-这两个配置，第一个是让客户端 keep alive，感觉很有用。第二个是一个状态检查端口，我理解可能是确保服务可用再分发请求的一个选项，感觉也很有用。推荐加上。
+These two configurations, the first is to keep the client connection alive, which seems very useful. The second is a status check port, which I understand might be an option to ensure the service is available before dispatching requests, and it also seems very useful. It is recommended to add them.

@@ -1,35 +1,38 @@
+Here's the translated text:
+
 ---
-title:  "如何动态更新 Namesilo 的 DNS 记录"
+title: "How to Dynamically Update DNS Records for Namesilo"
 date: 2020-02-01T12:27:00+08:00
 draft: false
 ---
 
-## 动态更新 DNS 记录
+## Dynamically Updating DNS Records
 
-动态更新的目的很简单，作为一个长期使用联通宽带的用户，虽然，联通提供了公网地址，但是，其本质上是一个动态地址，而不是绑定的。如果在外想用 IP 来访问家里的设备，就得用动态 DNS（DDNS）。
-很多路由器上都直接集成了 DDNS 功能，不过，基本就是把路由发布时常见的几家服务提供商的接口封装了进去。这几家一般有几个特点：1. 被墙；2. 收费不低；3. 国内服务商，可能有安全问题；4. 公司已经倒闭了。
-与其依靠这些不靠谱的服务，不如自己写个脚本来更新。
+The purpose of dynamic updates is pretty simple. As a long-term user of China Unicom's broadband, although Unicom provides a public address, it is essentially a dynamic address, not a fixed one. If you want to access your home devices using an IP address from outside, you need to use dynamic DNS (DDNS). 
 
-于是，脚本大法来了。一开始，打算用 Cloudflare，因为这是晚上推荐的方式。后来搜了一下，我的域名提供商 Namesilo 自己就提供 API 来更新 DNS。但是，它返回的是 xml 格式的数据，我不知道怎么用 shell 来解析。
+Many routers come with built-in DDNS functionality, but they mostly wrap the interfaces of the commonly used service providers. These providers generally have a few characteristics: 1. Blocked by the Great Firewall; 2. Not cheap; 3. Domestic providers may have security issues; 4. The company might have gone out of business. Rather than relying on these unreliable services, it's better to write your own script for updating.
 
-于是，就想到了 golang。因为，这个 DDNS 客户端肯定要部署在路由器一类的设备上，python、java 之类的需要部署环境，c 之类的可能需要一些动态链接库才能跑起来，而且我不知道怎么搞。golang 的无动态链接库的特性就很有优势了。所以就手写了一个叫 [und](https://github.com/jackysp/und) 的工具。
+Thus, the scripting approach comes into play. Initially, I planned to use Cloudflare, as it is the recommended way. Later, I discovered that my domain provider Namesilo offers an API to update DNS. However, it returns data in XML format, and I wasn't sure how to parse this with shell scripts.
 
-1. 先在 Namesilo 里创建一个 DNS 记录
-1. 搞一个适合你的平台的 und 的 binary。我这里只提供了 arm64|linux + amd64|三个主流 OS 的 binary，需要额外的平台要自己编译，可以参考 Makefile。
-1. 从 namesile 生成一个 API key，然后照着 und 的用法来启动就好了。大部分可能需要放到后台，所以，nohup 吧。
+Then, I thought of using Go. Since this DDNS client would likely be deployed on a router-like device, languages like Python or Java require a runtime environment, and C might need some dynamic libraries to run, which I wasn't sure how to handle. The fact that Go doesn't require dynamic libraries was a significant advantage. So, I handwrote a tool called [und](https://github.com/jackysp/und).
 
-## GitHub 功能体验
+1. First, create a DNS record in Namesilo.
+2. Obtain the binary of `und` suitable for your platform. I only provide binaries for arm64|linux and amd64|three mainstream OS in this case. For other platforms, you'll need to compile it yourself. You can refer to the Makefile.
+3. Generate an API key from Namesilo, then start `und` according to its usage documentation. You might need to run it in the background, so use `nohup`.
 
-### GitHub Action
+## GitHub Features Experience
 
-感觉是用来替代混乱的第三方 CI 的。直接为 und 选了 Golang 的选项。默认其实就是在 ubuntu 里执行了一下 `go build -v .`。
+### GitHub Actions
+
+It feels like a replacement for chaotic third-party CI services. I directly chose the Go option for `und`. By default, it simply runs `go build -v .` in Ubuntu.
 
 ### Release
 
-之前在发布 TiDB 的时候用过该功能，只是没记得上传/自动生成 binary。因为，TiDB 也不是一个组件能完整跑起来的，所以，单拿一个 binary 意义不大。
-这次体验让我觉得，
+I used this feature when releasing TiDB before, but didn't remember to upload/automatically generate binaries. Since TiDB is not something that can run completely with just one component, releasing a single binary doesn't make much sense. 
 
-1. 要 release 的话，打标签，最好还是用 release 功能直接来打
-1. release 完之后，因为可以编辑，这时候，再 `make` 生成各自 binary，然后，上传。根据 Makefile 的写法，可以生成 version。这还是一个比较重要的功能。
+This time, the experience led me to believe:
 
-这两步也挺方便的。
+1. When releasing, tagging is best done directly using the release feature.
+2. After the release, since you can edit it, it's a good time to `make` each binary and upload them. Based on the Makefile setup, you can generate a version. This is quite an important feature.
+
+These two steps are quite convenient.

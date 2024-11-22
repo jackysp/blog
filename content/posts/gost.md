@@ -1,79 +1,87 @@
+Here's the translated text into English:
+
 ---
-title:  "如何部署 HTTPS 代理服务"
+
+title: "How to Deploy an HTTPS Proxy Service"
+
 date: 2020-01-12T19:43:00+08:00
+
 draft: false
+
 ---
 
-## 前言
+## Preface
 
-某天，看到了陈皓的推上发了一片他的 blog。作为从他的多篇 blog 中受益的我来说，下意识觉得肯定很靠谱，于是拜读了一下，就有了这篇实践文章。
+One day, I came across an article by Chen Hao on Twitter. Having benefited from several of his blog posts, I instinctively felt it was reliable, so I read it and decided to write this practical guide.
 
-## 为什么用 HTTPS 代理
+## Why Use an HTTPS Proxy
 
-在[攻略](https://haoel.github.io/)里已经讲得很清楚了，外加自己数次 shadowsocks 被 ban 的经历，觉得有必要换一种更安全的代理方式。
+In the [guide](https://haoel.github.io/), it’s clearly explained why, plus my own experiences of several shadowsocks being banned, I felt it was necessary to switch to a more secure proxy method.
 
-## 怎么部署 HTTPS 代理
+## How to Deploy an HTTPS Proxy
 
 ### gost
 
-[gost](https://github.com/ginuerzh/gost) 是[攻略](https://haoel.github.io/)中，感觉最推荐的工具。一开始我对它的理解也有问题，刚开始理解成他是类似 kcptun 的方式，依然是依赖 shadowsocks。实际上 gost 是实现了多种代理，也就是有它就可以不用其他代理了。
-我一直不太喜欢通过不断套壳来加速/混淆 shadowsocks 的方式，总觉得链路太长，带来的问题就会更多。
+[gost](https://github.com/ginuerzh/gost) is the tool most recommended in the [guide](https://haoel.github.io/). At first, I misunderstood it as a method similar to kcptun, still relying on shadowsocks. In fact, gost implements multiple proxy types, meaning you don’t need other proxies if you have it. I never liked the method of continuously wrapping to accelerate/obfuscate shadowsocks, always feeling that longer pathways bring more problems.
 
-### 步骤
+### Steps
 
-* 直接下载 gost repo 下的最新 release，虽然，我本地甚至 vps 上都有 golang 环境，不过，直接下载最省心了。这里下载的是 2.9.0 版本。
-* certbot 在裸的 vps 上直接按 certbot 的步骤走是过不了的。。。需要：
-    1. 启动一个 nginx，具体是参照[这篇](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-9)。当然，这里的前提是有自己一个域名，并把 A name 指到这个 vps 上。
-    1. 验证通过域名可以访问
-    1. 停止 nginx
-    1. 用 certbot 的 --standalone 的方式，成功后会生成证书
-* 这里我没有用 docker 来部署，而是用了 systemd，直接创建了一个 systemd uint，方法类似 kcptun 的。不太一样的是，由于证书需要更新，所以，这个 unit 还需要一个 reload 方法。从[这篇介绍](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)里，可以学到不少关于 systemd 使用的细节，顺带提一下这个博主的文章质量也十分高，推荐订阅。
-    1. 创建一个 `/lib/systemd/system/gost.service` 文件，填入一下内容，域名换成自己的。
+- Directly download the latest release from the gost repo. Although I have a Golang environment both locally and on the VPS, downloading directly is the easiest. I downloaded version 2.9.0 here.
+- Following certbot on a bare VPS doesn't work... it requires:
+  1. Starting an nginx server, as referenced in [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-9). Of course, this requires having a domain name pointing an A record to the VPS.
+  2. Verifying access through the domain.
+  3. Stopping nginx.
+  4. Using certbot's --standalone mode, which will generate the certificates upon success.
+- Here, I didn't use Docker for deployment but used systemd instead, directly creating a systemd unit similar to kcptun. The difference is, because the certificate needs updating, the unit requires a reload method. [This tutorial](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html) teaches a lot about using systemd, and the author's article quality is also high, highly recommended for subscription.
+  
+  1. Create a `/lib/systemd/system/gost.service` file with the following content, replacing the domain with your own:
 
-        ```text
-        [Unit]
-        Description=gost service
-        After=network.target
-        StartLimitIntervalSec=0
+    ```text
+    [Unit]
+    Description=gost service
+    After=network.target
+    StartLimitIntervalSec=0
 
-        [Service]
-        Type=simple
-        Restart=always
-        RestartSec=1
-        User=root
-        PIDFile=/home/admin/gost.pid
-        ExecStart=/home/admin/bin/gost -L "http2://xxx:yyy@0.0.0.0:443?cert=/etc/letsencrypt/live/example.com/fullchain.pem&key=/etc/letsencrypt/live/example.com/privkey.pem&probe_resist=code:404"
-        ExecReload=/bin/kill -HUP $MAINPID
+    [Service]
+    Type=simple
+    Restart=always
+    RestartSec=1
+    User=root
+    PIDFile=/home/admin/gost.pid
+    ExecStart=/home/admin/bin/gost -L "http2://xxx:yyy@0.0.0.0:443?cert=/etc/letsencrypt/live/example.com/fullchain.pem&key=/etc/letsencrypt/live/example.com/privkey.pem&probe_resist=code:404"
+    ExecReload=/bin/kill -HUP $MAINPID
 
-        [Install]
-        WantedBy=multi-user.target
-        ```
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
-    `ExecStart` 就是简化了[攻略](https://haoel.github.io/)里的 docker 方式。`ExecReload` 就是 kill。
-    1. 通过 `systemctl start|status|restart|enable gost` 来测试一下是否成功
-    1. 配置 crontab 来更新证书。没有用 systemd 是因为我不太熟。
+    `ExecStart` is a simplified version of the Docker method in the [guide](https://haoel.github.io/). `ExecReload` just kills the process.
+    
+  2. Test whether it’s successful using `systemctl start|status|restart|enable gost`.
 
-        ```text
-        0 0 1 * * /usr/bin/certbot renew --force-renewal
-        5 0 1 * * systemctl restart gost
-        ```
+  3. Configure crontab to update the certificate. I didn't use systemd because I'm not familiar with it.
 
-* 上述搞定以后，nginx 就可以直接 stop 再 disable 了。
+    ```text
+    0 0 1 * * /usr/bin/certbot renew --force-renewal
+    5 0 1 * * systemctl restart gost
+    ```
 
-* 配置客户端。这个就简单了，直接参照[攻略](https://haoel.github.io/)，即可。原理很简单，因为 gost 实现 shadowsocks 协议本身就是用的 shandowsocks golang 版本的实现。所以，以下命令就是本地启动一个 shadowsocks server。然后，再配置你的客户端，增加一个密码匹配的本地服务器配置即可。
+- After completing the above, nginx can be directly stopped and disabled.
+
+- Configure the client. This is simple; just refer to the [guide](https://haoel.github.io/). The principle is straightforward because gost implements the shadowsocks protocol using the shadowsocks Golang version. Therefore, the following command starts a local shadowsocks server, and you configure your client to add a local server configuration that matches the password.
 
     ```text
     .\bin\gost-windows-amd64.exe -L=ss://aes-128-cfb:passcode@:1984 -F=https://xxx:yyy@example.com:443
     ```
 
-PS: 本人还不知道怎么在 Android 上不 root 的话配置全局 https 代理，也不知道 iOS 上没有美区账号怎么配。再就是也不知道 Windows 10 上怎么优雅配置开机启动脚本。这些待研究。。。
+PS: I still don't know how to configure a global HTTPS proxy on Android without root, or how to set it up on iOS without a U.S. account. Also, I'm unsure how to elegantly configure startup scripts on Windows 10. These are issues to explore further...
 
-## 续
+## Continuation
 
-上面说到移动端的问题。翻了一圈发现 https 代理的客户端支持都不太好。gost 本身似乎有些问题，也可能是我的使用姿势问题，总之不用本地 gost 连接远程 gost，鉴权就会出错。
+Regarding the mobile problem mentioned above, I found that HTTPS proxy client support is generally poor. Gost itself seems to have problems, possibly due to my usage. In short, if not using a local gost to connect remotely, authentication errors occur.
 
-这两天，趁着放假了，稍微又折腾了一下。先是在家里 nas 上部署了一个 gost http 代理，用最简单的 nohup + ctrl-D 来维持。编译的时候选 GOARCH=arm64 就行了。试运行了一天，Android 自带的弱鸡 http 代理运行良好，但是总全局翻不是很爽。于是，把 http 换成了 ss 连接远程 https。类似把 Windows 上的本地服务搬到了 nas 上。于是，又简单的通过两层端口转发，nas -> 内网路由 -> 光猫路由，这样通过公网 IP，也可以把 nas 当 ss server 来用了。
+During the holiday break, I tinkered a bit more. First, I deployed a gost HTTP proxy on my home NAS using the simplest nohup + ctrl-D method to maintain it. It's compiled with GOARCH=arm64. After a trial run for a day, Android's weak built-in HTTP proxy worked well, but globally routing through it wasn't great. Hence, I switched from HTTP to using SS to connect to HTTPS remotely. I essentially moved the local service on Windows to my NAS. Additionally, through simple double-port forwarding from NAS -> internal router -> optical modem router, I could also use the NAS as an SS server via the public IP.
 
-剩下就是 ddns 的问题。搜了一圈，似乎 Cloudflare 的 api 是比较靠谱的方案。正好官方有个 flarectl，编完搞到 nas 上，写了个小脚本，再次体验了一下 bash 的各种神奇（坑），终于让我回想起以前看到有人做字符串比较时候的特殊写法的缘由。`[ $a != $b ]` 这种改为 `[ $a != $b* ]` 是为了避免行尾 "\r" "\n" 之类字符的处理。不过，解绑 name server 还需要一段时间。最终效果待验证。
+The remaining issue is the DDNS. After researching, it seems Cloudflare's API is a more reliable option. Seeing an official flarectl, I compiled it to the NAS and wrote a small script, revisiting the various (pitfalls) wonders of bash, especially remembering special writing for string comparisons such as `[ $a != $b ]` to `[ $a != $b* ]` to handle trailing "\r" "\n" characters. However, detaching the name server still takes some time. The final effect is to be tested.
 
-对了，在 nas 上获取本机公网 IP 的办法我目前就是用了一个 curl 某个提供 IP 的第三方地址的办法，总感觉不知道哪天可能旧连不上或者遇到些问题挂了。
+Additionally, on the NAS, I currently use curl to fetch my public IP from a third-party. I have a hunch that this method might not work someday or might cause issues.

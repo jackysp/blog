@@ -1,30 +1,30 @@
----
-title:  "如何让一台 Linux 笔记本电脑合上盖子后不进入休眠"
-date: 2020-03-31T20:31:00+08:00
----
+**Title: "How to Prevent a Linux Laptop from Entering Sleep Mode When the Lid is Closed"**
 
-本来以为是一个很简单的设置，就随便 Google 了一下，果然有清一色的解法，就是修改 `/etc/systemd/logind.conf`，把 `HandleLidSwitch` 改成 `ignore` 或者 `lock`，然后，重启 `logind` 或者 `reboot`。
-试了下，发现在 Thinkpad X230 下根本不行，于是又改了上述文件的其他一些选项，发现都不行，而且 `Ubuntu` 竟然报错了。。。
+**Date: 2020-03-31T20:31:00+08:00**
 
-于是，重装了更喜欢的 `Debian`。重试，发现还是不行。最后，找到了一个最暴力的解决办法。
+Initially, I thought it would be a simple setting adjustment, so I casually Googled it. Sure enough, there was a unanimous solution: modify `/etc/systemd/logind.conf`, change `HandleLidSwitch` to `ignore` or `lock`, and then restart `logind` or reboot.
+
+I tried this, but it didn't work at all on my Thinkpad X230. I then tried changing some other options in the aforementioned file, but none worked, and surprisingly, `Ubuntu` even reported errors.
+
+So, I reinstalled the more preferred `Debian`. Tried again, and it still didn't work. Finally, I found a more brutal method.
 
 ```shell
 systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
 
-直接把这几个 unit 指向了 /dev/null。。。
+This directly points these units to /dev/null...
 
-想恢复的话就，
+To revert, simply use:
 
 ```shell
 systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
 
-简单有效。
+It's simple and effective.
 
-**更新：**
+**Update:**
 
-如果只 mask 的话，systemd-logind 的 CPU 占用会非常高，因为它会不断的尝试睡眠，所以还需要把 `HandleLidSwitch` 等改成 `ignore`。如下：
+If you only mask them, the CPU usage of systemd-logind will be very high because it continuously attempts to sleep. Therefore, you also need to change `HandleLidSwitch` and others to `ignore`. As follows:
 
 ```text
 HandleSuspendKey=ignore
@@ -34,4 +34,4 @@ HandleLidSwitchExternalPower=ignore
 HandleLidSwitchDocked=ignore
 ```
 
-然后，`systemctl restart systemd-logind`。详细参考了这里：[SystemD-LoginD High CPU Usage](https://tothecloud.dev/systemd-logind-high-cpu-usage/)。
+Then, execute `systemctl restart systemd-logind`. For more details, refer to this: [SystemD-LoginD High CPU Usage](https://tothecloud.dev/systemd-logind-high-cpu-usage/).

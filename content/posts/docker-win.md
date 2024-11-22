@@ -1,26 +1,27 @@
 ---
-title:  "如何在 Windows 中使用 Docker"
+
+title: "How to Use Docker on Windows"
 date: 2020-04-13T10:34:00+08:00
+
 ---
 
-## 背景
+## Background
 
-因为要复现一个 bug，所以，不得已在 Windows 上安装 Docker。
+I had to install Docker on Windows to reproduce a bug.
 
-## 过程
+## Process
 
-1. 以 Windows 10 为例，首先，如果是 Home Basic 版本，要花钱升级到 pro 版本，因为需要开启 Hyper-V 和 Container 两个功能，大概 800 RMB。
-1. 一切按默认安装，不要切换成 Windows 的 Container，因为，大部分 image 还是在 Linux 下的。如果切换了，可以启动后切回来。
-1. 使用中，如果遇到共享文件夹的权限问题，按照 https://github.com/docker/for-win/issues/3174 来解决一下。当然，很可能解决不了，会报告共享失败。然后呢，去 setting 里面的 troubleshoot，reset to factory defaults 吧。重置之后，先把共享文件夹勾好。
-1. 使用中，只要遇到错误，多试几次吧。可能能搞定的，不行就重置。
+1. Using Windows 10 as an example, if you have the Home Basic version, you'll need to pay to upgrade to the Pro version because you need to enable Hyper-V and Container features, which costs about 800 RMB.
+2. Install everything with the default settings, and do not switch to Windows Containers, since most images are still under Linux. If you do switch, you can restore it after starting up.
+3. If you encounter permission issues with shared folders, follow the instructions at https://github.com/docker/for-win/issues/3174. However, this might not solve the problem, and you might encounter a sharing failure. In that case, go to the settings, troubleshoot, and reset to factory defaults. After resetting, ensure the shared folders are selected.
+4. When you encounter errors during use, just try a few more times. It might work; if not, reset it.
 
-## 感受
+## Impressions
 
-最早在 linux 下用没什么问题，Docker 当时本身也很简单。后来在 Mac 下用就完全变了，也有界面了，也有各种颜色了，也 full of bugs 了。一上来就是 bug。很早之前记得 Docker 不支持 windows，加上上次 Mac 的各种 bug，本来没有太大期待。结果还是有些让人大跌眼睛的。
-总的讲就以下几点，
+Initially, there were no issues using Docker on Linux; Docker itself was simple back then. Later, using it on Mac brought changes, including a user interface, various colors, and numerous bugs. Right from the start, I encountered bugs. Docker did not support Windows a long time ago, and given the various bugs on Mac, I didn't have high expectations. The results were still quite surprising. In summary, here are a few points:
 
-1. 更易用了。
-1. 更多 bug 了。基本上就不要指望啥，随时做好重置的准备吧。好在，重置也给了一个快捷方式，是个易用性不错的玩具。
-1. 慢得出奇。
+1. It's easier to use.
+2. There are more bugs. Do not expect much, and be prepared to reset at any time. Fortunately, resetting offers a shortcut, making it a pretty usable tool.
+3. It's incredibly slow.
 
-现在，完全不看好 Docker、k8s 之类。完~
+At this point, I have no optimism for Docker, Kubernetes, or similar technologies. Done~

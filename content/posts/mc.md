@@ -1,22 +1,22 @@
 ---
-title:  "如何跨平台MineCraft（基岩版）联机"
-date: 2022-02-03T18:08:00+08:00
-draft: false
----
 
-## 背景
+### Title: How to Play Minecraft (Bedrock Edition) Cross-Platform
 
-春节在家花了些时间陪孩子玩Switch，偶然间买了MineCraft（基岩版）。为了跟孩子联机又试着买了Windows版本。另外，测试一下这个Blog的GitHub Action是不是还好用。
+### Date: 2022-02-03
 
-## 准备
+### Background
 
-需要两个微软账号，于是拿出了老婆多年不用的Hotmail账号。
+During the Chinese New Year holiday, I spent some time at home playing on the Switch with my child, and I ended up purchasing Minecraft (Bedrock Edition). In order to play together, I also bought the Windows version. Additionally, I wanted to test if the GitHub Actions for this blog are still working properly.
 
-## 联机
+### Preparation
 
-1. Switch重启游戏登陆MS账号，每次必须都重启，不知道为什么。
-1. 互相添加短ID为好友。
-1. Switch创建世界，Windows加入（反过来不行，不知道为什么）。
-1. 快乐的联机吧！
+You need two Microsoft accounts, so I dug out my wife's long-unused Hotmail account.
 
-水到这里为止，没有什么好说的。
+### Multiplayer
+
+1. Restart the game on the Switch and log into the Microsoft account. It has to be restarted each time, and I'm not sure why.
+2. Add each other as friends using the short ID.
+3. Create a world on the Switch; Windows should join (it doesn't work the other way around, and I'm not sure why).
+4. Enjoy playing together!
+
+This guide is brief and straightforward, with nothing much more to add.

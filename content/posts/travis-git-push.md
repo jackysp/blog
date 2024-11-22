@@ -1,17 +1,19 @@
+Certainly! Here is the translated text:
+
 ---
-title:  "如何在 travis ci 里执行 git push"
+title: "How to Execute Git Push in Travis CI"
 date: 2017-10-16T22:21:06+08:00
 ---
 
-## 背景
+## Background
 
-Travis ci 一般用来自动化的跑下测试，而不需要将跑出来的内容更新回 repo 。本文介绍了怎么将 travis 的结果进行自动提交。
+Travis CI is generally used for automating tests without needing to update the repository with the test outputs. This article explains how to automatically commit the results from Travis CI.
 
-## 过程
+## Process
 
-基本过程参考了[这个gist](https://gist.github.com/Maumagnaguagno/84a9807ed71d233e5d3f)。
+The basic process references [this gist](https://gist.github.com/Maumagnaguagno/84a9807ed71d233e5d3f).
 
-将它的 `.travis.yml` 贴在下面。
+Below is the `.travis.yml` from the gist.
 
 ```yml
 language: ruby
@@ -40,9 +42,9 @@ after_success:
   - git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
 ```
 
-这里注意 MESSAGE 在 commit 的时候要加个引号，原 gist 没加。
+Note here that MESSAGE should be quoted when committing, which the original gist did not include.
 
-原文的 README ：
+Original README:
 
 ```markdown
 # Travis-CI tested push
@@ -64,20 +66,20 @@ This is possible with Travis-CI following simple steps:
 - Go to Travis to unlock your private repo tests
 - Push your files to the private repo to test
 
-Travis now have a [deployment](https://docs.travis-ci.com/user/deployment/) feature, which may be better for certain scenarios.
+Travis now has a [deployment](https://docs.travis-ci.com/user/deployment/) feature, which may be better for certain scenarios.
 ```
 
-简单翻译一下：
+A simple translation:
 
-1. 创建 github 工程。原文看起来是创建了两个工程，一个工程用来更新另一个。
-1. 安装 Ruby。一般同时安装了 gem 。
-1. 通过 `gem install travis` 安装 travis 。
-1. 给自己的 github 账号申请一个 token 。具体可以 Google 。需要注意的是 token 权限选择里，勾选 repo 相关的所有权限就可以了，其他无关的没必要选上。
-1. 复制生成后的 token 。
-1. 在本地机器上的 repo 根目录里（是不是必须根目录我也不清楚）`travis encrypt GH_TOKEN="上面复制的 token "`。这就创建了一个经过加密的 token ，这个 token 在使用的时候 `${GH_TOKEN}` 这样用。其实就是个环境变量。具体原理应该就是把 github 的 token 加密了一下。前面这个命令会输出一个字符串到屏幕，需要自己粘贴进 travis 配置文件，放在 secure: 后面。可以使用 `travis encrypt GH_TOKEN="上面复制的 token " --add` 来直接写进配置文件里。
-1. 提交修改的配置文件。
+1. Create a GitHub project. The original seems to have created two projects, one for updating another.
+2. Install Ruby. Usually, gem is installed alongside.
+3. Install travis via `gem install travis`.
+4. Apply for a token for your GitHub account. You can Google the details. When selecting token permissions, only tick all related to repo; others can be omitted.
+5. Copy the generated token.
+6. In the root directory of the local machine's repo (not sure if it must be the root) run `travis encrypt GH_TOKEN="copied token"`. This creates an encrypted token to use as `${GH_TOKEN}`, essentially an environment variable. The command output, a string on the screen, needs to be pasted into the travis config file after secure:. Use `travis encrypt GH_TOKEN="copied token" --add` to write directly into the config file.
+7. Commit the modified configuration file.
 
-没有完全按照上面的文字翻译。**上面这段内容更适用于下面这份我自己的配置文件：**
+This translation is not strictly literal. **The above content is more suited to the following personal configuration:**
 
 ```yml
 language: ruby
@@ -110,4 +112,4 @@ after_success:
   - git push --force origin master
 ```
 
-这份文件是用来自动更新 jekyll 创建的 blog 的。分了两个工程，一个存源文件，一个存编译后的 html 文件。做这个的原因是，希望不用自己搭 jekyll 的环境也可以更新 blog 。这样即使是用在 github 网页上也可以更新 blog 了。
+This configuration is used for automatically updating a blog created with Jekyll. There are two projects, one for source files and another for compiled HTML files. The purpose of this setup is to allow updating the blog without having to set up a Jekyll environment, even allowing updates directly from the GitHub website.

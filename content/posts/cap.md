@@ -1,15 +1,15 @@
 ---
-title: "如何理解 CAP 定理"
+title: "Understanding the CAP Theorem"
 date: 2017-12-20T22:21:06+08:00
 ---
 
-# 背景
+# Background
 
-CAP 定理也是近些年最热的定理之一了，谈分布式必扯 CAP 。但是我觉得没有理解透彻，于是就想写一篇 blog 来记录下自己的理解。有新的理解会更新内容。
+The CAP theorem has become one of the hottest theorems in recent years; when discussing distributed systems, CAP is inevitably mentioned. However, I feel that I haven't thoroughly understood it, so I wanted to write a blog post to record my understanding. I will update the content as I gain new insights.
 
-# 理解
+# Understanding
 
-读了下这篇[文献](https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/45855.pdf)的第一部分。
+I read the first part of this [paper](https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/45855.pdf).
 
 > The CAP theorem [Bre12] says that you can only have two of the three desirable properties of:
 >
@@ -19,20 +19,24 @@ CAP 定理也是近些年最热的定理之一了，谈分布式必扯 CAP 。�
 >
 > This leads to three kinds of systems: CA, CP and AP, based on what letter you leave out.
 
-说下我的理解，以三台机器（ x ，y ，z ）组成的网络为例：
+Let me share my understanding, using a network composed of three machines (x, y, and z) as an example:
 
-* C: 三台机器看起来就像一台一样，一个人对一台机器的增删改查操作，始终应该是一致的。也就是从 x 读了数据，接着从 y 读，结果一样。从 x 写了数据，接着从 y 读也读到了这个新的写入。在 wikipedix 里还特别说明，稍过一段时间从 y 读到刚从 x 写的数据也是可以的（最终一致）。
-* A: 三台机器作为一个整体必读都可以读和写，部分挂掉没关系，必须可读也可写。
-* P: x ，y 和 z 之间网络断了，任何机器不能或者但拒绝提供服务，既不可读也不可写。
+* **C (Consistency)**: The three machines appear as one. Operations of addition, deletion, modification, and query on any one machine should always be consistent. That is, if you read data from x and then read from y, the results are the same. If you write data to x and then read from y, you should also read the newly written data. Wikipedia also specifically mentions that it's acceptable to read the data just written to x from y after a short period of time (eventual consistency).
 
-这里 C 是最好理解的。A 和 P 的概念比较模糊，容易混淆。
+* **A (Availability)**: The three machines, as a whole, must always be readable and writable; even if some parts fail, it must be readable and writable.
 
-下面说三种组合：
+* **P (Partition Tolerance)**: If the network between x, y, and z is broken, any machine cannot or refuses to provide services; it is neither readable nor writable.
 
-如果 x ，y 和 z 之间网络断了，
+Here, **C** is the easiest to understand. The concepts of **A** and **P** are somewhat vague and easy to confuse.
 
-* CA: 让数据一致，x 写数据，y 可读到（ C ），让系统即使是只有 x ，y 部分继续提供服务，可读可写（ A ），只能容忍 z 不提供服务，不能读写，也就不能返回错误的数据（ P 丢失）。
-* CP: 让数据一致 （ C ），让三台机器都可提供服务（可读也算）（ P ），只能容忍 x ，y ，z 都不能写（ A 丢失）。
-* AP: 让三台机器都可写（ A ），让三台机器都可提供服务（可读也算）（ P ），只能容忍 x ，y 写的数据到不了 z ，z 会返回跟 x ，y 不一致的数据（ C 丢失）。
+Now let's discuss the three combinations:
 
-CA 是 paxos/raft ，是大多数协议，牺牲了 P ，少数派节点完全沉默。CP 是只读系统，如果什么系统是只读的，之间有没有网络其实也无所谓，网络分区容忍无限大。AP 适合只追加不更新的系统，只 insert 不 delete 和 update，最后把结果合并到一起，也能用。
+If the network between x, y, and z is disconnected:
+
+* **CA**: Ensure data consistency (**C**). When x writes data, y can read it (**C**). Allow the system to continue providing services—even if only x and y are operational—ensuring it is readable and writable (**A**). We can only tolerate z not providing service; it cannot read or write, nor return incorrect data (losing **P**).
+
+* **CP**: Ensure data consistency (**C**). Allow all three machines to provide services (even if only for reads) (**P**). We can only tolerate that x, y, and z cannot write (losing **A**).
+
+* **AP**: Allow all three machines to write (**A**). Allow all three machines to provide services (reads count) (**P**). We can only tolerate that the data written by x and y doesn't reach z; z will return data inconsistent with x and y (losing **C**).
+
+**CA** is exemplified by Paxos/Raft, which are majority protocols that sacrifice **P**; minority nodes remain completely silent. **CP** represents a read-only system; if a system is read-only, whether there's a network partition doesn't really matter—the tolerance to network partitions is infinitely large. **AP** is suitable for systems that only append and do not update—only inserts, no deletes or updates. Finally, by merging the results together, it can still function.

@@ -1,14 +1,12 @@
 ---
-title:  "如何用 Sysbench 实现简单负载"
+title: "How to Implement a Simple Load Using Sysbench"
 date: 2020-12-14T12:06:00+08:00
-draft: false 
+draft: false
 ---
 
-[Sysbench](https://github.com/akopytov/sysbench) 是数据库测试中常使用的工具。1.0 版本以后，它支持了更强大的自定义功能。可以让使用者方便的编写一些 lua 脚本来模拟负载。
-写这篇文章的目的，一是本来就想研究下 Sysbench 自定义负载的用法，二是，因为看到了 MySQL 官方给出的 mysqlslap 工具，试用了一下，发现随随便便就 hang 死在那，在数据库性能测试中，
-会让用户误认为是数据库有问题，坑了不少人，所以，想让大家少踩坑吧。
+[Sysbench](https://github.com/akopytov/sysbench) is a tool commonly used in database testing. Since version 1.0, it has supported more powerful custom functions, allowing users to conveniently write some Lua scripts to simulate load. The purpose of writing this article is, firstly, because I wanted to explore Sysbench's custom load usage. Secondly, because I tried the mysqlslap tool provided by MySQL's official source, and found that it freezes easily during database performance testing, which could mislead users into thinking there is an issue with the database, causing trouble for many. Therefore, I want to help people avoid these pitfalls.
 
-## 一个简单的例子
+## A Simple Example
 
 ```lua
 #!/usr/bin/env sysbench
@@ -23,17 +21,15 @@ function event()
 end
 ```
 
-第一行 `require` 将 Sysbench 自带的基础库包含进来；
-空的 `prepare_statement` 是 `oltp_common` 的回调函数，必须要有；
-具体单次负载如何执行就是后面的 `event` 函数里实现了。
+The first line `require` includes Sysbench's built-in basic library; the empty `prepare_statement` is a callback function from `oltp_common` that must be present; the specific execution of a single load is implemented in the `event` function.
 
-把这段脚本保存为一个 lua 文件，比如叫 set.lua，然后用 sysbench 执行它就可以了。
+Save this script as a Lua file, for example, named set.lua, and then execute it using sysbench.
 
 ```shell
 sysbench --config-file=config --threads=100 set.lua --tables=1 --table_size=1000000 run
 ```
 
-比如用上述命令。当然这里 `--tables=1` 和 `--table_size=1000000` 对于这个负载都是没什么用的，不填也行，`--threads` 控制并发度。
+You can use the above command. Of course, here `--tables=1` and `--table_size=1000000` are not useful for this load, so they are optional. `--threads` controls concurrency.
 
 ```shell
 $ cat config
@@ -46,10 +42,9 @@ mysql-db=sbtest
 report-interval=10
 ```
 
-config 文件里就是把不常调整的参数一次性写进去，避免命令行里一长串参数。这些都是必填项目，`time` 代表测试时长，`report-interval` 用来观测实时性能结果，
-其他的都是如何连接数据库。
+In the config file, parameters you don't frequently adjust are written once to avoid having a long string of parameters in the command line. These are required fields: `time` represents the test duration, `report-interval` is used to observe real-time performance results, and the others pertain to how to connect to the database.
 
-跑起来的样子基本就是：
+The running output generally looks like:
 
 ```text
 [ 10s ] thds: 100 tps: 94574.34 qps: 94574.34 (r/w/o: 0.00/0.00/94574.34) lat (ms,95%): 3.68 err/s: 0.00 reconn/s: 0.00
@@ -63,7 +58,7 @@ config 文件里就是把不常调整的参数一次性写进去，避免命令�
 [ 90s ] thds: 100 tps: 109296.44 qps: 109296.44 (r/w/o: 0.00/0.00/109296.44) lat (ms,95%): 2.91 err/s: 0.00 reconn/s: 0.00
 ```
 
-最后，结束还会有个汇总报告。
+Finally, there will be a summary report.
 
 ```text
 SQL statistics:
