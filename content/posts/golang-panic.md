@@ -1,13 +1,7 @@
-Here is the translation of the given text into English:
-
 ---
-
 title: "How Immediate is Golang's Panic"
-
 date: 2018-07-26T14:24:00+08:00
-
 draft: false
-
 ---
 
 Let's first look at the following code snippet:

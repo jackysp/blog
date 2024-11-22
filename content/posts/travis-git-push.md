@@ -1,5 +1,3 @@
-Certainly! Here is the translated text:
-
 ---
 title: "How to Execute Git Push in Travis CI"
 date: 2017-10-16T22:21:06+08:00

@@ -1,8 +1,6 @@
 ---
-
 title: "How to Use Docker on Windows"
 date: 2020-04-13T10:34:00+08:00
-
 ---
 
 ## Background

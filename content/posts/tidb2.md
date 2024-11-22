@@ -1,10 +1,6 @@
-Certainly! Here is the provided text translated into English:
-
 ---
-
 title: "How to Read TiDB Source Code (Part 2)"
 date: 2020-07-12T12:09:00+08:00
-
 ---
 
 Continuing from [the previous article](/posts/tidb1), we learned how to set up the environment for reading code and where to start reading the code. In this part, we'll introduce methods for viewing code based on some common needs.

@@ -1,9 +1,7 @@
-Certainly! Here's the translated text in English:
-
 ---
-
 title: "How to Read TiDB Source Code (Part 1)"
 date: 2020-07-06T16:51:00+08:00
+---
 
 ## Background
 

@@ -1,10 +1,6 @@
-Here is the translation of the provided text to English:
-
 ---
-
-Title: How to Implement MySQL X Protocol on TiDB
-Date: 2017-08-16
-
+title: How to Implement MySQL X Protocol on TiDB
+date: 2017-08-16
 ---
 
 # Some Documents on MySQL

@@ -1,7 +1,8 @@
-### Title: "How to Configure a Chinese LaTeX Environment on Windows"
-
-#### Date: March 31, 2021
-#### Draft: False
+---
+title: "How to Configure a Chinese LaTeX Environment on Windows"
+date: March 31, 2021
+draft: False
+---
 
 ## Background
 

@@ -1,10 +1,6 @@
-Here's the translation of the provided text into English:
-
 ---
-
 title: "How to Read the Source Code of TiDB (Part 3)"
 date: 2020-07-28T11:47:00+08:00
-
 ---
 
 In the previous article, we introduced methods for viewing syntax and configurations. In this article, we will discuss how to view system variables, including default values, scopes, and how to monitor metrics.

@@ -1,11 +1,7 @@
-Here is the translated text:
-
 ---
-
 title: "How TiDB Implements the INSERT Statement"  
 date: 2018-07-11T14:18:00+08:00  
 draft: true  
-
 ---
 
 In the previous article ["Overview of the Insert Statement"](https://zhuanlan.zhihu.com/p/34512827), the general process of the INSERT statement was introduced. This article will explain in detail the implementation of several types of INSERT statements in TiDB.

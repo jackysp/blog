@@ -1,7 +1,8 @@
-
+---
 title: "Encounter with a Major Issue with Cloudflare Warp: A Life and Death Rescue for VPS"
 date: 2024-05-15T20:31:00+08:00
 draft: false
+---
 
 Today, I planned to use Warp to select an IP exit for my VPS, following the [Cloudflare official documentation](https://developers.cloudflare.com/warp-client/get-started/linux/). When executing the `warp-cli connect` step, the server immediately lost connection, and the problem persisted even after rebooting.
 

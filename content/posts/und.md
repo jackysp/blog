@@ -1,5 +1,3 @@
-Here's the translated text:
-
 ---
 title: "How to Dynamically Update DNS Records for Namesilo"
 date: 2020-02-01T12:27:00+08:00

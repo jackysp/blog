@@ -1,9 +1,7 @@
 ---
-
 title: "How to Check Piano Popularity"  
-date: 2018-10-23T11:38:00+08:00  
+date: 2018-10-23T11:38:00+08:00
 draft: false  
-
 ---
 
 Recently, I needed to buy a piano for my child, so I gathered some data for reference. Please remove if infringing.  

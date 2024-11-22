@@ -1,10 +1,6 @@
-Here is the translation of the text to English:
-
 ---
-
 title: "How to Read TiDB Source Code (Part 5)"
 date: 2020-09-08T11:36:00+08:00
-
 ---
 
 When using TiDB, you may occasionally encounter some exceptions, such as the "Lost connection to MySQL server during query" error. This indicates that the connection between the client and the database has been disconnected (not due to user action). The reasons for disconnection can vary. This article attempts to analyze some common TiDB errors from the perspective of exception handling and code analysis. Additionally, some exceptions are not errors but performance issues due to slow execution. In the second half of this article, we will also introduce common tools for tracking performance.

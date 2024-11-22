@@ -1,8 +1,9 @@
-The text provided is a detailed set of instructions and queries for practicing SQL using PostgreSQL 9.4 BETA 2, focusing on creating and querying tables related to students, courses, scores, and teachers. Here's a summary:
+---
+title: How to Practice Using SQL
+date: 2014-06-05
+---
 
-### Title and Date
-- **Title:** How to Practice Using SQL
-- **Date:** June 5, 2014
+The text provided is a detailed set of instructions and queries for practicing SQL using PostgreSQL 9.4 BETA 2, focusing on creating and querying tables related to students, courses, scores, and teachers. Here's a summary:
 
 ### Database Structure
 The database consists of four tables:

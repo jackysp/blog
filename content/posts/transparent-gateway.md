@@ -1,11 +1,7 @@
-Certainly! Here's the translated text:
-
 ---
-
 title: "How to Deploy a Secure Transparent Gateway"
 date: 2022-10-12T21:07:00+08:00
 draft: true
-
 ---
 
 ## Background

@@ -1,5 +1,7 @@
-Title: "How to View CMU DB Group's OLTP-Bench"
-Date: 2018-02-23
+---
+title: "How to View CMU DB Group's OLTP-Bench"
+date: 2018-02-23
+---
 
 # Introduction to OLTP-Bench
 

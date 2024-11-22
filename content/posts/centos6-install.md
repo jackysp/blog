@@ -1,5 +1,4 @@
 ---
-
 title: "How to Install CentOS as a Virtualization Host"
 date: 2014-06-05T22:21:06+08:00
 ---

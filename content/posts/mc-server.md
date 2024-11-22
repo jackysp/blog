@@ -1,11 +1,7 @@
-Here's the translation of the provided text into English:
-
 ---
-
 title: "How to Set Up a Minecraft Bedrock Server Using Multipass"
 date: 2022-05-02T19:05:00+08:00
 draft: false
-
 ---
 
 ## Background

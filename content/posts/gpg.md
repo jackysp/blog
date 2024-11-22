@@ -1,5 +1,7 @@
-## Title: "How to Create GitHub Verified Commits on a MacBook M1"
-### Date: 2022-02-12T11:54:00+08:00
+---
+title: "How to Create GitHub Verified Commits on a MacBook M1"
+date: 2022-02-12T11:54:00+08:00
+---
 
 ## Background
 

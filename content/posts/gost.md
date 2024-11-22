@@ -1,13 +1,7 @@
-Here's the translated text into English:
-
 ---
-
 title: "How to Deploy an HTTPS Proxy Service"
-
 date: 2020-01-12T19:43:00+08:00
-
 draft: false
-
 ---
 
 ## Preface

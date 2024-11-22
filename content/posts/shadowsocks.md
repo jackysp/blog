@@ -1,8 +1,8 @@
 ---
-
-**Title: "How to Deploy a Shadowsocks Server"**  
-**Date: 2018-09-27T15:48:00+08:00**  
-**Draft: false**
+title: "How to Deploy a Shadowsocks Server"
+date: 2018-09-27T15:48:00+08:00
+draft: false
+---
 
 There are multiple versions of the Shadowsocks server side implementation. The original version was written in Python, and later, enthusiasts implemented it in various programming languages of their liking.
 

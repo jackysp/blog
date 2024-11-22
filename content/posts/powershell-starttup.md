@@ -1,10 +1,6 @@
-Here is the translation of the text to English:
-
 ---
-
 title: "How to Start a PowerShell Script in the Background at Windows Startup"  
 date: 2020-01-14T08:56:00+08:00  
-
 ---
 
 * Create a script and place it in `C:\Users\name\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\`  

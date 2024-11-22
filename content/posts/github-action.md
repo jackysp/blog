@@ -1,10 +1,8 @@
-Sure, here is the translated text:
-
 ---
-
 title: "How to Automatically Publish a Blog Using GitHub Actions"
 date: 2020-12-16T16:11:00+08:00
 draft: false
+---
 
 In [this post](/posts/travis-git-push), I used Travis to enable automatic blog publishing. However, I recently discovered that Travis does not run automatically anymore (though it works manually). I haven’t looked into it closely because GitHub Actions have been introduced, so I decided to move all dependencies to GitHub.
 
