@@ -23,5 +23,3 @@ Many containers do not have curl, so wget is used instead. Wget is better as it 
 ```bash
 wget --no-check-certificate http://127.0.0.1:10080/status
 ```
-
----

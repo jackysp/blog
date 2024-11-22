@@ -61,4 +61,3 @@ To monitor the server’s status, monitoring is necessary, especially for cloud 
 Using the free version is fine, just follow the guide to select a Linux server integration, then run the Grafana Agent installation and verification on the server to be monitored. Note to change the hostname in the Grafana Agent configuration file to differentiate between different servers, which acts as a label.
 
 I understand that Grafana Agent is a lightweight node exporter with some Prometheus functionalities, but it can also remote write, so there's no need to worry about the disk filling up.
-
