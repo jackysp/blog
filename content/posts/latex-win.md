@@ -1,6 +1,6 @@
 ---
 title: "How to Configure a Chinese LaTeX Environment on Windows"
-date: March 31, 2021
+date: 2021-03-31
 draft: False
 ---
 

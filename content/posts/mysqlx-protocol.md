@@ -27,7 +27,6 @@ date: 2017-08-16
 4. The server should include contents like the Query Context from the original TiDB server, as it primarily translates into SQL for execution.
 5. Implement the decoding and handling of messages. Although only a sentence, the workload included is substantial.
 
-<!---
 In `mysqlx_all_msgs.h`, all messages are initialized
 
 ```c++
@@ -226,4 +225,3 @@ Max_length: 0
 Decimals:   0
 Flags:      
 ```
--->
