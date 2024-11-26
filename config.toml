@@ -15,3 +15,4 @@ hasCJKLanguage = false
 [params]
     description = "A blog that's all about how to do it."
     #themeColor = "theme-base-0d" # use the default color
+    layoutReverse = true
