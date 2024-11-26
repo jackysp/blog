@@ -8,7 +8,7 @@ hasCJKLanguage = false
 
 [Menus]
     main = [
-      {Name = "Github", URL = "https://github.com/jackysp/"},
+      {Name = "GitHub", URL = "https://github.com/jackysp/"},
       {Name = "LinkedIn", URL = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"}
     ]
 
