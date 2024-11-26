@@ -3,7 +3,7 @@ title: "How to Install CentOS as a Virtualization Host"
 date: 2014-06-05T22:21:06+08:00
 ---
 
-# Installation Process
+## Installation Process
 
 Installed Version: CentOS 6.3
 
@@ -12,7 +12,7 @@ Installed Version: CentOS 6.3
 3. The rest can be set to default or slightly modified, such as choosing the time zone.
 4. After installation, it will include the KVM suite and SSH.
 
-# Installation Notes
+## Installation Notes
 
 * No internet connection is needed throughout the process, which is much better than Debian and Ubuntu.
 * You're not forced to set up a non-root user.

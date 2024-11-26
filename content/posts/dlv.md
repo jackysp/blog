@@ -3,13 +3,13 @@ title: "Using delve to Debug Golang Programs"
 date: 2019-09-16T13:24:00+08:00
 ---
 
-# Background
+## Background
 
 When I first started writing Golang, I was always looking for a convenient debugging tool. Back then, I came across documentation about using `gdb` to debug and also tried `delve`, but neither felt easy to use. Later, on someone's advice, I went back to the good old `print` statements...
 
 Over the past couple of days, I was debugging `go test` and found that tests would always hang when run per package. I couldn't think of a suitable method at first, so I thought of `delve` again. After giving it a try, I found it has become much more mature than before.
 
-# Usage
+## Usage
 
 `dlv attach ${pid}` is the method I use most often. After attaching, you can use debugging commands similar to `gdb`. You can use `help` to view specific commands.
 

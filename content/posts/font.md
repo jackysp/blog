@@ -3,11 +3,11 @@ title: "How to Use Monospaced Fonts in VS Code"
 date: 2017-12-26T22:21:06+08:00
 ---
 
-# Background
+## Background
 
 The English font set in Microsoft's VS Code is monospaced, while the Chinese font is not.
 
-# Method
+## Method
 
 1. Download and install the fonts from [here](https://github.com/be5invis/Sarasa-Gothic). This font combines Source Han Sans and is said to align punctuation strictly.
 2. Use the method described [here](https://github.com/be5invis/Sarasa-Gothic/issues/8) to set up VS Code.

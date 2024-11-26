@@ -3,13 +3,13 @@ title: "How to Test CockroachDB Performance Using Benchmarksql"
 date: 2018-07-06T21:21:00+08:00
 ---
 
-# Why Test TPC-C
+## Why Test TPC-C
 
 First of all, TPC-C is the de facto OLTP benchmark standard. It is a set of specifications, and any database can publish its test results under this standard, so there's no issue of quarreling over the testing tools used.
 
 Secondly, TPC-C is closer to real-world scenarios as it includes a transaction model within it. In the flow of this transaction model, there are both high-frequency simple transaction statements and low-frequency inventory query statements. Therefore, it tests the database more comprehensively and practically.
 
-# Testing TPC-C on CockroachDB
+## Testing TPC-C on CockroachDB
 
 This year, CockroachDB released its TPC-C performance results. However, unfortunately, they did not use a tool recognized by the database industry that implements the TPC-C standard for testing. Instead, they used their own implementation of a TPC-C tool. The compliance level of this tool was not recognized. In the white paper officially released by them, it is also mentioned that this TPC-C cannot be compared with the TPC-C standard.
 
@@ -17,7 +17,7 @@ Therefore, I thought of using a highly recognized tool in the industry for testi
 
 Benchmarksql 5.0 supports the PostgreSQL protocol, Oracle protocol, and MySQL protocol (the MySQL protocol is supported in the code, but the author hasn't fully tested it, so the official documentation doesn't mention MySQL). Among these, the PostgreSQL protocol is supported by CockroachDB.
 
-## Test Preparation
+### Test Preparation
 
 After preparing the Benchmarksql code, don't rush into testing. There are three main pitfalls here that need to be addressed first.
 
@@ -29,10 +29,10 @@ After preparing the Benchmarksql code, don't rush into testing. There are three 
 
 3. **CockroachDB does not support `SELECT FOR UPDATE`.** This is the easiest to solve: comment out all `FOR UPDATE` clauses in Benchmarksql. CockroachDB itself supports the serializable isolation level; lacking `FOR UPDATE` doesn't affect consistency.
 
-## Starting the Test
+### Starting the Test
 
 After overcoming the pitfalls mentioned above, you can proceed with the normal testing process: creating the database, creating tables and indexes, importing data, and testing. You can refer to Benchmarksql's `HOW-TO-RUN.txt`.
 
-## Test Results
+### Test Results
 
 On my test machine with 40 cores, 128 GB of memory, and SSD, under 100 warehouses, the tpmC is approximately 5,000. This is about one-tenth of PostgreSQL 10 on the same machine. PostgreSQL can reach around 500,000 tpmC.

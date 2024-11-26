@@ -3,7 +3,7 @@ title: "How to View CMU DB Group's OLTP-Bench"
 date: 2018-02-23
 ---
 
-# Introduction to OLTP-Bench
+## Introduction to OLTP-Bench
 
 OLTP-Bench is an open-source benchmarking tool platform for OLTP scenarios from CMU's DB Group. It was designed to provide a simple, easy-to-use, and extensible testing platform.
 
@@ -31,7 +31,7 @@ The project introduction page includes three papers published by the authors, wi
 
 Based on the GitHub page, the project does not seem to have a high level of attention and has not been very active recently. Most issues and pull requests come from within CMU.
 
-# OLTP-Bench: An Extensible Testbed for Benchmarking Relational Databases
+## OLTP-Bench: An Extensible Testbed for Benchmarking Relational Databases
 
 The paper "OLTP-Bench: An Extensible Testbed for Benchmarking Relational Databases" can be regarded as the most detailed introduction to this project.
 
@@ -55,19 +55,19 @@ Chapter five describes the demo deployment environment, with subsequent sections
 Chapter six uses the demo from the previous chapter to introduce features, analyzed as follows:
 
 1. Rate control. It seems odd for a benchmarking tool to perform rate control, as the conventional understanding is to push performance as high as possible to gauge system limits. The paper provides an example using the Wikipedia test suite, increasing by 25 TPS every 10 seconds to observe database latency changes.
-   
+
 2. Tagging different transactions in the same test suite for separate statistics – using TPCC as an example to statistically categorize transactions from different stages.
-   
+
 3. Modifying load content, like switching from read-only to write-only loads.
-   
+
 4. Changing the method for load randomness.
-   
+
 5. Monitoring server status alongside database monitoring by deploying an OLTP-Bench monitor on the server.
-   
+
 6. Running multiple test suites simultaneously, such as running TPCC and YCSB concurrently.
-   
+
 7. Multi-client usage, mentioned in chapter three.
-   
+
 8. Repeatability. To prove OLTP-Bench results are genuine and reliable, the authors tested PG's SSI performance using SIBench from the tool on similarly configured machines, achieving results consistent with those in PG's SSI paper.
 
 In summary, rate control and transaction tagging stand out as novel features, while the rest are not particularly special.
@@ -80,7 +80,7 @@ Chapter nine outlines the authors’ future plans, including support for pure No
 
 In conclusion, as the authors mentioned, this is an integrative framework where ease of use and extensibility are key.
 
-# Usage Summary
+## Usage Summary
 
 OLTP-Bench is relatively simple to install and use, especially the deployment. Its cross-platform nature provides a better user experience compared to traditional tpcc and sysbench. Usage is relatively straightforward due to the plethora of test configuration templates provided, allowing easy initiation of tests with simple configuration file modifications. The test results are stable, although certain features mentioned in papers, like server status monitoring, still require exploration.
 
@@ -89,7 +89,7 @@ I tested all 15 test suites on MySQL 5.7 and TiDB, obtaining the following resul
 
 Its usability is quite evident. As for the ease of secondary development, it should be relatively simple, considering the entire OLTP-Bench project is not particularly large, with around 40,000 lines of code.
 
-# Other
+## Other
 
 * tpch: While the framework's code appears to support tpch, it proved unusable during practical tests, likely due to incomplete implementation and thus excluded from the README.
 * Referring to future work mentioned in chapter nine of the paper, especially "generating load to match production data distribution," this remains unimplemented, as seen in the codebase.

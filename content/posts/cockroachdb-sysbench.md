@@ -3,7 +3,7 @@ title: "How to Test CockroachDB Performance Using Sysbench"
 date: 2018-06-11T13:50:00+08:00
 ---
 
-# Compiling Sysbench with pgsql Support
+## Compiling Sysbench with pgsql Support
 
 CockroachDB uses the PostgreSQL protocol. If you want to use Sysbench for testing, you need to enable pg protocol support in Sysbench. Sysbench already supports the pg protocol, but it is not enabled by default during compilation. You can configure it with the following command:
 
@@ -13,7 +13,7 @@ CockroachDB uses the PostgreSQL protocol. If you want to use Sysbench for testin
 
 Of course, preliminary work involves downloading the Sysbench source code and installing the necessary PostgreSQL header files required for compilation (you can use `yum` or `sudo` to install them).
 
-# Testing
+## Testing
 
 The testing method is no different from testing MySQL or PostgreSQL; you can test any of the create, read, update, delete (CRUD) operations you like. The only thing to note is to set `auto_inc` to `off`. 
 
@@ -23,7 +23,7 @@ That is:
 
 When `auto_inc = on` (which is the default value in Sysbench)
 
-**Table Structure**
+### Table Structure
 
 ```sql
 CREATE TABLE sbtest1 (
@@ -37,7 +37,7 @@ CREATE TABLE sbtest1 (
 )
 ```
 
-**Data**
+### Data
 
 ```sql
 root@:26257/sbtest> SELECT id FROM sbtest1 ORDER BY id LIMIT 1;
@@ -50,7 +50,7 @@ root@:26257/sbtest> SELECT id FROM sbtest1 ORDER BY id LIMIT 1;
 
 As you can see, the data does not start from `1`, nor is it sequential. Normally, the `id` in a Sysbench table should be within the range `[1, table_size]`.
 
-**SQL**
+### SQL
 
 ```sql
 UPDATE sbtest%u SET k = k + 1 WHERE id = ?
@@ -58,7 +58,7 @@ UPDATE sbtest%u SET k = k + 1 WHERE id = ?
 
 Taking the `UPDATE` statement as an example, `id` is used as the query condition. Sysbench assumes that this `id` should be between `[1, table_size]`, but in reality, it's not.
 
-**Example of Correct Testing Command Line**
+### Example of Correct Testing Command Line
 
 ```shell
 sysbench --db-driver=pgsql --pgsql-host=127.0.0.1 --pgsql-port=26257 --pgsql-user=root --pgsql-db=sbtest \

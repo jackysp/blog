@@ -6,7 +6,7 @@ draft: true
 
 In the previous article ["Overview of the Insert Statement"](https://zhuanlan.zhihu.com/p/34512827), the general process of the INSERT statement was introduced. This article will explain in detail the implementation of several types of INSERT statements in TiDB.
 
-# Types of INSERT Statements
+## Types of INSERT Statements
 
 In TiDB, there are the following types of INSERT statements:
 
@@ -33,7 +33,7 @@ The last type, LOAD DATA, follows the same rule as INSERT IGNORE—it ignores co
 
 This article mainly focuses on the source code implementation of the first and second types (INSERT, INSERT IGNORE), while the third and fifth types (INSERT ON DUPLICATE KEY UPDATE, REPLACE) will be introduced later. INSERT IGNORE ON DUPLICATE KEY UPDATE involves some special handling on top of INSERT ON DUPLICATE KEY UPDATE, and LOAD DATA is a special implementation of INSERT IGNORE, so they will not be detailed here.
 
-# INSERT Statement
+## INSERT Statement
 
 The major difference between these various INSERT statements lies in the execution layer. We will continue with the explanation from ["Overview of the Insert Statement"](https://zhuanlan.zhihu.com/p/34512827). If you don’t remember the previous content, feel free to refer back to the original article.
 
@@ -59,7 +59,7 @@ Execute this SQL line by line in both TiDB and MySQL to see the results.
 
 MySQL:
 
-```
+```text
 mysql> CREATE TABLE t (i INT UNIQUE);
 Query OK, 0 rows affected (0.15 sec)
 
@@ -77,7 +77,7 @@ Query OK, 0 rows affected (0.11 sec)
 
 TiDB:
 
-```
+```text
 mysql> CREATE TABLE t (i INT UNIQUE);
 Query OK, 0 rows affected (1.04 sec)
 
@@ -96,7 +96,7 @@ ERROR 1062 (23000): Duplicate entry '1' for key 'i'
 
 As can be seen, for the INSERT statement, TiDB performs conflict detection at the time of transaction commitment, while MySQL performs the detection when the statement is executed. This is because in insertOneRow, the PresumeKeyNotExists option is set, meaning all INSERTs initially assume that no conflicts will occur, and conflict detection is deferred to the commitment phase to perform a bulk check on all rows inserted in the transaction.
 
-# INSERT IGNORE Statement
+## INSERT IGNORE Statement
 
 The semantics of INSERT IGNORE have been introduced earlier. Since usual INSERTs are checked for conflicts at commitment, can INSERT IGNORE follow this approach as well? The answer is no, due to the following reasons:
 

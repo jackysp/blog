@@ -3,11 +3,11 @@ title: "Understanding the CAP Theorem"
 date: 2017-12-20T22:21:06+08:00
 ---
 
-# Background
+## Background
 
 The CAP theorem has become one of the hottest theorems in recent years; when discussing distributed systems, CAP is inevitably mentioned. However, I feel that I haven't thoroughly understood it, so I wanted to write a blog post to record my understanding. I will update the content as I gain new insights.
 
-# Understanding
+## Understanding
 
 I read the first part of this [paper](https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/45855.pdf).
 

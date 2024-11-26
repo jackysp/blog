@@ -3,14 +3,14 @@ title: How to Implement MySQL X Protocol on TiDB
 date: 2017-08-16
 ---
 
-# Some Documents on MySQL
+## Some Documents on MySQL
 
 * Client Usage Guide [MySQL Shell User Guide](https://dev.mysql.com/doc/refman/5.7/en/mysql-shell.html)
 * Server Configuration Guide [Using MySQL as a Document Store](https://dev.mysql.com/doc/refman/5.7/en/document-store.html)
 * Application Development API Guide [X DevAPI User Guide](https://dev.mysql.com/doc/x-devapi-userguide/en/)
 * Introduction to Server Internal Implementation [X Protocol](https://dev.mysql.com/doc/internals/en/x-protocol.html).
 
-# Implementation Principle
+## Implementation Principle
 
 * Communication between client and server is over TCP and the protocol uses protobuf.
 * After the server receives a message, it decodes and analyzes it. The protocol includes a concept called namespace, which specifically refers to whether the namespace is empty or "sql", in which case the message content is executed as a SQL statement; if it is "xplugin" or "mysqlx," the message is handled in another way. The other ways can be divided into:
@@ -19,7 +19,7 @@ date: 2017-08-16
 * "xplugin" and "mysqlx" have the same function, with the latter being the new name for the former, retained temporarily for compatibility.
 * The content of "mysqlx" messages, apart from explicit command content like kill_client, are mostly transformed into SQL statements which the server processes, essentially turning most into a form where the namespace is "sql".
 
-# Implementation Steps
+## Implementation Steps
 
 1. Start a new server for TiDB. The relevant configuration parameters such as IP, port, and socket need to be set.
 2. Implement the reading and writing functionality for message communication.
@@ -109,14 +109,14 @@ ngs::Error_code do_dispatch_command(xpl::Session &session, xpl::Crud_command_han
 
 The rest is filling in the gaps.
 
-```
+```text
 Client::run => Client::handle_message => Session::handle_message => Session::handle_auth_message => some auth handlers
                                                                  => Session::handle_ready_message => xpl::dispatcher::dispatch_command => ngs::Error_code do_dispatch_command => some crud handlers
 ```
 
 Mapping between MySQL type and X protocol type
 
-```
+```text
 //     ================= ============ ======= ========== ====== ========
 //     SQL Type          .type        .length .frac_dig  .flags .charset
 //     ================= ============ ======= ========== ====== ========
@@ -149,7 +149,7 @@ Mapping between MySQL type and X protocol type
 
 The first SQL field information of MySQL:
 
-```
+```text
 Field   1:  `@@lower_case_table_names`
 Catalog:    `def`
 Database:   ``
@@ -186,9 +186,10 @@ Max_length: 0
 Decimals:   0
 Flags:      
 ```
+
 For TiDB:
 
-```
+```text
 Field   1:  `@@lower_case_table_names`
 Catalog:    `def`
 Database:   ``
