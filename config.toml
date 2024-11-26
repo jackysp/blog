@@ -13,5 +13,5 @@ hasCJKLanguage = false
     ]
 
 [params]
-    description = "A blog that's all about how to do it."
+    description = "A collection of straightforward how-to guides."
     #themeColor = "theme-base-0d" # use the default color
