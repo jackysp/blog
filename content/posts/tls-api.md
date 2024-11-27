@@ -1,7 +1,7 @@
 ---
 title: "How to Use the HTTP API in TiDB with TLS Enabled"  
 date: 2023-05-22T21:45:00-07:00  
-draft: true
+draft: false
 ---
 
 ## Background
