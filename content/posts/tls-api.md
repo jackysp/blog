@@ -6,7 +6,7 @@ draft: false
 
 ## Background
 
-Many NA (North America) customers have TLS enabled, which is different from the lab environment.
+Many customers have TLS enabled, which is different from the lab environment.
 
 ## Curl
 
