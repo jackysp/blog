@@ -1,6 +1,6 @@
 ---
 title: "Exploring Local LLMs with Ollama: My Journey and Practices"
-date: 2024-11-27T18:26:14+8:00
+date: 2024-11-27T18:26:14+08:00
 draft: false
 ---
 
