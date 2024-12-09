@@ -2,7 +2,7 @@ module github.com/jackysp/blog
 
 go 1.23.3
 
-require github.com/gohugoio/hugo v0.139.0
+require github.com/gohugoio/hugo v0.139.4
 
 require (
 	cloud.google.com/go v0.116.0 // indirect
@@ -46,7 +46,7 @@ require (
 	github.com/bep/debounce v1.2.0 // indirect
 	github.com/bep/gitmap v1.6.0 // indirect
 	github.com/bep/goat v0.5.0 // indirect
-	github.com/bep/godartsass/v2 v2.3.0 // indirect
+	github.com/bep/godartsass/v2 v2.3.2 // indirect
 	github.com/bep/golibsass v1.2.0 // indirect
 	github.com/bep/gowebp v0.3.0 // indirect
 	github.com/bep/imagemeta v0.8.3 // indirect
@@ -128,7 +128,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tdewolff/minify/v2 v2.21.1 // indirect
 	github.com/tdewolff/parse/v2 v2.7.18 // indirect
-	github.com/tetratelabs/wazero v1.8.1 // indirect
+	github.com/tetratelabs/wazero v1.8.2 // indirect
 	github.com/yuin/goldmark v1.7.8 // indirect
 	github.com/yuin/goldmark-emoji v1.0.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
@@ -156,7 +156,7 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20241104194629-dd2ea8efbc28 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241104194629-dd2ea8efbc28 // indirect
 	google.golang.org/grpc v1.67.1 // indirect
-	google.golang.org/protobuf v1.35.1 // indirect
+	google.golang.org/protobuf v1.35.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	howett.net/plist v1.0.0 // indirect
