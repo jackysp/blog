@@ -83,10 +83,10 @@ For those seeking more affordable options, several brands offer Brompton-like bi
 - **Saddle Upgrade**:
   - **Wide Saddle**: For rides longer than 1 hour. 90 degrees is ideal for the saddle angle.
 
-    ![](images/20241209_213208_IMG_6425.jpg)
+    ![](/posts/images/20241209_213208_IMG_6425.jpg)
   - **Thin Saddle**: Suitable for shorter rides. 60 degrees is ideal for the saddle angle.
 
-    ![](images/20241209_213223_IMG_6424.jpg)
+    ![](/posts/images/20241209_213223_IMG_6424.jpg)
 - **Accessory Shopping**: Most accessories can be found at stores like Decathlon, though some items may require sourcing elsewhere due to sizing.
 
 ---
