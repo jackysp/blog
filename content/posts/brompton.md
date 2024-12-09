@@ -2,7 +2,6 @@
 title: "Brompton-like Bikes: A Guide to Trifoldable Bicycles"
 date: 2024-12-09T19:27:06+08:00
 ---
-
 Brompton-like bikes are renowned for their compactness and portability. Unlike the typical two-fold bikes, these are trifold bikes, making them exceptionally convenient for urban commuting and travel.
 
 ## Key Features
@@ -83,7 +82,11 @@ For those seeking more affordable options, several brands offer Brompton-like bi
 - **UV Protection**: Use sun cream or wear sun-protective clothing.
 - **Saddle Upgrade**:
   - **Wide Saddle**: For rides longer than 1 hour. 90 degrees is ideal for the saddle angle.
+
+    ![](images/20241209_213208_IMG_6425.jpg)
   - **Thin Saddle**: Suitable for shorter rides. 60 degrees is ideal for the saddle angle.
+
+    ![](images/20241209_213223_IMG_6424.jpg)
 - **Accessory Shopping**: Most accessories can be found at stores like Decathlon, though some items may require sourcing elsewhere due to sizing.
 
 ---
