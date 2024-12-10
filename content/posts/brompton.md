@@ -14,6 +14,11 @@ Brompton-like bikes are renowned for their compactness and portability. Unlike t
 - **Popularity**: Highly popular in Singapore.
 - **Non-standard Accessories**: May require specific accessories due to unique design.
 
+My bike is a Brompton clone, and I'll share some insights on the various brands and models available.
+
+
+![](/posts/images/20241210_093935_BAD44C59-7EF9-428A-8AA3-C81C46B01A9A.JPG)
+
 ## Brompton Bikes
 
 Brompton is the original brand offering high-quality trifold bikes.
