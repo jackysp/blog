@@ -5,7 +5,7 @@ date: 2024-12-11T17:11:00+08:00
 
 ## Introduction
 
-As a long-time podcaster, I've always enjoyed sharing my thoughts and ideas through audio. While the world of video content—and the role of a YouTuber—has its allure, the complexities of video editing have kept me anchored in the realm of podcasting. My journey has involved leveraging platforms like **Spotify Creator** (formerly **Anchor**) for hosting and distributing my recordings. This platform offers a wide array of features for free, including audio recording, editing capabilities, and automatic promotion to Spotify.
+As a long-time podcaster, I've always enjoyed sharing my thoughts and ideas through audio. While the world of video content—and the role of a YouTuber—has its allure, the complexities of video editing have kept me anchored in the realm of podcasting. My journey has involved leveraging platforms like [**Spotify Creator**](https://creators.spotify.com/) (formerly **Anchor**) for hosting and distributing my recordings. This platform offers a wide array of features for free, including audio recording, editing capabilities, and automatic promotion to Spotify.
 
 However, I sought a more comprehensive solution, one that would allow me to listen to my own podcast while driving, using the Podcast app on my CarPlay device. To achieve this, I ventured into publishing on **Apple Podcasts** ([podcastsconnect.apple.com](https://podcastsconnect.apple.com/)), which also offers free hosting. With a self-designed cover and episodes uploaded, I was set—or so I thought.
 
