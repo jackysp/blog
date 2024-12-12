@@ -19,7 +19,7 @@ theme = 'hyde'
 
 [params]
   copyright-year = '2014-present'
-  subtitle = 'A Collection of Straightforward HOW-TO Guides'
+  description = 'A Collection of Straightforward HOW-TO Guides'
   display_toc = true
   #themeColor = 'theme-base-0d' # use the default color
   [params.author]
