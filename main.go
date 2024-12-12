@@ -9,8 +9,8 @@ import (
 )
 
 func main() {
-	os.RemoveAll("themes/PaperMod")
-	commandLine("git", []string{"clone", "https://github.com/adityatelange/hugo-PaperMod", "themes/PaperMod", "--depth=1"})
+	os.RemoveAll("themes/hyde")
+	commandLine("git", []string{"clone", "https://github.com/spf13/hyde.git", "themes/hyde"})
 	err := commands.Execute(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)

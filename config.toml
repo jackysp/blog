@@ -1,9 +1,7 @@
 baseURL = 'https://blog.minifish.org/'
 languageCode = 'en-US'
 title = 'Mini Fish'
-paginate = 5
-theme = 'PaperMod'
-enableRobotsTXT = true
+theme = 'hyde'
 #summaryLength = 0 # show summary by default length
 #hasCJKLanguage = false
 
@@ -19,40 +17,14 @@ enableRobotsTXT = true
     [menus.main.params]
       rel = 'external'
 
-[minify]
-  disableXML = true
-  minifyOutput = true
-
 [params]
-  env = 'production'
-  defaultTheme = 'auto'
   copyright-year = '2014-present'
   description = 'A Collection of Straightforward HOW-TO Guides'
   display_toc = true
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = false
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
-  UseHugoToc = true
-  disableSpecial1stPost = false
-  disableScrollToTop = false
-  comments = false
-  hidemeta = false
-  hideSummary = false
-  showtoc = false
-  tocopen = false
   #themeColor = 'theme-base-0d' # use the default color
   [params.author]
     name = 'Jack Yu'
     email = 'i@minifish.org'
-
-  [params.editPost]
-    URL = 'https://github.com/jackysp/blog/tree/master/content/posts'
-    Text = 'Suggest Changes' # edit text
-    appendFilePath = true # to append file path to Edit link
 
 [services]
   [services.disqus]
