@@ -1,25 +1,33 @@
-baseURL = "http://blog.minifish.org/"
-languageCode = "en-US"
-title = "Mini Fish"
-#disqusShortname = "jackysp"
-theme = "hyde"
+baseURL = 'http://blog.minifish.org/'
+languageCode = 'en-US'
+title = 'Mini Fish'
+theme = 'hyde'
 #summaryLength = 0 # show summary by default length
-hasCJKLanguage = false
+#hasCJKLanguage = false
 
-[Menus]
-    main = [
-      {Name = "GitHub", URL = "https://github.com/jackysp/"},
-      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"}
-    ]
+[menus]
+  [[menus.main]]
+    name = 'GitHub'
+    url = 'https://github.com/jackysp/'
+    [menus.main.params]
+      rel = 'external'
+  [[menus.main]]
+    name = 'LinkedIn'
+    url = 'https://www.linkedin.com/in/shuaipeng-yu-81280434/'
+    [menus.main.params]
+      rel = 'external'
 
 [params]
-    description = "A collection of straightforward how-to guides."
-    #themeColor = "theme-base-0d" # use the default color
-    [params.social]
-       twitter = 'jackysp'
+  copyright-year = '2014-present'
+  subtitle = 'A Collection of Straightforward HOW-TO Guides.'
+  display_toc = true
+  #themeColor = 'theme-base-0d' # use the default color
+  [params.author]
+    name = 'Jack Yu'
+    email = 'i@minifish.org'
 
 [services]
-    [services.disqus]
-       shortname = 'jackysp'
-    [services.googleAnalytics]
-       id = 'G-G0H8JF722Y'
+  [services.disqus]
+    shortname = 'jackysp'
+  [services.googleAnalytics]
+    id = 'G-G0H8JF722Y'
