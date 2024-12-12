@@ -15,9 +15,11 @@ hasCJKLanguage = false
 [params]
     description = "A collection of straightforward how-to guides."
     #themeColor = "theme-base-0d" # use the default color
+    [params.social]
+       twitter = 'jackysp'
 
 [services]
-  [services.disqus]
-    shortname = 'jackysp'
-  [services.googleAnalytics]
-    id = 'G-G0H8JF722Y'
+    [services.disqus]
+       shortname = 'jackysp'
+    [services.googleAnalytics]
+       id = 'G-G0H8JF722Y'
