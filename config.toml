@@ -44,10 +44,13 @@ enableRobotsTXT = true
   hideSummary = false
   showtoc = false
   tocopen = false
-  author = 'Jack Yu'
+  #themeColor = 'theme-base-0d' # use the default color
+  [params.author]
+    name = 'Jack Yu'
+    email = 'i@minifish.org'
 
   [params.editPost]
-    URL = 'https://github.com/jackysp/blog/tree/master/content'
+    URL = 'https://github.com/jackysp/blog/tree/master/content/posts'
     Text = 'Suggest Changes' # edit text
     appendFilePath = true # to append file path to Edit link
 
