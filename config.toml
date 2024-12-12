@@ -45,17 +45,6 @@ enableRobotsTXT = true
   tocopen = false
   author = 'Jack Yu'
 
-  [params.homeInfoParams]
-    Title = 'Hi there \U0001F44B'
-    Content = 'Welcome to my blog site. I am a software engineer and I write about programming, software development, and all things tech. I hope you find something useful here.'
-
-  [[params.socialIcons]]
-    name = 'x'
-    url = 'https://x.com/'
-  [[params.socialIcons]]
-    name = 'github'
-    url = 'https://github.com/'
-
   [params.editPost]
     URL = 'https://github.com/jackysp/blog/tree/master/content'
     Text = 'Suggest Changes' # edit text
