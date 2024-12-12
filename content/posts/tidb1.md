@@ -8,7 +8,7 @@ date: 2020-07-06T16:51:00+08:00
 There are many articles on reading the source code of TiDB, often referred to as [the "Twenty-Four Chapters Scriptures"](https://pingcap.com/blog-cn/#TiDB-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB). However, these introductions typically proceed from a macro to a micro perspective. This series attempts to introduce how to read TiDB's source code from an easier angle. The goals we aim to achieve are:
 
 1. Enable readers to start reading TiDB's code themselves, rather than understanding it passively through pre-written articles.
-2. Provide some common examples of looking into the details of the code, such as examining the scope of a variable.
+1. Provide some common examples of looking into the details of the code, such as examining the scope of a variable.
 
 After all, teaching people to fish is better than giving them fish. While the code changes often, the methods remain mostly unchanged.
 
@@ -16,9 +16,9 @@ Why choose TiDB to read?
 
 1. I am not familiar with TiKV or PD.
 
-2. TiDB is the entry point directly interacting with users and is also the most likely to be questioned.
+1. TiDB is the entry point directly interacting with users and is also the most likely to be questioned.
 
-3. TiDB can run independently and be debugged. If you want to run some SQL after reading the code to verify your understanding, it can be easily done.
+1. TiDB can run independently and be debugged. If you want to run some SQL after reading the code to verify your understanding, it can be easily done.
 
 ## Preparations
 
@@ -26,11 +26,11 @@ Why choose TiDB to read?
 
    TiDB is a pure Golang project. It can be conveniently developed on Linux, MacOS, and even Windows. My environment is Windows 10.
 
-2. A copy of the TiDB source code, available for download at the [official repo](https://github.com/pingcap/tidb).
+1. A copy of the TiDB source code, available for download at the [official repo](https://github.com/pingcap/tidb).
 
-3. [Golang](https://golang.org/) environment, following the official guide is straightforward.
+1. [Golang](https://golang.org/) environment, following the official guide is straightforward.
 
-4. Goland or IntelliJ IDEA + Golang plugin
+1. Goland or IntelliJ IDEA + Golang plugin
 
    I personally feel there's no difference between the two. Why not recommend VSCode + Golang plugin? Mainly because I'm used to the JetBrains suite, and indeed commercial software tends to be higher quality than community software. For long-term use, it's recommended to pay for it. Students can use it for free, but need to renew the license every year.
 
@@ -40,15 +40,15 @@ Why choose TiDB to read?
 
    ![goenv](/posts/images/20200706172327.png)
 
-2. The TiDB code doesn't need to be developed under the GOPATH, so you can place it anywhere. I usually create a directory called work and throw various codes in there.
+1. The TiDB code doesn't need to be developed under the GOPATH, so you can place it anywhere. I usually create a directory called work and throw various codes in there.
 
-3. Open Goland/IDEA. I use IDEA because I often look at code in other languages.
+1. Open Goland/IDEA. I use IDEA because I often look at code in other languages.
 
-4. Open with IDEA, select the tidb directory.
+1. Open with IDEA, select the tidb directory.
 
    ![src](/posts/images/20200706174108.png)
 
-5. At this point, IDEA typically prompts you to set up GOROOT and enable Go Modules. Follow the recommendations.
+1. At this point, IDEA typically prompts you to set up GOROOT and enable Go Modules. Follow the recommendations.
 
 The environment setup is now complete.
 
@@ -103,9 +103,9 @@ The `dispatch` function has several characteristics:
 
 1. Requests coming from clients only enter the `dispatch` function, meaning from this point onward, user requests are executed. If you set breakpoints here, you can conveniently filter out SQL executed by internal threads.
 
-2. From here, various requests are dispatched into different processing logic, ensuring you don’t miss any user requests. It avoids situations like spending significant time reading text protocol code only to find out the user is actually using a binary protocol.
+1. From here, various requests are dispatched into different processing logic, ensuring you don’t miss any user requests. It avoids situations like spending significant time reading text protocol code only to find out the user is actually using a binary protocol.
 
-3. `dispatch` itself is located at a very early stage, meaning its parameters mostly come directly from the client's initial information. If it's a text protocol, directly reading parameters can parse out the SQL text.
+1. `dispatch` itself is located at a very early stage, meaning its parameters mostly come directly from the client's initial information. If it's a text protocol, directly reading parameters can parse out the SQL text.
 
 ![dispatch1](/posts/images/20200707150344.png)
 
@@ -131,11 +131,11 @@ Looking at the callers of `dispatch` can also reveal information that helps expl
 
 1. An EOF error in `dispatch` typically means the client has actively disconnected, so there's no need to maintain the database connection, and it is severed.
 
-2. In case of an undetermined error (indicating a transaction's commit is uncertain—whether it has succeeded or failed needs manual intervention for verification), manual intervention is required immediately, and the connection will be closed.
+1. In case of an undetermined error (indicating a transaction's commit is uncertain—whether it has succeeded or failed needs manual intervention for verification), manual intervention is required immediately, and the connection will be closed.
 
-3. If writing binlog fails and `ignore-error = false`, previously the tidb-server process wouldn't exit but couldn't provide services. Now, the tidb-server will exit directly.
+1. If writing binlog fails and `ignore-error = false`, previously the tidb-server process wouldn't exit but couldn't provide services. Now, the tidb-server will exit directly.
 
-4. For all other `dispatch` errors, the connection will not be closed, allowing service to continue, but the failure information will be logged as "command dispatched failed", which is arguably one of the most critical logs for TiDB.
+1. For all other `dispatch` errors, the connection will not be closed, allowing service to continue, but the failure information will be logged as "command dispatched failed", which is arguably one of the most critical logs for TiDB.
 
 ## Conclusion
 

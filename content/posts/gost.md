@@ -51,9 +51,9 @@ In the [guide](https://haoel.github.io/), it’s clearly explained why, plus my 
 
     `ExecStart` is a simplified version of the Docker method in the [guide](https://haoel.github.io/). `ExecReload` just kills the process.
 
-  2. Test whether it’s successful using `systemctl start|status|restart|enable gost`.
+  1. Test whether it’s successful using `systemctl start|status|restart|enable gost`.
 
-  3. Configure crontab to update the certificate. I didn't use systemd because I'm not familiar with it.
+  1. Configure crontab to update the certificate. I didn't use systemd because I'm not familiar with it.
 
     ```text
     0 0 1 * * /usr/bin/certbot renew --force-renewal

@@ -10,8 +10,8 @@ When using TiDB, you may occasionally encounter some exceptions, such as the "Lo
 There are generally three reasons for a Lost Connection:
 
 1. A timeout occurs either directly between the client and the database or at some point along the intermediate link, such as from the client to the Proxy or from the Proxy to the database.
-2. A bug occurs during SQL execution, which can generally be recovered, thus preventing the TiDB server from crashing completely (panic).
-3. TiDB itself crashes, often due to excessive memory use, causing an OOM (Out of Memory), or a user deliberately kills TiDB. Another possibility is an unrecovered bug, which typically appears more frequently in background threads.
+1. A bug occurs during SQL execution, which can generally be recovered, thus preventing the TiDB server from crashing completely (panic).
+1. TiDB itself crashes, often due to excessive memory use, causing an OOM (Out of Memory), or a user deliberately kills TiDB. Another possibility is an unrecovered bug, which typically appears more frequently in background threads.
 
 ### Timeout
 
@@ -72,7 +72,7 @@ TiDB has supported tracing since version 2.1, but it hasn't been widely used. I 
     ![lost](/posts/images/20200908164836.png)
     ![lost](/posts/images/trace-view.png)
 
-2. Another issue is that tracing provides insight only after a problem is known. If developers suspect a problem or slow execution in advance, they must proactively add events at those points. Often, unforeseen issues cannot be covered, leaving gaps.
+1. Another issue is that tracing provides insight only after a problem is known. If developers suspect a problem or slow execution in advance, they must proactively add events at those points. Often, unforeseen issues cannot be covered, leaving gaps.
 
 Once the framework of tracing is in place, adding events is relatively straightforward and involves adding code like the snippet below at the desired points:
 
@@ -91,6 +91,6 @@ I personally favor `format='log'`.
 ### Difference between Tracing and Explain (Analyze)
 
 1. Tracing operates at the function level, while Explain operates at the operator level. Tracing is easier to add and more granular and does not need to be part of a plan.
-2. Tracing can trace any SQL, while Explain only shows data reading parts. For example, with an Insert, Explain shows almost nothing, whereas tracing provides detailed insights from SQL parsing to the full transaction commit.
+1. Tracing can trace any SQL, while Explain only shows data reading parts. For example, with an Insert, Explain shows almost nothing, whereas tracing provides detailed insights from SQL parsing to the full transaction commit.
 
 ![lost](/posts/images/20200908170040.png)

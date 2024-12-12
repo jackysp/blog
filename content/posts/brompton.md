@@ -16,8 +16,7 @@ Brompton-like bikes are renowned for their compactness and portability. Unlike t
 
 My bike is a Brompton clone, and I'll share some insights on the various brands and models available.
 
-
-![](/posts/images/20241210_093935_BAD44C59-7EF9-428A-8AA3-C81C46B01A9A.JPG)
+![bike](/posts/images/20241210_093935_BAD44C59-7EF9-428A-8AA3-C81C46B01A9A.JPG)
 
 ## Brompton Bikes
 
@@ -88,10 +87,10 @@ For those seeking more affordable options, several brands offer Brompton-like bi
 - **Saddle Upgrade**:
   - **Wide Saddle**: For rides longer than 1 hour. 90 degrees is ideal for the saddle angle.
 
-    ![](/posts/images/20241209_213208_IMG_6425.jpg)
+    ![wide](/posts/images/20241209_213208_IMG_6425.jpg)
   - **Thin Saddle**: Suitable for shorter rides. 60 degrees is ideal for the saddle angle.
 
-    ![](/posts/images/20241209_213223_IMG_6424.jpg)
+    ![thin](/posts/images/20241209_213223_IMG_6424.jpg)
 - **Accessory Shopping**: Most accessories can be found at stores like Decathlon, though some items may require sourcing elsewhere due to sizing.
 
 ---

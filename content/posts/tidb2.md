@@ -10,7 +10,7 @@ Continuing from [the previous article](/posts/tidb1), we learned how to set up t
 There are usually two methods:
 
 1. Check through the parser repo
-2. Directly check within the TiDB repo
+1. Directly check within the TiDB repo
 
 Both of these methods require the [environment setup from the previous article](/posts/tidb1#环境搭建). If you haven't tried that yet, give it a go.
 
@@ -22,7 +22,7 @@ Both of these methods require the [environment setup from the previous article](
 
     The GoYacc Support plugin is a creation by a colleague at our company, a third-party plugin officially accepted by JetBrains, a well-regarded product. It includes syntax highlighting and intelligence, which is great!
 
-2. Download [parser repo](https://github.com/pingcap/parser)
+1. Download [parser repo](https://github.com/pingcap/parser)
 
     If you're checking syntax directly from the parser, you need to download it manually. If you're navigating from TiDB, IDEA will automatically download the code, so no extra steps are needed.
 
@@ -36,7 +36,7 @@ Open the parser using IDEA, switch to the branch you need, and locate the parser
 
     ![co](/posts/images/20200712183012.png)
 
-2. Find the parser.y file; make sure to select the broadest search scope
+1. Find the parser.y file; make sure to select the broadest search scope
 
     ![parser.y](/posts/images/20200712183658.png)
 

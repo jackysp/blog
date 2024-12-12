@@ -11,8 +11,8 @@ Initially, I didn't think this was something worth writing about, because CTex w
 ## Configuration Method
 
 1. Install MiKTeX (TexLive should work as well). MiKTeX can automatically download dependency packages and you can also proactively install the ctex package.
-2. Install the VSCode LaTeX extension.
-3. Configure the LaTeX extension. I found a powerful configuration on Zhihu, but it’s quite complex, so I simplified it a bit.
+1. Install the VSCode LaTeX extension.
+1. Configure the LaTeX extension. I found a powerful configuration on Zhihu, but it’s quite complex, so I simplified it a bit.
 
 A brief explanation: the core components here are the recipes and tools. Tools are the compilation toolchain, specifying which tools to use for compilation and the options to use, without regard to order. Recipes define how to combine the above tools to generate the final document, where the order does matter. I've put XeLaTex first here because it's the most compatible for compiling Chinese. If you use pdflatex to compile Chinese documents, you're likely to encounter issues.
 
@@ -179,8 +179,8 @@ A brief explanation: the core components here are the recipes and tools. Tools a
 }
 ```
 
-4. Create a folder.
-5. Use VSCode to open this folder and create a .tex file with the following content:
+1. Create a folder.
+1. Use VSCode to open this folder and create a .tex file with the following content:
 
 ```tex
 \documentclass[UTF8]{ctexart}

@@ -30,5 +30,5 @@ echo "test" | gpg --clearsign
 ## GPG Experience
 
 1. It doesn't replace the ssh key. After successfully setting it up, I deleted my GitHub ssh key and discovered that I couldn't log in. Actually, it only verifies the legitimacy of commits.
-2. On the local machine, in any repo, you only need to enter the password once, and that makes it a verified commit. It doesn't affect daily use; it just adds a green check mark for verification.
-3. Using the https protocol + token seems more reliable than this method, but I'm not sure if it provides a verified mark.
+1. On the local machine, in any repo, you only need to enter the password once, and that makes it a verified commit. It doesn't affect daily use; it just adds a green check mark for verification.
+1. Using the https protocol + token seems more reliable than this method, but I'm not sure if it provides a verified mark.

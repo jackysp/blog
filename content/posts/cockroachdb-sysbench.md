@@ -15,7 +15,7 @@ Of course, preliminary work involves downloading the Sysbench source code and in
 
 ## Testing
 
-The testing method is no different from testing MySQL or PostgreSQL; you can test any of the create, read, update, delete (CRUD) operations you like. The only thing to note is to set `auto_inc` to `off`. 
+The testing method is no different from testing MySQL or PostgreSQL; you can test any of the create, read, update, delete (CRUD) operations you like. The only thing to note is to set `auto_inc` to `off`.
 
 This is because CockroachDB's auto-increment behavior is different from PostgreSQL's. It generates a unique `id`, but it does not guarantee that the `id`s are sequential or incremental. This is fine when inserting data. However, during delete, update, or query operations, since all SQL statements use `id` as the condition for these operations, you may encounter situations where data cannot be found.
 

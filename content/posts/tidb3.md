@@ -15,7 +15,7 @@ This large struct array defines the scope, variable names, and default values fo
 
 ### Scope
 
-In TiDB, there are three types of variable scopes literally: 
+In TiDB, there are three types of variable scopes literally:
 
 ![defaultSysVars](/posts/images/20200728151833.png)
 
@@ -195,8 +195,8 @@ There are some tricks here.
 The previous section covered setting session variables. Based on MySQL's variable rules, setting a global variable does not affect the current session. Only newly created sessions will load global variables for session variable assignment. Ultimately, the active session variable take effect. Global variables without session properties still have unique characteristics, and this chapter will cover:
 
 1. Activation of session variables
-2. Activation of pure global variables
-3. Mechanism of global variable function
+1. Activation of pure global variables
+1. Mechanism of global variable function
 
 These three aspects.
 

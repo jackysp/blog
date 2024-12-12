@@ -44,8 +44,8 @@ Chapter three introduces the architectural design, with a focus on test suite ma
 Chapter four discusses the supported test suites. I'm only familiar with TPCC and YCSB. The authors classify them from three perspectives:
 
 1. Transaction-focused, such as TPCC and SmallBank
-2. Internet applications, like LinkBench and Wikipedia
-3. Specialized tests, such as YCSB and SIBench
+1. Internet applications, like LinkBench and Wikipedia
+1. Specialized tests, such as YCSB and SIBench
 
 Further details can be seen in the table:
 [table]
@@ -56,19 +56,19 @@ Chapter six uses the demo from the previous chapter to introduce features, analy
 
 1. Rate control. It seems odd for a benchmarking tool to perform rate control, as the conventional understanding is to push performance as high as possible to gauge system limits. The paper provides an example using the Wikipedia test suite, increasing by 25 TPS every 10 seconds to observe database latency changes.
 
-2. Tagging different transactions in the same test suite for separate statistics – using TPCC as an example to statistically categorize transactions from different stages.
+1. Tagging different transactions in the same test suite for separate statistics – using TPCC as an example to statistically categorize transactions from different stages.
 
-3. Modifying load content, like switching from read-only to write-only loads.
+1. Modifying load content, like switching from read-only to write-only loads.
 
-4. Changing the method for load randomness.
+1. Changing the method for load randomness.
 
-5. Monitoring server status alongside database monitoring by deploying an OLTP-Bench monitor on the server.
+1. Monitoring server status alongside database monitoring by deploying an OLTP-Bench monitor on the server.
 
-6. Running multiple test suites simultaneously, such as running TPCC and YCSB concurrently.
+1. Running multiple test suites simultaneously, such as running TPCC and YCSB concurrently.
 
-7. Multi-client usage, mentioned in chapter three.
+1. Multi-client usage, mentioned in chapter three.
 
-8. Repeatability. To prove OLTP-Bench results are genuine and reliable, the authors tested PG's SSI performance using SIBench from the tool on similarly configured machines, achieving results consistent with those in PG's SSI paper.
+1. Repeatability. To prove OLTP-Bench results are genuine and reliable, the authors tested PG's SSI performance using SIBench from the tool on similarly configured machines, achieving results consistent with those in PG's SSI paper.
 
 In summary, rate control and transaction tagging stand out as novel features, while the rest are not particularly special.
 

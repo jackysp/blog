@@ -11,7 +11,7 @@ I had to install Docker on Windows to reproduce a bug.
 
 1. Using Windows 10 as an example, if you have the Home Basic version, you'll need to pay to upgrade to the Pro version because you need to enable Hyper-V and Container features, which costs about 800 RMB.
 2. Install everything with the default settings, and do not switch to Windows Containers, since most images are still under Linux. If you do switch, you can restore it after starting up.
-3. If you encounter permission issues with shared folders, follow the instructions at https://github.com/docker/for-win/issues/3174. However, this might not solve the problem, and you might encounter a sharing failure. In that case, go to the settings, troubleshoot, and reset to factory defaults. After resetting, ensure the shared folders are selected.
+3. If you encounter permission issues with shared folders, follow the instructions at [link](https://github.com/docker/for-win/issues/3174). However, this might not solve the problem, and you might encounter a sharing failure. In that case, go to the settings, troubleshoot, and reset to factory defaults. After resetting, ensure the shared folders are selected.
 4. When you encounter errors during use, just try a few more times. It might work; if not, reset it.
 
 ## Impressions

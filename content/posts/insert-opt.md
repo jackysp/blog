@@ -101,7 +101,7 @@ As can be seen, for the INSERT statement, TiDB performs conflict detection at th
 The semantics of INSERT IGNORE have been introduced earlier. Since usual INSERTs are checked for conflicts at commitment, can INSERT IGNORE follow this approach as well? The answer is no, due to the following reasons:
 
 1. If INSERT IGNORE checks for conflicts at commitment, the transaction module would need to know which rows to ignore and which rows to error and rollback, greatly increasing module coupling.
-2. Users expect to immediately see which rows were not inserted under INSERT IGNORE. That is, they want to immediately use `SHOW WARNINGS` to know which rows were not actually written.
+1. Users expect to immediately see which rows were not inserted under INSERT IGNORE. That is, they want to immediately use `SHOW WARNINGS` to know which rows were not actually written.
 
 This requires immediate conflict detection when executing INSERT IGNORE. An obvious approach would be to try reading out the data before insertion, log a warning upon discovering a conflict, and then proceed to the next row. However, for situations where multiple rows are inserted in one statement, it would repeatedly read data from TiKV for detection. Therefore, TiDB implements batchChecker, with code located in executor/batch_checker.go.
 

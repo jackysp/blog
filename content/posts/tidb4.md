@@ -16,11 +16,11 @@ The definition of key functions varies from person to person, so the content of 
 The `execute` function is the necessary pathway for text protocol execution. It also nicely demonstrates the various processes of SQL handling.
 
 1. ParseSQL analyzes the SQL. The final implementation is in the parser, where SQL is parsed according to the rules introduced in the second article. Note that the parsed SQL may be a single statement or multiple statements. TiDB itself supports the multi-SQL feature, allowing multiple SQL statements to be executed at once.
-2. After parsing, a `stmtNodes` array is returned, which is processed one-by-one in the for loop below. The first step is to compile, where the core of compile is optimization, generating a plan. By following the `Optimize` function, you can find logic similar to logical and physical optimization found in other common databases.
+1. After parsing, a `stmtNodes` array is returned, which is processed one-by-one in the for loop below. The first step is to compile, where the core of compile is optimization, generating a plan. By following the `Optimize` function, you can find logic similar to logical and physical optimization found in other common databases.
 
     ![func](/posts/images/20200812153017.png)
 
-3. The last part is execution, where `executeStatement` and particularly the `runStmt` function are key functions.
+1. The last part is execution, where `executeStatement` and particularly the `runStmt` function are key functions.
 
 ### runStmt
 
@@ -36,11 +36,11 @@ The core part of the `runStmt` function is as shown above. From top to bottom:
 
     When a transaction is already corrupted and cannot be committed, the user must actively close the transaction to end the already corrupted transaction. During execution, transactions may encounter errors that cannot be handled and must be terminated. The transaction cannot be silently closed because the user may continue to execute SQL and assume it is still within the transaction. This function ensures that all subsequent SQL commands by the user are not executed and directly return an error until the user uses rollback or commit to explicitly close the transaction for normal execution.
 
-2. Exec
+1. Exec
 
     Execute the SQL and return the result set (rs).
 
-3. IsReadOnly
+1. IsReadOnly
 
     After executing a SQL, it's necessary to determine whether it is a read-only SQL. If it is not read-only, it must be temporarily stored in the transaction's execution history. This execution history is used when a transaction conflict or other errors require the transaction to be retried. Read-only SQL is bypassed because the retry of the transaction is done during the commit phase, and at this point, the only feedback to the client can be success or failure of the commit; reading results is meaningless.
 
@@ -48,11 +48,11 @@ The core part of the `runStmt` function is as shown above. From top to bottom:
 
     In TiDB, the feature of statement commit is implemented with a two-layer buffer: both the transaction and the statement have their own buffers. After a statement executes successfully, the statement’s buffer is merged into the transaction buffer. If a statement fails, the statement’s buffer is discarded, thus ensuring the atomicity of statement commits. Of course, a statement commit may fail, in which case the entire transaction buffer becomes unusable, and the transaction can only be rolled back.
 
-4. finishStmt
+1. finishStmt
 
     Once a statement is executed, should it be committed? This depends on whether the transaction was explicitly started (i.e., with `begin` or `start transaction`) and whether autocommit is enabled. The role of `finishStmt` is to, post-execution, check if it should be committed based on the above conditions. It's essentially for cleaning up and checking after each statement execution.
 
-5. pending section
+1. pending section
 
     Some SQLs in TiDB do not require a transaction (e.g., the `set` statement). However, before parsing, the database doesn’t know whether the statement requires a transaction. The latency of starting a transaction in TiDB is relatively high because it requires obtaining a TSO (timestamp oracle) from PD. TiDB has an optimization to asynchronously obtain a TSO, meaning a TSO is prepared regardless of whether a transaction is eventually needed. If a statement indeed doesn’t require a TSO and a transaction is not activated, remaining in a pending status, the pending transaction must be closed.
 
@@ -66,7 +66,7 @@ Let's first look at a section of logs from TiDB at initial startup, divided into
 ```
 
 1. Mandatory startup outputs: "Welcome to TiDB," git hash, Golang version, etc.
-2. Actually loaded configuration (this section is somewhat difficult to read)
+1. Actually loaded configuration (this section is somewhat difficult to read)
 
 The remainder are some routine startup logs. The process can be referenced from the main function section introduced in the first article, mainly outputting the initial system table creation process.
 
