@@ -26,6 +26,7 @@ enableRobotsTXT = true
 [params]
   env = 'production'
   defaultTheme = 'auto'
+  copyright-year = '2014-present'
   description = 'A Collection of Straightforward HOW-TO Guides'
   display_toc = true
   ShowReadingTime = true
