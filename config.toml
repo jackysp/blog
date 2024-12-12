@@ -4,20 +4,21 @@ title = 'Mini Fish'
 paginate = 5
 theme = 'PaperMod'
 enableRobotsTXT = true
+enableEmoji = true
 #summaryLength = 0 # show summary by default length
 #hasCJKLanguage = false
 
-[menus]
-  [[menus.main]]
-    name = 'GitHub'
-    url = 'https://github.com/jackysp/'
-    [menus.main.params]
-      rel = 'external'
-  [[menus.main]]
-    name = 'LinkedIn'
-    url = 'https://www.linkedin.com/in/shuaipeng-yu-81280434/'
-    [menus.main.params]
-      rel = 'external'
+#[menus]
+#  [[menus.main]]
+#    name = 'GitHub'
+#    url = 'https://github.com/jackysp/'
+#    [menus.main.params]
+#      rel = 'external'
+#  [[menus.main]]
+#    name = 'LinkedIn'
+#    url = 'https://www.linkedin.com/in/shuaipeng-yu-81280434/'
+#    [menus.main.params]
+#      rel = 'external'
 
 [minify]
   disableXML = true
@@ -51,10 +52,16 @@ enableRobotsTXT = true
 
   [[params.socialIcons]]
     name = 'x'
-    url = 'https://x.com/'
+    url = 'https://x.com/jackysp'
   [[params.socialIcons]]
     name = 'github'
-    url = 'https://github.com/'
+    url = 'https://github.com/jackysp'
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"
+  [[params.socialIcons]]
+    name = "email"
+    url = "i@minifish.org"
 
   [params.editPost]
     URL = 'https://github.com/jackysp/blog/tree/master/content'
