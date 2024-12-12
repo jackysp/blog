@@ -1,28 +1,28 @@
-baseURL = 'https://blog.minifish.org/'
-languageCode = 'en-US'
-title = 'Mini Fish'
-theme = 'hyde'
+baseURL = "https://blog.minifish.org/"
+languageCode = "en-US"
+title = "Mini Fish"
+theme = "hyde"
 #summaryLength = 0 # show summary by default length
 #hasCJKLanguage = false
 
 [menus]
   [[menus.main]]
-    name = 'GitHub'
-    url = 'https://github.com/jackysp/'
+    name = "GitHub"
+    url = "https://github.com/jackysp/"
     [menus.main.params]
-      rel = 'external'
+      rel = "external"
   [[menus.main]]
-    name = 'LinkedIn'
-    url = 'https://www.linkedin.com/in/shuaipeng-yu-81280434/'
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"
     [menus.main.params]
-      rel = 'external'
+      rel = "external"
 
 [params]
-  description = 'A Collection of Straightforward HOW-TO Guides'
-  #themeColor = 'theme-base-0d' # use the default color
+  description = "A Collection of Straightforward HOW-TO Guides"
+  #themeColor = "theme-base-0d" # use the default color
 
 [services]
   [services.disqus]
-    shortname = 'jackysp'
+    shortname = "jackysp"
   [services.googleAnalytics]
-    id = 'G-G0H8JF722Y'
+    id = "G-G0H8JF722Y"
