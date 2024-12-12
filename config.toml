@@ -1,8 +1,8 @@
-baseURL = "https://blog.minifish.org/"
-languageCode = "en-US"
-title = "Mini Fish"
+baseURL = 'https://blog.minifish.org/'
+languageCode = 'en-US'
+title = 'Mini Fish'
 paginate = 5
-theme = "PaperMod"
+theme = 'PaperMod'
 enableRobotsTXT = true
 enableEmoji = true
 #summaryLength = 0 # show summary by default length
@@ -10,24 +10,24 @@ enableEmoji = true
 
 #[menus]
 #  [[menus.main]]
-#    name = "GitHub"
-#    url = "https://github.com/jackysp/"
+#    name = 'GitHub'
+#    url = 'https://github.com/jackysp/'
 #    [menus.main.params]
-#      rel = "external"
+#      rel = 'external'
 #  [[menus.main]]
-#    name = "LinkedIn"
-#    url = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"
+#    name = 'LinkedIn'
+#    url = 'https://www.linkedin.com/in/shuaipeng-yu-81280434/'
 #    [menus.main.params]
-#      rel = "external"
+#      rel = 'external'
 
 [minify]
   disableXML = true
   minifyOutput = true
 
 [params]
-  env = "production"
-  defaultTheme = "auto"
-  description = "A Collection of Straightforward HOW-TO Guides"
+  env = 'production'
+  defaultTheme = 'auto'
+  description = 'A Collection of Straightforward HOW-TO Guides'
   display_toc = true
   ShowReadingTime = true
   ShowShareButtons = true
@@ -44,35 +44,32 @@ enableEmoji = true
   hideSummary = false
   showtoc = false
   tocopen = false
-  author = "Jack Yu"
+  author = 'Jack Yu'
 
   [params.homeInfoParams]
-    Title = "Hi there 👋"
-    Content = "Welcome to my blog site. I am a software engineer and I write about programming, software development, and all things tech. I hope you find something useful here."
+    Title = 'Hi there 👋'
+    Content = 'Welcome to my blog site. I am a software engineer and I write about programming, software development, and all things tech. I hope you find something useful here.'
 
   [[params.socialIcons]]
-    name = "x"
-    url = "https://x.com/jackysp"
+    name = 'x'
+    url = 'https://x.com/jackysp'
   [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/jackysp"
+    name = 'github'
+    url = 'https://github.com/jackysp'
   [[params.socialIcons]]
     name = "linkedin"
     url = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"
   [[params.socialIcons]]
     name = "email"
-    url = "i@minifish.org"
+    url = "mailto:i@minifish.org"
 
   [params.editPost]
-    URL = "https://github.com/jackysp/blog/tree/master/content"
-    Text = "Suggest Changes" # edit text
+    URL = 'https://github.com/jackysp/blog/tree/master/content'
+    Text = 'Suggest Changes' # edit text
     appendFilePath = true # to append file path to Edit link
 
 [services]
   [services.disqus]
-    shortname = "jackysp"
+    shortname = 'jackysp'
   [services.googleAnalytics]
-    id = "G-G0H8JF722Y"
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+    id = 'G-G0H8JF722Y'
