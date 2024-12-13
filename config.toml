@@ -1,5 +1,5 @@
 baseURL = "https://blog.minifish.org/"
-copyright = "© 2014-present Mini Fish. All Rights Reserved."
+copyright = "© 2014-present Mini Fish"
 languageCode = "en-US"
 title = "Mini Fish"
 paginate = 5
