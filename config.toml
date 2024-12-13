@@ -1,5 +1,5 @@
 baseURL = "https://blog.minifish.org/"
-copyright = "© 2014-present Mini Fish"
+copyright = "© Mini Fish 2014-present"
 languageCode = "en-US"
 title = "Mini Fish"
 paginate = 5
@@ -58,7 +58,7 @@ enableEmoji = true
     url = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"
   [[params.socialIcons]]
     name = "email"
-    url = "i@minifish.org"
+    url = "mailto:i@minifish.org"
 
   [params.editPost]
     URL = "https://github.com/jackysp/blog/tree/master/content"
