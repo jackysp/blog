@@ -10,7 +10,7 @@ import (
 
 func main() {
 	os.RemoveAll("themes/hyde")
-	commandLine("git", []string{"clone", "https://github.com/spf13/hyde.git", "themes/hyde"})
+	commandLine("git", []string{"clone", "https://github.com/spf13/hyde.git", "themes/hyde", "--depth", "1"})
 	err := commands.Execute(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)
