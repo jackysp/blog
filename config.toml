@@ -14,7 +14,7 @@ enableEmoji = true
     url = "/search/"
   [[menus.main]]
     name = "Archive"
-    url = "/archive/"
+    url = "/archives/"
 
 [minify]
   disableXML = true
