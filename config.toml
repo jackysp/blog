@@ -1,4 +1,5 @@
 baseURL = "https://blog.minifish.org/"
+copyright = "2014-present"
 languageCode = "en-US"
 title = "Mini Fish"
 paginate = 5
@@ -22,7 +23,6 @@ enableEmoji = true
 
 [params]
   env = "production"
-  copyright = "2014-present"
   defaultTheme = "auto"
   description = "A Collection of Straightforward HOW-TO Guides"
   display_toc = true
