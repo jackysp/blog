@@ -47,7 +47,7 @@ enableEmoji = true
   author = 'Jack Yu'
 
   [params.homeInfoParams]
-    Title = 'Hi there \U0001F44B'
+    Title = 'Hi there 👋'
     Content = 'Welcome to my blog site. I am a software engineer and I write about programming, software development, and all things tech. I hope you find something useful here.'
 
   [[params.socialIcons]]
@@ -61,7 +61,7 @@ enableEmoji = true
     url = "https://www.linkedin.com/in/shuaipeng-yu-81280434/"
   [[params.socialIcons]]
     name = "email"
-    url = "i@minifish.org"
+    url = "mailto:i@minifish.org"
 
   [params.editPost]
     URL = 'https://github.com/jackysp/blog/tree/master/content'
