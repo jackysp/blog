@@ -42,7 +42,7 @@ enableEmoji = true
   showtoc = true
   tocopen = false
   ShowFullTextinRSS = true
-  #author = "Jack Yu"
+  author = "Jack Yu"
 
   [params.homeInfoParams]
     Title = "Hi there 👋"
@@ -65,10 +65,6 @@ enableEmoji = true
     URL = "https://github.com/jackysp/blog/tree/master/content"
     Text = "Suggest Changes" # edit text
     appendFilePath = true # to append file path to Edit link
-
-  [params.author]
-    email = 'i@minifish.org'
-    name = "Jack Yu"
 
 [services]
   [services.disqus]
