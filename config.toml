@@ -48,9 +48,6 @@ enableEmoji = true
     Title = "Hi there 👋"
     Content = "Welcome to my blog site. I am a software engineer and I write about programming, software development, and all things tech. I hope you find something useful here."
 
-  [params.meta]
-    favicon = false
-
   [[params.socialIcons]]
     name = "x"
     url = "https://x.com/jackysp"
@@ -77,3 +74,10 @@ enableEmoji = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[assets]
+  favicon = "/favicon.ico"
+  #favicon16x16 = "<link / abs url>"
+  #favicon32x32 = "<link / abs url>"
+  #apple_touch_icon = "<link / abs url>"
+  #safari_pinned_tab = "<link / abs url>"
