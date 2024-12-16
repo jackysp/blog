@@ -48,6 +48,9 @@ enableEmoji = true
     Title = "Hi there 👋"
     Content = "Welcome to my blog site. I am a software engineer and I write about programming, software development, and all things tech. I hope you find something useful here."
 
+  [params.meta]
+    favicon = false
+
   [[params.socialIcons]]
     name = "x"
     url = "https://x.com/jackysp"
