@@ -76,7 +76,7 @@ enableEmoji = true
 
 [assets]
   favicon = "/favicon.ico"
-  favicon16x16 = "/favicon.ico"
-  favicon32x32 = "/favicon.ico"
-  apple_touch_icon = "/favicon.ico"
-  safari_pinned_tab = "/favicon.ico"
+  favicon16x16 = "/favicon-16*16.png"
+  favicon32x32 = "/favicon-32*32.png"
+  apple_touch_icon = "/apple-touch-icon.png"
+  safari_pinned_tab = "/favicon.svg"
