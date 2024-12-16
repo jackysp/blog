@@ -2,7 +2,6 @@ baseURL = "https://blog.minifish.org/"
 copyright = "© Mini Fish 2014-present"
 languageCode = "en-US"
 title = "Mini Fish"
-paginate = 5
 theme = "PaperMod"
 enableRobotsTXT = true
 enableEmoji = true
