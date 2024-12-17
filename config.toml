@@ -42,6 +42,7 @@ enableEmoji = true
   tocopen = false
   ShowFullTextinRSS = true
   author = "Jack Yu"
+  images = ["/android-chrome-512x512.png"]
 
   [params.homeInfoParams]
     Title = "Hi there 👋"
