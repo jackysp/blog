@@ -1,6 +1,6 @@
 ---
 title: "Brompton Clone Bike Modification"
-date: 2025-1-10T18:07:06+08:00
+date: 2025-01-10T18:07:06+08:00
 ---
 This is the final version of my **Aceoffix 01** (a Brompton clone).
 
