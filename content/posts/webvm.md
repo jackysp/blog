@@ -14,7 +14,7 @@ The source repository provides a frontend for the WebVM demo. By forking the rep
 
 This image can then be hosted on GitHub Pages, as demonstrated in my [demo](https://blog.minifish.org/webvm/).
 
-![](/posts/images/20250113_195726_image.png)
+![demo](/posts/images/20250113_195726_image.png)
 
 WebVM's primary functionality is to stream resources to the browser, minimizing client-side resource consumption. It enables the execution of various applications that are typically restricted to virtual machines, all within a browser. Additionally, WebVM allows for the embedding of these applications through custom front-ends.
 
