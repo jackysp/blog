@@ -84,39 +84,17 @@ The remainder are some routine startup logs. The process can be referenced from 
 [2020/08/12 16:12:07.317 +08:00] [INFO] [domain.go:144] ["full load InfoSchema success"] [usedSchemaVersion=0] [neededSchemaVersion=0] ["start time"=2.0015ms]
 [2020/08/12 16:12:07.317 +08:00] [INFO] [domain.go:368] ["full load and reset schema validator"]
 [2020/08/12 16:12:07.317 +08:00] [INFO] [tidb.go:199] ["rollbackTxn for ddl/autocommit failed"]
-```Here is the translation of the provided text:
-
----
-
-[2020/08/12 16:12:07.317 +08:00] [WARN] [session.go:1040] ["run statement failed"] [schemaVersion=0] [error="[schema:1049]Unknown database 'mysql'"] [session="{\n  \"currDBName\": \"\",\n  \"id\": 0,\n  \"status\": 2,\n  \"strictMode\": true,\n  \"user\": null\n}"]
-[2020/08/12 16:12:07.318 +08:00] [WARN] [session.go:1136] ["compile SQL failed"] [error="[schema:1146]Table 'mysql.tidb' doesn't exist"] [SQL="SELECT HIGH_PRIORITY VARIABLE_VALUE FROM mysql.tidb WHERE VARIABLE_NAME=\"bootstrapped\""]
-[2020/08/12 16:12:07.318 +08:00] [INFO] [session.go:2121] ["CRUCIAL OPERATION"] [conn=0] [schemaVersion=0] [cur_db=] [sql="CREATE DATABASE IF NOT EXISTS test"] [user=]
-[2020/08/12 16:12:07.320 +08:00] [INFO] [ddl_worker.go:253] ["[ddl] add DDL jobs"] ["batch count"=1] [jobs="ID:2, Type:create schema, State:none, SchemaState:none, SchemaID:1, TableID:0, RowCount:0, ArgLen:1, start time: 2020-08-12 16:12:07.318 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0; "]
-[2020/08/12 16:12:07.320 +08:00] [INFO] [ddl.go:500] ["[ddl] start DDL job"] [job="ID:2, Type:create schema, State:none, SchemaState:none, SchemaID:1, TableID:0, RowCount:0, ArgLen:1, start time: 2020-08-12 16:12:07.318 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0"] [query="CREATE DATABASE IF NOT EXISTS test"]
-[2020/08/12 16:12:07.320 +08:00] [INFO] [ddl_worker.go:568] ["[ddl] run DDL job"] [worker="worker 1, tp general"] [job="ID:2, Type:create schema, State:none, SchemaState:none, SchemaID:1, TableID:0, RowCount:0, ArgLen:0, start time: 2020-08-12 16:12:07.318 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0"]
-[2020/08/12 16:12:07.322 +08:00] [INFO] [domain.go:144] ["full load InfoSchema success"] [usedSchemaVersion=0] [neededSchemaVersion=1] ["start time"=1.0003ms]
-[2020/08/12 16:12:07.322 +08:00] [INFO] [domain.go:368] ["full load and reset schema validator"]
-[2020/08/12 16:12:07.324 +08:00] [INFO] [ddl_worker.go:757] ["[ddl] wait latest schema version changed"] [worker="worker 1, tp general"] [ver=1] ["take time"=3.0094ms] [job="ID:2, Type:create schema, State:done, SchemaState:public, SchemaID:1, TableID:0, RowCount:0, ArgLen:1, start time: 2020-08-12 16:12:07.318 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0"]
-[2020/08/12 16:12:07.324 +08:00] [INFO] [ddl_worker.go:359] ["[ddl] finish DDL job"] [worker="worker 1, tp general"] [job="ID:2, Type:create schema, State:synced, SchemaState:public, SchemaID:1, TableID:0, RowCount:0, ArgLen:0, start time: 2020-08-12 16:12:07.318 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0"]
-[2020/08/12 16:12:07.325 +08:00] [INFO] [ddl.go:532] ["[ddl] DDL job is finished"] [jobID=2]
-[2020/08/12 16:12:07.325 +08:00] [INFO] [domain.go:619] ["performing DDL change, must reload"]
-[2020/08/12 16:12:07.325 +08:00] [INFO] [session.go:2121] ["CRUCIAL OPERATION"] [conn=0] [schemaVersion=1] [cur_db=] [sql="CREATE DATABASE IF NOT EXISTS mysql;"] [user=]
-[2020/08/12 16:12:07.325 +08:00] [INFO] [ddl_worker.go:253] ["[ddl] add DDL jobs"] ["batch count"=1] [jobs="ID:4, Type:create schema, State:none, SchemaState:none, SchemaID:3, TableID:0, RowCount:0, ArgLen:1, start time: 2020-08-12 16:12:07.325 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0; "]
-[2020/08/12 16:12:07.325 +08:00] [INFO] [ddl.go:500] ["[ddl] start DDL job"] [job="ID:4, Type:create schema, State:none, SchemaState:none, SchemaID:3, TableID:0, RowCount:0, ArgLen:1, start time: 2020-08-12 16:12:07.325 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0"] [query="CREATE DATABASE IF NOT EXISTS mysql;"]
-[2020/08/12 16:12:07.326 +08:00] [INFO] [ddl_worker.go:568] ["[ddl] run DDL job"] [worker="worker 1, tp general"] [job="ID:4, Type:create schema, State:none, SchemaState:none, SchemaID:3, TableID:0, RowCount:0, ArgLen:0, start time: 2020-08-12 16:12:07.325 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0"]
-[2020/08/12 16:12:07.326 +08:00] [INFO] [domain.go:126] ["diff load InfoSchema success"] [usedSchemaVersion=1] [neededSchemaVersion=2] ["start time"=0s] [tblIDs="[]"]
-[2020/08/12 16:12:07.329 +08:00] [INFO] [ddl_worker.go:757] ["[ddl] wait latest schema version changed"] [worker="worker 1, tp general"] [ver=2] ["take time"=2.9965ms] [job="ID:4, Type:create schema, State:done, SchemaState:public, SchemaID:3, TableID:0, RowCount:0, ArgLen:1, start time: 2020-08-12 16:12:07.325 +0800 CST, Err:<nil>, ErrCount:0, SnapshotVersion:0"]
-[2020/08/12 16:12:07.329 +08:00] [INFO] [ddl_worker.go:359] ["[ddl] finish DDL job"] [worker="worker 1, tp general"] [job="ID:4, Type:create schema, State:synced, SchemaState:public, SchemaID:3, TableID:0, RowCount:0, ArgLen:0, start time: 2020-08-12 16:12:07.325
+```
 
 Because DDL logs are very numerous, the TiDB logs basically record each step of the DDL execution, so I've truncated this part of the log here. However, the basic outline can be sorted out. Firstly, the DDL execution is initiated from ddl_api, at this time recording `["CRUCIAL OPERATION"]` style logs. DDL is a crucial operation, so it belongs to CRUCIAL type logs. Then, we can see a series of logs with the ddl keyword linked together, such as `[ddl] add DDL jobs`, `[ddl] start DDL job`, `[ddl] run DDL job`, `[ddl] finish DDL job`, and `[ddl] DDL job is finished`. These represent the process from when the DDL owner acquires a job to its final execution completion. Moreover, they have a unique job ID, which can be used to link a DDL in the log with something like `jobs="ID:2`.
 
----
-
+```text
 [2020/08/12 16:12:07.518 +08:00] [INFO] [server.go:235] ["server is running MySQL protocol"] [addr=0.0.0.0:4000]
 [2020/08/12 16:12:07.518 +08:00] [INFO] [http_status.go:80] ["for status and metrics report"] ["listening on addr"=0.0.0.0:10080]
 [2020/08/12 16:12:07.520 +08:00] [INFO] [domain.go:1015] ["init stats info time"] ["take time"=3.0126ms]
 [2020/08/12 16:15:41.482 +08:00] [INFO] [server.go:388] ["new connection"] [conn=1] [remoteAddr=127.0.0.1:64888]
 [2020/08/12 21:03:19.954 +08:00] [INFO] [server.go:391] ["connection closed"] [conn=1]
+```
 
 Thereafter, the appearance of `server is running MySQL protocol` means that TiDB can provide services externally. Later, there are logs corresponding to the creation and closing of each connection, namely `new connection` and `connection closed`. Of course, they also have their corresponding connection ID, which is unique for a TiDB. You can use the keyword `conn=1` in the log to contextually link them together.
 
@@ -124,7 +102,6 @@ Thereafter, the appearance of `server is running MySQL protocol` means that TiDB
 
 Most of TiDB's SQL errors (except for duplicate entry and syntax errors) will output the complete stack information. Due to the requirements of unified log format, the stack now looks very unsightly...
 
-```text
 For this stack trace, I believe no one really enjoys reading it. Therefore, we need to paste it into Vim and execute `%s/\\n/\r/g` and `%s/\\t/    /g` to turn it into a Golang-style stack.
 
 ![func](/posts/images/20200812211203.png)
