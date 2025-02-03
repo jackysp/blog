@@ -255,12 +255,20 @@ The second label, txn_mode, refers to two modes: optimistic and pessimistic tran
 
 Corresponding to the code:
 
+![alt text](/posts/images/20200729211352.png)
+
 This segment of code shows that `tidb_session_transaction_duration_seconds` is divided into several parts, including namespace and subsystem. Generally, to find a variable in a formula like `tidb_session_transaction_duration_seconds_count` within TiDB code, you need to remove the first two words and the last word.
 
 From this code snippet, you can see it's a histogram, specifically a HistogramVec, which is an array of histograms because it records data with several different labels. The labels LblTxnMode and LblType are these two labels.
 
+![alt text](/posts/images/20200729211511.png)
+
 Checking the references, there is a place for registration, which is in the main function we discussed in the first article, where metrics are registered.
 
+![alt text](/posts/images/20200729211725.png)
+
 Other references show how metrics are instantiated. Why do we do this? Mainly because as the number of labels increases, the performance of metrics becomes poorer, which is related to Prometheus's implementation. We had no choice but to create many instantiated global variables.
+
+![alt text](/posts/images/20200729211935.png)
 
 Taking the implementation of Rollback as an example, its essence is to record the actual execution time of a transaction when Rollback is truly executed. Since it’s a histogram, it is also used as a counter in this instance.
