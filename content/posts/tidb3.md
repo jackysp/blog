@@ -241,8 +241,6 @@ There are many Metrics, and from a beginner's perspective, it's best to focus on
 
 Click EDIT and you will see the monitoring formula is:
 
-[The remaining text seems cut off]Translate the following text to English:
-
 The `tidb_session_transaction_duration_seconds` is the name of this specific metric. Since it is a histogram, it can actually be expressed as three types of values: sum, count, and bucket, which represent the total sum of values, the count (which functions the same as a counter), and the distribution by bucket, respectively.
 
 In this context, [1m] represents a time window of 1 minute, indicating the precision of the measurement. The rate function calculates the slope, essentially the rate of change, indicating how many times something occurs per second. The sum function is used for aggregation, and when combined with by (type, txn_mode), it represents aggregation by the dimensions of type and txn_mode.
