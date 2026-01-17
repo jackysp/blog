@@ -24,6 +24,67 @@ At a high level, each node runs a full SQL engine, storage engine, and transacti
 
 The following sections walk through each path with the relevant implementation anchors.
 
+## Architecture Diagrams
+
+### Transaction Write Path
+
+```mermaid
+flowchart LR
+  subgraph A["Transaction Write Path"]
+    C["Client"] --> S["SQL Engine"]
+    S --> T["Transaction Context"]
+    T --> M["Memtable Write"]
+    M --> R["Redo Buffer"]
+    R --> L["Log Service"]
+    L --> P["Replicated Log"]
+    P --> K["Commit Result"]
+  end
+```
+
+### Tablet Replay Path
+
+```mermaid
+flowchart LR
+  subgraph B["Tablet Replay Path"]
+    L["Log Service"] --> RS["Replay Service"]
+    RS --> E["Tablet Replay Executor"]
+    E --> LS["Log Stream"]
+    LS --> TB["Tablet"]
+    TB --> CK["Replay Checks"]
+    CK --> AP["Apply Operation"]
+    AP --> ST["Updated Tablet State"]
+  end
+```
+
+### SQL Compile and Execute
+
+```mermaid
+flowchart LR
+  subgraph C["SQL Compile and Execute"]
+    Q["SQL Text"] --> P["Parser"]
+    P --> R["Resolver"]
+    R --> W["Rewriter"]
+    W --> O["Optimizer"]
+    O --> LP["Logical Plan"]
+    LP --> CG["Code Generator"]
+    CG --> PP["Physical Plan"]
+    PP --> EX["Executor"]
+  end
+```
+
+### Unit Placement
+
+```mermaid
+flowchart LR
+  subgraph D["Unit Placement"]
+    UC["Unit Config"] --> RP["Resource Pool"]
+    RP --> PS["Placement Strategy"]
+    PS --> CS["Candidate Servers"]
+    CS --> CH["Chosen Server"]
+    CH --> UN["Unit Instance"]
+  end
+```
+
 ## Write Transaction: From Memtable to Replicated Log
 
 ### Motivation
