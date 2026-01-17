@@ -27,21 +27,21 @@ OceanBase adopts a shared-nothing architecture where each node is equal and runs
 ```mermaid
 graph TB
     subgraph Cluster["OceanBase Cluster"]
-        subgraph Z1["Zone 1 - Availability Zone"]
+        subgraph Z1["Zone 1"]
             N1["OBServer Node 1"]
             N2["OBServer Node 2"]
         end
-        subgraph Z2["Zone 2 - Availability Zone"]
+        subgraph Z2["Zone 2"]
             N3["OBServer Node 3"]
             N4["OBServer Node 4"]
         end
-        subgraph Z3["Zone 3 - Availability Zone"]
+        subgraph Z3["Zone 3"]
             N5["OBServer Node 5"]
             N6["OBServer Node 6"]
         end
     end
     
-    subgraph Proxy["obproxy Layer - Stateless"]
+    subgraph Proxy["obproxy Layer"]
         P1["obproxy 1"]
         P2["obproxy 2"]
     end
@@ -107,8 +107,8 @@ graph TB
 ```mermaid
 graph TB
     subgraph Tenant["Tenant"]
-        T1["Tenant 1 - MySQL Mode"]
-        T2["Tenant 2 - Oracle Mode"]
+        T1["Tenant 1 MySQL Mode"]
+        T2["Tenant 2 Oracle Mode"]
         T3["System Tenant"]
     end
     
@@ -119,9 +119,9 @@ graph TB
     end
     
     subgraph Unit["Resource Unit"]
-        U1["Unit 1 - CPU Memory Disk"]
-        U2["Unit 2 - CPU Memory Disk"]
-        U3["Unit 3 - CPU Memory Disk"]
+        U1["Unit 1 CPU Memory Disk"]
+        U2["Unit 2 CPU Memory Disk"]
+        U3["Unit 3 CPU Memory Disk"]
     end
     
     subgraph Server["Physical Server"]
@@ -158,7 +158,7 @@ graph TB
     end
     
     subgraph Proxy["Proxy Layer"]
-        ODP["obproxy - Stateless Router"]
+        ODP["obproxy Router"]
     end
     
     subgraph OBServer["OBServer Layer"]
