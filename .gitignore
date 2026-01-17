@@ -1,5 +1,4 @@
 public/
-themes/
 .hugo_build.lock
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,go,visualstudiocode
