@@ -51,9 +51,9 @@ graph TB
     Proxy --> N3
     Proxy --> N5
     
-    N1 -.Paxos Replication.-> N3
-    N3 -.Paxos Replication.-> N5
-    N5 -.Paxos Replication.-> N1
+    N1 -.-> N3
+    N3 -.-> N5
+    N5 -.-> N1
 ```
 
 **Key Concepts:**
@@ -94,17 +94,13 @@ graph TB
     T2 --> LS1
     T3 --> LS2
     T4 --> LS3
-    
-    LS1 -.Multi-Paxos.-> LS1
-    LS2 -.Multi-Paxos.-> LS2
-    LS3 -.Multi-Paxos.-> LS3
 ```
 
 **Key Concepts:**
 - **Partition**: Logical shard of a table (hash, range, list partitioning)
 - **Tablet**: Physical storage object storing ordered data records for a partition
 - **Log Stream (LS)**: Replication unit using Multi-Paxos for data consistency
-- **Replication**: Each tablet has multiple replicas across zones, with one leader accepting writes
+- **Replication**: Each tablet has multiple replicas across zones, with one leader accepting writes. Log streams replicate data via Multi-Paxos protocol across different zones.
 
 ### Multi-Tenant Resource Model
 
