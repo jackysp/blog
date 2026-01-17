@@ -29,15 +29,12 @@ graph TB
     subgraph Cluster["OceanBase Cluster"]
         subgraph Z1["Zone 1"]
             N1["OBServer Node 1"]
-            N2["OBServer Node 2"]
         end
         subgraph Z2["Zone 2"]
-            N3["OBServer Node 3"]
-            N4["OBServer Node 4"]
+            N2["OBServer Node 2"]
         end
         subgraph Z3["Zone 3"]
-            N5["OBServer Node 5"]
-            N6["OBServer Node 6"]
+            N3["OBServer Node 3"]
         end
     end
     
@@ -48,12 +45,8 @@ graph TB
     
     Client["Client Applications"] --> Proxy
     Proxy --> N1
+    Proxy --> N2
     Proxy --> N3
-    Proxy --> N5
-    
-    N1 -.-> N3
-    N3 -.-> N5
-    N5 -.-> N1
 ```
 
 **Key Concepts:**
