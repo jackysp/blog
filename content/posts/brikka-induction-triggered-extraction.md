@@ -2,7 +2,6 @@
 title: "Brikka on Induction: An Engineering View of a Triggered Extraction System"
 slug: "brikka-induction-triggered-extraction"
 date: "2026-01-18T10:00:00+08:00"
-author: "Minifish"
 categories:
   - Engineering
   - Systems Thinking
