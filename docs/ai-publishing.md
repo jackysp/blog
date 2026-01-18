@@ -4,22 +4,27 @@ This document defines the ONLY allowed way for AI agents
 to publish content into this repository.
 
 ## Scope
+
 - This repository is a Hugo blog source repo.
 - Build artifacts are published by GitHub Actions to
   <https://github.com/jackysp/jackysp.github.io>
 
 ## Allowed modifications
+
 AI agents MAY ONLY modify or create files under:
+
 - content/**
 - static/**
 
 Any modification outside these paths is STRICTLY FORBIDDEN.
 
 ## Post location
+
 - All blog posts MUST be placed under:
   content/posts/
 
 ## Post format
+
 - Hugo front matter format: YAML
 - Required fields:
   - title (string)
@@ -30,6 +35,7 @@ Any modification outside these paths is STRICTLY FORBIDDEN.
   - summary (string, brief description for previews)
 
 ### Front matter example
+
 ```yaml
 ---
 title: "Your Post Title"
@@ -42,31 +48,37 @@ summary: "A brief summary of the post content."
 ```
 
 ### Slug format rules
+
 - Use lowercase letters, numbers, and hyphens only
 - No spaces or special characters
 - Keep it concise and descriptive
 - Example: "oceanbase-internals-transaction-replay" (not "OceanBase Internals: Transaction Replay")
 
 ### Summary guidelines
+
 - Keep summary concise (1-2 sentences recommended)
 - Should provide a clear overview of the post content
 - Used in post listings and previews
 
 ## File naming
+
 - Preferred: content/posts/YYYY-MM-DD-slug.md
 - Alternative: content/posts/slug.md (if date prefix not used)
 
 ## Images
 
 ### Image storage location
+
 - **All images MUST be placed in:** `content/posts/images/`
 - Store images directly in this directory (no subdirectories required)
 
 ### Image reference format
+
 - Reference images in markdown using: `/posts/images/filename.ext`
 - Example: `![alt text](/posts/images/20241210_093935_image.jpg)`
 
 ### Image naming conventions
+
 - Use descriptive filenames with timestamps or meaningful names
 - Supported formats: `.png`, `.jpg`, `.jpeg`, `.JPG`, `.gif`, `.webp`
 - Examples:
@@ -74,22 +86,26 @@ summary: "A brief summary of the post content."
   - `screenshot-diagram.png` (descriptive)
 
 ### Image usage in posts
+
 ```markdown
 ![Image description](/posts/images/filename.png)
 ```
 
 ### Image best practices
+
 - Use descriptive alt text for accessibility
 - Optimize images before uploading (reasonable file sizes)
 - Maintain consistent naming patterns
 
 ## Draft vs Published workflow
+
 - Set `draft: true` for posts that are not ready for publication
 - Set `draft: false` for posts ready to be published
 - Published posts (`draft: false`) will appear on the live site
 - Draft posts (`draft: true`) are excluded from the build output
 
 ## Content structure
+
 - Use standard Markdown syntax for content
 - Headers: Use `##` for main sections, `###` for subsections
 - Code blocks: Use triple backticks with language identifiers
@@ -98,6 +114,7 @@ summary: "A brief summary of the post content."
 - Mermaid diagrams: Supported for architecture diagrams (see user rules for Mermaid guidelines)
 
 ## Commit rules
+
 - Target branch: default branch only
 - One commit per post
 - Commit message format:
@@ -105,6 +122,7 @@ summary: "A brief summary of the post content."
 - Include all related files (post markdown + images) in a single commit
 
 ## Prohibited actions
+
 - Do NOT modify themes, workflows, configs, or dependencies
 - Do NOT delete existing posts
 - Do NOT touch build output repositories
