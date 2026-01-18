@@ -7,11 +7,11 @@ date: 2022-02-12T11:54:00+08:00
 
 One day, I impulsively turned on GitHub's Vigilant mode.
 
-![test](/posts/images/2022-02-12-12.02.07.png)
+![test](/posts/images/2022-02-12-12.02.07.webp)
 
 As a result, all my commits started looking like this.
 
-![test](/posts/images/2022-02-12-12.11.01.png)
+![test](/posts/images/2022-02-12-12.11.01.webp)
 
 To figure out how to make them Verified, I found the following method.
 

@@ -11,24 +11,24 @@ The definition of key functions varies from person to person, so the content of 
 
 ### execute
 
-![func](/posts/images/20200812152326.png)
+![func](/posts/images/20200812152326.webp)
 
 The `execute` function is the necessary pathway for text protocol execution. It also nicely demonstrates the various processes of SQL handling.
 
 1. ParseSQL analyzes the SQL. The final implementation is in the parser, where SQL is parsed according to the rules introduced in the second article. Note that the parsed SQL may be a single statement or multiple statements. TiDB itself supports the multi-SQL feature, allowing multiple SQL statements to be executed at once.
 1. After parsing, a `stmtNodes` array is returned, which is processed one-by-one in the for loop below. The first step is to compile, where the core of compile is optimization, generating a plan. By following the `Optimize` function, you can find logic similar to logical and physical optimization found in other common databases.
 
-    ![func](/posts/images/20200812153017.png)
+    ![func](/posts/images/20200812153017.webp)
 
 1. The last part is execution, where `executeStatement` and particularly the `runStmt` function are key functions.
 
 ### runStmt
 
-![func](/posts/images/20200731111912.png)
+![func](/posts/images/20200731111912.webp)
 
 Judging from the call graph of `runStmt`, this function is almost the mandatory pathway for all SQL execution. Except for point query statements using the binary protocol with automatic commit, all other statements go through this function. This function is responsible for executing SQL, excluding SQL parsing and compilation (the binary protocol does not need repeated SQL parsing, nor does SQL compilation require plan caching).
 
-![func](/posts/images/20200731112400.png)
+![func](/posts/images/20200731112400.webp)
 
 The core part of the `runStmt` function is as shown above. From top to bottom:
 
@@ -104,14 +104,14 @@ Most of TiDB's SQL errors (except for duplicate entry and syntax errors) will ou
 
 For this stack trace, I believe no one really enjoys reading it. Therefore, we need to paste it into Vim and execute `%s/\\n/\r/g` and `%s/\\t/    /g` to turn it into a Golang-style stack.
 
-![func](/posts/images/20200812211203.png)
+![func](/posts/images/20200812211203.webp)
 
 When you see which module it's stuck in, like the plan part here, you can find the corresponding colleague for support.
 
 However, there is a more user-friendly tool for dealing with Golang’s lengthy stack called [panicparse](https://github.com/maruel/panicparse). To install it, simply run
 `go get github.com/maruel/panicparse/v2/cmd/pp`. The effect is as follows:
 
-![func](/posts/images/20200813172149.png)
+![func](/posts/images/20200813172149.webp)
 
 Whether it's TiDB running goroutines or panic outputs, it can be parsed using this. It has several features:
 

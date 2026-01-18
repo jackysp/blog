@@ -9,7 +9,7 @@ In the previous article, we introduced methods for viewing syntax and configurat
 
 The system variable names in TiDB are defined in [tidb_vars.go](https://github.com/pingcap/tidb/blob/db0310b17901b1a59f7f728294455ed9667f88ac/sessionctx/variable/tidb_vars.go). This file also includes some default values for variables, but the place where they are actually assembled is [defaultSysVars](https://github.com/pingcap/tidb/blob/12aac547a9068c404ad18093ae4d0ea4d060a465/sessionctx/variable/sysvar.go#L96).
 
-![defaultSysVars](/posts/images/20200728151254.png)
+![defaultSysVars](/posts/images/20200728151254.webp)
 
 This large struct array defines the scope, variable names, and default values for all variables in TiDB. Besides TiDB's own system variables, it also includes compatibility with MySQL's system variables.
 
@@ -17,7 +17,7 @@ This large struct array defines the scope, variable names, and default values fo
 
 In TiDB, there are three types of variable scopes literally:
 
-![defaultSysVars](/posts/images/20200728151833.png)
+![defaultSysVars](/posts/images/20200728151833.webp)
 
 They are ScopeNone, ScopeGlobal, and ScopeSession. They represent:
 
@@ -67,11 +67,11 @@ But it cannot be set in any way.
 
 To trace the usage of ScopeNone, you will see
 
-![defaultSysVars](/posts/images/20200728155134.png)
+![defaultSysVars](/posts/images/20200728155134.webp)
 
 In `setSysVariable`, when this type of scope variable is encountered, an error is directly returned.
 
-![defaultSysVars](/posts/images/20200728155332.png)
+![defaultSysVars](/posts/images/20200728155332.webp)
 
 In `ValidateGetSystemVar`, it is handled as a global variable.
 From a theoretical standpoint, these ScopeNone variables are essentially a single copy in the code. Once TiDB is started, they exist in memory as read-only and are not actually stored in TiKV.
@@ -139,7 +139,7 @@ MySQL  127.0.0.1:4000  SQL > select @@gtid_mode;
 And you can see that the result can still be read, meaning that this setting was persisted to the storage engine.
 Looking closely at the code, you can see:
 
-![defaultSysVars](/posts/images/20200728164505.png)
+![defaultSysVars](/posts/images/20200728164505.webp)
 
 The actual implementation involves executing an internal replace statement to update the original value. This constitutes a complete transaction involving acquiring two TSOs and committing the entire process, making it slower compared to setting session variables.
 
@@ -186,7 +186,7 @@ MySQL  127.0.0.1:4000  SQL > select @@rand_seed2;
 The setting is also compatible with MySQL. It can be simply observed that this operation only changes the session's memory.
 The actual place where it finally takes effect is [SetSystemVar](https://github.com/pingcap/tidb/blob/f360ad7a434e4edd4d7ebce5ed5dc2b9826b6ed0/sessionctx/variable/session.go#L998).
 
-![defaultSysVars](/posts/images/20200728171914.png)
+![defaultSysVars](/posts/images/20200728171914.webp)
 
 There are some tricks here.
 
@@ -206,7 +206,7 @@ Whether a session variable is also a global variable only affects whether it nee
 
 The actual range where a variable operates can only be observed in [SetSystemVar](https://github.com/pingcap/tidb/blob/f360ad7a434e4edd4d7ebce5ed5dc2b9826b6ed0/sessionctx/variable/session.go#L998).
 
-![defaultSysVars](/posts/images/20200728173351.png)
+![defaultSysVars](/posts/images/20200728173351.webp)
 
 For example, in this part, `s.MemQuotaNestedLoopApply = tidbOptInt64(val, DefTiDBMemQuotaNestedLoopApply)` changes the `s` structure, effectively changing the current session,
 
@@ -216,8 +216,8 @@ Whereas `atomic.StoreUint32(&ProcessGeneralLog, uint32(tidbOptPositiveInt32(val,
 
 Pure global variables in current TiDB are used for background threads like DDL, statistics, etc.
 
-![defaultSysVars](/posts/images/20200728174207.png)
-![defaultSysVars](/posts/images/20200728174243.png)
+![defaultSysVars](/posts/images/20200728174207.webp)
+![defaultSysVars](/posts/images/20200728174243.webp)
 
 Because only one TiDB server requires them, session-level variables hold no meaning for these.
 
@@ -228,7 +228,7 @@ The problem arises that after setting a global variable, a brief wait is necessa
 
 For specific details, see [this commentary](https://github.com/pingcap/tidb/blob/838b6a0cf2df2d1907508e56d9de9ba7fab502e5/session/session.go#L1990) in `loadCommonGlobalVariablesIfNeeded`.
 
-![defaultSysVars](/posts/images/20200728191527.png)
+![defaultSysVars](/posts/images/20200728191527.webp)
 
 ## Metrics
 
@@ -237,11 +237,11 @@ All Metrics in TiDB are uniformly located [here](https://github.com/pingcap/tidb
 
 There are many Metrics, and from a beginner's perspective, it's best to focus on a specific monitoring example. Let's take the TPS (transactions per second) panel as an example.
 
-![tps](/posts/images/20200729205545.png)
+![tps](/posts/images/20200729205545.webp)
 
 Click EDIT and you will see the monitoring formula is:
 
-![tps2](/posts/images/20200729210124.png)
+![tps2](/posts/images/20200729210124.webp)
 
 The `tidb_session_transaction_duration_seconds` is the name of this specific metric. Since it is a histogram, it can actually be expressed as three types of values: sum, count, and bucket, which represent the total sum of values, the count (which functions the same as a counter), and the distribution by bucket, respectively.
 
@@ -255,20 +255,20 @@ The second label, txn_mode, refers to two modes: optimistic and pessimistic tran
 
 Corresponding to the code:
 
-![alt text](/posts/images/20200729211352.png)
+![alt text](/posts/images/20200729211352.webp)
 
 This segment of code shows that `tidb_session_transaction_duration_seconds` is divided into several parts, including namespace and subsystem. Generally, to find a variable in a formula like `tidb_session_transaction_duration_seconds_count` within TiDB code, you need to remove the first two words and the last word.
 
 From this code snippet, you can see it's a histogram, specifically a HistogramVec, which is an array of histograms because it records data with several different labels. The labels LblTxnMode and LblType are these two labels.
 
-![alt text](/posts/images/20200729211511.png)
+![alt text](/posts/images/20200729211511.webp)
 
 Checking the references, there is a place for registration, which is in the main function we discussed in the first article, where metrics are registered.
 
-![alt text](/posts/images/20200729211725.png)
+![alt text](/posts/images/20200729211725.webp)
 
 Other references show how metrics are instantiated. Why do we do this? Mainly because as the number of labels increases, the performance of metrics becomes poorer, which is related to Prometheus's implementation. We had no choice but to create many instantiated global variables.
 
-![alt text](/posts/images/20200729211935.png)
+![alt text](/posts/images/20200729211935.webp)
 
 Taking the implementation of Rollback as an example, its essence is to record the actual execution time of a transaction when Rollback is truly executed. Since it’s a histogram, it is also used as a counter in this instance.

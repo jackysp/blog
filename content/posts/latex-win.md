@@ -192,4 +192,4 @@ OK, it’s all set...
 
 It should automatically start compiling. Confirm to download any required dependencies if prompted. The compiled effect is as follows:
 
-![test](/posts/images/20210331113405.png)
+![test](/posts/images/20210331113405.webp)

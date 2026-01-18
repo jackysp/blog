@@ -38,7 +38,7 @@ Why choose TiDB to read?
 
 1. After installing the Golang environment, remember to set the GOPATH, which is usually:
 
-   ![goenv](/posts/images/20200706172327.png)
+   ![goenv](/posts/images/20200706172327.webp)
 
 1. The TiDB code doesn't need to be developed under the GOPATH, so you can place it anywhere. I usually create a directory called work and throw various codes in there.
 
@@ -46,7 +46,7 @@ Why choose TiDB to read?
 
 1. Open with IDEA, select the tidb directory.
 
-   ![src](/posts/images/20200706174108.png)
+   ![src](/posts/images/20200706174108.webp)
 
 1. At this point, IDEA typically prompts you to set up GOROOT and enable Go Modules. Follow the recommendations.
 
@@ -60,7 +60,7 @@ At the beginning, someone advised me to start with the session package. However,
 
 The `main` function of TiDB can be seen at [link](https://github.com/pingcap/tidb/blob/6b6096f1f18a03d655d04d67a2f21d7fbfca2e3f/tidb-server/main.go#L160). You can roughly go through what happens when starting a tidb-server from top to bottom.
 
-![main](/posts/images/20200706220211.png)
+![main](/posts/images/20200706220211.webp)
 
 From top to bottom:
 
@@ -78,7 +78,7 @@ From top to bottom:
 - Start the server
 
   Within `runServer`, the `srv.Run()` actually brings up the tidb-server.
-  ![run](/posts/images/20200706221611.png)
+  ![run](/posts/images/20200706221611.webp)
   In the `Run()` function here, the server continuously listens to network requests, creating a new connection for each new request and using a new goroutine to serve it continually.
 
 - After this, cleanup work is done when the server needs to stop, ultimately writing out the logs.
@@ -87,9 +87,9 @@ Thus, the entire `main` function process ends. Through the `main` function, you 
 
 Additionally, with IDEA, you can easily start and debug TiDB. Click on this triangle symbol as shown in the image below:
 
-![run1](/posts/images/20200706222247.png)
+![run1](/posts/images/20200706222247.webp)
 
-![run2](/posts/images/20200706222457.png)
+![run2](/posts/images/20200706222457.webp)
 
 A pop-up with options to run and debug the `main` function will appear. Essentially, this starts a TiDB with default configurations. TiDB defaults to using mocktikv as the storage engine, so it can be started on a single machine for various testing and validation.
 
@@ -107,17 +107,17 @@ The `dispatch` function has several characteristics:
 
 1. `dispatch` itself is located at a very early stage, meaning its parameters mostly come directly from the client's initial information. If it's a text protocol, directly reading parameters can parse out the SQL text.
 
-![dispatch1](/posts/images/20200707150344.png)
+![dispatch1](/posts/images/20200707150344.webp)
 
 At the start, `dispatch` primarily focuses on obtaining tokens corresponding to the token-limit parameter. Requests that can't get a token won't execute, which explains why you can create many connections but only 1000 SQL executions are allowed simultaneously by default.
 
 Next, we enter the most crucial switch case:
 
-![dispatch2](/posts/images/20200707150736.png)
+![dispatch2](/posts/images/20200707150736.webp)
 
 These commands are MySQL protocol commands, so it's apparent from here exactly what TiDB implements. For comparison, you can refer to [this link](https://dev.mysql.com/doc/internals/en/text-protocol.html) (this link is only for the text protocol). For full details, see the figure below:
 
-![dispatch3](/posts/images/20200707151452.png)
+![dispatch3](/posts/images/20200707151452.webp)
 
 Within `dispatch`, the most important are `mysql.ComQuery`, as well as the trio `mysql.ComStmtPrepare`, `mysql.ComStmtExecute`, and `mysql.ComStmtClose`. The latter trio is more frequently used in actual production, hence even more important. In contrast, `mysql.ComQuery` is generally used only for some simple tests and validations.
 
@@ -127,7 +127,7 @@ In summary, users’ perceived QPS may not necessarily align with the number of 
 
 Looking at the callers of `dispatch` can also reveal information that helps explain some frequently asked questions:
 
-![dispatch4](/posts/images/20200707154120.png)
+![dispatch4](/posts/images/20200707154120.webp)
 
 1. An EOF error in `dispatch` typically means the client has actively disconnected, so there's no need to maintain the database connection, and it is severed.
 

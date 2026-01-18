@@ -10,7 +10,7 @@ In [this post](/posts/travis-git-push), I used Travis to enable automatic blog p
 
 Click on Actions on the repository page, and then New Workflow to see recommended actions. Since this blog uses Go code, it shows the Go Action.
 
-![goaction](/posts/images/20201216163209.png)
+![goaction](/posts/images/20201216163209.webp)
 
 The rest involves following Travis's approach to set up the workflow.
 
