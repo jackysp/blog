@@ -1,5 +1,6 @@
 ---
 title: "Exploring Tailscale: Building Your Own Network Easily"
+slug: "exploring-tailscale-building-your-own-network-easily"
 date: 2024-11-27T18:18:38+08:00
 ---
 

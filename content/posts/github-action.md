@@ -1,5 +1,6 @@
 ---
 title: "How to Automatically Publish a Blog Using GitHub Actions"
+slug: "how-to-automatically-publish-a-blog-using-github-actions"
 date: 2020-12-16T16:11:00+08:00
 draft: false
 ---

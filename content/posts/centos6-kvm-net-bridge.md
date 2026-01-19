@@ -1,5 +1,6 @@
 ---
 title: "How to Configure CentOS KVM Network Bridging Mode"
+slug: "how-to-configure-centos-kvm-network-bridging-mode"
 date: 2014-06-05T22:21:06+08:00
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "How to Read TiDB Source Code (Part 3)"
+slug: "how-to-read-tidb-source-code-part-3"
 date: 2020-07-28T11:47:00+08:00
 ---
 

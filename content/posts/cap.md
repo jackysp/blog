@@ -1,5 +1,6 @@
 ---
 title: "Understanding the CAP Theorem"
+slug: "understanding-the-cap-theorem"
 date: 2017-12-20T22:21:06+08:00
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "The Correct Way to Use `go build`"
+slug: "the-correct-way-to-use-go-build"
 date: 2024-11-28T15:41:19+08:00
 draft: false
 ---

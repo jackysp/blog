@@ -1,5 +1,6 @@
 ---
 title: "How to Dynamically Update DNS Records for Namesilo"
+slug: "how-to-dynamically-update-dns-records-for-namesilo"
 date: 2020-02-01T12:27:00+08:00
 draft: false
 ---

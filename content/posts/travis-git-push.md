@@ -1,5 +1,6 @@
 ---
 title: "How to Execute Git Push in Travis CI"
+slug: "how-to-execute-git-push-in-travis-ci"
 date: 2017-10-16T22:21:06+08:00
 ---
 

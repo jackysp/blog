@@ -1,5 +1,6 @@
 ---
 title: "How Immediate is Golang's Panic"
+slug: "how-immediate-is-golangs-panic"
 date: 2018-07-26T14:24:00+08:00
 draft: false
 ---

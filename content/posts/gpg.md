@@ -1,5 +1,6 @@
 ---
 title: "How to Create GitHub Verified Commits on a MacBook M1"
+slug: "how-to-create-github-verified-commits-on-a-macbook-m1"
 date: 2022-02-12T11:54:00+08:00
 ---
 

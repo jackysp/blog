@@ -1,5 +1,6 @@
 ---
 title: "Harnessing AI to Create High-Quality Podcasts Quickly and for Free"
+slug: "harnessing-ai-to-create-high-quality-podcasts-quickly-and-for-free"
 date: 2024-12-11T17:11:00+08:00
 ---
 

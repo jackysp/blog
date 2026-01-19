@@ -1,5 +1,6 @@
 ---
 title: "How to Set Up a Minecraft Bedrock Server Using Multipass"
+slug: "how-to-set-up-a-minecraft-bedrock-server-using-multipass"
 date: 2022-05-02T19:05:00+08:00
 draft: false
 ---

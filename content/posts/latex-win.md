@@ -1,5 +1,6 @@
 ---
 title: "How to Configure a Chinese LaTeX Environment on Windows"
+slug: "how-to-configure-a-chinese-latex-environment-on-windows"
 date: 2021-03-31
 draft: false
 ---

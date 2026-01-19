@@ -1,5 +1,6 @@
 ---
 title: "Using delve to Debug Golang Programs"
+slug: "using-delve-to-debug-golang-programs"
 date: 2019-09-16T13:24:00+08:00
 ---
 

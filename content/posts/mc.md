@@ -1,5 +1,6 @@
 ---
 title: How to Play Minecraft (Bedrock Edition) Cross-Platform
+slug: "how-to-play-minecraft-bedrock-edition-cross-platform"
 date: 2022-02-03
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "How to Choose the Right Fishing Gear: Tips from My Fishing Experiences"
+slug: "how-to-choose-the-right-fishing-gear-tips-from-my-fishing-experiences"
 date: 2024-11-27T17:46:00+08:00
 ---
 
