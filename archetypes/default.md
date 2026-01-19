@@ -4,5 +4,4 @@ slug: "{{ .Name }}"
 date: {{ .Date }}
 draft: false
 tags: []
-summary: ""
 ---

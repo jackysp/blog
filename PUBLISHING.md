@@ -39,7 +39,6 @@ Any modification outside these paths is STRICTLY FORBIDDEN.
   - draft (boolean: true for drafts, false for published posts)
   - tags (array of strings)
   - slug (string, URL-friendly identifier)
-  - summary (string, brief description for previews)
 
 ### Front matter example
 
@@ -50,7 +49,6 @@ date: "2026-01-17T10:00:00+08:00"
 draft: false
 tags: ["tag1", "tag2", "tag3"]
 slug: "your-post-slug"
-summary: "A brief summary of the post content."
 ---
 ```
 
@@ -60,12 +58,6 @@ summary: "A brief summary of the post content."
 - No spaces or special characters
 - Keep it concise and descriptive
 - Example: "oceanbase-internals-transaction-replay" (not "OceanBase Internals: Transaction Replay")
-
-### Summary guidelines
-
-- Keep summary concise (1-2 sentences recommended)
-- Should provide a clear overview of the post content
-- Used in post listings and previews
 
 ## File naming
 
