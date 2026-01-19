@@ -1,5 +1,5 @@
 baseURL = "https://blog.minifish.org/"
-copyright = "© Mini Fish 2014-present"
+copyright = "© Mini Fish 2014-present. Licensed under CC-BY-NC"
 languageCode = "en-US"
 title = "Mini Fish"
 theme = "PaperMod"
