@@ -72,7 +72,6 @@ TiDB has supported tracing since version 2.1, but it hasn't been widely used. I 
 
 1. The initial version of tracing only supported the JSON format, requiring the output to be copied and pasted into a TiDB-specific web page at a special host port to view it. Although novel, the multiple steps involved prevented widespread adoption.
 
-    ![lost](/posts/images/20200908164836.webp)
     ![lost](/posts/images/trace-view.webp)
 
 1. Another issue is that tracing provides insight only after a problem is known. If developers suspect a problem or slow execution in advance, they must proactively add events at those points. Often, unforeseen issues cannot be covered, leaving gaps.
@@ -83,17 +82,9 @@ Once the framework of tracing is in place, adding events is relatively straightf
 
 Interested individuals can add events to TiDB as needed, offering a good hands-on experience.
 
-Eventually, tracing added `format='row'` and `format='log'` features,
-
-![lost](/posts/images/20200908165729.webp)
-
-![lost](/posts/images/20200908165805.webp)
-
-I personally favor `format='log'`.
+Eventually, tracing added `format='row'` and `format='log'` features. I personally favor `format='log'`.
 
 ### Difference between Tracing and Explain (Analyze)
 
 1. Tracing operates at the function level, while Explain operates at the operator level. Tracing is easier to add and more granular and does not need to be part of a plan.
 1. Tracing can trace any SQL, while Explain only shows data reading parts. For example, with an Insert, Explain shows almost nothing, whereas tracing provides detailed insights from SQL parsing to the full transaction commit.
-
-![lost](/posts/images/20200908170040.webp)

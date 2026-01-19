@@ -27,8 +27,6 @@ The `execute` function is the necessary pathway for text protocol execution. It 
 
 ### runStmt
 
-![func](/posts/images/20200731111912.webp)
-
 Judging from the call graph of `runStmt`, this function is almost the mandatory pathway for all SQL execution. Except for point query statements using the binary protocol with automatic commit, all other statements go through this function. This function is responsible for executing SQL, excluding SQL parsing and compilation (the binary protocol does not need repeated SQL parsing, nor does SQL compilation require plan caching).
 
 ![func](/posts/images/20200731112400.webp)
@@ -106,8 +104,6 @@ Thereafter, the appearance of `server is running MySQL protocol` means that TiDB
 Most of TiDB's SQL errors (except for duplicate entry and syntax errors) will output the complete stack information. Due to the requirements of unified log format, the stack now looks very unsightly...
 
 For this stack trace, I believe no one really enjoys reading it. Therefore, we need to paste it into Vim and execute `%s/\\n/\r/g` and `%s/\\t/    /g` to turn it into a Golang-style stack.
-
-![func](/posts/images/20200812211203.webp)
 
 When you see which module it's stuck in, like the plan part here, you can find the corresponding colleague for support.
 

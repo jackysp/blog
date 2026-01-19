@@ -39,9 +39,7 @@ Why choose TiDB to read?
 
 ## Environment Setup
 
-1. After installing the Golang environment, remember to set the GOPATH, which is usually:
-
-   ![goenv](/posts/images/20200706172327.webp)
+1. After installing the Golang environment, remember to set the GOPATH.
 
 1. The TiDB code doesn't need to be developed under the GOPATH, so you can place it anywhere. I usually create a directory called work and throw various codes in there.
 
