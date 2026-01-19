@@ -62,8 +62,10 @@ summary: "A brief summary of the post content."
 
 ## File naming
 
-- Preferred: content/posts/YYYY-MM-DD-slug.md
-- Alternative: content/posts/slug.md (if date prefix not used)
+- **Required format**: `content/posts/slug.md`
+- Use only the slug (lowercase letters, numbers, and hyphens) as the filename
+- Do NOT include date prefix in filename (date is already in front matter)
+- Example: `ai-mcp-blog-publishing-workflow.md` (not `2026-01-19-ai-mcp-blog-publishing-workflow.md`)
 
 ## Images
 
