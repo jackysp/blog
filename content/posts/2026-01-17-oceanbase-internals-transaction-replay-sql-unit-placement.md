@@ -4,7 +4,6 @@ date: "2026-01-17T10:00:00+08:00"
 draft: false
 tags: ["OceanBase", "database", "distributed-systems", "transactions", "storage", "sql-engine", "scheduling"]
 slug: "oceanbase-internals-transaction-replay-sql-unit-placement"
-summary: "A code-guided tour of OceanBase write transactions, tablet replay, SQL compile-execute, and unit placement, focusing on motivation, design, implementation details, and tradeoffs."
 ---
 
 ## Why These Paths Matter

@@ -10,10 +10,6 @@ tags:
   - automation
   - blog-publishing
   - developer-productivity
-summary: >
-  How I built a seamless workflow that lets AI agents publish blog posts directly from
-  coding discussions using MCP (Model Context Protocol) and GitHub Actions, eliminating
-  context switching and preserving valuable conversation threads.
 ---
 
 ## The Problem: Lost Context, Lost Thoughts

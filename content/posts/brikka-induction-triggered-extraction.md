@@ -2,20 +2,12 @@
 title: "Brikka on Induction: An Engineering View of a Triggered Extraction System"
 slug: "brikka-induction-triggered-extraction"
 date: "2026-01-18T10:00:00+08:00"
-categories:
-  - Engineering
-  - Systems Thinking
 tags:
   - moka
   - brikka
   - induction
   - control-systems
   - engineering-mindset
-summary: >
-  A systems-engineering analysis of using a Bialetti Brikka on an induction hob.
-  We examine why traditional Moka assumptions fail, how Brikka behaves as a
-  pressure-triggered system, and how engineers should reason about heat,
-  inertia, and control boundaries.
 draft: false
 ---
 
