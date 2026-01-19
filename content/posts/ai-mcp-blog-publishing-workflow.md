@@ -110,7 +110,7 @@ All without manual intervention.
 
 ### 3. Governance Through Contracts
 
-To ensure quality and prevent accidents, I've implemented an **AI Publishing Contract** (`docs/ai-publishing.md`) that defines:
+To ensure quality and prevent accidents, I've implemented an **AI Publishing Contract** (`PUBLISHING.md`) that defines:
 
 - **Allowed paths**: Only `content/**` and `static/**` can be modified
 - **Post format**: Required front matter fields (title, date, tags, slug, summary)

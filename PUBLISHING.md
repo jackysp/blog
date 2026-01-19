@@ -1,7 +1,14 @@
-# AI Publishing Contract for jackysp/blog
+# Publishing Contract for MCP Agents
 
-This document defines the ONLY allowed way for AI agents
-to publish content into this repository.
+⚠️ **This document is specifically for MCP-based publishing workflows.**
+
+This contract defines STRICT restrictions for AI agents publishing content via MCP (Model Context Protocol). These restrictions are more limited than general agent guidelines to ensure repository safety.
+
+**For general project guidelines**, see `AGENTS.md` (if exists).
+
+---
+
+This document defines the ONLY allowed way for AI agents to publish content into this repository via MCP.
 
 ## Scope
 
