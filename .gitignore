@@ -1,5 +1,7 @@
 public/
+docs/
 .hugo_build.lock
+*.bak
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,go,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,go,visualstudiocode

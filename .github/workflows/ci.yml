@@ -49,5 +49,5 @@ jobs:
         source-directory: 'public'
         destination-github-username: 'jackysp'
         destination-repository-name: 'jackysp.github.io'
-        user-email: jackysp@gmail.com
+        user-email: i@minifish.org
         commit-message: See ORIGIN_COMMIT
