@@ -3,6 +3,7 @@ title: How to Implement MySQL X Protocol on TiDB
 slug: "how-to-implement-mysql-x-protocol-on-tidb"
 tags: ['mysql', 'protocol', 'database']
 date: 2017-08-16
+draft: false
 ---
 
 ## Some Documents on MySQL

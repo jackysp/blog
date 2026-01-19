@@ -3,6 +3,7 @@ title: "How to Use Monospaced Fonts in VS Code"
 slug: "how-to-use-monospaced-fonts-in-vs-code"
 tags: ['font', 'typography']
 date: 2017-12-26T22:21:06+08:00
+draft: false
 ---
 
 ## Background

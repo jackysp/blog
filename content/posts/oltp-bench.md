@@ -3,6 +3,7 @@ title: "How to View CMU DB Group's OLTP-Bench"
 slug: "how-to-view-cmu-db-groups-oltp-bench"
 tags: ['database', 'benchmark']
 date: 2018-02-23
+draft: false
 ---
 
 ## Introduction to OLTP-Bench

@@ -3,6 +3,7 @@ title: "How to Use HAProxy to Test CockroachDB"
 slug: "how-to-use-haproxy-to-test-cockroachdb"
 tags: ['haproxy', 'load-balancer']
 date: 2018-07-10T15:07:00+08:00
+draft: false
 ---
 
 ## Installing HAProxy

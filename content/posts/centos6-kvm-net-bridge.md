@@ -3,6 +3,7 @@ title: "How to Configure CentOS KVM Network Bridging Mode"
 slug: "how-to-configure-centos-kvm-network-bridging-mode"
 tags: ['centos', 'kvm', 'networking']
 date: 2014-06-05T22:21:06+08:00
+draft: false
 ---
 
 ## What Is Bridging

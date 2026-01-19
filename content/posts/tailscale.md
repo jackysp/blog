@@ -3,6 +3,7 @@ title: "Exploring Tailscale: Building Your Own Network Easily"
 slug: "exploring-tailscale-building-your-own-network-easily"
 tags: ['tailscale', 'vpn', 'networking']
 date: 2024-11-27T18:18:38+08:00
+draft: false
 ---
 
 I recently started experimenting with **Tailscale**, a tool that has significantly simplified the way I manage my personal network across devices. In this blog post, I'll share how I discovered Tailscale, its core features, and my personal setup that leverages this powerful tool.

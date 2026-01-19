@@ -3,6 +3,7 @@ title: "How to Read TiDB Source Code (Part 3)"
 slug: "how-to-read-tidb-source-code-part-3"
 tags: ['tidb', 'database', 'source-code']
 date: 2020-07-28T11:47:00+08:00
+draft: false
 ---
 
 In the previous article, we introduced methods for viewing syntax and configurations. In this article, we will discuss how to view system variables, including default values, scopes, and how to monitor metrics.
