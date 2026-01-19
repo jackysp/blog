@@ -1,6 +1,7 @@
 ---
 title: "How to Deploy a Shadowsocks Server"
 slug: "how-to-deploy-a-shadowsocks-server"
+tags: ['shadowsocks', 'proxy']
 date: 2018-09-27T15:48:00+08:00
 draft: false
 ---

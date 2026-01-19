@@ -1,6 +1,7 @@
 ---
 title: How to Practice Using SQL
 slug: "how-to-practice-using-sql"
+tags: ['postgresql', 'database']
 date: 2014-06-05
 ---
 

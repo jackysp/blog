@@ -1,6 +1,7 @@
 ---
 title: "My Recent Purchases: A Review of Three Sanrenmu Folding Knives"
 slug: "my-recent-purchases-a-review-of-three-sanrenmu-folding-knives"
+tags: ['knife']
 date: 2024-11-28T16:10:43.48+08:00
 ---
 

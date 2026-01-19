@@ -1,6 +1,7 @@
 ---
 title: "Tips for Traveling in Vietnam: My Personal Experiences"
 slug: "tips-for-traveling-in-vietnam-my-personal-experiences"
+tags: ['vietnam', 'travel']
 date: 2024-11-27T18:13:00+08:00
 draft: false
 ---

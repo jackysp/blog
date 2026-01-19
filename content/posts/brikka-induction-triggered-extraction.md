@@ -2,12 +2,7 @@
 title: "Brikka on Induction: An Engineering View of a Triggered Extraction System"
 slug: "brikka-induction-triggered-extraction"
 date: "2026-01-18T10:00:00+08:00"
-tags:
-  - moka
-  - brikka
-  - induction
-  - control-systems
-  - engineering-mindset
+tags: ['moka', 'brikka', 'induction', 'control-systems', 'engineering-mindset']
 draft: false
 ---
 

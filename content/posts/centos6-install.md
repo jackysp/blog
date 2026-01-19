@@ -1,6 +1,7 @@
 ---
 title: "How to Install CentOS as a Virtualization Host"
 slug: "how-to-install-centos-as-a-virtualization-host"
+tags: ['centos', 'linux', 'virtualization']
 date: 2014-06-05T22:21:06+08:00
 ---
 

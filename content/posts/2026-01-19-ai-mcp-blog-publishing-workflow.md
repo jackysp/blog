@@ -3,13 +3,7 @@ title: "From AI Conversations to Published Blog: The MCP-Powered Publishing Revo
 slug: "ai-mcp-blog-publishing-workflow"
 date: "2026-01-19T10:00:00+08:00"
 draft: false
-tags:
-  - ai
-  - mcp
-  - github-actions
-  - automation
-  - blog-publishing
-  - developer-productivity
+tags: ['ai', 'mcp', 'github-actions', 'automation', 'blog-publishing', 'developer-productivity']
 ---
 
 ## The Problem: Lost Context, Lost Thoughts

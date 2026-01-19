@@ -1,6 +1,7 @@
 ---
 title: "How to Check Piano Popularity"  
 slug: "how-to-check-piano-popularity"
+tags: ['piano']
 date: 2018-10-23T11:38:00+08:00
 draft: true
 ---

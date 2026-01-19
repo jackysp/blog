@@ -1,6 +1,7 @@
 ---
 title: "How to Start a PowerShell Script in the Background at Windows Startup"  
 slug: "how-to-start-a-powershell-script-in-the-background-at-windows-startup"
+tags: ['powershell', 'windows']
 date: 2020-01-14T08:56:00+08:00  
 ---
 

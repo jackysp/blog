@@ -1,6 +1,7 @@
 ---
 title: "How to Prevent a Linux Laptop from Entering Sleep Mode When the Lid is Closed"
 slug: "how-to-prevent-a-linux-laptop-from-entering-sleep-mode-when-the-lid-is-closed"
+tags: ['linux']
 date: 2020-03-31T20:31:00+08:00
 ---
 

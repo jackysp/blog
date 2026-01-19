@@ -2,7 +2,7 @@
 title: "OceanBase Internals: Transactions, Replay, SQL Engine, and Unit Placement"
 date: "2026-01-17T10:00:00+08:00"
 draft: false
-tags: ["OceanBase", "database", "distributed-systems", "transactions", "storage", "sql-engine", "scheduling"]
+tags: ['oceanbase', 'database', 'distributed-systems']
 slug: "oceanbase-internals-transaction-replay-sql-unit-placement"
 ---
 

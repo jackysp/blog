@@ -1,6 +1,7 @@
 ---
 title: "How to Compare Data Consistency between MySQL and PostgreSQL"
 slug: "how-to-compare-data-consistency-between-mysql-and-postgresql"
+tags: ['mysql', 'postgresql', 'database']
 date: 2021-05-09T18:13:00+08:00
 draft: false
 ---

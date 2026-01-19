@@ -1,6 +1,7 @@
 ---
 title: "How to Implement a Simple Load Using Sysbench"
 slug: "how-to-implement-a-simple-load-using-sysbench"
+tags: ['sysbench', 'benchmark']
 date: 2020-12-14T12:06:00+08:00
 draft: false
 ---

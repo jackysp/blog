@@ -1,6 +1,7 @@
 ---
 title: "Encounter with a Major Issue with Cloudflare Warp: A Life and Death Rescue for VPS"
 slug: "encounter-with-a-major-issue-with-cloudflare-warp-a-life-and-death-rescue-for-vps"
+tags: ['warp', 'cloudflare']
 date: 2024-05-15T20:31:00+08:00
 draft: false
 ---

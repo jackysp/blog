@@ -1,6 +1,7 @@
 ---
 title: "How to Read TiDB Source Code (Part 2)"
 slug: "how-to-read-tidb-source-code-part-2"
+tags: ['tidb', 'database', 'source-code']
 date: 2020-07-12T12:09:00+08:00
 ---
 

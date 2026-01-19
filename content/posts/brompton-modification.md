@@ -1,6 +1,7 @@
 ---
 title: "Brompton Clone Bike Modification"
 slug: "brompton-clone-bike-modification"
+tags: ['brompton', 'bicycle', 'cycling']
 date: 2025-01-10T18:07:06+08:00
 ---
 

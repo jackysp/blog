@@ -1,6 +1,7 @@
 ---
 title: "How to Deploy an HTTPS Proxy Service"
 slug: "how-to-deploy-an-https-proxy-service"
+tags: ['gost', 'proxy']
 date: 2020-01-12T19:43:00+08:00
 draft: false
 ---

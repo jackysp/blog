@@ -1,6 +1,7 @@
 ---
 title: "Introduction to WebVM"
 slug: "introduction-to-webvm"
+tags: ['webvm', 'virtualization', 'browser']
 date: 2025-01-13T19:54:00+08:00
 ---
 ## What is WebVM?

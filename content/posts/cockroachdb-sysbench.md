@@ -1,6 +1,7 @@
 ---
 title: "How to Test CockroachDB Performance Using Sysbench"
 slug: "how-to-test-cockroachdb-performance-using-sysbench"
+tags: ['cockroachdb', 'database', 'benchmark', 'sysbench']
 date: 2018-06-11T13:50:00+08:00
 ---
 

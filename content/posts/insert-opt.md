@@ -1,6 +1,7 @@
 ---
 title: "How TiDB Implements the INSERT Statement"  
 slug: "how-tidb-implements-the-insert-statement"
+tags: ['database', 'optimization']
 date: 2018-07-11T14:18:00+08:00  
 draft: false
 ---

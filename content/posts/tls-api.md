@@ -1,6 +1,7 @@
 ---
 title: "How to Use the HTTP API in TiDB with TLS Enabled"  
 slug: "how-to-use-the-http-api-in-tidb-with-tls-enabled"
+tags: ['tls', 'security']
 date: 2023-05-22T21:45:00-07:00  
 draft: false
 ---

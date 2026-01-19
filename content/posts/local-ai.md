@@ -1,6 +1,7 @@
 ---
 title: "Exploring Local LLMs with Ollama: My Journey and Practices"
 slug: "exploring-local-llms-with-ollama-my-journey-and-practices"
+tags: ['ai', 'llm', 'ollama']
 date: 2024-11-27T18:26:14+08:00
 draft: false
 ---
