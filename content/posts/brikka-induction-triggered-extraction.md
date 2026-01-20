@@ -84,11 +84,13 @@ Brikka has a narrow operating window.
 ### Heat Strategy
 
 **Preheating Phase (Before Grinding):**
+
 - Start heating the adapter plate at **Level 9** while measuring beans and grinding
 - The official stainless steel adapter plate is thick and conducts heat slowly
 - Preheating ensures the plate reaches operating temperature before brewing begins
 
 **Brewing Phase:**
+
 - Phase 1: **Level 9** until trigger
 - Phase 2: **Cut power immediately at first continuous output**
 - Rinse boiler bottom with cold water
