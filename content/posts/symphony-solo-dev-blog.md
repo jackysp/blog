@@ -1,7 +1,7 @@
 ---
 title: "Running OpenAI Symphony as a Solo Developer Across Two Repos"
 date: 2026-03-20T21:00:00+08:00
-draft: true
+draft: false
 tags:
   - ai
   - agents
