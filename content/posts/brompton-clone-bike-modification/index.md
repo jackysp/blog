@@ -1,10 +1,14 @@
 ---
-title: "Brompton Clone Bike Modification"
+title: "Notes on Modifying a Brompton Clone Bike"
 slug: "brompton-clone-bike-modification"
-tags: ['brompton', 'bicycle', 'cycling']
-date: 2025-01-10T18:07:06+08:00
+date: "2025-01-10T18:07:06+08:00"
 draft: false
+summary: "Notes on modifying an Aceoffix Brompton clone bike, including accessories, tradeoffs, cost, and practical buying tips."
+description: "Notes on modifying an Aceoffix Brompton clone bike, including accessories, tradeoffs, cost, and practical buying tips."
+categories: ["Reviews"]
+tags: ["brompton", "bicycle", "cycling"]
 ---
+
 
 I'm excited to share the final version of my **Aceoffix 01**, a Brompton clone bike I've been customizing:
 

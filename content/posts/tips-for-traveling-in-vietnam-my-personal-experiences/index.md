@@ -1,10 +1,14 @@
 ---
 title: "Tips for Traveling in Vietnam: My Personal Experiences"
 slug: "tips-for-traveling-in-vietnam-my-personal-experiences"
-tags: ['vietnam', 'travel']
-date: 2024-11-27T18:13:00+08:00
+date: "2024-11-27T18:13:00+08:00"
 draft: false
+summary: "Vietnam is a vibrant country with a rich culture, friendly people, and stunning landscapes. Recently, I spent some time exploring Vietnam, and I wanted to share some of my..."
+description: "Vietnam is a vibrant country with a rich culture, friendly people, and stunning landscapes. Recently, I spent some time exploring Vietnam, and I wanted to share some of my..."
+categories: ["Field Notes"]
+tags: ["vietnam", "travel"]
 ---
+
 
 Vietnam is a vibrant country with a rich culture, friendly people, and stunning landscapes. Recently, I spent some time exploring Vietnam, and I wanted to share some of my experiences and tips to help fellow travelers make the most of their visit.
 

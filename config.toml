@@ -10,11 +10,33 @@ enableEmoji = true
 
 [menus]
   [[menus.main]]
-    name = "Search"
-    url = "/search/"
+    name = "Engineering"
+    url = "/categories/engineering/"
+    weight = 10
+  [[menus.main]]
+    name = "Databases"
+    url = "/categories/databases/"
+    weight = 20
+  [[menus.main]]
+    name = "AI Tools"
+    url = "/categories/ai-tools/"
+    weight = 30
+  [[menus.main]]
+    name = "Field Notes"
+    url = "/categories/field-notes/"
+    weight = 40
+  [[menus.main]]
+    name = "Reviews"
+    url = "/categories/reviews/"
+    weight = 50
   [[menus.main]]
     name = "Archive"
     url = "/archives/"
+    weight = 60
+  [[menus.main]]
+    name = "Search"
+    url = "/search/"
+    weight = 70
 
 [minify]
   disableXML = true
@@ -23,7 +45,7 @@ enableEmoji = true
 [params]
   env = "production"
   defaultTheme = "auto"
-  description = "A Collection of Straightforward HOW-TO Guides"
+  description = "Practical notes on software engineering, systems, tools, and everyday experiments."
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -45,8 +67,8 @@ enableEmoji = true
   images = ["/android-chrome-512x512.png"]
 
   [params.homeInfoParams]
-    Title = "Hi there 👋"
-    Content = "Welcome to my blog site. I am a software engineer and I write about programming, software development, and all things tech. I hope you find something useful here."
+    Title = "Mini Fish"
+    Content = "Practical notes from software engineering, infrastructure work, AI tools, and everyday systems I actually use."
 
   [[params.socialIcons]]
     name = "x"

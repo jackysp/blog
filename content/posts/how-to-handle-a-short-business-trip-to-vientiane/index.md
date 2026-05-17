@@ -1,10 +1,14 @@
 ---
-title: "How to Handle a Short Business Trip to Vientiane"
+title: "A Short Business Trip to Vientiane: Practical Notes and Warnings"
 slug: "how-to-handle-a-short-business-trip-to-vientiane"
-tags: ['laos', 'vientiane', 'travel', 'business-trip']
-date: 2026-05-15T10:00:00+08:00
+date: "2026-05-15T10:00:00+08:00"
 draft: true
+summary: "Field notes from a short business trip to Vientiane, covering entry, transport, network quality, costs, food, and safety concerns."
+description: "Field notes from a short business trip to Vientiane, covering entry, transport, network quality, costs, food, and safety concerns."
+categories: ["Field Notes"]
+tags: ["laos", "vientiane", "travel", "business-trip"]
 ---
+
 
 I went to Vientiane, Laos, for a short business trip. I stayed there for about three days.
 

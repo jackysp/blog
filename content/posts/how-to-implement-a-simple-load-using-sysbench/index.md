@@ -1,10 +1,14 @@
 ---
 title: "How to Implement a Simple Load Using Sysbench"
 slug: "how-to-implement-a-simple-load-using-sysbench"
-tags: ['sysbench', 'benchmark']
-date: 2020-12-14T12:06:00+08:00
+date: "2020-12-14T12:06:00+08:00"
 draft: false
+summary: "Sysbench is a tool commonly used in database testing. Since version 1.0, it has supported more powerful custom functions, allowing users to conveniently write some Lua scripts to..."
+description: "Sysbench is a tool commonly used in database testing. Since version 1.0, it has supported more powerful custom functions, allowing users to conveniently write some Lua scripts to..."
+categories: ["Databases"]
+tags: ["sysbench", "benchmark"]
 ---
+
 
 [Sysbench](https://github.com/akopytov/sysbench) is a tool commonly used in database testing. Since version 1.0, it has supported more powerful custom functions, allowing users to conveniently write some Lua scripts to simulate load. The purpose of writing this article is, firstly, because I wanted to explore Sysbench's custom load usage. Secondly, because I tried the mysqlslap tool provided by MySQL's official source, and found that it freezes easily during database performance testing, which could mislead users into thinking there is an issue with the database, causing trouble for many. Therefore, I want to help people avoid these pitfalls.
 

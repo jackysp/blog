@@ -38,6 +38,9 @@ Any modification outside these paths is STRICTLY FORBIDDEN.
   - title (string)
   - date (RFC3339 format with timezone +08:00, e.g., "2026-01-17T10:00:00+08:00")
   - draft (boolean: true for drafts, false for published posts)
+  - summary (string)
+  - description (string)
+  - categories (array of strings)
   - tags (array of strings)
   - slug (string, URL-friendly identifier)
 
@@ -48,6 +51,9 @@ Any modification outside these paths is STRICTLY FORBIDDEN.
 title: "Your Post Title"
 date: "2026-01-17T10:00:00+08:00"
 draft: false
+summary: "A short, concrete summary of the post."
+description: "A one-sentence description for search, sharing, and archive pages."
+categories: ["Engineering"]
 tags: ["tag1", "tag2", "tag3"]
 slug: "your-post-slug"
 ---
@@ -117,13 +123,40 @@ slug: "your-post-slug"
 - Links: Use `[text](url)` format
 - Mermaid diagrams: Supported for architecture diagrams (see user rules for Mermaid guidelines)
 
+## Editorial positioning
+
+This site is not limited to HOW-TO articles. It publishes practical notes from software engineering, infrastructure work, AI tooling, and everyday systems the author has actually used.
+
+Choose titles that match the content type:
+
+- Use `How to ...` only for step-by-step guides.
+- Use `Notes on ...`, `A Field Report on ...`, or `What I Learned from ...` for experience reports.
+- Use `A Review of ...` for product or purchase reviews.
+- Use direct technical titles for internals, architecture, or debugging notes.
+
+Every post should have a concrete source of value: hands-on experience, reproducible steps, a clear technical model, a useful warning, or a defensible opinion.
+
+## Categories
+
+Use one primary category unless a post genuinely spans multiple areas:
+
+- `Engineering` - programming, debugging, architecture, developer workflow, and general engineering models.
+- `Databases` - TiDB, OceanBase, CockroachDB, MySQL, PostgreSQL, benchmarks, and distributed database notes.
+- `Infrastructure` - Linux, networking, VPN, proxy, CI/CD, servers, security, and deployment.
+- `AI Tools` - AI workflows, LLM tooling, agents, MCP, automation, and AI-assisted publishing.
+- `Field Notes` - travel, business trip notes, and practical personal observations from real-world situations.
+- `Reviews` - product notes, gear, bicycles, coffee devices, knives, fishing gear, and other hands-on reviews.
+
+Keep tags narrower than categories. Tags should describe specific tools, products, technologies, places, or concepts.
+
 ## Commit rules
 
 - Target branch: default branch only
-- One commit per post
+- Prefer one commit per post for ordinary publishing changes
 - Commit message format:
   "Publish: [post title]"
 - Include all related files (post markdown + images) in a single commit
+- Site-wide taxonomy, formatting, or editorial maintenance changes may update multiple posts in one clearly named commit
 
 ## Prohibited actions
 

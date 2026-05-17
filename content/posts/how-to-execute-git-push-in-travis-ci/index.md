@@ -1,10 +1,14 @@
 ---
 title: "How to Execute Git Push in Travis CI"
 slug: "how-to-execute-git-push-in-travis-ci"
-tags: ['travis', 'ci-cd']
-date: 2017-10-16T22:21:06+08:00
+date: "2017-10-16T22:21:06+08:00"
 draft: false
+summary: "Travis CI is generally used for automating tests without needing to update the repository with the test outputs. This article explains how to automatically commit the results from..."
+description: "Travis CI is generally used for automating tests without needing to update the repository with the test outputs. This article explains how to automatically commit the results from..."
+categories: ["Infrastructure"]
+tags: ["travis", "ci-cd"]
 ---
+
 
 ## Background
 

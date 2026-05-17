@@ -1,10 +1,14 @@
 ---
-title: "How to Check Piano Popularity"  
+title: "Piano Popularity Notes from Old Purchase Data"
 slug: "how-to-check-piano-popularity"
-tags: ['piano']
-date: 2018-10-23T11:38:00+08:00
+date: "2018-10-23T11:38:00+08:00"
 draft: true
+summary: "Old purchase-data notes on piano model popularity, kept as a reference rather than a current buying guide."
+description: "Old purchase-data notes on piano model popularity, kept as a reference rather than a current buying guide."
+categories: ["Reviews"]
+tags: ["piano"]
 ---
+
 
 Recently, I needed to buy a piano for my child, so I gathered some data for reference. Please remove if infringing.  
 The data roughly comes from online quotes from 2010 to 2014.  

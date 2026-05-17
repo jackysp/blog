@@ -1,10 +1,14 @@
 ---
-title: "How to Start a PowerShell Script in the Background at Windows Startup"  
+title: "How to Start a PowerShell Script in the Background at Windows Startup"
 slug: "how-to-start-a-powershell-script-in-the-background-at-windows-startup"
-tags: ['powershell', 'windows']
-date: 2020-01-14T08:56:00+08:00  
+date: "2020-01-14T08:56:00+08:00"
 draft: false
+summary: "Note: Start-Process seems to perform a fork-like action, and by default, it opens a new PowerShell window to execute. That's why -WindowStyle Hidden is added at the end. You can't..."
+description: "Note: Start-Process seems to perform a fork-like action, and by default, it opens a new PowerShell window to execute. That's why -WindowStyle Hidden is added at the end. You can't..."
+categories: ["Infrastructure"]
+tags: ["powershell", "windows"]
 ---
+
 
 * Create a script and place it in
 

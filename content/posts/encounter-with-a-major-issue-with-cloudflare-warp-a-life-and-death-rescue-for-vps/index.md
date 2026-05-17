@@ -1,10 +1,14 @@
 ---
-title: "Encounter with a Major Issue with Cloudflare Warp: A Life and Death Rescue for VPS"
+title: "A Cloudflare WARP Failure and VPS Recovery Notes"
 slug: "encounter-with-a-major-issue-with-cloudflare-warp-a-life-and-death-rescue-for-vps"
-tags: ['warp', 'cloudflare']
-date: 2024-05-15T20:31:00+08:00
+date: "2024-05-15T20:31:00+08:00"
 draft: false
+summary: "A recovery note from a Cloudflare WARP failure that broke VPS connectivity, with the failure mode and rescue path documented."
+description: "A recovery note from a Cloudflare WARP failure that broke VPS connectivity, with the failure mode and rescue path documented."
+categories: ["Infrastructure"]
+tags: ["warp", "cloudflare"]
 ---
+
 
 Today, I planned to use Warp to select an IP exit for my VPS, following the [Cloudflare official documentation](https://developers.cloudflare.com/warp-client/get-started/linux/). When executing the `warp-cli connect` step, the server immediately lost connection, and the problem persisted even after rebooting.
 

@@ -2,9 +2,13 @@
 title: "Brikka on Induction: An Engineering View of a Triggered Extraction System"
 slug: "brikka-induction-triggered-extraction"
 date: "2026-01-18T10:00:00+08:00"
-tags: ['moka', 'brikka', 'induction', 'control-systems', 'engineering-mindset']
 draft: false
+summary: "A systems view of brewing with a Brikka on induction, treating extraction as a triggered thermal and pressure process."
+description: "A systems view of brewing with a Brikka on induction, treating extraction as a triggered thermal and pressure process."
+categories: ["Reviews"]
+tags: ["moka", "brikka", "induction", "control-systems", "engineering-mindset"]
 ---
+
 
 ## Motivation: Why This Is an Engineering Problem
 

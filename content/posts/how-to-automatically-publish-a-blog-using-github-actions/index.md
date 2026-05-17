@@ -1,10 +1,14 @@
 ---
 title: "How to Automatically Publish a Blog Using GitHub Actions"
 slug: "how-to-automatically-publish-a-blog-using-github-actions"
-tags: ['github-actions', 'ci-cd', 'automation']
-date: 2020-12-16T16:11:00+08:00
+date: "2020-12-16T16:11:00+08:00"
 draft: false
+summary: "In this post, I used Travis to enable automatic blog publishing. However, I recently discovered that Travis does not run automatically anymore (though it works manually). I..."
+description: "In this post, I used Travis to enable automatic blog publishing. However, I recently discovered that Travis does not run automatically anymore (though it works manually). I..."
+categories: ["Infrastructure"]
+tags: ["github-actions", "ci-cd", "automation"]
 ---
+
 
 In [this post](/posts/travis-git-push), I used Travis to enable automatic blog publishing. However, I recently discovered that Travis does not run automatically anymore (though it works manually). I haven’t looked into it closely because GitHub Actions have been introduced, so I decided to move all dependencies to GitHub.
 

@@ -1,10 +1,14 @@
 ---
 title: "How to Configure a Chinese LaTeX Environment on Windows"
 slug: "how-to-configure-a-chinese-latex-environment-on-windows"
-tags: ['latex', 'windows']
-date: 2021-03-31
+date: "2021-03-31T00:00:00+00:00"
 draft: false
+summary: "Initially, I didn't think this was something worth writing about, because CTex was previously working smoothly for everyone. However, it turns out that CTex hasn't been updated..."
+description: "Initially, I didn't think this was something worth writing about, because CTex was previously working smoothly for everyone. However, it turns out that CTex hasn't been updated..."
+categories: ["Engineering"]
+tags: ["latex", "windows"]
 ---
+
 
 ## Background
 

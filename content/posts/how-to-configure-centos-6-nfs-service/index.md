@@ -1,10 +1,14 @@
 ---
 title: "How to Configure CentOS 6 NFS Service"
 slug: "how-to-configure-centos-6-nfs-service"
-tags: ['centos', 'nfs', 'linux']
-date: 2014-06-05T22:21:06+08:00
+date: "2014-06-05T22:21:06+08:00"
 draft: false
+summary: "1. Disable SeLinux Edit the configuration file:"
+description: "1. Disable SeLinux Edit the configuration file:"
+categories: ["Infrastructure"]
+tags: ["centos", "nfs", "linux"]
 ---
+
 
 ## Server Side
 

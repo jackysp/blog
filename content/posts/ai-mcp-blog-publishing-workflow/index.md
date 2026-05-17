@@ -3,8 +3,12 @@ title: "From AI Conversations to Published Blog: The MCP-Powered Publishing Revo
 slug: "ai-mcp-blog-publishing-workflow"
 date: "2026-01-19T10:00:00+08:00"
 draft: false
-tags: ['ai', 'mcp', 'github-actions', 'automation', 'blog-publishing', 'developer-productivity']
+summary: "A practical publishing workflow that turns AI conversations into Hugo posts through MCP, GitHub Actions, and a structured blog repository."
+description: "A practical publishing workflow that turns AI conversations into Hugo posts through MCP, GitHub Actions, and a structured blog repository."
+categories: ["AI Tools"]
+tags: ["ai", "mcp", "github-actions", "automation", "blog-publishing", "developer-productivity"]
 ---
+
 
 ## The Problem: Lost Context, Lost Thoughts
 
@@ -16,7 +20,7 @@ But then reality hits: you need to switch to your blog repository, format the co
 
 ## Building on Existing Automation
 
-In [my previous post about automatically publishing a blog using GitHub Actions](/posts/github-action), I set up a workflow where pushing to the blog repository triggers an automatic build and deployment to GitHub Pages. This solved the build and deployment automation, but there was still one manual step remaining: creating the post file itself.
+In [my previous post about automatically publishing a blog using GitHub Actions](/posts/how-to-automatically-publish-a-blog-using-github-actions/), I set up a workflow where pushing to the blog repository triggers an automatic build and deployment to GitHub Pages. This solved the build and deployment automation, but there was still one manual step remaining: creating the post file itself.
 
 The workflow I described there handles:
 1. Checking out the blog repository
@@ -51,7 +55,7 @@ Here's how the complete workflow operates:
                    ▼
 ┌─────────────────────────────────────────────────────────┐
 │  Blog Repository (jackysp/blog)                         │
-│  - content/posts/[new-post].md                          │
+│  - content/posts/<slug>/index.md                        │
 │  - Commit: "Publish: [title]"                           │
 └──────────────────┬──────────────────────────────────────┘
                    │
@@ -101,7 +105,7 @@ on:
     branches: [ master ]
 ```
 
-The workflow (as detailed in [the previous post](/posts/github-action)):
+The workflow (as detailed in [the previous post](/posts/how-to-automatically-publish-a-blog-using-github-actions/)):
 1. Checks out the blog repository with submodules
 2. Builds the Hugo site using `make`
 3. Deploys the built artifacts to `jackysp.github.io`
@@ -161,7 +165,7 @@ The GitHub MCP server provides the AI agent with:
 
 ### GitHub Actions Workflow
 
-The CI/CD pipeline (as described in [the previous post](/posts/github-action)) handles:
+The CI/CD pipeline (as described in [the previous post](/posts/how-to-automatically-publish-a-blog-using-github-actions/)) handles:
 - Go environment setup (for Hugo builds)
 - Repository checkout with submodules
 - Site generation via `make`
@@ -196,7 +200,7 @@ As MCP and similar protocols mature, we'll see more sophisticated capabilities:
 
 If you want to set up a similar workflow:
 
-1. **Set up automated publishing** (see [my previous post](/posts/github-action))
+1. **Set up automated publishing** (see [my previous post](/posts/how-to-automatically-publish-a-blog-using-github-actions/))
 2. **Enable MCP in your AI agent** (Cursor, Claude Desktop, etc.)
 3. **Configure GitHub MCP server** with repository access
 4. **Define publishing contracts** for governance

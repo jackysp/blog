@@ -1,10 +1,14 @@
 ---
 title: "How to Install CentOS as a Virtualization Host"
 slug: "how-to-install-centos-as-a-virtualization-host"
-tags: ['centos', 'linux', 'virtualization']
-date: 2014-06-05T22:21:06+08:00
+date: "2014-06-05T22:21:06+08:00"
 draft: false
+summary: "Installed Version: CentOS 6.3"
+description: "Installed Version: CentOS 6.3"
+categories: ["Infrastructure"]
+tags: ["centos", "linux", "virtualization"]
 ---
+
 
 ## Installation Process
 

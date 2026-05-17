@@ -1,10 +1,14 @@
 ---
 title: "Introduction to WebVM"
 slug: "introduction-to-webvm"
-tags: ['webvm', 'virtualization', 'browser']
-date: 2025-01-13T19:54:00+08:00
+date: "2025-01-13T19:54:00+08:00"
 draft: false
+summary: "WebVM is a virtual machine (VM) that executes entirely within a web browser. It's an innovative project that brings the power of a Linux environment straight to your browser,..."
+description: "WebVM is a virtual machine (VM) that executes entirely within a web browser. It's an innovative project that brings the power of a Linux environment straight to your browser,..."
+categories: ["Infrastructure"]
+tags: ["webvm", "virtualization", "browser"]
 ---
+
 ## What is WebVM?
 
 [WebVM](https://github.com/leaningtech/webvm) is a virtual machine (VM) that executes entirely within a web browser. It's an innovative project that brings the power of a Linux environment straight to your browser, eliminating the need for traditional virtual machine setups. WebVM operates within a sandboxed environment, ensuring secure execution of applications without affecting the host system.

@@ -1,10 +1,14 @@
 ---
 title: "How to Test CockroachDB Performance Using Sysbench"
 slug: "how-to-test-cockroachdb-performance-using-sysbench"
-tags: ['cockroachdb', 'database', 'benchmark', 'sysbench']
-date: 2018-06-11T13:50:00+08:00
+date: "2018-06-11T13:50:00+08:00"
 draft: false
+summary: "CockroachDB uses the PostgreSQL protocol. If you want to use Sysbench for testing, you need to enable pg protocol support in Sysbench. Sysbench already supports the pg protocol,..."
+description: "CockroachDB uses the PostgreSQL protocol. If you want to use Sysbench for testing, you need to enable pg protocol support in Sysbench. Sysbench already supports the pg protocol,..."
+categories: ["Databases"]
+tags: ["cockroachdb", "database", "benchmark", "sysbench"]
 ---
+
 
 ## Compiling Sysbench with pgsql Support
 

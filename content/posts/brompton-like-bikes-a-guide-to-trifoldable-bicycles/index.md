@@ -1,10 +1,14 @@
 ---
 title: "Brompton-like Bikes: A Guide to Trifoldable Bicycles"
 slug: "brompton-like-bikes-a-guide-to-trifoldable-bicycles"
-tags: ['brompton', 'bicycle', 'cycling']
-date: 2024-12-09T19:27:06+08:00
+date: "2024-12-09T19:27:06+08:00"
 draft: false
+summary: "A practical guide to Brompton-like trifold bikes, clone brands, accessories, and tradeoffs for urban use."
+description: "A practical guide to Brompton-like trifold bikes, clone brands, accessories, and tradeoffs for urban use."
+categories: ["Reviews"]
+tags: ["brompton", "bicycle", "cycling"]
 ---
+
 Brompton-like bikes are renowned for their compactness and portability. Unlike the typical two-fold bikes, these are trifold bikes, making them exceptionally convenient for urban commuting and travel.
 
 ## Key Features

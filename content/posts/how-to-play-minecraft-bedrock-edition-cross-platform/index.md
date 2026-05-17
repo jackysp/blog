@@ -1,10 +1,14 @@
 ---
-title: How to Play Minecraft (Bedrock Edition) Cross-Platform
+title: "How to Play Minecraft (Bedrock Edition) Cross-Platform"
 slug: "how-to-play-minecraft-bedrock-edition-cross-platform"
-tags: ['minecraft']
-date: 2022-02-03
+date: "2022-02-03T00:00:00+00:00"
 draft: false
+summary: "During the Chinese New Year holiday, I spent some time at home playing on the Switch with my child, and I ended up purchasing Minecraft (Bedrock Edition). In order to play..."
+description: "During the Chinese New Year holiday, I spent some time at home playing on the Switch with my child, and I ended up purchasing Minecraft (Bedrock Edition). In order to play..."
+categories: ["Field Notes"]
+tags: ["minecraft"]
 ---
+
 
 ### Background
 

@@ -1,10 +1,14 @@
 ---
-title: How to Implement MySQL X Protocol on TiDB
+title: "How to Implement MySQL X Protocol on TiDB"
 slug: "how-to-implement-mysql-x-protocol-on-tidb"
-tags: ['mysql', 'protocol', 'database']
-date: 2017-08-16
+date: "2017-08-16T00:00:00+00:00"
 draft: false
+summary: "1. Start a new server for TiDB. The relevant configuration parameters such as IP, port, and socket need to be set. 2. Implement the reading and writing functionality for message..."
+description: "1. Start a new server for TiDB. The relevant configuration parameters such as IP, port, and socket need to be set. 2. Implement the reading and writing functionality for message..."
+categories: ["Databases"]
+tags: ["mysql", "protocol", "database"]
 ---
+
 
 ## Some Documents on MySQL
 

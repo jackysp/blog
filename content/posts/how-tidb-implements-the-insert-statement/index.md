@@ -1,10 +1,14 @@
 ---
-title: "How TiDB Implements the INSERT Statement"  
+title: "How TiDB Implements the INSERT Statement"
 slug: "how-tidb-implements-the-insert-statement"
-tags: ['database', 'optimization']
-date: 2018-07-11T14:18:00+08:00  
+date: "2018-07-11T14:18:00+08:00"
 draft: false
+summary: "In a previous article \u201CTiDB Source Code Reading Series (4) Overview of INSERT Statement\u201D, we introduced the general process of the INSERT statement. Why write a separate article..."
+description: "In a previous article \u201CTiDB Source Code Reading Series (4) Overview of INSERT Statement\u201D, we introduced the general process of the INSERT statement. Why write a separate article..."
+categories: ["Databases"]
+tags: ["database", "optimization"]
 ---
+
 In a previous article [“TiDB Source Code Reading Series (4) Overview of INSERT Statement”](https://cn.pingcap.com/blog/tidb-source-code-reading-4), we introduced the general process of the INSERT statement. Why write a separate article for INSERT? Because in TiDB, simply inserting a piece of data is the simplest and most common case. It becomes more complex when defining various behaviors within the INSERT statement, such as how to handle situations with Unique Key conflicts: Should we return an error? Ignore the current data insertion? Or overwrite existing data? Therefore, this article will continue to delve into the INSERT statement.
 
 This article will first introduce the classification of INSERT statements in TiDB, along with the syntax and semantics of each statement, and then describe the source code implementation of the five types of INSERT statements.

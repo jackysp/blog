@@ -1,34 +1,25 @@
 ---
 title: "Running OpenAI Symphony as a Solo Developer Across Two Repos"
 slug: "symphony-solo-dev-blog"
-date: 2026-03-20T21:00:00+08:00
+date: "2026-03-20T21:00:00+08:00"
 draft: false
-tags:
-  - ai
-  - agents
-  - automation
-  - linear
-  - github
-  - hugo
-  - openai
-  - symphony
-  - codex
-categories:
-  - engineering
-summary: "Symphony, Linear, and Codex on two repos—with a deliberately harsh read on what comes next: customer-raised issues in, merged code out, and a shrinking middle of traditional PM and engineering headcount."
-description: "Hands-on Symphony setup plus an unapologetic thesis: orchestration collapses the PM–engineer relay; B2B should route first-hand demand straight into automated build, test, and ship. Checklists and links included."
+summary: "A hands-on report on running OpenAI Symphony with Linear, GitHub, and Codex across two personal repositories."
+description: "A hands-on report on running OpenAI Symphony with Linear, GitHub, and Codex across two personal repositories."
+categories: ["AI Tools"]
+tags: ["ai", "agents", "automation", "linear", "github", "hugo", "openai", "symphony", "codex"]
 keywords:
-  - OpenAI Symphony
-  - openai/symphony
-  - Linear
-  - Codex
-  - agent orchestration
-  - WORKFLOW.md
-  - solo developer
-  - GitHub automation
-  - B2B software delivery
-  - product engineering workflow
+  - "OpenAI Symphony"
+  - "openai/symphony"
+  - "Linear"
+  - "Codex"
+  - "agent orchestration"
+  - "WORKFLOW.md"
+  - "solo developer"
+  - "GitHub automation"
+  - "B2B software delivery"
+  - "product engineering workflow"
 ---
+
 
 I recently spent a session getting [OpenAI Symphony](https://github.com/openai/symphony) working on two personal repositories in a solo-developer setup. The goal was simple: use [Linear](https://linear.app/) as the task queue, let Symphony pick up issues automatically, and have Codex make code changes with as little manual coordination as possible.
 

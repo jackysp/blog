@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"slices"
 	"strings"
+	"time"
 )
 
 const (
@@ -21,6 +22,14 @@ var (
 	slugPattern          = regexp.MustCompile(`^[a-z0-9-]+$`)
 	imageExts            = map[string]bool{
 		".gif": true, ".jpeg": true, ".jpg": true, ".png": true, ".svg": true, ".webp": true,
+	}
+	allowedCategories = map[string]bool{
+		"AI Tools":       true,
+		"Databases":      true,
+		"Engineering":    true,
+		"Field Notes":    true,
+		"Infrastructure": true,
+		"Reviews":        true,
 	}
 )
 
@@ -110,7 +119,7 @@ func parseFrontMatter(content string) (string, bool) {
 
 func validateFrontMatter(post string, frontMatter string) []string {
 	var failures []string
-	required := []string{"title", "date", "draft", "tags", "slug"}
+	required := []string{"title", "date", "draft", "summary", "description", "categories", "tags", "slug"}
 	for _, key := range required {
 		if !hasFrontMatterKey(frontMatter, key) {
 			failures = append(failures, fmt.Sprintf("%s: missing front matter field %q", post, key))
@@ -127,6 +136,22 @@ func validateFrontMatter(post string, frontMatter string) []string {
 	}
 	if !slugPattern.MatchString(slug) {
 		failures = append(failures, fmt.Sprintf("%s: slug %q must use lowercase letters, numbers, and hyphens only", post, slug))
+	}
+	if date, ok := frontMatterValue(frontMatter, "date"); ok {
+		if _, err := time.Parse(time.RFC3339, date); err != nil {
+			failures = append(failures, fmt.Sprintf("%s: date %q must use RFC3339 format with timezone", post, date))
+		}
+	}
+	categories, ok := frontMatterArray(frontMatter, "categories")
+	if ok {
+		if len(categories) == 0 {
+			failures = append(failures, fmt.Sprintf("%s: categories must not be empty", post))
+		}
+		for _, category := range categories {
+			if !allowedCategories[category] {
+				failures = append(failures, fmt.Sprintf("%s: unsupported category %q", post, category))
+			}
+		}
 	}
 
 	return failures
@@ -149,6 +174,26 @@ func frontMatterValue(frontMatter string, key string) (string, bool) {
 		return value, true
 	}
 	return "", false
+}
+
+func frontMatterArray(frontMatter string, key string) ([]string, bool) {
+	value, ok := frontMatterValue(frontMatter, key)
+	if !ok {
+		return nil, false
+	}
+	if !strings.HasPrefix(value, "[") || !strings.HasSuffix(value, "]") {
+		return nil, false
+	}
+	value = strings.TrimSuffix(strings.TrimPrefix(value, "["), "]")
+	if strings.TrimSpace(value) == "" {
+		return []string{}, true
+	}
+	parts := strings.Split(value, ",")
+	items := make([]string, 0, len(parts))
+	for _, part := range parts {
+		items = append(items, strings.Trim(strings.TrimSpace(part), `"'`))
+	}
+	return items, true
 }
 
 func isExternalRef(ref string) bool {

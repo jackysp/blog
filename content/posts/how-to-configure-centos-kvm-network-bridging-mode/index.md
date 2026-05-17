@@ -1,10 +1,14 @@
 ---
 title: "How to Configure CentOS KVM Network Bridging Mode"
 slug: "how-to-configure-centos-kvm-network-bridging-mode"
-tags: ['centos', 'kvm', 'networking']
-date: 2014-06-05T22:21:06+08:00
+date: "2014-06-05T22:21:06+08:00"
 draft: false
+summary: "Bridging highly simulates a network card, making the router believe that the virtual machine's network card truly exists. Personally, I feel it's similar to resistors connected in..."
+description: "Bridging highly simulates a network card, making the router believe that the virtual machine's network card truly exists. Personally, I feel it's similar to resistors connected in..."
+categories: ["Infrastructure"]
+tags: ["centos", "kvm", "networking"]
 ---
+
 
 ## What Is Bridging
 

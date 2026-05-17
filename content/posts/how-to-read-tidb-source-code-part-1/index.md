@@ -1,10 +1,14 @@
 ---
 title: "How to Read TiDB Source Code (Part 1)"
 slug: "how-to-read-tidb-source-code-part-1"
-tags: ['tidb', 'database', 'source-code']
-date: 2020-07-06T16:51:00+08:00
+date: "2020-07-06T16:51:00+08:00"
 draft: false
+summary: "There are many articles on reading the source code of TiDB, often referred to as the \"Twenty-Four Chapters Scriptures\". However, these introductions typically proceed from a macro..."
+description: "There are many articles on reading the source code of TiDB, often referred to as the \"Twenty-Four Chapters Scriptures\". However, these introductions typically proceed from a macro..."
+categories: ["Databases"]
+tags: ["tidb", "database", "source-code"]
 ---
+
 
 ## Background
 

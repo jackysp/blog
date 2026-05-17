@@ -1,10 +1,14 @@
 ---
 title: "How to Understand F1's Schema Change"
 slug: "how-to-understand-f1s-schema-change"
-tags: ['f1', 'racing']
-date: 2017-12-25T22:21:06+08:00
+date: "2017-12-25T22:21:06+08:00"
 draft: false
+summary: "The DDL paper on F1 serves as the foundation for TiDB's DDL implementation. There are two main papers on F1: one provides an overview of F1's DDL, and the other specifically..."
+description: "The DDL paper on F1 serves as the foundation for TiDB's DDL implementation. There are two main papers on F1: one provides an overview of F1's DDL, and the other specifically..."
+categories: ["Databases"]
+tags: ["f1", "racing"]
 ---
+
 
 ## Background
 

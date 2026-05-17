@@ -1,10 +1,14 @@
 ---
 title: "Exploring Local LLMs with Ollama: My Journey and Practices"
 slug: "exploring-local-llms-with-ollama-my-journey-and-practices"
-tags: ['ai', 'llm', 'ollama']
-date: 2024-11-27T18:26:14+08:00
+date: "2024-11-27T18:26:14+08:00"
 draft: false
+summary: "Local Large Language Models (LLMs) have been gaining traction as developers and enthusiasts seek more control over their AI tools without relying solely on cloud-based solutions...."
+description: "Local Large Language Models (LLMs) have been gaining traction as developers and enthusiasts seek more control over their AI tools without relying solely on cloud-based solutions...."
+categories: ["AI Tools"]
+tags: ["ai", "llm", "ollama"]
 ---
+
 
 Local Large Language Models (LLMs) have been gaining traction as developers and enthusiasts seek more control over their AI tools without relying solely on cloud-based solutions. In this blog post, I'll share my experiences with **Ollama**, a remarkable tool for running local LLMs, along with other tools like **llamaindex** and **Candle**. I'll also discuss various user interfaces (UI) that enhance the local LLM experience.
 

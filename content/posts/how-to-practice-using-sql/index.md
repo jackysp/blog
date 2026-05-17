@@ -1,10 +1,14 @@
 ---
-title: How to Practice Using SQL
+title: "How to Practice Using SQL"
 slug: "how-to-practice-using-sql"
-tags: ['postgresql', 'database']
-date: 2014-06-05
+date: "2014-06-05T00:00:00+00:00"
 draft: false
+summary: "The text provided is a detailed set of instructions and queries for practicing SQL using PostgreSQL 9.4 BETA 2, focusing on creating and querying tables related to students,..."
+description: "The text provided is a detailed set of instructions and queries for practicing SQL using PostgreSQL 9.4 BETA 2, focusing on creating and querying tables related to students,..."
+categories: ["Databases"]
+tags: ["postgresql", "database"]
 ---
+
 
 The text provided is a detailed set of instructions and queries for practicing SQL using PostgreSQL 9.4 BETA 2, focusing on creating and querying tables related to students, courses, scores, and teachers. Here's a summary:
 

@@ -1,10 +1,14 @@
 ---
 title: "How to Prevent a Linux Laptop from Entering Sleep Mode When the Lid is Closed"
 slug: "how-to-prevent-a-linux-laptop-from-entering-sleep-mode-when-the-lid-is-closed"
-tags: ['linux']
-date: 2020-03-31T20:31:00+08:00
+date: "2020-03-31T20:31:00+08:00"
 draft: false
+summary: "Initially, I thought it would be a simple setting adjustment, so I casually Googled it. Sure enough, there was a unanimous solution: modify /etc/systemd/logind.conf, change..."
+description: "Initially, I thought it would be a simple setting adjustment, so I casually Googled it. Sure enough, there was a unanimous solution: modify /etc/systemd/logind.conf, change..."
+categories: ["Infrastructure"]
+tags: ["linux"]
 ---
+
 
 Initially, I thought it would be a simple setting adjustment, so I casually Googled it. Sure enough, there was a unanimous solution: modify `/etc/systemd/logind.conf`, change `HandleLidSwitch` to `ignore` or `lock`, and then restart `logind` or reboot.
 

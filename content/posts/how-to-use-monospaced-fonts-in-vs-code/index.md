@@ -1,10 +1,14 @@
 ---
 title: "How to Use Monospaced Fonts in VS Code"
 slug: "how-to-use-monospaced-fonts-in-vs-code"
-tags: ['font', 'typography']
-date: 2017-12-26T22:21:06+08:00
+date: "2017-12-26T22:21:06+08:00"
 draft: false
+summary: "The English font set in Microsoft's VS Code is monospaced, while the Chinese font is not."
+description: "The English font set in Microsoft's VS Code is monospaced, while the Chinese font is not."
+categories: ["Engineering"]
+tags: ["font", "typography"]
 ---
+
 
 ## Background
 

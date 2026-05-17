@@ -1,10 +1,14 @@
 ---
 title: "How to Dynamically Update DNS Records for Namesilo"
 slug: "how-to-dynamically-update-dns-records-for-namesilo"
-tags: ['und']
-date: 2020-02-01T12:27:00+08:00
+date: "2020-02-01T12:27:00+08:00"
 draft: false
+summary: "The purpose of dynamic updates is pretty simple. As a long-term user of China Unicom's broadband, although Unicom provides a public address, it is essentially a dynamic address,..."
+description: "The purpose of dynamic updates is pretty simple. As a long-term user of China Unicom's broadband, although Unicom provides a public address, it is essentially a dynamic address,..."
+categories: ["Infrastructure"]
+tags: ["und"]
 ---
+
 
 ## Dynamically Updating DNS Records
 

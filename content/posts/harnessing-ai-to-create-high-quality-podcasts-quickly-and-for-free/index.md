@@ -1,10 +1,14 @@
 ---
 title: "Harnessing AI to Create High-Quality Podcasts Quickly and for Free"
 slug: "harnessing-ai-to-create-high-quality-podcasts-quickly-and-for-free"
-tags: ['ai', 'notebooklm']
-date: 2024-12-11T17:11:00+08:00
+date: "2024-12-11T17:11:00+08:00"
 draft: false
+summary: "As a long-time podcaster, I've always enjoyed sharing my thoughts and ideas through audio. While the world of video content\u2014and the role of a YouTuber\u2014has its allure, the..."
+description: "As a long-time podcaster, I've always enjoyed sharing my thoughts and ideas through audio. While the world of video content\u2014and the role of a YouTuber\u2014has its allure, the..."
+categories: ["AI Tools"]
+tags: ["ai", "notebooklm"]
 ---
+
 
 ## Introduction
 

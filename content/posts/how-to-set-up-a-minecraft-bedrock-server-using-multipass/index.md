@@ -1,10 +1,14 @@
 ---
 title: "How to Set Up a Minecraft Bedrock Server Using Multipass"
 slug: "how-to-set-up-a-minecraft-bedrock-server-using-multipass"
-tags: ['minecraft', 'server']
-date: 2022-05-02T19:05:00+08:00
+date: "2022-05-02T19:05:00+08:00"
 draft: false
+summary: "Recently, both of my kids have become interested in Minecraft, and some of their peers are also playing it. We previously bought the Switch version, but its online capabilities..."
+description: "Recently, both of my kids have become interested in Minecraft, and some of their peers are also playing it. We previously bought the Switch version, but its online capabilities..."
+categories: ["Infrastructure"]
+tags: ["minecraft", "server"]
 ---
+
 
 ## Background
 

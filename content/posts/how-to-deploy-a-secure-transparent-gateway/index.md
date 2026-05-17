@@ -1,10 +1,14 @@
 ---
 title: "How to Deploy a Secure Transparent Gateway"
 slug: "how-to-deploy-a-secure-transparent-gateway"
-tags: ['networking', 'gateway']
-date: 2022-10-12T21:07:00+08:00
+date: "2022-10-12T21:07:00+08:00"
 draft: false
+summary: "After moving house, there are many more devices at home that need internet access. However, I don't want to configure a proxy on each device, so I thought of using a transparent..."
+description: "After moving house, there are many more devices at home that need internet access. However, I don't want to configure a proxy on each device, so I thought of using a transparent..."
+categories: ["Infrastructure"]
+tags: ["networking", "gateway"]
 ---
+
 
 ## Background
 

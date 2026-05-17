@@ -1,10 +1,14 @@
 ---
 title: "How to Test CockroachDB Performance Using Benchmarksql"
 slug: "how-to-test-cockroachdb-performance-using-benchmarksql"
-tags: ['cockroachdb', 'database', 'benchmark', 'tpcc']
-date: 2018-07-06T21:21:00+08:00
+date: "2018-07-06T21:21:00+08:00"
 draft: false
+summary: "First of all, TPC-C is the de facto OLTP benchmark standard. It is a set of specifications, and any database can publish its test results under this standard, so there's no issue..."
+description: "First of all, TPC-C is the de facto OLTP benchmark standard. It is a set of specifications, and any database can publish its test results under this standard, so there's no issue..."
+categories: ["Databases"]
+tags: ["cockroachdb", "database", "benchmark", "tpcc"]
 ---
+
 
 ## Why Test TPC-C
 

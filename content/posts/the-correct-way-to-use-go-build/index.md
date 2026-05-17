@@ -1,10 +1,14 @@
 ---
 title: "The Correct Way to Use `go build`"
 slug: "the-correct-way-to-use-go-build"
-tags: ['golang', 'programming']
-date: 2024-11-28T15:41:19+08:00
+date: "2024-11-28T15:41:19+08:00"
 draft: false
+summary: "When working with Go, it's important to know the proper way to compile your programs to avoid common errors. Here are some tips on using the go build command effectively."
+description: "When working with Go, it's important to know the proper way to compile your programs to avoid common errors. Here are some tips on using the go build command effectively."
+categories: ["Engineering"]
+tags: ["golang", "programming"]
 ---
+
 
 When working with Go, it's important to know the proper way to compile your programs to avoid common errors. Here are some tips on using the `go build` command effectively.
 

@@ -1,12 +1,13 @@
 # Blog
 
-My personal blog built with Hugo and PaperMod theme.
+My personal blog for practical notes on software engineering, systems, tools, and everyday experiments.
 
 ## Features
 
 - Static site generated with Hugo
 - Automated build and deployment via GitHub Actions
 - MCP-powered publishing workflow for AI agents
+- Editorial categories for engineering, databases, infrastructure, AI tools, field notes, and reviews
 
 ## Structure
 

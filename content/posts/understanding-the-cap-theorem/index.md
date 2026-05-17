@@ -1,10 +1,14 @@
 ---
 title: "Understanding the CAP Theorem"
 slug: "understanding-the-cap-theorem"
-tags: ['cap-theorem', 'distributed-systems']
-date: 2017-12-20T22:21:06+08:00
+date: "2017-12-20T22:21:06+08:00"
 draft: false
+summary: "The CAP theorem has become one of the hottest theorems in recent years; when discussing distributed systems, CAP is inevitably mentioned. However, I feel that I haven't thoroughly..."
+description: "The CAP theorem has become one of the hottest theorems in recent years; when discussing distributed systems, CAP is inevitably mentioned. However, I feel that I haven't thoroughly..."
+categories: ["Databases"]
+tags: ["cap-theorem", "distributed-systems"]
 ---
+
 
 ## Background
 

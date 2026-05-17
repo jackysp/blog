@@ -1,10 +1,14 @@
 ---
-title: "How to Use the HTTP API in TiDB with TLS Enabled"  
+title: "How to Use the HTTP API in TiDB with TLS Enabled"
 slug: "how-to-use-the-http-api-in-tidb-with-tls-enabled"
-tags: ['tls', 'security']
-date: 2023-05-22T21:45:00-07:00  
+date: "2023-05-22T21:45:00-07:00"
 draft: false
+summary: "Many customers have TLS enabled, which is different from the lab environment."
+description: "Many customers have TLS enabled, which is different from the lab environment."
+categories: ["Databases"]
+tags: ["tls", "security"]
 ---
+
 
 ## Background
 

@@ -1,10 +1,14 @@
 ---
 title: "How to Read TiDB Source Code (Part 4)"
 slug: "how-to-read-tidb-source-code-part-4"
-tags: ['tidb', 'database']
-date: 2020-07-31T10:58:00+08:00
+date: "2020-07-31T10:58:00+08:00"
 draft: false
+summary: "This article will introduce some key functions and the interpretation of logs in TiDB."
+description: "This article will introduce some key functions and the interpretation of logs in TiDB."
+categories: ["Databases"]
+tags: ["tidb", "database"]
 ---
+
 
 This article will introduce some key functions and the interpretation of logs in TiDB.
 

@@ -1,10 +1,14 @@
 ---
 title: "How to Use Docker on Windows"
 slug: "how-to-use-docker-on-windows"
-tags: ['docker', 'windows']
-date: 2020-04-13T10:34:00+08:00
+date: "2020-04-13T10:34:00+08:00"
 draft: false
+summary: "I had to install Docker on Windows to reproduce a bug."
+description: "I had to install Docker on Windows to reproduce a bug."
+categories: ["Infrastructure"]
+tags: ["docker", "windows"]
 ---
+
 
 ## Background
 

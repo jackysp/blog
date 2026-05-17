@@ -1,10 +1,14 @@
 ---
 title: "How to Deploy a Shadowsocks Server"
 slug: "how-to-deploy-a-shadowsocks-server"
-tags: ['shadowsocks', 'proxy']
-date: 2018-09-27T15:48:00+08:00
+date: "2018-09-27T15:48:00+08:00"
 draft: false
+summary: "There are multiple versions of the Shadowsocks server side implementation. The original version was written in Python, and later, enthusiasts implemented it in various programming..."
+description: "There are multiple versions of the Shadowsocks server side implementation. The original version was written in Python, and later, enthusiasts implemented it in various programming..."
+categories: ["Infrastructure"]
+tags: ["shadowsocks", "proxy"]
 ---
+
 
 There are multiple versions of the Shadowsocks server side implementation. The original version was written in Python, and later, enthusiasts implemented it in various programming languages of their liking.
 

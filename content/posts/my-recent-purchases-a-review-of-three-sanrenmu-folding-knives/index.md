@@ -1,10 +1,14 @@
 ---
 title: "My Recent Purchases: A Review of Three Sanrenmu Folding Knives"
 slug: "my-recent-purchases-a-review-of-three-sanrenmu-folding-knives"
-tags: ['knife']
-date: 2024-11-28T16:10:43.48+08:00
+date: "2024-11-28T16:10:43+08:00"
 draft: false
+summary: "A hands-on review of three Sanrenmu folding knives, with notes on everyday use, build quality, and practical differences."
+description: "A hands-on review of three Sanrenmu folding knives, with notes on everyday use, build quality, and practical differences."
+categories: ["Reviews"]
+tags: ["knife"]
 ---
+
 
 Recently, I decided to expand my collection of folding knives and purchased three models from **[Sanrenmu](#)**. For anyone considering a new knife or looking for suggestions, I wanted to share my experiences with these three models: the 9201, 9008, and 820. Each has its own strengths and weaknesses, and hopefully, my insights can help you make an informed decision.
 

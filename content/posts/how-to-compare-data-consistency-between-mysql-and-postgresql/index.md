@@ -1,10 +1,14 @@
 ---
 title: "How to Compare Data Consistency between MySQL and PostgreSQL"
 slug: "how-to-compare-data-consistency-between-mysql-and-postgresql"
-tags: ['mysql', 'postgresql', 'database']
-date: 2021-05-09T18:13:00+08:00
+date: "2021-05-09T18:13:00+08:00"
 draft: false
+summary: "Recently, I encountered a problem where a user wanted to synchronize data from PostgreSQL to TiDB (which uses the same protocol as MySQL) and wanted to know whether the data after..."
+description: "Recently, I encountered a problem where a user wanted to synchronize data from PostgreSQL to TiDB (which uses the same protocol as MySQL) and wanted to know whether the data after..."
+categories: ["Databases"]
+tags: ["mysql", "postgresql", "database"]
 ---
+
 
 ## Background
 

@@ -1,10 +1,14 @@
 ---
 title: "OceanBase Internals: Transactions, Replay, SQL Engine, and Unit Placement"
+slug: "oceanbase-internals-transaction-replay-sql-unit-placement"
 date: "2026-01-17T10:00:00+08:00"
 draft: false
-tags: ['oceanbase', 'database', 'distributed-systems']
-slug: "oceanbase-internals-transaction-replay-sql-unit-placement"
+summary: "OceanBase targets high availability and scalability in a shared-nothing cluster. The core engineering challenge is to make four critical subsystems work together with predictable..."
+description: "OceanBase targets high availability and scalability in a shared-nothing cluster. The core engineering challenge is to make four critical subsystems work together with predictable..."
+categories: ["Databases"]
+tags: ["oceanbase", "database", "distributed-systems"]
 ---
+
 
 ## Why These Paths Matter
 

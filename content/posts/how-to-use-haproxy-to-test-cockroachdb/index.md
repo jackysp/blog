@@ -1,10 +1,14 @@
 ---
 title: "How to Use HAProxy to Test CockroachDB"
 slug: "how-to-use-haproxy-to-test-cockroachdb"
-tags: ['haproxy', 'load-balancer']
-date: 2018-07-10T15:07:00+08:00
+date: "2018-07-10T15:07:00+08:00"
 draft: false
+summary: "yum install haproxy is effective for CentOS 7. After installation, you can start the service using systemctl start haproxy. But don't rush yet."
+description: "yum install haproxy is effective for CentOS 7. After installation, you can start the service using systemctl start haproxy. But don't rush yet."
+categories: ["Databases"]
+tags: ["haproxy", "load-balancer"]
 ---
+
 
 ## Installing HAProxy
 

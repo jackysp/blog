@@ -1,10 +1,14 @@
 ---
 title: "How to View CMU DB Group's OLTP-Bench"
 slug: "how-to-view-cmu-db-groups-oltp-bench"
-tags: ['database', 'benchmark']
-date: 2018-02-23
+date: "2018-02-23T00:00:00+00:00"
 draft: false
+summary: "OLTP-Bench is an open-source benchmarking tool platform for OLTP scenarios from CMU's DB Group. It was designed to provide a simple, easy-to-use, and extensible testing platform."
+description: "OLTP-Bench is an open-source benchmarking tool platform for OLTP scenarios from CMU's DB Group. It was designed to provide a simple, easy-to-use, and extensible testing platform."
+categories: ["Databases"]
+tags: ["database", "benchmark"]
 ---
+
 
 ## Introduction to OLTP-Bench
 

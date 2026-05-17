@@ -1,10 +1,14 @@
 ---
 title: "How Immediate is Golang's Panic"
 slug: "how-immediate-is-golangs-panic"
-tags: ['golang', 'debugging']
-date: 2018-07-26T14:24:00+08:00
+date: "2018-07-26T14:24:00+08:00"
 draft: false
+summary: "Let's first look at the following code snippet:"
+description: "Let's first look at the following code snippet:"
+categories: ["Engineering"]
+tags: ["golang", "debugging"]
 ---
+
 
 Let's first look at the following code snippet:
 
