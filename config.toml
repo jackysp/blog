@@ -45,7 +45,7 @@ enableEmoji = true
 [params]
   env = "production"
   defaultTheme = "auto"
-  description = "Practical notes on software engineering, systems, tools, and everyday experiments."
+  description = "Engineering notes, AI workflows, infrastructure lessons, and field reports from things I actually use."
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -67,8 +67,8 @@ enableEmoji = true
   images = ["/android-chrome-512x512.png"]
 
   [params.homeInfoParams]
-    Title = "Mini Fish"
-    Content = "Practical notes from software engineering, infrastructure work, AI tools, and everyday systems I actually use."
+    Title = "Hi there 👋"
+    Content = "I’m Jack. This is where I keep notes from software engineering, AI workflows, infrastructure work, and the everyday systems I actually use."
 
   [[params.socialIcons]]
     name = "x"
