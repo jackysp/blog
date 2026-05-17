@@ -1,6 +1,6 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-slug: "{{ .Name }}"
+slug: "{{ path.BaseName .File.Dir }}"
 date: {{ .Date }}
 draft: false
 tags: []

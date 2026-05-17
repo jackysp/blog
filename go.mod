@@ -1,6 +1,6 @@
 module github.com/jackysp/blog
 
-go 1.25.0
+go 1.26.3
 
 require github.com/gohugoio/hugo v0.158.0
 

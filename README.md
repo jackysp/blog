@@ -10,7 +10,7 @@ My personal blog built with Hugo and PaperMod theme.
 
 ## Structure
 
-- `content/posts/` - Blog posts (Markdown files)
+- `content/posts/` - Blog posts as Hugo Page Bundles
 - `static/` - Static assets (images, favicons, etc.)
 - `themes/PaperMod/` - Hugo theme (submodule)
 - `PUBLISHING.md` - Publishing contract for MCP agents
@@ -26,6 +26,22 @@ make
 ```
 
 This runs Hugo to generate the static site in the `public/` directory.
+
+## Check content
+
+```bash
+make check
+```
+
+This validates post front matter, slug naming, relative image references, unused images, and image size limits.
+
+## Preview locally
+
+```bash
+make preview
+```
+
+This starts a local Hugo preview server with drafts enabled.
 
 ## License
 

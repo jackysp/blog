@@ -28,7 +28,8 @@ Any modification outside these paths is STRICTLY FORBIDDEN.
 ## Post location
 
 - All blog posts MUST be placed under:
-  content/posts/
+  content/posts/<slug>/index.md
+- Each post MUST use a Hugo Page Bundle directory named after the post slug.
 
 ## Post format
 
@@ -61,22 +62,21 @@ slug: "your-post-slug"
 
 ## File naming
 
-- **Required format**: `content/posts/slug.md`
-- Use only the slug (lowercase letters, numbers, and hyphens) as the filename
+- **Required format**: `content/posts/slug/index.md`
+- Use only the slug (lowercase letters, numbers, and hyphens) as the bundle directory name
 - Do NOT include date prefix in filename (date is already in front matter)
-- Example: `ai-mcp-blog-publishing-workflow.md` (not `2026-01-19-ai-mcp-blog-publishing-workflow.md`)
+- Example: `content/posts/ai-mcp-blog-publishing-workflow/index.md` (not `content/posts/2026-01-19-ai-mcp-blog-publishing-workflow/index.md`)
 
 ## Images
 
 ### Image storage location
 
-- **All images MUST be placed in:** `content/posts/images/`
-- Store images directly in this directory (no subdirectories required)
+- **All post images MUST be placed in the same bundle directory as the post:** `content/posts/<slug>/`
 
 ### Image reference format
 
-- Reference images in markdown using: `/posts/images/filename.ext`
-- Example: `![alt text](/posts/images/20241210_093935_image.jpg)`
+- Reference images in markdown using a relative filename: `filename.ext`
+- Example: `![alt text](20241210_093935_image.webp)`
 
 ### Image naming conventions
 
@@ -89,7 +89,7 @@ slug: "your-post-slug"
 ### Image usage in posts
 
 ```markdown
-![Image description](/posts/images/filename.png)
+![Image description](filename.webp)
 ```
 
 ### Image best practices
@@ -97,6 +97,9 @@ slug: "your-post-slug"
 - Use descriptive alt text for accessibility
 - Optimize images before uploading (reasonable file sizes)
 - Maintain consistent naming patterns
+- Keep each image at or below 1 MiB
+- Remove EXIF metadata from privacy-sensitive JPEG photos before publishing
+- Do not commit unused images; every image in a post bundle must be referenced by that post
 
 ## Draft vs Published workflow
 
@@ -127,3 +130,13 @@ slug: "your-post-slug"
 - Do NOT modify themes, workflows, configs, or dependencies
 - Do NOT delete existing posts
 - Do NOT touch build output repositories
+
+## Validation
+
+Before committing content changes, run:
+
+```bash
+make check
+```
+
+This validates required front matter, slug/bundle consistency, relative image references, unused images, and image size limits. JPEG EXIF metadata is reported as a warning.

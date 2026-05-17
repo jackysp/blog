@@ -12,33 +12,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Set up Go 1.x
-      uses: actions/setup-go@v2
-      with:
-        go-version: ^1.24.0
-
     - name: Check out code with submodules
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: go.mod
+        cache: true
+
     - name: Get dependencies
-      run: |
-        go get -v -t -d ./...
-        if [ -f Gopkg.toml ]; then
-            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            dep ensure
-        fi
+      run: go mod download
+
+    - name: Check content
+      run: make check
 
     - name: Check out my other private repo
-      uses: actions/checkout@v2.5.0
+      uses: actions/checkout@v4
       with:
         repository: jackysp/jackysp.github.io
         token: ${{ secrets.UPDATE_BLOG }}
         path: public
 
     - name: Build
-      run: make
+      run: make build
     
     - name: Pushes to another repository
       id: public
