@@ -11,30 +11,37 @@ enableEmoji = true
 [menus]
   [[menus.main]]
     name = "Engineering"
+    identifier = "/categories/engineering/"
     url = "/categories/engineering/"
     weight = 10
   [[menus.main]]
     name = "Databases"
+    identifier = "/categories/databases/"
     url = "/categories/databases/"
     weight = 20
   [[menus.main]]
     name = "AI Tools"
+    identifier = "/categories/ai-tools/"
     url = "/categories/ai-tools/"
     weight = 30
   [[menus.main]]
     name = "Field Notes"
+    identifier = "/categories/field-notes/"
     url = "/categories/field-notes/"
     weight = 40
   [[menus.main]]
     name = "Reviews"
+    identifier = "/categories/reviews/"
     url = "/categories/reviews/"
     weight = 50
   [[menus.main]]
     name = "Archive"
+    identifier = "/archives/"
     url = "/archives/"
     weight = 60
   [[menus.main]]
     name = "Search"
+    identifier = "/search/"
     url = "/search/"
     weight = 70
 
