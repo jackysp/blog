@@ -24,17 +24,17 @@ I will keep this page updated as projects change.
 | `qwen-local` | Local AI | Private | Active | [qwen-local: Running an OpenAI-Compatible Model Service on Apple Silicon](/posts/qwen-local-on-apple-silicon/) |
 | `tapsurge` | Offline frontend tool | Private | Active | [TapSurge: An iPad Tap-Speed Tool Built for Competition Use](/posts/tapsurge-ipad-tap-test/) |
 | `ob-sizer` | Database tooling | Private | Active | [OB Sizer: Turning Migration Sizing into a Browser Tool](/posts/ob-sizer-capacity-estimator/) |
-| `agentd` | Agent runtime | Private | Experimental | [agentd: A Wasm-Native Harness for Personal Agents](/posts/agentd-wasm-agent-runtime/) |
-| `tegdb` | Database | Public | Experimental | [TegDB: Notes from Building a Small Embedded Database](/posts/tegdb-embedded-database/) |
-| `ob-skills` | AI workflow / Database | Public | Active | [ob-skills: Packaging OceanBase Knowledge as Agent Skills](/posts/ob-skills-oceanbase-agent-skills/) |
-| `quacklake` | Analytics | Private | Prototype | [QuackLake: A DuckDB-WASM Analytics Prototype](/posts/quacklake-wasm-analytics-prototype/) |
-| `scale-kv` | Storage systems | Private | Experimental | [scale-kv: A Storage Experiment About Complexity](/posts/scale-kv-storage-experiment/) |
-| `cta-guard` | Trading systems | Private | Sensitive | [cta-guard: Risk Controls Before Trading Logic](/posts/cta-guard-trading-risk-system/) |
-| `tegdb-server` | Database server | Public | Experimental | [tegdb-server: Putting a PostgreSQL-Compatible Protocol in Front of TegDB](/posts/tegdb-server-postgres-compatible/) |
-| `bedrock-lab` | Game modding | Private | Small tool | [Bedrock Lab: A Behavior Pack as a Small Rules Sandbox](/posts/bedrock-lab-behavior-pack/) |
-| `aeroplay` | Offline games | Public | Template-ready | [AeroPlay: A Flight-Mode Game Hub](/posts/aeroplay-offline-game-hub/) |
-| `map-ask` | Maps / AI | Private | Prototype | [map-ask: Natural-Language Geospatial Search](/posts/map-ask-natural-language-geosearch/) |
-| `good-fishing-day` | Personal dashboard | Private | Personal utility | [good-fishing-day: A Fishing Weather Dashboard](/posts/good-fishing-day-dashboard/) |
+| `agentd` | Agent runtime | Private | Experimental | Scheduled: 2026-05-26 |
+| `tegdb` | Database | Public | Experimental | Scheduled: 2026-05-27 |
+| `ob-skills` | AI workflow / Database | Public | Active | Scheduled: 2026-05-28 |
+| `quacklake` | Analytics | Private | Prototype | Scheduled: 2026-05-29 |
+| `scale-kv` | Storage systems | Private | Experimental | Scheduled: 2026-05-30 |
+| `cta-guard` | Trading systems | Private | Sensitive | Scheduled: 2026-05-31 |
+| `tegdb-server` | Database server | Public | Experimental | Scheduled: 2026-06-01 |
+| `bedrock-lab` | Game modding | Private | Small tool | Scheduled: 2026-06-02 |
+| `aeroplay` | Offline games | Public | Template-ready | Scheduled: 2026-06-03 |
+| `map-ask` | Maps / AI | Private | Prototype | Scheduled: 2026-06-04 |
+| `good-fishing-day` | Personal dashboard | Private | Personal utility | Scheduled: 2026-06-05 |
 
 ## Why write about private projects?
 
