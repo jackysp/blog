@@ -5,6 +5,10 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+    # 09:15 Asia/Singapore. This lets Hugo publish posts whose future dates have arrived.
+    - cron: '15 1 * * *'
+  workflow_dispatch:
 
 jobs:
   build:

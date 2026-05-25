@@ -1,7 +1,7 @@
 ---
 title: "tegdb-server: Putting a PostgreSQL-Compatible Protocol in Front of TegDB"
 slug: "tegdb-server-postgres-compatible"
-date: "2026-05-24T09:00:00+08:00"
+date: "2026-06-01T09:00:00+08:00"
 draft: false
 summary: "tegdb-server explores how a small embedded database can be exposed through a PostgreSQL-compatible server surface."
 description: "A project note on tegdb-server, a Rust server that puts a PostgreSQL-compatible protocol and network boundary in front of the TegDB embedded database."

@@ -1,7 +1,7 @@
 ---
 title: "TegDB: Notes from Building a Small Embedded Database"
 slug: "tegdb-embedded-database"
-date: "2026-05-24T08:35:00+08:00"
+date: "2026-05-27T09:00:00+08:00"
 draft: false
 summary: "TegDB is a small embedded database experiment focused on simplicity, reliability, WAL recovery, and a SQL-like interface."
 description: "A project note on TegDB, a lightweight embedded database engine with ACID transactions, WAL recovery, B+tree indexing, and a SQL-like interface."

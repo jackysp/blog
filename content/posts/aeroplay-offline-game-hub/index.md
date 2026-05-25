@@ -1,7 +1,7 @@
 ---
 title: "AeroPlay: A Flight-Mode Game Hub"
 slug: "aeroplay-offline-game-hub"
-date: "2026-05-24T09:10:00+08:00"
+date: "2026-06-03T09:00:00+08:00"
 draft: false
 summary: "AeroPlay is a mobile-first offline game hub designed to work in airplane mode with local assets and saved progress."
 description: "A project note on AeroPlay, a pure frontend offline game hub with mini games, localStorage progress, service worker caching, and add-to-home-screen support."

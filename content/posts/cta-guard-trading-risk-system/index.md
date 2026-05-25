@@ -1,7 +1,7 @@
 ---
 title: "cta-guard: Risk Controls Before Trading Logic"
 slug: "cta-guard-trading-risk-system"
-date: "2026-05-24T08:55:00+08:00"
+date: "2026-05-31T09:00:00+08:00"
 draft: false
 summary: "cta-guard is a private trading-system project where the most publishable lesson is risk control, not strategy details."
 description: "A sanitized project note on cta-guard, a Rust trading runtime and research tool focused on risk controls, ingestion, backtesting, and operational guardrails."
