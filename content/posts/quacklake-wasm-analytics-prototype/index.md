@@ -1,7 +1,7 @@
 ---
 title: "QuackLake: A DuckDB-WASM Analytics Prototype"
 slug: "quacklake-wasm-analytics-prototype"
-date: "2026-05-24T20:45:00+08:00"
+date: "2026-05-24T08:45:00+08:00"
 draft: false
 summary: "QuackLake explores a WASM-first analytics shape with DuckDB-WASM, object storage, a range gateway, and a small control plane."
 description: "A project note on QuackLake, a prototype combining DuckDB-WASM compute, MinIO object storage, a Rust API, and an HTTP range gateway."

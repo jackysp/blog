@@ -1,7 +1,7 @@
 ---
 title: "ob-skills: Packaging OceanBase Knowledge as Agent Skills"
 slug: "ob-skills-oceanbase-agent-skills"
-date: "2026-05-24T20:40:00+08:00"
+date: "2026-05-24T08:40:00+08:00"
 draft: false
 summary: "ob-skills is a small collection of OceanBase-focused agent skills for architecture guidance, DDL review, and validation."
 description: "A project note on ob-skills, a set of OceanBase Cursor agent skills for solution architecture, DDL syntax checking, and embedded validation workflows."

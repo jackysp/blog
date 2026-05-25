@@ -1,7 +1,7 @@
 ---
 title: "good-fishing-day: A Fishing Weather Dashboard"
 slug: "good-fishing-day-dashboard"
-date: "2026-05-24T21:20:00+08:00"
+date: "2026-05-24T09:20:00+08:00"
 draft: false
 summary: "good-fishing-day is a small personal dashboard that combines tide and weather data to estimate whether a day is worth fishing."
 description: "A project note on good-fishing-day, a Cloudflare Workers and Astro dashboard that combines tide, weather, caching, and a simple fishing suitability score."

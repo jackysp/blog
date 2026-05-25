@@ -1,7 +1,7 @@
 ---
 title: "agentd: A Wasm-Native Harness for Personal Agents"
 slug: "agentd-wasm-agent-runtime"
-date: "2026-05-24T20:30:00+08:00"
+date: "2026-05-24T08:30:00+08:00"
 draft: false
 summary: "agentd is an experimental single-host control plane for running Wasm-native agents with explicit host capabilities."
 description: "A project note on agentd, a Wasm-native single-host agent harness with host capabilities for messaging, schedules, memory, artifacts, web access, and LLM calls."

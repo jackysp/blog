@@ -1,7 +1,7 @@
 ---
 title: "OB Sizer: Turning Migration Sizing into a Browser Tool"
 slug: "ob-sizer-capacity-estimator"
-date: "2026-05-24T20:25:00+08:00"
+date: "2026-05-24T08:25:00+08:00"
 draft: false
 summary: "OB Sizer is a frontend-only capacity estimator for OceanBase migration conversations."
 description: "A project note on OB Sizer, a browser-based OceanBase migration capacity estimator for common source databases and workload assumptions."

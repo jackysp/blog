@@ -1,7 +1,7 @@
 ---
 title: "map-ask: Natural-Language Geospatial Search"
 slug: "map-ask-natural-language-geosearch"
-date: "2026-05-24T21:15:00+08:00"
+date: "2026-05-24T09:15:00+08:00"
 draft: false
 summary: "map-ask explores how plain-language map questions can become structured geospatial actions using open data sources."
 description: "A project note on map-ask, a natural-language geospatial search prototype using open map data, POI search, routing, environment lookup, and weather enrichment."

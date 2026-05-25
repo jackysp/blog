@@ -1,7 +1,7 @@
 ---
 title: "TapSurge: An iPad Tap-Speed Tool Built for Competition Use"
 slug: "tapsurge-ipad-tap-test"
-date: "2026-05-24T20:20:00+08:00"
+date: "2026-05-24T08:20:00+08:00"
 draft: false
 summary: "TapSurge is an offline-first iPad tap-speed test that records multi-finger input with audit-friendly timing."
 description: "A project note on TapSurge, a Vite and TypeScript tap-speed competition tool designed for iPad, offline use, and raw timestamp export."

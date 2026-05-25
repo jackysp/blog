@@ -1,7 +1,7 @@
 ---
 title: "Tailgate: A Private AI Gateway for Local and Remote Models"
 slug: "tailgate-private-ai-gateway"
-date: "2026-05-24T20:10:00+08:00"
+date: "2026-05-24T08:10:00+08:00"
 draft: false
 summary: "Tailgate is my private OpenAI-compatible gateway for routing AI clients across local and hosted providers."
 description: "A project note on tailgate, a private AI gateway that centralizes model routing, secrets, provider selection, and local model integration."

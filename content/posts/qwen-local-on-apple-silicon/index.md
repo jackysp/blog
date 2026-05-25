@@ -1,7 +1,7 @@
 ---
 title: "qwen-local: Running an OpenAI-Compatible Model Service on Apple Silicon"
 slug: "qwen-local-on-apple-silicon"
-date: "2026-05-24T20:15:00+08:00"
+date: "2026-05-24T08:15:00+08:00"
 draft: false
 summary: "qwen-local is a thin FastAPI service around MLX models for chat, embeddings, text-to-speech, and speech-to-text on a 16 GB Mac."
 description: "A project note on qwen-local, a local OpenAI-compatible AI service for Apple Silicon using MLX, Qwen, Kokoro, and Whisper."

@@ -1,7 +1,7 @@
 ---
 title: "Minifish Lab Projects"
 slug: "minifish-lab-projects"
-date: "2026-05-24T20:00:00+08:00"
+date: "2026-05-24T08:00:00+08:00"
 draft: false
 summary: "A living map of the small systems, tools, experiments, and prototypes I keep under Minifish Lab."
 description: "A living index of Minifish Lab projects, with short notes on what each project does, its current status, and the project notes in this series."

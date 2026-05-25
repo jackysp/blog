@@ -1,7 +1,7 @@
 ---
 title: "PocketBabel: Browser Translation Without a Backend"
 slug: "pocketbabel-browser-translation"
-date: "2026-05-24T20:05:00+08:00"
+date: "2026-05-24T08:05:00+08:00"
 draft: false
 summary: "PocketBabel is a small English-Chinese translation app that runs transformer models directly in the browser."
 description: "A project note on PocketBabel, a frontend-only English-Chinese translation app powered by transformers.js and designed for offline reuse."

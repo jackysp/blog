@@ -1,7 +1,7 @@
 ---
 title: "Bedrock Lab: A Behavior Pack as a Small Rules Sandbox"
 slug: "bedrock-lab-behavior-pack"
-date: "2026-05-24T21:05:00+08:00"
+date: "2026-05-24T09:05:00+08:00"
 draft: false
 summary: "Bedrock Lab is a small Minecraft Bedrock behavior pack for testing gameplay rule changes without experimental toggles."
 description: "A project note on Bedrock Lab, a Minecraft Bedrock behavior pack with sprint regeneration, random effects, custom drops, and fishing loot changes."

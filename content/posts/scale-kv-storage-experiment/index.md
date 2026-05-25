@@ -1,7 +1,7 @@
 ---
 title: "scale-kv: A Storage Experiment About Complexity"
 slug: "scale-kv-storage-experiment"
-date: "2026-05-24T20:50:00+08:00"
+date: "2026-05-24T08:50:00+08:00"
 draft: false
 summary: "scale-kv is a Rust storage experiment that explores transactional KV, page structures, quorum behavior, and distributed-system complexity."
 description: "A project note on scale-kv, a Rust experiment with transactional KV storage, page B+trees, quorum commit paths, Cap'n Proto RPC, and storage-system design notes."
