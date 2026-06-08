@@ -39,7 +39,7 @@ The project intentionally avoids becoming a general translation platform. The cu
 - desktop and mobile browser support
 - PWA shell and offline reuse
 
-It does not try to support OCR, speech, synced history, arbitrary language pairs, or collaborative workflows. Those features are tempting, but they would change the project from a useful small app into a maintenance surface.
+It does not try to support OCR, speech input, synced history, arbitrary language pairs, or collaborative workflows. Those features are tempting, but they would change the project from a useful small app into a maintenance surface.
 
 ## Technical shape
 
@@ -67,6 +67,14 @@ The useful pattern is:
 4. avoid account and sync features unless they are essential
 
 PocketBabel works because it does not try to be Google Translate. It is a small translation surface for a small set of language directions.
+
+## June 2026 update
+
+The pushed version has grown in two small but useful directions without changing the core product boundary.
+
+First, short word or phrase inputs can now use dictionary-style prompts. That makes PocketBabel more useful for vocabulary lookup: instead of treating every short input as a sentence, the app can ask for meanings, part-of-speech style structure, and usage notes.
+
+Second, translated output can be read aloud through the browser's `speechSynthesis` API when the browser supports it. This is deliberately output speech, not speech input or speech translation. It keeps the app frontend-only while making the translated result easier to check.
 
 ## Open source status
 

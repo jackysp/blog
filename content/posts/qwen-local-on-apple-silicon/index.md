@@ -3,8 +3,8 @@ title: "qwen-local: Running an OpenAI-Compatible Model Service on Apple Silicon"
 slug: "qwen-local-on-apple-silicon"
 date: "2026-05-24T08:15:00+08:00"
 draft: false
-summary: "qwen-local is a thin FastAPI service around MLX models for chat, embeddings, text-to-speech, and speech-to-text on a 16 GB Mac."
-description: "A project note on qwen-local, a local OpenAI-compatible AI service for Apple Silicon using MLX, Qwen, Kokoro, and Whisper."
+summary: "qwen-local is a thin FastAPI service around MLX models for chat, embeddings, Qwen3 text-to-speech, and Whisper speech-to-text on a 16 GB Mac."
+description: "A project note on qwen-local, a local OpenAI-compatible AI service for Apple Silicon using MLX, Qwen, Qwen3 TTS, and Whisper."
 categories: ["AI Tools"]
 tags: ["qwen-local", "mlx", "apple-silicon", "openai-compatible", "local-llm"]
 ---
@@ -24,7 +24,7 @@ The default shape is:
 - MLX for Apple Silicon inference
 - Qwen for chat
 - Qwen embeddings
-- Kokoro for text-to-speech
+- Qwen3 TTS through `mlx-audio`
 - MLX Whisper for speech-to-text
 - one `/v1` API surface
 
@@ -63,6 +63,12 @@ OpenAI-compatible does not mean full OpenAI clone. The useful target is compatib
 - normal error shapes where possible
 
 The second lesson is that local inference needs a health model. It is not enough to expose an endpoint. I need to know whether the service is loaded, busy, stuck, or unavailable, especially when another tool is routing requests into it.
+
+## June 2026 update
+
+The pushed version has moved the local speech stack from Kokoro to Qwen3 TTS. The default TTS model is now `mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit`, served through `mlx-audio` with `local-tts` as the API model alias. The default voice is `vivian`, and `"default"` maps to that voice.
+
+This keeps the project aligned around Qwen for chat, embeddings, and speech while still keeping Whisper as the ASR backend. It also reinforces the single-worker assumption: chat, embeddings, TTS, and ASR all share one serialized local inference worker so the Mac does not get overloaded by parallel requests.
 
 ## Open source status
 

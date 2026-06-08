@@ -68,6 +68,12 @@ That makes experiments cheaper. I can change the provider map without editing ev
 
 The second lesson is that local models need protection. A small local model service may only handle one heavy inference at a time. A gateway can enforce concurrency and fallback rules so clients do not accidentally overload the local runtime.
 
+## June 2026 update
+
+The pushed version has a clearer premium route. `premium/chat` now prefers the configured DeepSeek premium model before falling back to the configured OpenRouter premium model. Config order is also used as a tiebreaker when candidates have the same price ranking, which keeps routing behavior predictable instead of surprising.
+
+This is a good example of the gateway's real job: not to be clever, but to make model policy explicit. A client can ask for `premium/chat`; Tailgate decides which concrete upstream model should satisfy that tier.
+
 ## Current status
 
 Tailgate is active and private. I expect it to stay private unless the configuration model becomes generic enough to be useful outside my own setup.
