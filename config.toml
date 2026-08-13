@@ -15,26 +15,6 @@ enableEmoji = true
     url = "/categories/engineering/"
     weight = 10
   [[menus.main]]
-    name = "Databases"
-    identifier = "/categories/databases/"
-    url = "/categories/databases/"
-    weight = 20
-  [[menus.main]]
-    name = "AI Tools"
-    identifier = "/categories/ai-tools/"
-    url = "/categories/ai-tools/"
-    weight = 30
-  [[menus.main]]
-    name = "Field Notes"
-    identifier = "/categories/field-notes/"
-    url = "/categories/field-notes/"
-    weight = 40
-  [[menus.main]]
-    name = "Reviews"
-    identifier = "/categories/reviews/"
-    url = "/categories/reviews/"
-    weight = 50
-  [[menus.main]]
     name = "Archive"
     identifier = "/archives/"
     url = "/archives/"
@@ -52,7 +32,7 @@ enableEmoji = true
 [params]
   env = "production"
   defaultTheme = "auto"
-  description = "Engineering notes, AI workflows, infrastructure lessons, and field reports from things I actually use."
+  description = "Notes on distributed systems, databases, reliable agent runtimes, and AI infrastructure by TiDB maintainer Jack Yu."
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -74,8 +54,16 @@ enableEmoji = true
   images = ["/android-chrome-512x512.png"]
 
   [params.homeInfoParams]
-    Title = "Hi there 👋"
-    Content = "I’m Jack. This is where I keep notes from software engineering, AI workflows, infrastructure work, and the everyday systems I actually use."
+    Title = "Reliable systems for data and AI"
+    Content = """
+I’m Jack, a [TiDB maintainer](https://github.com/pingcap/community/blob/master/teams/tidb/membership.json) and distributed systems engineer. I write about transaction correctness, storage, agent runtimes, and AI infrastructure.
+
+**Selected paths:** [Distributed systems](/systems/#distributed-systems) · [Agent systems](/systems/#agent-systems) · [Inference systems](/systems/#inference-systems)
+
+**Featured:** [Reading TiDB source code](/posts/how-to-read-tidb-source-code-part-1/) · [Designing agentd](/posts/agentd-wasm-agent-runtime/) · [OceanBase internals](/posts/oceanbase-internals-transaction-replay-sql-unit-placement/)
+
+[Explore selected systems work →](/systems/)
+"""
 
   [[params.socialIcons]]
     name = "x"
