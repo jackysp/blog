@@ -17,12 +17,12 @@ jobs:
     steps:
 
     - name: Check out code with submodules
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         submodules: recursive
 
     - name: Set up Go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@v6
       with:
         go-version-file: go.mod
         cache: true
@@ -34,7 +34,7 @@ jobs:
       run: make check
 
     - name: Check out my other private repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: jackysp/jackysp.github.io
         token: ${{ secrets.UPDATE_BLOG }}
