@@ -42,9 +42,9 @@ placement meet inside a distributed database.
 ### [agentd: A Transport-Neutral Runtime for Personal Agents](/posts/agentd-wasm-agent-runtime/)
 
 An architecture note on turn contracts, explicit capabilities, durable state,
-scoped execution, and inspectable outcomes. `agentd` is experimental and
-private; the article describes the design without presenting it as a public
-platform.
+scoped execution, atomic finalization, and delivery. `agentd` is an
+[experimental public alpha](https://github.com/minifish-org/agentd), with
+executable reliability evidence and explicit limits.
 
 ### [Running OpenAI Symphony as a Solo Development System](/posts/symphony-solo-dev-blog/)
 

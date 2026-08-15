@@ -2,6 +2,7 @@
 title: "Minifish Lab Projects"
 slug: "minifish-lab-projects"
 date: "2026-05-24T08:00:00+08:00"
+lastmod: "2026-08-15T13:00:00+08:00"
 draft: false
 summary: "A living map of the small systems, tools, experiments, and prototypes I keep under Minifish Lab."
 description: "A living index of Minifish Lab projects, with short notes on what each project does, its current status, and the project notes in this series."
@@ -24,7 +25,7 @@ I will keep this page updated as projects change.
 | `qwen-local` | Local AI | Private | Active | [qwen-local: Running an OpenAI-Compatible Model Service on Apple Silicon](/posts/qwen-local-on-apple-silicon/) |
 | `tapsurge` | Offline frontend tool | Private | Active | [TapSurge: An iPad Tap-Speed Tool Built for Competition Use](/posts/tapsurge-ipad-tap-test/) |
 | `ob-sizer` | Database tooling | Private | Active | [OB Sizer: Turning Migration Sizing into a Browser Tool](/posts/ob-sizer-capacity-estimator/) |
-| `agentd` | Agent runtime | Private | Experimental | [agentd: A Transport-Neutral Runtime for Personal Agents](/posts/agentd-wasm-agent-runtime/) |
+| [`agentd`](https://github.com/minifish-org/agentd) | Agent runtime | Public | Experimental alpha | [agentd: A Transport-Neutral Runtime for Personal Agents](/posts/agentd-wasm-agent-runtime/) |
 | `canopy` | Maps / MCP | Private | Active | Scheduled: 2026-06-09 |
 | `nightfall` | AI game | Private | Prototype | Scheduled: 2026-06-10 |
 | `driftloop` | Generative music | Private | Active prototype | Scheduled: 2026-06-11 |
