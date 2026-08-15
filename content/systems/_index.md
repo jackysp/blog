@@ -39,7 +39,7 @@ placement meet inside a distributed database.
 
 ## Agent Systems
 
-### [agentd: A Transport-Neutral Runtime for Personal Agents](/posts/agentd-wasm-agent-runtime/)
+### [agentd: A Transport-Neutral Runtime for Personal Agents](/posts/agentd-transport-neutral-runtime/)
 
 An architecture note on turn contracts, explicit capabilities, durable state,
 scoped execution, atomic finalization, and delivery. `agentd` is an

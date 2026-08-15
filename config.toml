@@ -60,7 +60,7 @@ I’m Jack, a [TiDB maintainer](https://github.com/pingcap/community/blob/master
 
 **Selected paths:** [Distributed systems](/systems/#distributed-systems) · [Agent systems](/systems/#agent-systems) · [Inference systems](/systems/#inference-systems)
 
-**Featured:** [Reading TiDB source code](/posts/how-to-read-tidb-source-code-part-1/) · [Designing agentd](/posts/agentd-wasm-agent-runtime/) · [OceanBase internals](/posts/oceanbase-internals-transaction-replay-sql-unit-placement/)
+**Featured:** [Reading TiDB source code](/posts/how-to-read-tidb-source-code-part-1/) · [Designing agentd](/posts/agentd-transport-neutral-runtime/) · [OceanBase internals](/posts/oceanbase-internals-transaction-replay-sql-unit-placement/)
 
 [Explore selected systems work →](/systems/)
 """

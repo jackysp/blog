@@ -1,19 +1,14 @@
 ---
 title: "agentd: A Transport-Neutral Runtime for Personal Agents"
-slug: "agentd-wasm-agent-runtime"
-date: "2026-05-26T09:00:00+08:00"
-lastmod: "2026-08-15T13:00:00+08:00"
+slug: "agentd-transport-neutral-runtime"
+aliases: ["/posts/agentd-wasm-agent-runtime/"]
+date: "2026-08-15T16:11:02+08:00"
 draft: false
 summary: "Why agentd treats turns, scoped execution, atomic finalization, and delivery as runtime contracts rather than transport details."
 description: "A systems-level look at agentd, a durable single-host runtime for personal agents with scoped execution, explicit capabilities, inspectable traces, and transactional delivery."
 categories: ["Infrastructure"]
 tags: ["agentd", "agents", "runtime", "distributed-systems", "mcp"]
 ---
-
-> **Updated August 15, 2026:** The first version of this note described an
-> earlier private prototype centered on Wasm. This rewrite follows the public
-> [`v0.1.0-alpha.1`](https://github.com/minifish-org/agentd/releases/tag/v0.1.0-alpha.1)
-> runtime. I kept the original URL so existing links continue to work.
 
 Most personal-agent demos begin with a chat surface: receive a message, call a
 model, perhaps execute a tool, and send the answer back. That is enough to show
