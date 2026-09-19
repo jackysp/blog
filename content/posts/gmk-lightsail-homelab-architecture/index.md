@@ -29,7 +29,7 @@ The diagram groups related services; it is not a map of every listening port. Th
 | Location | What lives there | Why it belongs there |
 | --- | --- | --- |
 | GMK M5 Ultra | agentd, Canopy/GraphHopper, local-ai, Matrix/RTC, World Loom, Beszel | Local compute, memory, and persistent application data |
-| Lightsail, Singapore | Nginx ingress, Telegram/X adapters, Tailgate, SimpleX, Trojan-Go, Durvo server | Public reachability and lightweight services that can stay up independently of GMK |
+| Lightsail, Singapore | Nginx ingress, Telegram/X adapters, Tailgate, SimpleX, network utilities, Durvo server | Public reachability and lightweight services that can stay up independently of GMK |
 | Tailscale network | Host connectivity, private HTTPS endpoints, administration | One private network across devices and locations |
 | Cloudflare | World Loom static frontend; Sentinel Worker, D1, and Access | Static delivery and an observation point outside the two hosts |
 | NAS | Encrypted Restic snapshots | Recovery data on a separate storage system |
@@ -121,7 +121,6 @@ The public browser code is in [`world-loom-client`](https://github.com/minifish-
 Lightsail also runs a few services with useful independent lifetimes:
 
 - **SimpleX SMP and XFTP** provide messaging relay and file-transfer services. Both come from [simplexmq](https://github.com/simplex-chat/simplexmq).
-- **Trojan-Go** supplies an existing proxy service, from [trojan-go](https://github.com/p4gefau1t/trojan-go).
 - **Durvo** runs its single-node control server behind Nginx. [`Durvo`](https://github.com/minifish-org/durvo) **(private)** is my experimental SQLite recovery project, with immutable recovery objects in managed S3 and restoration into isolated staging targets.
 
 Durvo is still a self-use experiment with unresolved capture-maturity limitations. The homelab recovery procedure described below relies on consistent snapshots and Restic; Durvo is not the protection mechanism for those application databases.
@@ -132,23 +131,23 @@ I use two monitoring layers because they answer different questions.
 
 **[Beszel](https://github.com/henrygd/beszel)** runs on GMK: a containerized Hub and a native Agent. It shows CPU, memory, storage I/O, container activity, temperatures, and NVMe SMART information. The dashboard is available only through Tailscale. This is the view I use to understand whether inference is competing with other work or whether the host is running out of resources.
 
-**[`Sentinel`](https://github.com/minifish-org/sentinel) (private)** has a different position. Short-lived probes on GMK and Lightsail send signed reports every fifteen minutes to a Cloudflare Worker. The Worker also checks public Matrix, RTC, and Durvo endpoints, stores compact history in D1, and serves a status page protected by Cloudflare Access.
+**[`Sentinel`](https://github.com/minifish-org/sentinel) (private)** has a different position. Short-lived probes on GMK and Lightsail periodically send signed reports to a Cloudflare Worker. The Worker also checks public Matrix, RTC, and Durvo endpoints, stores compact history in D1, and serves a status page protected by Cloudflare Access.
 
-Lightsail can observe GMK's reachability and Beszel's HTTPS endpoint from another host. If GMK loses power, its local dashboard disappears, but the Worker and Lightsail remain separate observation points. Missing reports become an explicit unknown state after 35 minutes rather than leaving an old green result on screen indefinitely.
+Lightsail can observe GMK's reachability and Beszel's HTTPS endpoint from another host. If GMK loses power, its local dashboard disappears, but the Worker and Lightsail remain separate observation points. When reports become stale, the monitor shows an explicit unknown state.
 
-Sentinel currently records incidents on its status page. It does not send push/email notifications, restart applications, or repair hosts. Its polling interval also means detection takes time.
+Sentinel's status page brings these observations together with incident history.
 
 The useful distinction is between a process running, an application responding, and a scheduled job completing successfully. A running container does not prove that yesterday's backup succeeded.
 
 ## Recovery is part of the architecture
 
-The daily backup job runs at **03:30 Singapore time**. It stops the main database writers—Tuwunel, World Loom, and agentd—creates consistent archives, verifies checksums, and starts those applications again before uploading to the NAS.
+The backup job runs **each night**. It stops the main database writers—Tuwunel, World Loom, and agentd—creates consistent archives, verifies checksums, and starts those applications again before uploading to the NAS.
 
 This introduces a deliberate service interruption during snapshot creation. For this personal workload, a straightforward consistency boundary is worth that interruption.
 
-[Restic](https://github.com/restic/restic) stores encrypted snapshots on the NAS over SFTP. Retention is seven daily, four weekly, and twelve monthly snapshots, with seven days of local staging. Additional hooks capture Beszel's consistent database backup and local-ai's configuration and model manifest. Model weights and rebuildable caches are excluded from the routine backup; recovering them can require downloading or rebuilding them.
+[Restic](https://github.com/restic/restic) stores encrypted snapshots on the NAS over SFTP. Retention combines daily, weekly, and monthly recovery points with short-lived local staging copies. Additional hooks capture Beszel's consistent database backup and local-ai's configuration and model manifest. Model weights and rebuildable caches are excluded from the routine backup; recovering them can require downloading or rebuilding them.
 
-The schedule includes a weekly repository check and a monthly isolated restore drill. The automated restore drill covers the original application set. Beszel has integrity checks on each backup and a separately documented manual restore drill; adding a service to the backup archive does not automatically add it to every recovery test.
+Regular repository checks and isolated restore drills exercise the recovery path. The automated restore drill covers the original application set. Beszel has integrity checks on each backup and a separately documented manual restore drill; adding a service to the backup archive does not automatically add it to every recovery test.
 
 There is also an encrypted recovery bundle containing the captured configuration, operational tooling, consistent database archives, and application images from the core migration. That bundle has its own date and scope. It needs refreshing as services and deployment details change.
 
