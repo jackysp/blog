@@ -56,4 +56,4 @@ For location work, the agent's job is orchestration. The route engine should sti
 
 ## Current status
 
-Canopy is private and active. It is tied to local Singapore routing data, OneMap credentials, and a local GraphHopper runtime, so the repo is not a clean general-purpose hosted service.
+As of September 22, 2026, [Canopy is public](https://github.com/minifish-org/canopy) under AGPL-3.0-or-later. It remains focused on Singapore routes and includes a Docker Compose quick start, offline tests, and map-data attribution notes. Coordinate-based routing can run without OneMap credentials; operators configure their own OneMap access for address lookup and theme POIs. The MCP endpoint is intended for local or private-network use.

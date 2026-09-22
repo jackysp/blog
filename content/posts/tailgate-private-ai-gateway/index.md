@@ -48,11 +48,11 @@ The most useful rule is not fancy AI logic. It is policy:
 - avoid sending private work to external providers accidentally
 - fall back only when the route explicitly allows it
 
-## Why private
+## From a private deployment to public code
 
-Tailgate contains too many assumptions about my own environment to be a clean open source project. It is shaped around private networking, provider credentials, model preferences, and operational defaults.
+Tailgate started with assumptions about my own environment: private networking, provider credentials, model preferences, and operational defaults. On September 22, 2026, I opened the [repository](https://github.com/minifish-org/tailgate) after generalizing the setup examples and documenting the supported Rust runtime. Credentials and live deployment configuration stay outside the repository.
 
-The public lesson is still useful: an AI gateway does not need to start as a large platform. For one person, it can simply be a policy boundary.
+The running gateway remains a private service. The reusable part is the policy boundary: centralized credentials, explicit routing, and protection for local inference.
 
 ## What I learned
 
@@ -76,4 +76,4 @@ This is a good example of the gateway's real job: not to be clever, but to make 
 
 ## Current status
 
-Tailgate is active and private. I expect it to stay private unless the configuration model becomes generic enough to be useful outside my own setup.
+As of September 22, 2026, [Tailgate is public](https://github.com/minifish-org/tailgate) under AGPL-3.0-only. The repository includes a localhost-first configuration, Rust setup instructions, automated tests, and secret scanning. It remains an experimental self-hosted gateway; operators supply their own inference endpoints and provider accounts.
