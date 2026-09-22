@@ -16,7 +16,7 @@ At home, a **GMK M5 Ultra** runs the applications that need memory, persistent s
 
 That division lets me keep the cloud instance small while giving my projects a place to run continuously. The interesting part is how the pieces fit together: where requests enter, where state lives, which services remain private, and what happens when one machine disappears.
 
-This is a snapshot of the running system on **September 19, 2026**, checked against the live hosts and deployment configuration. Repository links appear throughout; repositories marked **private** require access.
+This is a snapshot of the running system on **September 19, 2026**, checked against the live hosts and deployment configuration. Repository links appear throughout; repositories marked **private** require access. Repository visibility was updated on **September 22, 2026**, when Canopy, Tailgate, the X adapter, and World Loom server were opened to the public.
 
 ## The architecture
 
@@ -76,11 +76,11 @@ The adapters own platform-specific behavior. agentd owns execution and durable r
 
 The outbox makes the handoff inspectable, but an external send and a local acknowledgment are still separate operations. It should not be read as a blanket exactly-once guarantee for a third-party API.
 
-The public repositories are [`agentd`](https://github.com/minifish-org/agentd) and [`agentd-telegram-adapter`](https://github.com/minifish-org/agentd-telegram-adapter). The [`agentd-x-adapter`](https://github.com/minifish-org/agentd-x-adapter) repository is **private**. I discuss the runtime boundary in more detail in [agentd: A Transport-Neutral Runtime for Personal Agents](/posts/agentd-transport-neutral-runtime/).
+The public repositories are [`agentd`](https://github.com/minifish-org/agentd), [`agentd-telegram-adapter`](https://github.com/minifish-org/agentd-telegram-adapter), and [`agentd-x-adapter`](https://github.com/minifish-org/agentd-x-adapter). I discuss the runtime boundary in more detail in [agentd: A Transport-Neutral Runtime for Personal Agents](/posts/agentd-transport-neutral-runtime/).
 
 ### Why the model gateway stays on Lightsail
 
-[`Tailgate`](https://github.com/minifish-org/tailgate) **(private)** provides one OpenAI-compatible API with centralized provider credentials and explicit model routing. The running gateway is bound to the Lightsail Tailscale address; it is also available through Tailscale Serve. Living on a public VM does not make this API a public endpoint.
+[`Tailgate`](https://github.com/minifish-org/tailgate) provides one OpenAI-compatible API with centralized provider credentials and explicit model routing. The running gateway is bound to the Lightsail Tailscale address; it is also available through Tailscale Serve. Living on a public VM does not make this API a public endpoint.
 
 The configured upstreams currently include the GMK local-ai service, DeepSeek, and OpenRouter. A route such as `local/chat` identifies the local capability; other routes can select hosted models according to their configuration. Fallback behavior belongs to that policy—it should not silently turn every local request into a remote one.
 
@@ -98,7 +98,7 @@ In particular, the direct chat webpage reaches the chat service without going th
 
 ### Canopy gives the agent a route engine
 
-[`Canopy`](https://github.com/minifish-org/canopy) **(private)** is an MCP service for Singapore cycling and walking routes. It uses a local GraphHopper instance for routing, with a model that prefers PCN-like and low-traffic paths. OneMap supplies geocoding and points of interest.
+[`Canopy`](https://github.com/minifish-org/canopy) is an MCP service for Singapore cycling and walking routes. It uses a local GraphHopper instance for routing, with a model that prefers PCN-like and low-traffic paths. OneMap supplies geocoding and points of interest.
 
 Canopy and GraphHopper run alongside agentd on GMK without host-published ports. The agent can ask a specialized tool to plan and audit a route, then explain the returned geometry, distance, and GPX output. The language model does not have to invent the route.
 
@@ -114,7 +114,7 @@ The server owns world updates and persistence, including SQLite and Anvil region
 
 [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve) supplies the private HTTPS entry points. The World Loom endpoints use Serve without Funnel; the same host also exposes private agentd, local-ai, and Beszel endpoints. Keeping an application behind the tailnet complements its own authentication and authorization.
 
-The public browser code is in [`world-loom-client`](https://github.com/minifish-org/world-loom-client). The [`world-loom-server`](https://github.com/minifish-org/world-loom-server) and integration workspace [`world-loom-stack`](https://github.com/minifish-org/world-loom-stack) are **private**.
+Both [`world-loom-client`](https://github.com/minifish-org/world-loom-client) and [`world-loom-server`](https://github.com/minifish-org/world-loom-server) are public. The server includes a standalone MCP build/restart/undo demo and documents its experimental security boundaries, including known upstream dependency advisories. The integration workspace [`world-loom-stack`](https://github.com/minifish-org/world-loom-stack) remains **private**.
 
 ## Other services that belong at the edge
 
