@@ -20,6 +20,8 @@ The first migration plan is complete: **26 accepted steps across three modules**
 
 This is the record of what we built, how we checked it, and where the experiment goes next.
 
+**Follow-up, October 14, 2026:** [From One-Time Porting to Incremental Updates: Portsmith Go and Pith](../portsmith-go-incremental-pi-migration/) covers the Go executor and two accepted upstream increments that followed this first port.
+
 ## Why port instead of starting over?
 
 The attraction of Pi was its separation of model access, agent execution, and tools. I did not want to reinvent every streaming edge case or every interaction in an agent loop before I could build a useful product.

@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "publicationDate": "2026-10-14",
+  "timezone": "Asia/Singapore",
+  "scope": "Historical acceptance records plus focused offline executor checks. No model/provider benchmark or full Pi parity claim.",
+  "executorSourceCommit": "932b7c3e68379c7349074809bff00ae2d9b20faf",
+  "historicalReceipts": [
+    {
+      "repository": "minifish-org/portsmith-go",
+      "acceptedCommit": "710f8b91843d691ecb00fd7d0a8bf9c3354ab3ae",
+      "receiptPath": "migration/results/portsmith.json",
+      "receiptURL": "https://github.com/minifish-org/portsmith-go/blob/710f8b91843d691ecb00fd7d0a8bf9c3354ab3ae/migration/results/portsmith.json",
+      "receiptSha256": "2b89bd9a0242178c238d6a89acd5ea21ba6f1e0136059f371a8f95facc3a7b35",
+      "module": "portsmith",
+      "upstream": "dc1a6ec78e90f7167d7fe96ac53188088dfa4fca",
+      "planSha256": "eb33ccc29a80a49dc592ea2f80eba6d9397292459b7d4c1f2af65d56566e6bec",
+      "acceptedSteps": 7,
+      "verification": {
+        "verifier": "portsmith-go-v3",
+        "at": "2026-09-30T18:14:51.626Z",
+        "status": "behavior_verified",
+        "independent": true,
+        "fullParityProven": false,
+        "oracleCases": 0
+      },
+      "phases": [
+        {
+          "name": "compile",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "vet",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "candidate-tests",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "independent-behavior",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "race",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "repository": "minifish-org/pith",
+      "acceptedCommit": "0044a030ed7a2f4f60dde3f486965bbb182c6edf",
+      "receiptPath": "migration/results/pi-002fc8385268.json",
+      "receiptURL": "https://github.com/minifish-org/pith/blob/0044a030ed7a2f4f60dde3f486965bbb182c6edf/migration/results/pi-002fc8385268.json",
+      "receiptSha256": "e108cdc7a493ca7293873a6f6cde92282afac708b14af6ad5555f95e43a271e6",
+      "module": "pi-002fc8385268",
+      "upstream": "002fc8385268300ca91a5fc95f935c2afbbdac02",
+      "planSha256": "51303b073ffb1a212e342f51512586ca4c363823d2c4e3f2b6d435ca8ca8577e",
+      "acceptedSteps": 3,
+      "verification": {
+        "verifier": "portsmith-native-go-v1",
+        "at": "2026-10-01T13:32:59.945Z",
+        "status": "behavior_verified",
+        "independent": true,
+        "fullParityProven": false,
+        "oracleCases": 0
+      },
+      "phases": [
+        {
+          "name": "compile",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "vet",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "candidate-tests",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "independent-behavior",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "repository": "minifish-org/pith",
+      "acceptedCommit": "2f7f735997b70395888e222a24bc44756119a500",
+      "receiptPath": "migration/results/pi-a13d35a742c6.json",
+      "receiptURL": "https://github.com/minifish-org/pith/blob/2f7f735997b70395888e222a24bc44756119a500/migration/results/pi-a13d35a742c6.json",
+      "receiptSha256": "187d3a0d40ba4643d4ecc10d2af515ba5a7d8352b0576d36100efffb5e8e505d",
+      "module": "pi-a13d35a742c6",
+      "upstream": "a13d35a742c6ef8462812a28fbe1d8c8b7431c32",
+      "planSha256": "786f420294b7736ddf441462265929d54a1dbf7fb14d02a7ebb10e3529ab1108",
+      "acceptedSteps": 9,
+      "verification": {
+        "verifier": "portsmith-native-go-v1",
+        "at": "2026-10-02T18:41:26.937Z",
+        "status": "behavior_verified",
+        "independent": true,
+        "fullParityProven": false,
+        "oracleCases": 0
+      },
+      "phases": [
+        {
+          "name": "compile",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "vet",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "candidate-tests",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        },
+        {
+          "name": "independent-behavior",
+          "code": 0,
+          "timedOut": false,
+          "truncated": false
+        }
+      ]
+    }
+  ],
+  "piV1PreparedScope": {
+    "workflowPath": "migration/sync/pi-1.0/workflow.json",
+    "commit": "2f7f735997b70395888e222a24bc44756119a500",
+    "readOnlyBaselineFiles": 815,
+    "existingWritableFiles": 234,
+    "steps": 9,
+    "independentTestNames": [
+      "TestPortsmithJudgePiV1Catalog",
+      "TestPortsmithJudgePiV1HeaderMerge",
+      "TestPortsmithJudgePiV1ModelKinds",
+      "TestPortsmithJudgePiV1ProviderErrors",
+      "TestPortsmithJudgePiV1ClassifierWire",
+      "TestPortsmithJudgePiV1MixedBuiltinCatalog",
+      "TestPortsmithJudgePiV1ModelIdentity",
+      "TestPortsmithJudgePiV1RuntimeCatalog",
+      "TestPortsmithJudgePiV1MistralEmptyDeltas",
+      "TestPortsmithJudgePiV1MistralMappedEffort",
+      "TestPortsmithJudgePiV1OAuthCallback",
+      "TestPortsmithJudgePiV1PKCE",
+      "TestPortsmithJudgePiV1NestedToolHooks",
+      "TestPortsmithJudgePiV1StructuredReplacement",
+      "TestPortsmithJudgePiV1MCPContent",
+      "TestPortsmithJudgePiV1MCPHTTP",
+      "TestPortsmithJudgePiV1MCPStdio",
+      "TestPortsmithJudgePiV1CodemodeAsync",
+      "TestPortsmithJudgePiV1CodemodeCancellation",
+      "TestPortsmithJudgePiV1CodemodeDeclarations",
+      "TestPortsmithJudgePiV1CodemodeIsolation",
+      "TestPortsmithJudgePiV1CodemodeStore",
+      "TestPortsmithJudgePiV1CodemodePermission",
+      "TestPortsmithJudgePiV1DeferredTools",
+      "TestPortsmithJudgePiV1VirtualRouting",
+      "TestPortsmithJudgePiV1SDKComposition"
+    ]
+  },
+  "baselineAdvanceCommits": {
+    "002fc8385268300ca91a5fc95f935c2afbbdac02": "e68bf98fd9747102b09cbd44a7320b7744979d55",
+    "a13d35a742c6ef8462812a28fbe1d8c8b7431c32": "a569953ad8f8ac9daa40f90b509c224c6d195df7"
+  },
+  "integrationRepairIntroducedAt": "8055d84e69775f8f8b3cd355b9bb4460a170b978",
+  "freshOfflineChecks": {
+    "date": "2026-10-14",
+    "sourceCommit": "932b7c3e68379c7349074809bff00ae2d9b20faf",
+    "environment": {
+      "GOWORK": "off",
+      "CGO_ENABLED": "0"
+    },
+    "tests": [
+      {
+        "name": "TestRunPortOfflineRepairLoop",
+        "status": "pass"
+      },
+      {
+        "name": "TestWorkflowV2IntegrationFailureRepairsCandidate",
+        "status": "pass"
+      },
+      {
+        "name": "TestWorkflowV2IntegrationRollbackRefusesExternalChanges",
+        "status": "pass"
+      },
+      {
+        "name": "TestSyncDraftTracksDiffDependenciesAndPreservesReview",
+        "status": "pass"
+      },
+      {
+        "name": "TestSyncReviewedMigrationAdvancesOnlyAfterAcceptance",
+        "status": "pass"
+      },
+      {
+        "name": "TestSyncMetadataCommitRecovery",
+        "status": "pass"
+      },
+      {
+        "name": "TestUpdateRejectsDriftAndMissingAuthorization",
+        "status": "pass"
+      },
+      {
+        "name": "TestPortsmithJudgePithRepairAndResume",
+        "status": "pass"
+      }
+    ],
+    "limitations": "Deterministic model/generation fixtures and temporary Git repositories. These checks do not exercise live provider quality or certify historical runs."
+  }
+}
